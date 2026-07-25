@@ -857,3 +857,7 @@ button {
     width: 75%;
     float: right;
 }
+
+#exploitRun {
+    width: 50%;
+}

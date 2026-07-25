@@ -1,3 +1,7 @@
+function isLocalIP(ip) {
+  return /^(127\.|192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.)/.test(ip);
+}
+
 function CheckFW() {
     const userAgent = navigator.userAgent;
     const ps4Regex = /PlayStation 4/;
@@ -8,17 +12,21 @@ function CheckFW() {
     ];
 
     if (ps4Regex.test(userAgent)) {
-        if (fwVersion >= 6.70 && fwVersion <= 9.60) {
+        if (fwVersion >= webKitMin && fwVersion <= webKitMax) {
             ui.ps4FwStatus.style.color = 'green';
 
             // Highlight firmware in about popup
-            var fwElement = "fw" + fwVersion.replace('.', '');
+            var dotIndex = fwVersion.indexOf('.');
+            var major = dotIndex !== -1 ? fwVersion.substring(0, dotIndex) : fwVersion;
+            var fwElement = "fw" + major;
+            if (fwVersion.indexOf('11.0') === 0) {
+                fwElement = "fw110";
+            }
             var el = document.getElementById(fwElement);
             if (el) el.classList.add('fwSelected');
 
-            // show "load userland exploit only on jailbreak" option
-            if (fwVersion >= 6.70 && fwVersion <= 6.72)
-                document.getElementById("userlandOnlyOnJB67x").classList.toggle('hidden');
+            updateExploitChainVisibility(fwVersion);
+            firstTimeExploitChain(fwVersion);
         } else {
             ui.ps4FwStatus.style.color = 'orange';
             document.getElementById('layouts').style.display = "none";
@@ -103,4 +111,50 @@ function CheckFW() {
             });
         }
     }
+}
+
+function firstTimeExploitChain(fwVersion){
+    if (localStorage.getItem('exploitChain') != null) return;
+    var fwNum = parseFloat(fwVersion);
+    var chain = 3; // Default to CSSFontFace NetCtrl
+    if (fwNum >= 7.00 && fwNum <= 9.60) {
+        chain = 1; // Feyzee61's PSFree Lapse
+    }
+    exploitChain(chain);
+    loadExploitChain();
+}
+
+function toggleVisibility(id, show) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    if (show) {
+        el.classList.remove('hidden');
+    } else {
+        el.classList.add('hidden');
+    }
+}
+
+function updateExploitChainVisibility(fwVersion) {
+    if (!fwVersion) return;
+    var fwNum = parseFloat(fwVersion);
+    if (isNaN(fwNum)) return;
+
+    // 6.00 - 11.02 sees cssfontface lapse and cssfontface netctrl
+    var showCssFontFace = (fwNum >= webKitMin && fwNum <= webKitMax || devMode);
+    toggleVisibility('cssFontFaceNetCtrlExp', showCssFontFace);
+    toggleVisibility('cssFontFaceLapseExp', showCssFontFace);
+
+    // 6.70 - 6.72 sees badhoist
+    var showBadHoist = (fwNum >= 6.70 && fwNum <= 6.72 || devMode);
+    console.log(showBadHoist)
+    toggleVisibility('badHoistExp', showBadHoist);
+    userlandOnlyOnJB67x();
+
+    // 7.00 - 9.60 sees modular psfree lapse and bundled psfree lapse
+    var showPsfreeLapse = (fwNum >= 7.00 && fwNum <= 9.60 || devMode);
+    toggleVisibility('modularLapseExp', showPsfreeLapse);
+    toggleVisibility('bundleLapseExp', showPsfreeLapse);
+
+    // Also toggle the "userlandOnlyOnJB67x" option based on whether we show badhoist
+    toggleVisibility('userlandOnlyOnJB67x', showBadHoist);
 }

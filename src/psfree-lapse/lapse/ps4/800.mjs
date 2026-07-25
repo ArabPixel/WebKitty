@@ -34,4 +34,4 @@ export const off_cpuid_to_pcpu = 0x228e6b0;
 export const off_sysent_661 = 0x11040c0;
 export const jmp_rsi = 0xe629c;
 
-export const patch_elf_loc = "./src/kpatch/800.bin"; // Relative to `../../lapse.mjs`
+export const patch_elf_loc = "./src/psfree-lapse/kpatch/800.bin"; // Relative to `../../lapse.mjs`

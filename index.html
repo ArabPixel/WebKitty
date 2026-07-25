@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="PSFree.manifest">
+<html lang="en" >
 
 <head>
     <meta charset="UTF-8">
@@ -191,6 +191,11 @@
                                 class="hidden p-1 text-center rounded font-semibold transition-colors text-white">
                                 <option selected hidden>PS4 FW</option>
                                 <option value="lower">Lower</option>
+                                <option value="6.00">6.00</option>
+                                <option value="6.02">6.02</option>
+                                <option value="6.20">6.20</option>
+                                <option value="6.50">6.50</option>
+                                <option value="6.51">6.51</option>
                                 <option value="6.70">6.70</option>
                                 <option value="6.71">6.71</option>
                                 <option value="6.72">6.72</option>
@@ -228,6 +233,7 @@
                                 <option value="13.02">13.02</option>
                                 <option value="13.04">13.04</option>
                                 <option value="13.50">13.50</option>
+                                <option value="13.52">13.52</option>
                             </select>
                         </div>
                     </div>
@@ -315,46 +321,36 @@
                 <p>Version: 2.0</p>
                 <p>A web interface to jailbreak your PS4 using PSFree chained with Lapse kernel exploit</p>
             </div>
-            <p id="infoProtip" class="mt-2">ProTip: New functions become available if hosted locally or on a PS4 using
-                the PS4-Websrv payload.</p>
             <div id="PS4FWOK" class="mt-4">
                 <h3 class="text-l font-bold mb-4">Supported PS4 firmware</h3>
-                <div id="listfw" class="grid-cols-4 text-sm text-white/70 mb-4">
-                    <p id="fw670">6.70</p>
-                    <p id="fw671">6.71</p>
-                    <p id="fw672">6.72</p>
-                    <p id="fw700">7.00</p>
-                    <p id="fw701">7.01</p>
-                    <p id="fw702">7.02</p>
-                    <p id="fw750">7.50</p>
-                    <p id="fw751">7.51</p>
-                    <p id="fw755">7.55</p>
-                    <p id="fw800">8.00</p>
-                    <p id="fw801">8.01</p>
-                    <p id="fw803">8.03</p>
-                    <p id="fw850">8.50</p>
-                    <p id="fw852">8.52</p>
-                    <p id="fw900">9.00</p>
-                    <p id="fw903">9.03</p>
-                    <p id="fw904">9.04</p>
-                    <p id="fw950">9.50</p>
-                    <p id="fw951">9.51</p>
-                    <p id="fw960">9.60</p>
+                <div id="listfw" class="grid-cols-4 text-sm text-white/70 mb-4"> 
+                    <p id="fw6">6.xx</p>
+                    <p id="fw7">7.xx</p>
+                    <p id="fw8">8.xx</p>
+                    <p id="fw9">9.xx</p>
+                    <p id="fw10">10.xx</p>
+                    <p id="fw110">11.0x</p>
                 </div>
             </div>
             <small id="goldhenFirmwareSemiSupported">
                 <i class="text-white/70">* Loading payloads through GoldHEN's PayLoader is supported.</i>
             </small>
-            <div class="mt-4">
-                <h3 class="text-l font-bold mb-4">Credits</h3>
-                <div id="listCredits" class="flex flex-wrap justify-evenly text-sm text-white/70 mb-4">
-                    <p>abc</p>
-                    <p>sleirsgoevy</p>
-                    <p>Fire30</p>
-                    <p>Al Azif</p>
-                    <p>Feyzee61</p>
-                    <p>ArabPixel</p>
-                </div>
+            <h3 class="text-l font-bold mt-4 mb-2">Credits</h3>
+            <div class="flex flex-wrap justify-evenly text-sm text-white/70 mb-2">
+                <p>abc</p>
+                <p>sleirsgoevy</p>
+                <p>Fire30</p>
+                <p>ntfargo</p>
+            </div>
+            <div class="flex flex-wrap justify-evenly text-sm text-white/70 mt-2">
+                <p>Al Azif</p>
+                <p>ufm42</p>
+                <p>Feyzee61</p>
+                <p>ArabPixel</p>
+            </div>
+            <div class="flex flex-wrap justify-evenly text-sm text-white/70 mt-2">
+                <p>Dr.Yenyen</p>
+                <p>Teligin174</p>
             </div>
 
             <button onclick="aboutPopup()"
@@ -478,13 +474,25 @@
             <div id="chooseExploitChain" class="mb-4">
                 <h3 class="text-lg font-semibold mb-2" id="exploitChainTitle">Exploit Chain</h3>
                 <div class="radio-group space-y-2 flex flex-wrap">
-                    <label class="flex items-center text-white/80">
-                        <input type="radio" name="exploitChain" value="true" onchange="lapseChain(this.value);">
+                    <label class="flex items-center text-white/80" id="modularLapseExp">
+                        <input type="radio" name="exploitChain" value="0" onchange="exploitChain(this.value);">
                         <p id="modularLapse">Default's PSFree Lapse</p>
                     </label>
-                    <label class="flex items-center text-white/80">
-                        <input type="radio" name="exploitChain" value="false" onchange="lapseChain(this.value);">
+                    <label class="flex items-center text-white/80" id="bundleLapseExp">
+                        <input type="radio" name="exploitChain" value="1" onchange="exploitChain(this.value);">
                         <p id="bundleLapse">Feyzee61's PSFree Lapse</p>
+                    </label>
+                    <label class="flex items-center text-white/80" id="badHoistExp">
+                        <input type="radio" name="exploitChain" value="2" onchange="exploitChain(this.value);">
+                        <p id="badHoist">BadHoist</p>
+                    </label>
+                    <label class="flex items-center text-white/80" id="cssFontFaceNetCtrlExp">
+                        <input type="radio" name="exploitChain" value="3" onchange="exploitChain(this.value);">
+                        <p id="cssFontFaceNetCtrl">CSSFontFace NetCtrl</p>
+                    </label>
+                    <label class="flex items-center text-white/80" id="cssFontFaceLapseExp">
+                        <input type="radio" name="exploitChain" value="4" onchange="exploitChain(this.value);">
+                        <p id="cssFontFaceLapse">CSSFontFace Lapse</p>
                     </label>
                 </div>
             </div>
@@ -560,10 +568,23 @@
 
     <script>
         // Global Error Tracker
-        window.onerror = function (msg, url, linenumber) {
-            alert('Error message: ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber);
+        window.onerror = function (msg, url, lineno, colno, error) {
+            const stack = error.stack || 'No stack trace';
+            console.error('[onerror]', { msg, url, lineno, colno, stack });
+            alert(`Error: ${msg}\nURL: ${url}\nLine: ${lineno}, Col: ${colno}\n\nOpen an issue on github or contact me on discord '@arabpixel'`);
             return true;
-        }
+        };
+
+        // Catch unhandled promise rejections
+        window.addEventListener('unhandledrejection', function (event) {
+            const reason = event.reason;
+            const msg = reason instanceof Error
+                ? `${reason.message}\n\nStack:\n${reason.stack}`
+                : String(reason);
+            console.error('[unhandledrejection]', reason);
+            alert(`Unhandled Promise Rejection:\n${msg}\n\nOpen an issue on github or contact me on discord '@arabpixel'`);
+        });
+
 
 
         var ua = navigator.userAgent;
@@ -577,7 +598,7 @@
         if (isPS4 && is67x && !userlandOnlyOnJB67x) {
             try {
                 var xhr = new XMLHttpRequest();
-                xhr.open('GET', 'includes/js/exploits/672entrypoint.js', false);
+                xhr.open('GET', 'src/badhoist/672entrypoint.js', false);
                 xhr.send('');
                 if (xhr.status === 200) {
                     eval.call(top.window, xhr.responseText);
@@ -618,7 +639,10 @@
     <script src="./includes/js/HENs.js"></script>
     <script src="./includes/js/checkFw.js"></script>
     <script src="./includes/js/autoJbRetry.js"></script>
+    <script src="./includes/js/cache.js"></script>
     <script src="./includes/js/events.js"></script>
+    <script src="./includes/js/payloadsHandler.js"></script>
+    <script src="./includes/js/utilities.js"></script>
 </body>
 
 </html>

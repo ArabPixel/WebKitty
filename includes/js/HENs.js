@@ -40,13 +40,15 @@ function setGoldHENVer(value) {
 
 function loadGoldHENVer() {
     const goldHenVer = localStorage.getItem("GHVer") || "GHv2.4b18.10";
-    document.querySelector(`input[name="goldhen"][value="${goldHenVer}"]`).checked = true;
+    const goldHenRadio = document.querySelector(`input[name="goldhen"][value="${goldHenVer}"]`);
+    if (goldHenRadio) goldHenRadio.checked = true;
 }
 
 function saveJbFlavor(name, value) {
     localStorage.setItem("jailbreakFlavor", value);
     // Apply hen selector to both inputs
-    document.querySelector(`input[name="${name == "hen" ? "hen2" : "hen"}"][value="${value}"]`).checked = true;
+    const otherHenRadio = document.querySelector(`input[name="${name == "hen" ? "hen2" : "hen"}"][value="${value}"]`);
+    if (otherHenRadio) otherHenRadio.checked = true;
     user.currentJbFlavor = value;
 };
 

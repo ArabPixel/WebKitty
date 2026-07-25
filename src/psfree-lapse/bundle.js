@@ -3153,7 +3153,9 @@ async function doLapseInit() {
         runBinLoader();
       }else {
         PayloadLoader(sessionStorage.getItem("payload_path"));
-        payloadSucces();
+        if (typeof jailbreakSuccess == "function"){
+        jailbreakSuccess();
+      }
       }
 
       return 0;
@@ -4829,7 +4831,9 @@ async function doJailBreak() {
       
       window.log("Homebrew Enabler loaded", "green");
       window.log("\nPSFree & Lapse exploit with AIO fixes by ABC");
-      payloadSucces();
+      if (typeof jailbreakSuccess == "function"){
+        jailbreakSuccess();
+      }
     }
   }
   else {

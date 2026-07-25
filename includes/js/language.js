@@ -69,7 +69,7 @@ function applyLanguage(lang) {
         if (strings.notPs4 && strings.notPs4.length > 0) {
             ui.ps4FwStatus.textContent = strings.notPs4 + user.platform;
         }
-    } else if (ps4Fw <= 9.60 && ps4Fw >= 6.70) {
+    } else if (ps4Fw <= webKitMax && ps4Fw >= webKitMin) {
         if (strings.ps4FwCompatible && strings.ps4FwCompatible.length > 0) {
             ui.ps4FwStatus.textContent = strings.ps4FwCompatible.replace('{ps4fw}', ps4Fw);
         }
@@ -96,7 +96,6 @@ function applyLanguage(lang) {
         updateText(ui.aboutPopup.querySelector('#PS4FWOK h3'), 'ps4FirmwareSupportedHeader');
         updateText(ui.aboutPopup.querySelector('#close-about'), 'closeButton');
         updateText(ui.aboutPopup.querySelector('#goldhenFirmwareSemiSupported i'), 'goldhenFirmwareSemiSupported');
-        updateText(ui.aboutPopup.querySelector('#infoProtip'), 'infoProtip');
     }
     updateText(ui.bareboneJbBtn, 'bareboneJB')
 

@@ -2012,7 +2012,10 @@ kexploit().then((success) => {
       }
 
       // reload after some time
-      payloadSucces();
+      log("AIO fix applied");
+      if (typeof jailbreakSuccess == "function"){
+        jailbreakSuccess();
+      }
 
       runPayload(sessionStorage.getItem('payload_path'));
     }
@@ -2020,8 +2023,6 @@ kexploit().then((success) => {
 });
 
 function payloadSucces(){
-  log("AIO fix applied");
-
   if (typeof updateJbStats === "function"){
     updateJbStats(false, true);
   }

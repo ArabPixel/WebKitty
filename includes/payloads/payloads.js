@@ -39,7 +39,7 @@ function Loadpayloadlocal(PLfile, name) { //Loading Payload via Payload Param.
         // If its elfldr, change to .bin 
         if (name == "ElfLoader") PLfile = "./includes/payloads/Bins/elfldr.bin";
 
-        if (user.ps4Fw >= 6.70 && user.ps4Fw <= 9.60 && user.platform == "PS4") {
+        if (user.ps4Fw >= webKitMin && user.ps4Fw <= webKitMax && user.platform == "PS4") {
             if (!isHttps()) {
                 if (confirm(window.lang.disabledBinloader)) {
                     Loadpayloadonline(PLfile);
