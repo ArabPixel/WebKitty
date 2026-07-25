@@ -90,7 +90,10 @@ function Loadpayloadonline(PLfile) {
     if (PLfile == undefined) {
         // run BinLoader
         sessionStorage.setItem('binloader', 1);
-
+        if (user.exploitChain == 2 || user.exploitChain == 3 || user.exploitChain == 4){
+            PLfile = "./includes/payloads/Bins/elfldr.bin";
+            sessionStorage.setItem("payload_path", PLfile);
+        }
         // Check if Linux payload is selected
     } else if (needsGoldHEN) {
         alert(window.lang.payloadOnlyWithGoldHEN);

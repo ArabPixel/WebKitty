@@ -576,7 +576,7 @@ function jailbreak() {
 
 // intended for use only after kernel arw
 function kernel_patches(shellcode) {
-  logger.info("Applying kernal patches...");
+  logger.info("Applying kernel patches...");
 
   const sysent_661_addr = kernel_base.add(constants.SYSENT_661);
   logger.debug(`sysent_661_addr: ${sysent_661_addr}`);
@@ -624,7 +624,7 @@ function kernel_patches(shellcode) {
   kview(sysent_661_addr).setBInt(8, sy_call, true);
   kview(sysent_661_addr).setUint32(0x2c, sy_thrcnt, true);
 
-  logger.info("Kernal patches applied !!");
+  logger.info("Kernel patches applied !!");
 }
 //#endregion
 //#region Structs
