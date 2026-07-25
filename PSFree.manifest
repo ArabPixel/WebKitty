@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # v1
-# Generated on 2026-07-25 18:11:40.132324
+# Generated on 2026-07-25 20:11:40.824490
 
 CACHE:
 exploit.html
@@ -123,9 +123,6 @@ src/cssfontface/ps4/constants.js
 src/cssfontface/ps4/kernel.js
 src/cssfontface/ps4/userland.js
 src/cssfontface/ps4/patches/1000.bin
-src/cssfontface/ps4/patches/1050.bin
-src/cssfontface/ps4/patches/1100.bin
-src/cssfontface/ps4/patches/1102.bin
 src/cssfontface/ps4/patches/600.bin
 src/cssfontface/ps4/patches/620.bin
 src/cssfontface/ps4/patches/650.bin
@@ -137,6 +134,9 @@ src/cssfontface/ps4/patches/850.bin
 src/cssfontface/ps4/patches/900.bin
 src/cssfontface/ps4/patches/903.bin
 src/cssfontface/ps4/patches/950.bin
+src/cssfontface/ps4/patches/1102.bin
+src/cssfontface/ps4/patches/1100.bin
+src/cssfontface/ps4/patches/1050.bin
 src/badhoist/672kexploit.js
 src/badhoist/672entrypoint.js
 
