@@ -139,19 +139,20 @@ function updateExploitChainVisibility(fwVersion) {
     var fwNum = parseFloat(fwVersion);
     if (isNaN(fwNum)) return;
 
-    // 6.00 - 11.02 sees cssfontface lapse and cssfontface netctrl
-    var showCssFontFace = (fwNum >= webKitMin && fwNum <= webKitMax || devMode);
-    toggleVisibility('cssFontFaceNetCtrlExp', showCssFontFace);
-    toggleVisibility('cssFontFaceLapseExp', showCssFontFace);
+    // 6.00 - 11.02 sees cssfontface lapse and 9.00 - 11.02 cssfontface netctrl
+    var showCssFontFaceLapse = (fwNum >= webKitMin && fwNum <= webKitMax);
+    var showCssFontFaceNetctrl = (fwNum >= 9.00 && fwNum <= webKitMax);
+    toggleVisibility('cssFontFaceNetCtrlExp', showCssFontFaceNetctrl);
+    toggleVisibility('cssFontFaceLapseExp', showCssFontFaceLapse);
 
     // 6.70 - 6.72 sees badhoist
-    var showBadHoist = (fwNum >= 6.70 && fwNum <= 6.72 || devMode);
+    var showBadHoist = (fwNum >= 6.70 && fwNum <= 6.72);
     console.log(showBadHoist)
     toggleVisibility('badHoistExp', showBadHoist);
     userlandOnlyOnJB67x();
 
     // 7.00 - 9.60 sees modular psfree lapse and bundled psfree lapse
-    var showPsfreeLapse = (fwNum >= 7.00 && fwNum <= 9.60 || devMode);
+    var showPsfreeLapse = (fwNum >= 7.00 && fwNum <= 9.60);
     toggleVisibility('modularLapseExp', showPsfreeLapse);
     toggleVisibility('bundleLapseExp', showPsfreeLapse);
 
