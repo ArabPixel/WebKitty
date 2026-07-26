@@ -75,7 +75,7 @@ async function doCssFontFaceJailbreak() {
 
         // Remove rthdr pointers
         remove_rthdr_from_so(pktopts_twins[1]);
-        //remove_rthdr_from_so(rthdr_twins[0]);
+        remove_rthdr_from_so(rthdr_twins[0]);
 
         logger.info("Corrupted context cleanup completed !!");
       } else {

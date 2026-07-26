@@ -451,6 +451,14 @@ function get_in6p_outputopts(fd) {
   return kview(so_pcb).getBInt(0x118, true); // in6p_outputopts
 }
 
+function get_pktinfo_from_so(fd) {
+  return kview(get_in6p_outputopts(fd)).gerBInt(0x10, true); // ip6po_pktinfo
+}
+
+function get_rthdr_from_so(fd) {
+  return kview(get_in6p_outputopts(fd)).getBInt(0x68, true); // ip6po_rthdr
+}
+
 function remove_pktinfo_from_so(fd) {
   kview(get_in6p_outputopts(fd)).setBInt(0x10, 0, true); // ip6po_pktinfo
 }
@@ -464,14 +472,6 @@ function inc_karw_pipe_refcnt() {
   fhold(fget(master_pipe[1]));
   fhold(fget(slave_pipe[0]));
   fhold(fget(slave_pipe[1]));
-}
-
-function remove_pktinfo_from_so(fd) {
-  kview(get_in6p_outputopts(fd)).setBInt(0x10, 0, true); // ip6po_pktinfo
-}
-
-function remove_rthdr_from_so(fd) {
-  kview(get_in6p_outputopts(fd)).setBInt(0x68, 0, true); // ip6po_rthdr
 }
 
 function pfind(pid) {
