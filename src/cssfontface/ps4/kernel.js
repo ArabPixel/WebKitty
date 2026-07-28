@@ -452,7 +452,7 @@ function get_in6p_outputopts(fd) {
 }
 
 function get_pktinfo_from_so(fd) {
-  return kview(get_in6p_outputopts(fd)).gerBInt(0x10, true); // ip6po_pktinfo
+  return kview(get_in6p_outputopts(fd)).getBInt(0x10, true); // ip6po_pktinfo
 }
 
 function get_rthdr_from_so(fd) {
