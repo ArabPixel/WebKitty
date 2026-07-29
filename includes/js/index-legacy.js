@@ -91,7 +91,7 @@ function jailbreak() {
 }
 function _jailbreak() {
   _jailbreak = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
-    var _t;
+    var payloadPath, _t;
     return _regenerator().w(function (_context) {
       while (1) switch (_context.n) {
         case 0:
@@ -110,7 +110,8 @@ function _jailbreak() {
           sessionStorage.setItem('autoJbRetry', 'true');
 
           // Skip if payload were chosen, useful when a payload were chosen from payloads.js
-          if (sessionStorage.getItem('payload_path') == (null || undefined)) {
+          payloadPath = sessionStorage.getItem('payload_path');
+          if (!payloadPath || payloadPath === "null" || payloadPath === "undefined") {
             // Choose HEN
             chooseHEN();
           }
@@ -124,6 +125,10 @@ function _jailbreak() {
           location.href = "./exploit.html";
           return _context.a(2);
         case 2:
+          // add one jailbreak attempt to stats
+          updateJbStats(1, 0);
+
+          // checkFw.js already guarantees exploitChain is valid for the current firmware
           _t = user.exploitChain;
           _context.n = _t === 0 ? 3 : _t === 1 ? 3 : _t === 2 ? 4 : _t === 3 ? 5 : _t === 4 ? 5 : 6;
           break;
@@ -140,9 +145,6 @@ function _jailbreak() {
           cssFontFaceJailbreak();
           return _context.a(3, 6);
         case 6:
-          // add one jailbreak attempt to the stats
-          updateJbStats(1, 0);
-        case 7:
           return _context.a(2);
       }
     }, _callee);

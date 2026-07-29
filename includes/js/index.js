@@ -95,7 +95,8 @@ async function jailbreak() {
   sessionStorage.setItem('autoJbRetry', 'true');
 
   // Skip if payload were chosen, useful when a payload were chosen from payloads.js
-  if (sessionStorage.getItem('payload_path') == (null || undefined)) {
+  const payloadPath = sessionStorage.getItem('payload_path');
+  if (!payloadPath || payloadPath === "null" || payloadPath === "undefined") {
     // Choose HEN
     chooseHEN();
   }
@@ -107,6 +108,9 @@ async function jailbreak() {
     location.href = "./exploit.html";
     return;
   }
+  // add one jailbreak attempt to stats
+  updateJbStats(1, 0);
+
   // checkFw.js already guarantees exploitChain is valid for the current firmware
   switch (user.exploitChain) {
     case 0: // modular psfree lapse
@@ -121,8 +125,6 @@ async function jailbreak() {
       cssFontFaceJailbreak();
       break;
   }
-  // add one jailbreak attempt to the stats
-  updateJbStats(1, 0);
 }
 
 async function psfreeLapse() {
