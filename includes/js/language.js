@@ -134,12 +134,14 @@ function applyLanguage(lang) {
     updateText(ui.exploitChainTitle, 'exploitChainTitle');
     updateText(document.getElementById('userlandOnlyOnJB67xText'), 'userlandOnlyOnJB67x')
     if (isHttps()) {
-        ui.secondHostBtn[1].style.display = "block";
+        if (ui.secondHostBtn && ui.secondHostBtn[1]) {
+            ui.secondHostBtn[1].style.display = "block";
+        }
     }
 
     // --- Buttons ---
-    updateText(ui.secondHostBtn[0], 'secondHostBtn');
-    updateText(ui.secondHostBtn[1], 'secondHostBtn');
+    if (ui.secondHostBtn && ui.secondHostBtn[0]) updateText(ui.secondHostBtn[0], 'secondHostBtn');
+    if (ui.secondHostBtn && ui.secondHostBtn[1]) updateText(ui.secondHostBtn[1], 'secondHostBtn');
     updateTitle(ui.exploitRunBtn, 'clickToStart')
     updateTitle(ui.aboutBtn, 'aboutMenu');
 

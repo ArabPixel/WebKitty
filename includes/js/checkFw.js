@@ -2,17 +2,51 @@ function isLocalIP(ip) {
   return /^(127\.|192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.)/.test(ip);
 }
 
+function getPs4FwVersion(ua) {
+    if (!ua) return "";
+    var psIndex = ua.indexOf('PlayStation 4');
+    if (psIndex === -1) return "";
+    var sub = ua.substring(psIndex + 13);
+    while (sub.length > 0 && (sub.charAt(0) === ' ' || sub.charAt(0) === '\t')) {
+        sub = sub.substring(1);
+    }
+    if (sub.charAt(0) === '/') {
+        sub = sub.substring(1);
+    }
+    while (sub.length > 0 && (sub.charAt(0) === ' ' || sub.charAt(0) === '\t')) {
+        sub = sub.substring(1);
+    }
+    var ver = "";
+    for (var i = 0; i < sub.length; i++) {
+        var c = sub.charAt(i);
+        if ((c >= '0' && c <= '9') || c === '.') {
+            ver += c;
+        } else {
+            break;
+        }
+    }
+    return ver;
+}
+
 function CheckFW() {
     const userAgent = navigator.userAgent;
     const ps4Regex = /PlayStation 4/;
-    var fwVersion = navigator.userAgent.substring(navigator.userAgent.indexOf('5.0 (') + 19, navigator.userAgent.indexOf(') Apple')).replace("layStation 4/", "");
+    var fwVersion = getPs4FwVersion(userAgent);
+    if (!fwVersion && userAgent.indexOf('5.0 (') !== -1 && userAgent.indexOf(') Apple') !== -1) {
+        fwVersion = userAgent.substring(userAgent.indexOf('5.0 (') + 19, userAgent.indexOf(') Apple')).replace("layStation 4/", "");
+    }
     var elementsToHide = [
         'ps-logo-container', 'choosejb-initial', 'exploit-main-screen', 'scrollDown',
         'click-to-start-text', 'chooseGoldHEN', 'advancedPayloads', 'chooseExploitChain'
     ];
 
     if (ps4Regex.test(userAgent)) {
-        if (fwVersion >= webKitMin && fwVersion <= webKitMax) {
+        window.ps4Fw = fwVersion;
+        user.ip = "127.0.0.1";
+        user.ps4Fw = fwVersion;
+
+        var fwNum = parseFloat(fwVersion);
+        if (fwNum >= webKitMin && fwNum <= webKitMax) {
             ui.ps4FwStatus.style.color = 'green';
 
             // Highlight firmware in about popup
@@ -32,14 +66,20 @@ function CheckFW() {
             document.getElementById('layouts').style.display = "none";
             document.getElementById('theme').style.display = "none";
             if (isHttps()) {
-                ui.secondHostBtn[0].style.display = "block";
-                terminateCache(); // Dont cache in case no webkit and is https
+                if (ui.secondHostBtn && ui.secondHostBtn[0]) {
+                    ui.secondHostBtn[0].style.display = "block";
+                }
+                try {
+                    terminateCache(); // Dont cache in case no webkit and is https
+                } catch (e) {
+                    console.warn("terminateCache notice: " + e.message);
+                }
             } else {
                 // modify elements inside elementsToHide for unsupported ps4 firmware to load using GoldHEN's PayLoader
                 const toRemove = ['exploit-main-screen', 'scrollDown', 'advancedPayloads'];
                 elementsToHide = elementsToHide.filter(e => !toRemove.includes(e));
                 elementsToHide.push('initial-screen', 'exploit-status-panel', 'henSelection', 'autoJbContainer', 'successRate', 'bareboneJBOption', 'chooseExploitChain');
-                if (fwVersion < 6.70) elementsToHide.push('layouts', 'theme'); // Incompatible with Compact design..
+                if (fwNum < 6.70) elementsToHide.push('layouts', 'theme'); // Incompatible with Compact design..
                 document.getElementById('exploitContainer').style.display = "block";
 
                 // Sizing the payload's section
@@ -52,9 +92,6 @@ function CheckFW() {
                 if (el) el.style.display = 'none';
             });
         }
-        window.ps4Fw = fwVersion;
-        user.ip = "127.0.0.1"
-        user.ps4Fw = fwVersion;
     } else {
         // Not a PS4
         user.platform = 'Unknown platform';

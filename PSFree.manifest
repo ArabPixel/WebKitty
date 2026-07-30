@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # v1
-# Generated on 2026-07-29 10:53:05.870421
+# Generated on 2026-07-30 18:08:29.650551
 
 CACHE:
 exploit.html
@@ -120,8 +120,8 @@ src/cssfontface/netctrl.js
 src/cssfontface/worker.js
 src/cssfontface/workers.js
 src/cssfontface/ps4/constants.js
-src/cssfontface/ps4/kernel.js
 src/cssfontface/ps4/userland.js
+src/cssfontface/ps4/kernel.js
 src/cssfontface/ps4/patches/600.bin
 src/cssfontface/ps4/patches/620.bin
 src/cssfontface/ps4/patches/650.bin

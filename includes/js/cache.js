@@ -21,7 +21,7 @@ function terminateCache() {
             window.applicationCache.abort();
 
             // restore title
-            document.title = window.lang.title || "PSFree Enhanced";
+            document.title = (window.lang && window.lang.title) ? window.lang.title : "PSFree Enhanced";
 
             // cleanup
             window.applicationCache.removeEventListener("progress", DLProgress);
