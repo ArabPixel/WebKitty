@@ -58,7 +58,7 @@ AGPL-3.0-or-later (see [LICENSE](LICENSE)). Part of this repo belongs to the gro
 - Al-Azif: for the modular PSFree Lapse and AIO workaround implementations.
 - Feyzee61: for the PSFree lapse bundle and 6.7x exploit implementations.
 - ntfargo and ufm42: for CSSFontFace userland exploit.
-- uf42: for CSSFontFace NetCtrl and Lapse implementation.
+- ufm42: for CSSFontFace NetCtrl and Lapse implementation.
 - Dr.Yenyen: for intensive multi-firmware testing.
 - Nazky: for being the first host I took a peek at.
 

@@ -60,7 +60,7 @@ window.lang = {
   "successRate": "نسبة النجاح: ",
   "clearStatsConfirm": "هل أنت متأكد من أنك تريد مسح إحصائيات التعديل؟ هذا لا يمكن التراجع عنه!",
   "exploitChainTitle": "سلسلة الثغرات",
-  "modularLapse": "ثغرة PSFree الإفتراضية",
-  "bundleLapse": "ثغرة PSFree الخاصة بـ Feyzee61",
+  "modularLapse": "PSFree Lapse تركيبي",
+  "bundleLapse": "PSFree Lapse مجمعة",
   "userlandOnlyOnJB67x":  "اشتغلال ثعرة الـ userland فقط عند الجيلبريك"
 }

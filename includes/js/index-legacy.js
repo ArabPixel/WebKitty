@@ -165,6 +165,7 @@ function _psfreeLapse() {
             break;
           }
           _context2.p = 1;
+          log("Loading Al-Azif's PSFree Lapse Modular implementation..");
           _context2.n = 2;
           return getScript('./src/psfree-lapse/alert.mjs');
         case 2:
@@ -179,7 +180,7 @@ function _psfreeLapse() {
           break;
         case 5:
           // bundle lapse
-          log("Loading Feyzee61's PSFree Lapse implementation..");
+          log("Loading Feyzee61's PSFree Lapse Bundle implementation..");
           _context2.p = 6;
           _context2.n = 7;
           return loadScript('./src/psfree-lapse/bundle.js');
@@ -283,6 +284,7 @@ function _cssFontFaceJailbreak() {
     return _regenerator().w(function (_context4) {
       while (1) switch (_context4.n) {
         case 0:
+          log("Loading ufm42's CSSFontFace exploit chain implementation..");
           _context4.n = 1;
           return getScript('src/cssfontface/main.js');
         case 1:

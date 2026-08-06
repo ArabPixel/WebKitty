@@ -57,6 +57,6 @@ window.lang = {
     "successRate": "Tasa de éxito: ",
     "clearStatsConfirm": "¿Estás seguro de que quieres borrar las estadísticas de jailbreak? ¡Esto no se puede deshacer!",
 	"exploitChainTitle": "Metodo de Exploit",
-    "modularLapse": "PSFree Lapse por defecto",
-    "bundleLapse": "PSFree Lapse de Feyzee61",
+    "modularLapse": "PSFree Lapse modular",
+    "bundleLapse": "PSFree Lapse bundle",
 }

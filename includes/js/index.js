@@ -131,12 +131,13 @@ async function psfreeLapse() {
   // Exploit chain method check
   if (user.exploitChain == 0) { // modular lapse
     try {
+      log("Loading Al-Azif's PSFree Lapse Modular implementation..");
       await getScript('./src/psfree-lapse/alert.mjs');
     } catch (e) {
       log("alert.mjs is not defined", "red");
     }
   } else { // bundle lapse
-    log("Loading Feyzee61's PSFree Lapse implementation..");
+    log("Loading Feyzee61's PSFree Lapse Bundle implementation..");
     try {
       await loadScript('./src/psfree-lapse/bundle.js');
 
@@ -202,6 +203,7 @@ async function badHoistJailbreak() {
 }
 
 async function cssFontFaceJailbreak(){
+  log("Loading ufm42's CSSFontFace exploit chain implementation..");
   await getScript('src/cssfontface/main.js');
   doCssFontFaceJailbreak();
 }

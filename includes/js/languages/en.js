@@ -60,7 +60,7 @@ window.lang = {
     "successRate": "Success Rate: ",
     "clearStatsConfirm": "Are you sure you want to clear jailbreak stats? This cannot be undone!",
     "exploitChainTitle": "Exploit Chain",
-    "modularLapse": "Default's PSFree Lapse",
-    "bundleLapse": "Feyzee61's PSFree Lapse",
+    "modularLapse": "PSFree Lapse modular",
+    "bundleLapse": "PSFree Lapse bundle",
     "userlandOnlyOnJB67x":  "Load userland exploit only on Jailbreak"
 }

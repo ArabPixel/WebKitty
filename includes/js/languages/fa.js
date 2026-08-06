@@ -64,5 +64,5 @@ window.lang = {
 
     "exploitChainTitle": "زنجیره اکسپلویت",
     "modularLapse": "PSFree Lapse پیش‌فرض",
-    "bundleLapse": "PSFree Lapse فیزی61"
+    "bundleLapse": "PSFree Lapse bundle"
 }

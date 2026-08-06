@@ -58,6 +58,6 @@ window.lang = {
     "successRate": "Статистика успеха: ",
     "clearStatsConfirm": "Вы уверены, что хотите очистить статистику успехов взлома? Это действие необратимо!",
     "exploitChainTitle": "Цепочка эксплоитов",
-    "modularLapse": "Стандартная цепь PSFree Lapse",
-    "bundleLapse": "Цепь PSFree Lapse от Feyzee61",
+    "modularLapse": "PSFree Lapse стандартная",
+    "bundleLapse": "Комплект PSFree Lapse",
 }

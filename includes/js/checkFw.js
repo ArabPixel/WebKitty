@@ -4,37 +4,15 @@ function isLocalIP(ip) {
 
 function getPs4FwVersion(ua) {
     if (!ua) return "";
-    var psIndex = ua.indexOf('PlayStation 4');
-    if (psIndex === -1) return "";
-    var sub = ua.substring(psIndex + 13);
-    while (sub.length > 0 && (sub.charAt(0) === ' ' || sub.charAt(0) === '\t')) {
-        sub = sub.substring(1);
-    }
-    if (sub.charAt(0) === '/') {
-        sub = sub.substring(1);
-    }
-    while (sub.length > 0 && (sub.charAt(0) === ' ' || sub.charAt(0) === '\t')) {
-        sub = sub.substring(1);
-    }
-    var ver = "";
-    for (var i = 0; i < sub.length; i++) {
-        var c = sub.charAt(i);
-        if ((c >= '0' && c <= '9') || c === '.') {
-            ver += c;
-        } else {
-            break;
-        }
-    }
-    return ver;
+    var match = ua.match(/PlayStation 4[\/\s]+([\d.]+)/i);
+    return match ? match[1] : "";
 }
 
 function CheckFW() {
-    const userAgent = navigator.userAgent;
-    const ps4Regex = /PlayStation 4/;
+    var userAgent = navigator.userAgent;
+    var ps4Regex = /PlayStation 4/;
     var fwVersion = getPs4FwVersion(userAgent);
-    if (!fwVersion && userAgent.indexOf('5.0 (') !== -1 && userAgent.indexOf(') Apple') !== -1) {
-        fwVersion = userAgent.substring(userAgent.indexOf('5.0 (') + 19, userAgent.indexOf(') Apple')).replace("layStation 4/", "");
-    }
+
     var elementsToHide = [
         'ps-logo-container', 'choosejb-initial', 'exploit-main-screen', 'scrollDown',
         'click-to-start-text', 'chooseGoldHEN', 'advancedPayloads', 'chooseExploitChain'
@@ -75,9 +53,10 @@ function CheckFW() {
                     console.warn("terminateCache notice: " + e.message);
                 }
             } else {
-                // modify elements inside elementsToHide for unsupported ps4 firmware to load using GoldHEN's PayLoader
-                const toRemove = ['exploit-main-screen', 'scrollDown', 'advancedPayloads'];
-                elementsToHide = elementsToHide.filter(e => !toRemove.includes(e));
+                var toRemove = ['exploit-main-screen', 'scrollDown', 'advancedPayloads'];
+                elementsToHide = elementsToHide.filter(function(e) {
+                    return toRemove.indexOf(e) === -1;
+                });
                 elementsToHide.push('initial-screen', 'exploit-status-panel', 'henSelection', 'autoJbContainer', 'successRate', 'bareboneJBOption', 'chooseExploitChain');
                 if (fwNum < 6.70) elementsToHide.push('layouts', 'theme'); // Incompatible with Compact design..
                 document.getElementById('exploitContainer').style.display = "block";
@@ -87,8 +66,8 @@ function CheckFW() {
                 document.getElementById('header2').classList.remove('hidden');
             }
 
-            elementsToHide.forEach(id => {
-                const el = document.getElementById(id);
+            elementsToHide.forEach(function(id) {
+                var el = document.getElementById(id);
                 if (el) el.style.display = 'none';
             });
         }
@@ -113,8 +92,10 @@ function CheckFW() {
             document.querySelector('.customPayloadsTab').classList.remove('hidden');
             ui.ps4IpInput.value = user.ip;
 
-            const toRemove = ['exploit-main-screen', 'scrollDown', 'advancedPayloads', 'custom-tab'];
-            elementsToHide = elementsToHide.filter(e => !toRemove.includes(e));
+            var toRemove2 = ['exploit-main-screen', 'scrollDown', 'advancedPayloads', 'custom-tab'];
+            elementsToHide = elementsToHide.filter(function(e) {
+                return toRemove2.indexOf(e) === -1;
+            });
             elementsToHide.push('initial-screen', 'henSelection', 'autoJbContainer', 'successRate', 'bareboneJBOption', 'chooseExploitChain', 'layouts', 'theme');
 
             // Sizing the payload's section
@@ -132,9 +113,13 @@ function CheckFW() {
             // Moving the settings icon to a better place
             document.getElementById('header2').classList.remove('hidden', 'left-6');
             document.getElementById('header2').classList.add('flex', 'inherit');
-            document.getElementById('header2').querySelectorAll('button').forEach((item) => item.classList.add('border', 'border-white/20', 'rounded-xl'))
-        }else{
-            elementsToHide.push('theme', 'layout');
+            
+            var buttons = document.getElementById('header2').querySelectorAll('button');
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.add('border', 'border-white/20', 'rounded-xl');
+            }
+        } else {
+            elementsToHide.push('theme', 'layouts');
         }
         ui.ps4FwStatus.style.color = 'red';
         document.getElementById('PS4FW').style.width = "100%";
@@ -142,8 +127,8 @@ function CheckFW() {
 
         // Hide elements for non supported devices unless in dev mode
         if (!devMode) {
-            elementsToHide.forEach(id => {
-                const el = document.getElementById(id);
+            elementsToHide.forEach(function(id) {
+                var el = document.getElementById(id);
                 if (el) el.style.display = 'none';
             });
         }

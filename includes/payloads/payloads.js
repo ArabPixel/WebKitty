@@ -113,16 +113,16 @@ function Loadpayloadonline(PLfile) {
 // Dumpers
 
 function load_AppDumper(name) {
-    Loadpayloadlocal("./includes/payloads/Bins/Dumper/ps4-app-dumper.bin", name);
+    Loadpayloadlocal("./includes/payloads/Bins/ps4-app-dumper.bin", name);
 }
 
 function load_KernelDumper(name) {
-    Loadpayloadlocal("./includes/payloads/Bins/Dumper/ps4-kernel-dumper.bin", name);
+    Loadpayloadlocal("./includes/payloads/Bins/ps4-kernel-dumper.bin", name);
 }
 
 
 function load_ModuleDumper(name) {
-    Loadpayloadlocal("./includes/payloads/Bins/Dumper/ps4-module-dumper.bin", name);
+    Loadpayloadlocal("./includes/payloads/Bins/ps4-module-dumper.bin", name);
 }
 
 // Tools

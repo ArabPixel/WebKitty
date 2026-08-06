@@ -3136,7 +3136,7 @@ async function doLapseInit() {
   try {
     // Check if jailbreak already done before
     if (sysi("setuid", 0) == 0) {
-      window.log("\nAlready jailbroken, no need to re-jailbrake", "green");
+      window.log("\nAlready jailbroken, no need to re-jailbreak.", "green");
 
       if (sessionStorage.getItem("payload_path") == null) {
         let currentJbFlavor = user.currentJbFlavor || localStorage.getItem("currentJbFlavor") || "GoldHEN";
