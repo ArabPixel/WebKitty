@@ -99,7 +99,7 @@ async function jailbreak() {
 
   // barebone exploit prefered? go to exploit file
   if (user.bareboneJB) {
-    window.location.replace("./exploit.html");
+    window.location.href = "./exploit.html";
     return;
   }
   // add one jailbreak attempt to stats

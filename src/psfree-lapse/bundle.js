@@ -1018,7 +1018,6 @@ async function uaf_ssv(fsets, index, index2) {
   }
   if (res.length !== 2) {
     die('Failed SerializedScriptValue UAF');
-    window.location.reload();
   }
   return res;
 }

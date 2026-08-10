@@ -117,7 +117,7 @@ function _jailbreak() {
             _context.n = 2;
             break;
           }
-          window.location.replace("./exploit.html");
+          window.location.href = "./exploit.html";
           return _context.a(2);
         case 2:
           // add one jailbreak attempt to stats

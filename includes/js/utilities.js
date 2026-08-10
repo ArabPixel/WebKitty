@@ -47,15 +47,15 @@ function log(message, color) {
 
 /**
  * A Function to add an attempt and/or a success exploit and update the localStorage.
- * @param {boolean} attemp - Set to true if a jailbreak attempt was made.
+ * @param {boolean} attempt - Set to true if a jailbreak attempt was made.
  * @param {boolean} isSuccess - Set to true if the jailbreak was successful.
  * - Set both to false will only update the stats, useful when reloading the page.
  */
-function updateJbStats(attemp, isSuccess) {
+function updateJbStats(attempt, isSuccess) {
     let total = parseInt(localStorage.getItem('jbTotal') || 0);
     let success = parseInt(localStorage.getItem('jbSuccess') || 0);
 
-    if (attemp) {
+    if (attempt) {
         total++;
         localStorage.setItem('jbTotal', total);
     }
@@ -79,5 +79,5 @@ function jailbreakSuccess(fwValue) {
     }
     sessionStorage.setItem('autoJbRetry', 'false');
     updateJbStats(0, 1);
-    setTimeout(() => { window.location.replace("./"); }, 5000);
+    setTimeout(() => { window.location.href = "./"; }, 5000);
 }

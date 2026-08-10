@@ -185,7 +185,7 @@ function setBareboneJB(checked) {
         alert("Jailbreak now?");
         chooseHEN();
         cleanUp();
-        window.location.replace("./exploit.html");
+        window.location.href = "./exploit.html";
     }
     localStorage.setItem("bareboneJB", checked);
     user.bareboneJB = checked;
