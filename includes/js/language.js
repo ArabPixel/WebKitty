@@ -132,7 +132,6 @@ function applyLanguage(lang) {
     updateText(document.getElementById('bundleLapse'), 'bundleLapse');
     updateText(document.getElementById('autoJbRetryText'), 'autoJbRetryText');
     updateText(ui.exploitChainTitle, 'exploitChainTitle');
-    updateText(document.getElementById('userlandOnlyOnJB67xText'), 'userlandOnlyOnJB67x')
     if (isHttps()) {
         if (ui.secondHostBtn && ui.secondHostBtn[1]) {
             ui.secondHostBtn[1].style.display = "block";

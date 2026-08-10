@@ -61,6 +61,5 @@ window.lang = {
   "clearStatsConfirm": "هل أنت متأكد من أنك تريد مسح إحصائيات التعديل؟ هذا لا يمكن التراجع عنه!",
   "exploitChainTitle": "سلسلة الثغرات",
   "modularLapse": "PSFree Lapse تركيبي",
-  "bundleLapse": "PSFree Lapse مجمعة",
-  "userlandOnlyOnJB67x":  "اشتغلال ثعرة الـ userland فقط عند الجيلبريك"
+  "bundleLapse": "PSFree Lapse مجمعة"
 }

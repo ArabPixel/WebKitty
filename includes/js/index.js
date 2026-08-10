@@ -71,16 +71,10 @@ const ui = {
   bareboneJbBtn: document.getElementById('bareboneJB'),
   bareboneJBInput: document.getElementById('bareboneJBInput'),
   exploitChainTitle: document.getElementById('exploitChainTitle'),
-  userlandOnlyOnJB67x: document.getElementById('userlandOnlyOnJB67xInput'),
 
   // Settings elements
   langRadios: document.querySelectorAll('#chooselang input[name="language"]'),
 };
-
-function userlandOnlyOnJB67x() {
-  var value = localStorage.getItem('userlandOnlyOnJB67x') == "true";
-  ui.userlandOnlyOnJB67x.checked = value;
-}
 
 // Jailbreak-related functions
 async function jailbreak() {
@@ -105,7 +99,7 @@ async function jailbreak() {
 
   // barebone exploit prefered? go to exploit file
   if (user.bareboneJB) {
-    location.href = "./exploit.html";
+    window.location.replace("./exploit.html");
     return;
   }
   // add one jailbreak attempt to stats
@@ -155,12 +149,10 @@ async function psfreeLapse() {
 // Taken from Feyzee61 ps4jb
 async function badHoistJailbreak() {
   log("Initializing Exploit...");
-  var value = localStorage.getItem('userlandOnlyOnJB67x') == "true";
-  if (value) {
-    // set userlandOnlyOnJB67x to false, on reload to load userland exploit
-    localStorage.setItem('userlandOnlyOnJB67x', "false");
-    // set jailbreakNow to true to automatically launch jailbreak function
-    sessionStorage.setItem("jailbreakNow", 'true');
+  var jailbreakNow = sessionStorage.getItem('jailbreakNow') == null;
+  if (jailbreakNow) {
+    // set jailbreakNow to true, on reload to load userland exploit
+    sessionStorage.setItem('jailbreakNow', "true");
     location.reload();
     return;
   }

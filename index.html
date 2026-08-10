@@ -511,11 +511,6 @@
                     <input type="checkbox" id="bareboneJBInput" onclick="setBareboneJB(this.checked)">
                     <p id="bareboneJB">Barebone Jailbreak Experience</p>
                 </label>
-                <label id="userlandOnlyOnJB67x" class="hidden flex items-center text-white/80">
-                    <input type="checkbox" id="userlandOnlyOnJB67xInput"
-                        onclick="updateUserlandOnlyOnJB67x(this.checked)">
-                    <p id="userlandOnlyOnJB67xText">Load userland exploit only on Jailbreak</p>
-                </label>
             </div>
             <button onclick="ipGuess()"
                 class="hidden bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold transition-colors"
@@ -592,9 +587,9 @@
         window.entrypoint672_result = 0;
         window.exploitsetup672_result = 0;
 
-        var userlandOnlyOnJB67x = localStorage.getItem("userlandOnlyOnJB67x") == "true";
+        var jailbreakNow = sessionStorage.getItem("jailbreakNow") != null;
         // Load 6.7x entrypoint if needed conditionally
-        if (isPS4 && is67x && !userlandOnlyOnJB67x) {
+        if (isPS4 && is67x && jailbreakNow) {
             try {
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', 'src/badhoist/672entrypoint.js', false);

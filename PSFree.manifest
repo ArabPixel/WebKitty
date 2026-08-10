@@ -1,23 +1,23 @@
 CACHE MANIFEST
 # v1
-# Generated on 2026-08-07 00:39:29.529705
+# Generated on 2026-08-10 15:20:26.231222
 
 CACHE:
-exploit.html
 index.html
+exploit.html
 includes/js/HENs.js
 includes/js/design.js
 includes/js/autoJbRetry.js
 includes/js/checkFw.js
 includes/js/language.js
 includes/js/payloadsList.js
-includes/js/index-legacy.js
 includes/js/index.js
 includes/js/goldhenScanner.js
 includes/js/cache.js
 includes/js/payloadsHandler.js
-includes/js/utilities.js
 includes/js/events.js
+includes/js/index-legacy.js
+includes/js/utilities.js
 includes/js/languages/ar.js
 includes/js/languages/en.js
 includes/js/languages/tr.js
@@ -39,7 +39,6 @@ includes/payloads/Bins/ps4-enable-updates.bin
 includes/payloads/Bins/ps4-exit-idu.bin
 includes/payloads/Bins/ps4-ftp.bin
 includes/payloads/Bins/ps4-history-blocker.bin
-includes/payloads/Bins/ps4-kernel-dumper.bin
 includes/payloads/Bins/ps4-module-dumper.bin
 includes/payloads/Bins/ps4-permanent-uart.bin
 includes/payloads/Bins/ps4-pup-decrypt.bin
@@ -49,6 +48,7 @@ includes/payloads/Bins/ps4-websrv.bin
 includes/payloads/Bins/ps4debug.bin
 includes/payloads/Bins/elfldr.bin
 includes/payloads/Bins/elfldr.elf
+includes/payloads/Bins/ps4-kernel-dumper.bin
 includes/payloads/Bins/fan-thresholds/ps4-fan-threshold60.bin
 includes/payloads/Bins/fan-thresholds/ps4-fan-threshold70.bin
 includes/payloads/Bins/fan-thresholds/ps4-fan-threshold80.bin
@@ -75,10 +75,10 @@ includes/css/colors/default.css
 includes/css/colors/vibrant.css
 src/psfree-lapse/alert.mjs
 src/psfree-lapse/config.mjs
-src/psfree-lapse/lapse.mjs
 src/psfree-lapse/psfree.mjs
 src/psfree-lapse/send.mjs
 src/psfree-lapse/bundle.js
+src/psfree-lapse/lapse.mjs
 src/psfree-lapse/fonts/FONTS.LICENSE
 src/psfree-lapse/fonts/LiberationMono-Regular.ttf
 src/psfree-lapse/kpatch/700.bin

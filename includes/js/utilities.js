@@ -76,9 +76,8 @@ function jailbreakSuccess(fwValue) {
     var fw = (typeof user !== 'undefined') ? user.ps4Fw : fwValue;
     if (sessionStorage.getItem('jailbreakNow') == "true" && fw >= 6.70 && fw <= 6.72) {
         sessionStorage.removeItem('jailbreakNow');
-        localStorage.setItem("userlandOnlyOnJB67x", "false");
     }
     sessionStorage.setItem('autoJbRetry', 'false');
     updateJbStats(0, 1);
-    setTimeout(() => { window.location.href = "./"; }, 5000);
+    setTimeout(() => { window.location.replace("./"); }, 5000);
 }

@@ -2021,10 +2021,3 @@ kexploit().then((success) => {
     }
   }
 });
-
-function payloadSucces(){
-  if (typeof updateJbStats === "function"){
-    updateJbStats(false, true);
-  }
-  setTimeout(() => {window.location.href = "./";}, 5000); // 5 seconds delay
-}

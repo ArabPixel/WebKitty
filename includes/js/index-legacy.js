@@ -76,14 +76,9 @@ var ui = {
   bareboneJbBtn: document.getElementById('bareboneJB'),
   bareboneJBInput: document.getElementById('bareboneJBInput'),
   exploitChainTitle: document.getElementById('exploitChainTitle'),
-  userlandOnlyOnJB67x: document.getElementById('userlandOnlyOnJB67xInput'),
   // Settings elements
   langRadios: document.querySelectorAll('#chooselang input[name="language"]')
 };
-function userlandOnlyOnJB67x() {
-  var value = localStorage.getItem('userlandOnlyOnJB67x') == "true";
-  ui.userlandOnlyOnJB67x.checked = value;
-}
 
 // Jailbreak-related functions
 function jailbreak() {
@@ -122,7 +117,7 @@ function _jailbreak() {
             _context.n = 2;
             break;
           }
-          location.href = "./exploit.html";
+          window.location.replace("./exploit.html");
           return _context.a(2);
         case 2:
           // add one jailbreak attempt to stats
@@ -208,20 +203,18 @@ function badHoistJailbreak() {
 }
 function _badHoistJailbreak() {
   _badHoistJailbreak = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
-    var value, result;
+    var jailbreakNow, result;
     return _regenerator().w(function (_context3) {
       while (1) switch (_context3.n) {
         case 0:
           log("Initializing Exploit...");
-          value = localStorage.getItem('userlandOnlyOnJB67x') == "true";
-          if (!value) {
+          jailbreakNow = sessionStorage.getItem('jailbreakNow') == null;
+          if (!jailbreakNow) {
             _context3.n = 1;
             break;
           }
-          // set userlandOnlyOnJB67x to false, on reload to load userland exploit
-          localStorage.setItem('userlandOnlyOnJB67x', "false");
-          // set jailbreakNow to true to automatically launch jailbreak function
-          sessionStorage.setItem("jailbreakNow", 'true');
+          // set jailbreakNow to true, on reload to load userland exploit
+          sessionStorage.setItem('jailbreakNow', "true");
           location.reload();
           return _context3.a(2);
         case 1:

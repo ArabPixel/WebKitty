@@ -183,15 +183,12 @@ function exploitChain(value) {
 function setBareboneJB(checked) {
     if (user.ps4Fw >= 6.70 && user.ps4Fw <= 6.72 && checked) {
         alert("Jailbreak now?");
+        chooseHEN();
         cleanUp();
-        location.replace('./exploit.html');
+        window.location.replace("./exploit.html");
     }
     localStorage.setItem("bareboneJB", checked);
     user.bareboneJB = checked;
-}
-
-function updateUserlandOnlyOnJB67x(checked) {
-    localStorage.setItem('userlandOnlyOnJB67x', checked);
 }
 
 function clearStats() {

@@ -1018,6 +1018,7 @@ async function uaf_ssv(fsets, index, index2) {
   }
   if (res.length !== 2) {
     die('Failed SerializedScriptValue UAF');
+    window.location.reload();
   }
   return res;
 }
@@ -4841,12 +4842,4 @@ async function doJailBreak() {
   }
 }
 //================================================================================================
-
-function payloadSucces(){
-  if (typeof updateJbStats === "function"){
-    updateJbStats(false, true);
-  }
-  sessionStorage.setItem('autoJbRetry', 'false');
-  setTimeout(() => {window.location.href = "./";}, 5000); // 4 seconds delay
-}
 window.script_loaded = 1;

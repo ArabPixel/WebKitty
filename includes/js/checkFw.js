@@ -171,13 +171,9 @@ function updateExploitChainVisibility(fwVersion) {
     var showBadHoist = (fwNum >= 6.70 && fwNum <= 6.72);
     console.log(showBadHoist)
     toggleVisibility('badHoistExp', showBadHoist);
-    userlandOnlyOnJB67x();
 
     // 7.00 - 9.60 sees modular psfree lapse and bundled psfree lapse
     var showPsfreeLapse = (fwNum >= 7.00 && fwNum <= 9.60);
     toggleVisibility('modularLapseExp', showPsfreeLapse);
     toggleVisibility('bundleLapseExp', showPsfreeLapse);
-
-    // Also toggle the "userlandOnlyOnJB67x" option based on whether we show badhoist
-    toggleVisibility('userlandOnlyOnJB67x', showBadHoist);
 }
