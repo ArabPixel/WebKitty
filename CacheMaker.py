@@ -1,4 +1,8 @@
 ################# By Nazky  ##############
+# This script is kept here for documentation purposes.
+# The manifest files are now firmware-based and can be found in the firmware_manifests/ directory.
+# The old PSFree.manifest has been removed.
+
 import os
 from datetime import datetime
 

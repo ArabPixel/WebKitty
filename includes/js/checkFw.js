@@ -138,7 +138,7 @@ function CheckFW() {
 function firstTimeExploitChain(fwVersion){
     if (localStorage.getItem('exploitChain') != null) return;
     var fwNum = parseFloat(fwVersion);
-    var chain = 3; // Default to CSSFontFace NetCtrl
+    var chain = 4; // Default to CSSFontFace Lapse
     if (fwNum >= 7.00 && fwNum <= 9.60) {
         chain = 1; // Feyzee61's PSFree Lapse
     }

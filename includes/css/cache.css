@@ -1,0 +1,49 @@
+.cache-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    gap: 1.5rem;
+    text-align: center;
+    padding: 2rem;
+}
+
+.cache-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.cache-subtitle {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.55);
+    min-height: 1.5em;
+}
+
+.progress-bar-wrap {
+    width: 280px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    border-radius: 9999px;
+    transition: width 0.3s ease;
+}
+
+#cacheFrame {
+    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}

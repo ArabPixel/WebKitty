@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="PSFree.manifest">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -339,7 +339,7 @@
                 <p>abc</p>
                 <p>sleirsgoevy</p>
                 <p>Fire30</p>
-                <p>ntfargo</p>
+                <p>Nathan Fargo</p>
             </div>
             <div class="flex flex-wrap justify-evenly text-sm text-white/70 mt-2">
                 <p>Al Azif</p>
@@ -608,14 +608,6 @@
             if (typeof loadSettings === 'function') {
                 loadSettings();
             }
-            // check for applicationCache
-            if (window.applicationCache) {
-                window.applicationCache.addEventListener("progress", DLProgress, false);
-                window.applicationCache.oncached = function (e) { DisplayCacheProgress(); };
-                window.applicationCache.onupdateready = function (e) { DisplayCacheProgress(); };
-            } else {
-                console.warn("This browser does not support save in cache!");
-            }
         });
     </script>
     <!-- Choose index.js or index-legacy.js for older browsers, generated with Babel -->
@@ -632,8 +624,8 @@
     <script src="./includes/js/language.js"></script>
     <script src="./includes/js/HENs.js"></script>
     <script src="./includes/js/checkFw.js"></script>
-    <script src="./includes/js/autoJbRetry.js"></script>
     <script src="./includes/js/cache.js"></script>
+    <script src="./includes/js/autoJbRetry.js"></script>
     <script src="./includes/js/events.js"></script>
     <script src="./includes/js/payloadsHandler.js"></script>
     <script src="./includes/js/utilities.js"></script>
