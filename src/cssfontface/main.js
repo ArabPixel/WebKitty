@@ -115,7 +115,11 @@ async function doCssFontFaceJailbreak() {
 
       kernel_patches(kpatches_u8);
 
-      const bin_rsp = await fetch(sessionStorage.getItem("payload_path"));
+      const payload_path = sessionStorage.getItem("payload_path");
+      if (!payload_path || /^[a-z][a-z0-9+\-.]*:\/\//i.test(payload_path) || payload_path.startsWith("//")) {
+        throw new Error("Invalid payload_path: absolute URLs are not allowed");
+      }
+      const bin_rsp = await fetch(payload_path);
       const bin_buf = await bin_rsp.arrayBuffer();
       const bin_u8 = new Uint8Array(bin_buf);
 
