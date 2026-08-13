@@ -24,6 +24,7 @@ PSFree Enhanced is a collection of webkit based exploit chains for the PS4 conso
   - Bad Hoist + Sleirsgoevy's kernel exploit (6.7x)
 - Barebone jailbreak experience
 - Using Babel for older firmwares
+- Firmware-Based Caching
 - Up to date
 
 ## Supported by this Repository
@@ -47,6 +48,8 @@ You can :
 - look at the [languages folder](https://github.com/ArabPixel/PSFree-Enhanced/tree/main/includes/js/languages) and PR your language!
 -  improve the host by modefying, updating or adding new useful features!
 - Report bugs or suggest new features by opening an [issue](https://github.com/ArabPixel/PSFree-Enhanced/issues/new)!
+
+- In case your PR includes a new file, don't forget to add it to the respective firmware-based manifest files!
 
 ## Copyright and Authors:
 

@@ -908,7 +908,6 @@ async function init_rw() {
 
   // UAF FontFace has default unicodeRange value U+0-10FFFF
   for (const font of fonts) {
-    logger.debug(font.unicodeRange);
     if (font.unicodeRange === "U+0-10FFFF") {
       logger.info("Found UAF FontFace !!");
       uaf_font = font;

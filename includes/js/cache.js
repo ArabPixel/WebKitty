@@ -1,30 +1,24 @@
 // Handling cache
-function DLProgress(e) {
-    var Percent = (Math.round(e.loaded / e.total * 100));
-    document.title = ((window.lang && window.lang.cache) || "Caching ") + " " + Percent + "%";
-}
-function DisplayCacheProgress() {
-    setTimeout(function () {
-        document.title = "\u2713";
-    }, 1000);
-    setTimeout(function () {
-        // location.reload();
-        document.title = ((window.lang && window.lang.title) || "PSFree Enhanced");
-    }, 2000);
-}
+// Caching is now handled by cache.html + iframe_cache.js for firmware based caching
+// This way we dont cache just everyhting for everyone. faster caching.
 
+window.addEventListener('load', function () {
+    // check for applicationCache only on PS4
+    if (isPS4 && (!window.applicationCache || window.applicationCache.status === window.applicationCache.UNCACHED)) {
+        // Not cached! Redirecting...
+        window.location.href = './cache.html';
+    }
+})
+
+// Still not used anywhere because I'm not sure how useful this can be.
 function terminateCache() {
     if (window.applicationCache) {
         // Status 3 is 'downloading', Status 1 is 'checking'
         if (window.applicationCache.status === 3 || window.applicationCache.status === 1) {
             console.log("Terminating cache process to save memory...");
             window.applicationCache.abort();
-
-            // restore title
             document.title = (window.lang && window.lang.title) ? window.lang.title : "PSFree Enhanced";
-
-            // cleanup
-            window.applicationCache.removeEventListener("progress", DLProgress);
+            window.applicationCache.removeEventListener("progress", null);
             window.applicationCache.oncached = null;
             window.applicationCache.onupdateready = null;
         }

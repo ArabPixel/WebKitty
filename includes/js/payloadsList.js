@@ -130,7 +130,7 @@ const payloadsList = [
     name: "Linux Loader 1GB",
     author: "ps4boot<br>ArabPixel, rmux",
     description: "Linux Loader for all consoles. 1GB VRAM. Select for first install",
-    specificFW: "7.00 - 13.52",
+    specificFW: "5.05, 6.72 - 13.52",
     category: "linux",
     funcName: "load_Linux"
   },
@@ -139,7 +139,7 @@ const payloadsList = [
     name: "Linux Loader 2GB",
     author: "ps4boot<br>ArabPixel, rmux",
     description: "Linux Loader for all consoles. 2GB VRAM.",
-    specificFW: "7.00 - 13.52",
+    specificFW: "5.05, 6.72 - 13.52",
     category: "linux",
     funcName: "load_Linux"
   },
@@ -148,7 +148,7 @@ const payloadsList = [
     name: "Linux Loader 3GB",
     author: "ps4boot<br>ArabPixel, rmux",
     description: "Linux Loader for all consoles. 3GB VRAM.",
-    specificFW: "7.00 - 13.52",
+    specificFW: "5.05, 6.72 - 13.52",
     category: "linux",
     funcName: "load_Linux"
   },
@@ -157,7 +157,7 @@ const payloadsList = [
     name: "Linux Loader 4GB",
     author: "ps4boot<br>ArabPixel, rmux",
     description: "Linux Loader for all consoles. 4GB VRAM.",
-    specificFW: "7.00 - 13.52",
+    specificFW: "5.05, 6.72 - 13.52",
     category: "linux",
     funcName: "load_Linux"
   },
@@ -166,7 +166,7 @@ const payloadsList = [
     name: "Linux Loader 128MB",
     author: "ps4boot<br>ArabPixel, rmux",
     description: "Linux Loader for all consoles. 128MB VRAM.",
-    specificFW: "7.00 - 13.52",
+    specificFW: "5.05, 6.72 - 13.52",
     category: "linux",
     funcName: "load_Linux"
   },
@@ -175,7 +175,7 @@ const payloadsList = [
     name: "Linux Loader 256MB",
     author: "ps4boot<br>ArabPixel, rmux",
     description: "Linux Loader for all consoles. 256MB VRAM.",
-    specificFW: "7.00 - 13.52",
+    specificFW: "5.05, 6.72 - 13.52",
     category: "linux",
     funcName: "load_Linux"
   },
@@ -184,7 +184,7 @@ const payloadsList = [
     name: "Linux Loader 512MB",
     author: "ps4boot<br>ArabPixel, rmux",
     description: "Linux Loader for all consoles. 512MB VRAM.",
-    specificFW: "7.00 - 13.52",
+    specificFW: "5.05, 6.72 - 13.52",
     category: "linux",
     funcName: "load_Linux"
   },

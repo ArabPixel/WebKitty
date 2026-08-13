@@ -138,7 +138,7 @@ function CheckFW() {
 function firstTimeExploitChain(fwVersion){
     if (localStorage.getItem('exploitChain') != null) return;
     var fwNum = parseFloat(fwVersion);
-    var chain = 3; // Default to CSSFontFace NetCtrl
+    var chain = 4; // Default to CSSFontFace Lapse
     if (fwNum >= 7.00 && fwNum <= 9.60) {
         chain = 1; // Feyzee61's PSFree Lapse
     }
@@ -161,8 +161,8 @@ function updateExploitChainVisibility(fwVersion) {
     var fwNum = parseFloat(fwVersion);
     if (isNaN(fwNum)) return;
 
-    // 6.00 - 11.02 sees cssfontface lapse and 9.00 - 11.02 cssfontface netctrl
-    var showCssFontFaceLapse = (fwNum >= webKitMin && fwNum <= webKitMax);
+    // cssfontface lapse and netctrl 9.00 - 11.02
+    var showCssFontFaceLapse = (fwNum >= 9.00 && fwNum <= webKitMax);
     var showCssFontFaceNetctrl = (fwNum >= 9.00 && fwNum <= webKitMax);
     toggleVisibility('cssFontFaceNetCtrlExp', showCssFontFaceNetctrl);
     toggleVisibility('cssFontFaceLapseExp', showCssFontFaceLapse);
@@ -172,7 +172,7 @@ function updateExploitChainVisibility(fwVersion) {
     console.log(showBadHoist)
     toggleVisibility('badHoistExp', showBadHoist);
 
-    // 7.00 - 9.60 sees modular psfree lapse and bundled psfree lapse
+    // 7.00 - 9.60 sees modular and bundled psfree lapse
     var showPsfreeLapse = (fwNum >= 7.00 && fwNum <= 9.60);
     toggleVisibility('modularLapseExp', showPsfreeLapse);
     toggleVisibility('bundleLapseExp', showPsfreeLapse);
