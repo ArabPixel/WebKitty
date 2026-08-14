@@ -35,9 +35,9 @@ function applyLanguage(lang) {
      * @param {string} key - The key in the 'strings' object.
      */
     const updateText = (element, key) => {
-        const translation = strings[key];
+        const translation = strings[key] || key;
         // Check if element exists, and translation is a non-empty string.
-        if (element && translation && typeof translation === 'string' && translation.length > 0) {
+        if (element) {
             element.textContent = translation;
         }
     };
@@ -56,7 +56,7 @@ function applyLanguage(lang) {
     };
 
     // Document Properties
-    document.title = strings.title || "PSFree Enhanced";
+    document.title = projectName;
     document.dir = rtlLangs.includes(user.currentLanguage) ? 'rtl' : 'ltr';
     ui.consoleElement.dir = document.dir;
     document.lang = user.currentLanguage;
@@ -82,20 +82,24 @@ function applyLanguage(lang) {
     // Main Screen Elements
     updateTitle(ui.settingsBtn, 'settingsBtnTitle');
     if (localStorage.getItem('theme') == "compact") {
-        updateText(ui.clickToStartText, 'title');
+        updateText(ui.clickToStartText, projectName);
     } else updateText(ui.clickToStartText, 'clickToStart');
 
     updateText(document.querySelector('#choosejb-initial h3'), 'chooseHEN');
 
     // About Us Popup
     if (ui.aboutPopup) {
-        updateText(ui.aboutPopup.querySelector('h2'), 'aboutPsfreeHeader');
+        updateText(ui.aboutPopup.querySelector('h2'), 'aboutMenu');
+        if (projectName) ui.aboutPopup.querySelector('h2').textContent += ' ' + projectName;
         var aboutParagraphs = ui.aboutPopup.querySelectorAll('p');
         if (aboutParagraphs.length > 0) updateText(aboutParagraphs[0], 'aboutVersion');
         if (aboutParagraphs.length > 1) updateText(aboutParagraphs[1], 'aboutDescription');
         updateText(ui.aboutPopup.querySelector('#PS4FWOK h3'), 'ps4FirmwareSupportedHeader');
+        ui.aboutPopup.querySelector('#listfw').style.direction = rtlLangs.includes(user.currentLanguage) ? 'ltr' : 'ltr';
+        ui.aboutPopup.querySelector('#listfw').style.justifyContent = rtlLangs.includes(user.currentLanguage) ? 'end' : 'start';
         updateText(ui.aboutPopup.querySelector('#close-about'), 'closeButton');
         updateText(ui.aboutPopup.querySelector('#goldhenFirmwareSemiSupported i'), 'goldhenFirmwareSemiSupported');
+        updateText(ui.aboutPopup.querySelector('#creditsHeader'), 'creditsHeader');
     }
     updateText(ui.bareboneJbBtn, 'bareboneJB')
 
@@ -111,7 +115,6 @@ function applyLanguage(lang) {
     // Settings Popup 
     if (ui.settingsPopup) {
         updateText(ui.settingsPopup.querySelector('h2'), 'settingsPsfreeHeader');
-        updateText(ui.settingsPopup.querySelector('#chooselang h3'), 'languageHeader');
         updateText(ui.settingsPopup.querySelector('#close-settings'), 'closeButton');
         updateText(ui.settingsPopup.querySelector('#ghVer'), 'ghVer');
         var ghOtherVer = ui.settingsPopup.querySelector('#chooseGoldHEN summary');
@@ -119,6 +122,12 @@ function applyLanguage(lang) {
         updateText(ui.settingsPopup.querySelector('#latestVer'), 'latestVer');
         updateText(ui.settingsPopup.querySelector('#scanPayLoader'), 'scanPayLoader');
         updateText(ui.settingsPopup.querySelector('#shutdownServerBtn'), 'shutdownServerBtn');
+    }
+
+    if (ui.themePopup) {
+        updateText(ui.themePopup.querySelector('#chooselang h3'), 'languageHeader');
+        updateText(ui.themePopup.querySelector('h2'), 'themeSettingsHeader');
+        updateText(ui.themePopup.querySelector('#close-theme'), 'closeButton');
     }
     updateText(document.getElementById('showAdvancedPayloads'), 'showAdvancedPayloads');
     updateText(document.getElementById('optionsHeader'), 'optionsHeader');

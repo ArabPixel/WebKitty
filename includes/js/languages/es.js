@@ -1,5 +1,4 @@
 window.lang = {
-    "title": "PSFree Mejorado",
     "ps4FwCompatible": `FW PS4: {ps4fw} | Compatible`,
     "ps4FwIncompatible": `FW PS4: {ps4fw} | No Compatible`,
     "notPs4": "No estas en una PS4, estas en: ",
@@ -12,7 +11,6 @@ window.lang = {
     "payloadsToolsHeader": "Herramientas",
     "payloadsGameHeader": "Juego",
     "payloadsLinuxHeader": "Linux",
-    "aboutPsfreeHeader": "Sobre PSFree Mejorado",
     "aboutVersion": "Version: 2.0",
     "aboutDescription": "Una interfaz web con muchas funciones para desbloquear tu PS4.",
     "closeButton": "Cerrar",

@@ -1,5 +1,4 @@
 window.lang = {
-    "title": "PSFree Enhanced",
     "ps4FwCompatible": `PS4 FW: {ps4fw} | Uyumlu`,
     "ps4FwIncompatible": `PS4 FW: {ps4fw} | Uyumlu değil`,
     "notPs4": "PS4 üzerinden çalışmıyor, platform: ",
@@ -12,7 +11,6 @@ window.lang = {
     "payloadsToolsHeader": "Araçlar",
     "payloadsGameHeader": "Oyun",
     "payloadsLinuxHeader": "Linux",
-    "aboutPsfreeHeader": "PSFree Enhanced Hakkında",
     "aboutVersion": "Versiyon: 2.0",
     "aboutDescription": "PS4'ünüzü jailbreak yapmanızı sağlayan, zengin özelliklere sahip bir web arayüzü.",
     "closeButton": "Kapat",

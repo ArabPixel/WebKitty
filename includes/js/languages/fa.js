@@ -1,5 +1,4 @@
 window.lang = {
-    "title": "PSFree Enhanced",
     "ps4FwCompatible": `فریمور PS4: {ps4fw} | سازگار`,
     "ps4FwIncompatible": `فریمور PS4: {ps4fw} | ناسازگار`,
     "notPs4": "شما روی PS4 نیستید، پلتفرم: ",
@@ -12,7 +11,6 @@ window.lang = {
     "payloadsToolsHeader": "ابزارها",
     "payloadsGameHeader": "بازی",
     "payloadsLinuxHeader": "لینوکس",
-    "aboutPsfreeHeader": "درباره PSFree Enhanced",
     "aboutVersion": "نسخه: 2.0",
     "aboutDescription": "یک رابط وب غنی از امکانات برای جیلبریک کردن PS4.",
     "closeButton": "بستن",

@@ -1,5 +1,4 @@
 window.lang = {
-  "title": "PSFree محسن",
   "ps4FwCompatible": `بلايستايشن 4 إصدار {ps4fw} | مدعوم`,
   "ps4FwIncompatible": `بلايستايشن 4 إصدار {ps4fw} | غير مدعوم`,
   "notPs4": "انت لست على جهاز بلايستايشن 4, المنصة: ",
@@ -12,7 +11,6 @@ window.lang = {
   "payloadsToolsHeader": "الأدوات",
   "payloadsGameHeader": "الألعاب",
   "payloadsLinuxHeader": "لينكس",
-  "aboutPsfreeHeader": "حول PSFree المحسن",
   "aboutVersion": "الإصدار: 2.0",
   "aboutDescription": "واجهة ويب غنية بالمميزات لتعديل البلايستايشن 4",
   "closeButton": "إغلاق",
@@ -61,5 +59,7 @@ window.lang = {
   "clearStatsConfirm": "هل أنت متأكد من أنك تريد مسح إحصائيات التعديل؟ هذا لا يمكن التراجع عنه!",
   "exploitChainTitle": "سلسلة الثغرات",
   "modularLapse": "PSFree Lapse تركيبي",
-  "bundleLapse": "PSFree Lapse مجمعة"
+  "bundleLapse": "PSFree Lapse مجمعة",
+  "creditsHeader": "الفضل يعود إلى",
+  "themeSettingsHeader": "التخصيص"
 }

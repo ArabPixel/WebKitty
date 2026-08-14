@@ -130,7 +130,7 @@ ui.stopAutoJbBtn.addEventListener('click', () => {
     sessionStorage.setItem('autoJbRetry', false);
     ui.stopAutoJbBtn.classList.toggle('hidden');
     if (localStorage.getItem("theme") == "compact") {
-        ui.clickToStartText.textContent = window.lang.title || "PSFree Enhanced";
+        ui.clickToStartText.textContent = projectName;
     } else ui.clickToStartText.textContent = window.lang.clickToStart;
 });
 
@@ -148,6 +148,10 @@ function aboutPopup() {
 
 function settingsPopup() {
     ui.settingsPopupOverlay.classList.toggle('hidden');
+}
+
+function themePopup() {
+    ui.themePopupOverlay.classList.toggle('hidden');
 }
 
 function chooseFanThreshold() {

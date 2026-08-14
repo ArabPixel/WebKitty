@@ -169,7 +169,6 @@ function updateExploitChainVisibility(fwVersion) {
 
     // 6.70 - 6.72 sees badhoist
     var showBadHoist = (fwNum >= 6.70 && fwNum <= 6.72);
-    console.log(showBadHoist)
     toggleVisibility('badHoistExp', showBadHoist);
 
     // 7.00 - 9.60 sees modular and bundled psfree lapse

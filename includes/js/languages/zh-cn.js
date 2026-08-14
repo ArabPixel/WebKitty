@@ -1,5 +1,4 @@
 window.lang = {
-    "title": "PSFree 增强版",
     "ps4FwCompatible": `PS4 固件：{ps4fw} | 兼容`,
     "ps4FwIncompatible": `PS4 固件：{ps4fw} | 不兼容`,
     "notPs4": "当前不是 PS4，平台：",
@@ -14,7 +13,6 @@ window.lang = {
     "payloadsLinuxHeader": "Linux",
     "payloadsCustomHeader": "自定义",
     "customPayloadHint": "上传自定义 payload 文件。",
-    "aboutPsfreeHeader": "关于 PSFree 增强版",
     "aboutVersion": "版本：2.0",
     "aboutDescription": "一个功能丰富的网页界面，可用于破解你的PS4",
     "closeButton": "关闭",

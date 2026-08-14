@@ -7,7 +7,7 @@ function setTheme(theme) {
         localStorage.setItem('theme', theme);
         if (theme == 'compact') {
             ui.initialScreen.classList.add('compact');
-            ui.clickToStartText.innerText = window.lang.title || "PSFree Enhanced";
+            ui.clickToStartText.innerText = projectName;
         } else {
             ui.initialScreen.classList.remove('compact');
             ui.clickToStartText.innerText = window.lang.clickToStart;

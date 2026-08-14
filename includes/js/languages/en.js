@@ -1,5 +1,4 @@
 window.lang = {
-    "title": "PSFree Enhanced",
     "ps4FwCompatible": `PS4 FW: {ps4fw} | Compatible`,
     "ps4FwIncompatible": `PS4 FW: {ps4fw} | Incompatible`,
     "notPs4": "You are not on a PS4, platform: ",
@@ -12,13 +11,12 @@ window.lang = {
     "payloadsToolsHeader": "Tools",
     "payloadsGameHeader": "Game",
     "payloadsLinuxHeader": "Linux",
-    "aboutPsfreeHeader": "About PSFree Enhanced",
     "aboutVersion": "Version: 2.0",
     "aboutDescription": "A feature rich web interface to jailbreak your PS4.",
     "closeButton": "Close",
     "settingsPsfreeHeader": "Settings",
     "ps4FirmwareSupportedHeader": "Supported PS4 firmware",
-    "bareboneJB":  "Barebone Jailbreak Experience",
+    "bareboneJB": "Barebone Jailbreak Experience",
     "languageHeader": "Language",
     "secondHostBtn": "Load payloads using GoldHEN's PayLoader - External link",
     "waitingUserInput": "Waiting for user action",
@@ -28,13 +26,13 @@ window.lang = {
     "latestVer": "Latest",
     "fanTitle": "Fan Threshold",
     "fanDescription": "Sets the temperature threshold where the fan will kick into turbo",
-    "selectTemp":   "Select a temperature",
-    "default":  "Default", // Fan default string
+    "selectTemp": "Select a temperature",
+    "default": "Default", // Fan default string
     "goldhenFirmwareSemiSupported": "* Loading payloads through GoldHEN's PayLoader is supported on all firmware.",
     "showAdvancedPayloads": "Show Advanced Payloads",
-    "optionsHeader":    "Options",
+    "optionsHeader": "Options",
     "advanced": "Advanced",
-    "scanPayLoader":    "Scan for GoldHEN's PayLoader",
+    "scanPayLoader": "Scan for GoldHEN's PayLoader",
     "shutdownServerConfirm": "Are you sure you want to shutdown the server? You will need to re-inject the payload to start it again.",
     "shutdownServerBtn": "Shutdown Server",
     "payLoaderFound": "PayLoader server found at ",
@@ -42,10 +40,10 @@ window.lang = {
     "ps4IpInvalid": "Invalid PS4 IP address",
     // payloads.js
     "payloadOnlyWithGoldHEN": ".elf payloads should only be loaded through GoldHEN's PayLoader!",
-    "busyBinLoader":    "Cannot Load Payload Because The PayLoader Server Is Busy",
+    "busyBinLoader": "Cannot Load Payload Because The PayLoader Server Is Busy",
     "binLoaderNotDetected": "GoldHEN's PayLoader is not detected, is it enabled?!", // For no-webkit firmware
-    "disabledBinloader":    "GoldHEN's PayLoader is not running, load payload using the exploit instead?",
-    "unsupportedFirmware":  "Unsupported firmware ",
+    "disabledBinloader": "GoldHEN's PayLoader is not running, load payload using the exploit instead?",
+    "unsupportedFirmware": "Unsupported firmware ",
     "failedToSendToPayLoader": "Failed to send {payload} to PayLoader at ",
     "payloadSentToPayLoader": "{payload} sent to PayLoader at ",
     "customPayloadLoaded": "Custom payload loaded: ",
@@ -53,7 +51,7 @@ window.lang = {
     "defaultTheme": "Default",
     "compactTheme": "Compact",
     "vibrantColor": "Vibrant",
-    "colorWord":    "Color",
+    "colorWord": "Color",
     "autoJbRetryText": "Auto-Retry Jailbreak",
     "autoJbRetryConfirm": "Jailbreak now? The jailbreak function will automatically retry if it fails until it succeeds.",
     "jailbreakCountDown": "Retrying jailbreak in {seconds}...",
@@ -61,5 +59,7 @@ window.lang = {
     "clearStatsConfirm": "Are you sure you want to clear jailbreak stats? This cannot be undone!",
     "exploitChainTitle": "Exploit Chain",
     "modularLapse": "PSFree Lapse modular",
-    "bundleLapse": "PSFree Lapse bundle"
+    "bundleLapse": "PSFree Lapse bundle",
+    "creditsHeader": "Credits",
+    "themeSettingsHeader": "Customization"
 }

@@ -4,7 +4,7 @@
 
 window.addEventListener('load', function () {
     // check for applicationCache only on PS4
-    if (isPS4 && (!window.applicationCache || window.applicationCache.status === window.applicationCache.UNCACHED)) {
+    if (isPS4 && (!window.applicationCache || window.applicationCache.status === window.applicationCache.UNCACHED) && !devMode) {
         // Not cached! Redirecting...
         window.location.href = './cache.html';
     }
@@ -17,7 +17,7 @@ function terminateCache() {
         if (window.applicationCache.status === 3 || window.applicationCache.status === 1) {
             console.log("Terminating cache process to save memory...");
             window.applicationCache.abort();
-            document.title = (window.lang && window.lang.title) ? window.lang.title : "PSFree Enhanced";
+            document.title = projectName;
             window.applicationCache.removeEventListener("progress", null);
             window.applicationCache.oncached = null;
             window.applicationCache.onupdateready = null;
