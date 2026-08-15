@@ -2,7 +2,7 @@
 
 # WebKitty
 
-<img src="includes/assets/icons/webkitty.png" width="220" alt="WebKitty Logo">
+<img src="includes/assets/icons/webkitty.svg" width="220" alt="WebKitty Logo">
 
 **WebKitty is a collection of WebKit-based exploit chains for the PS4 console.**
 
