@@ -5,7 +5,24 @@ body {
     -webkit-font-smoothing: antialiased;
     
 }
+.webkitty-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
 
+.webkitty-logo {
+    width: 180px;
+    max-width: 60vw;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.webkitty-logo:hover {
+    transform: scale(1.03);
+}
 .mainContainer {
     height: 100vh;
     /* Ensure main container takes full viewport height */

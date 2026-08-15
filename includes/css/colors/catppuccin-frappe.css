@@ -1,0 +1,180 @@
+/* Catppuccin Frappé */
+
+#ps-logo {
+    fill: #8caaee !important;
+}
+
+#initial-screen.compact {
+    background-color: #292c3c !important;
+}
+
+.bg-gray-900 {
+    background-color: #303446;
+}
+
+.bg-gray-800 {
+    background-color: #292c3c;
+}
+
+.bg-gray-700 {
+    background-color: #414559;
+}
+
+.bg-gray-700\/60 {
+    background-color: rgba(65, 69, 89, 0.6);
+}
+
+.bg-black\/50 {
+    background-color: rgba(35, 38, 52, 0.5);
+}
+
+.bg-white\/5 {
+    background-color: rgba(198, 160, 246, 0.05);
+}
+
+.bg-white\/10 {
+    background-color: rgba(198, 160, 246, 0.1);
+}
+
+.bg-blue-600 {
+    background-color: #8caaee;
+}
+
+.hover\:bg-blue-700:hover {
+    background-color: #7b9cdb;
+}
+
+.text-blue-500 {
+    color: #8caaee;
+}
+
+.border-blue-500 {
+    border-color: #8caaee;
+}
+
+.focus-within\:border-blue-500:focus-within {
+    border-color: #8caaee;
+}
+
+.accent-blue-500 {
+    accent-color: #8caaee;
+}
+
+.focus\:ring-2:focus,
+.focus\:ring-blue-400:focus {
+    box-shadow: 0 0 0 2px #8caaee;
+}
+
+.text-white {
+    color: #c6d0f5;
+}
+
+.text-white\/70 {
+    color: rgba(198, 208, 245, 0.7);
+}
+
+.text-white\/80 {
+    color: rgba(198, 208, 245, 0.8);
+}
+
+.text-white\/90 {
+    color: rgba(198, 208, 245, 0.9);
+}
+
+.text-gray-600 {
+    color: #949cbb;
+}
+
+.hover\:text-white:hover {
+    color: #c6d0f5;
+}
+
+.border-gray-200 {
+    border-color: #626880;
+}
+
+.border-gray-700 {
+    border-color: #51576d;
+}
+
+.border-transparent {
+    border-color: transparent;
+}
+
+.hover\:bg-gray-700:hover {
+    background-color: #414559;
+}
+
+.hover\:bg-white\/10:hover {
+    background-color: rgba(198, 208, 245, 0.1);
+}
+
+.hover\:text-gray-600:hover {
+    color: #949cbb;
+}
+
+.hover\:border-gray-300:hover {
+    border-color: #626880;
+}
+
+input[type="radio"]:checked {
+    border: none;
+    background: #8caaee;
+}
+
+.fwSelected {
+    background-color: #8caaee;
+    color: #303446;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #8caaee;
+    border-radius: 10px;
+}
+
+.category-tools {
+    background-color: rgba(166, 209, 137, 0.2);
+    color: #a6d189;
+    border: none !important;
+}
+
+.category-advanced {
+    background-color: rgba(231, 130, 132, 0.2);
+    color: #e78284;
+}
+
+.category-linux {
+    background-color: rgba(202, 158, 230, 0.2);
+    color: #ca9ee6;
+}
+
+.tabs ul {
+    border-color: #51576d;
+}
+
+.tabs button {
+    font-family: sans-serif;
+    border-color: transparent;
+    color: rgba(198, 208, 245, 0.8);
+}
+
+.tabs button[aria-selected="true"] {
+    border-color: #8caaee;
+    color: #8caaee;
+    border-bottom: 1px solid #8caaee;
+}
+
+.tabs button:not([aria-selected="true"]):hover {
+    color: #949cbb;
+    border-color: #626880;
+}
+
+.catppuccin-frappe {
+    color: #c6d0f5;
+    background: #292c3c;
+    border: 1px solid #51576d;
+}

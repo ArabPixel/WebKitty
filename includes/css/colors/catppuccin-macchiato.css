@@ -1,0 +1,180 @@
+/* Catppuccin Macchiato */
+
+#ps-logo {
+    fill: #8aadf4 !important;
+}
+
+#initial-screen.compact {
+    background-color: #1e2030 !important;
+}
+
+.bg-gray-900 {
+    background-color: #24273a;
+}
+
+.bg-gray-800 {
+    background-color: #1e2030;
+}
+
+.bg-gray-700 {
+    background-color: #363a4f;
+}
+
+.bg-gray-700\/60 {
+    background-color: rgba(54, 58, 79, 0.6);
+}
+
+.bg-black\/50 {
+    background-color: rgba(24, 25, 38, 0.5);
+}
+
+.bg-white\/5 {
+    background-color: rgba(198, 160, 246, 0.05);
+}
+
+.bg-white\/10 {
+    background-color: rgba(198, 160, 246, 0.1);
+}
+
+.bg-blue-600 {
+    background-color: #8aadf4;
+}
+
+.hover\:bg-blue-700:hover {
+    background-color: #7b9bdd;
+}
+
+.text-blue-500 {
+    color: #8aadf4;
+}
+
+.border-blue-500 {
+    border-color: #8aadf4;
+}
+
+.focus-within\:border-blue-500:focus-within {
+    border-color: #8aadf4;
+}
+
+.accent-blue-500 {
+    accent-color: #8aadf4;
+}
+
+.focus\:ring-2:focus,
+.focus\:ring-blue-400:focus {
+    box-shadow: 0 0 0 2px #8aadf4;
+}
+
+.text-white {
+    color: #cad3f5;
+}
+
+.text-white\/70 {
+    color: rgba(202, 211, 245, 0.7);
+}
+
+.text-white\/80 {
+    color: rgba(202, 211, 245, 0.8);
+}
+
+.text-white\/90 {
+    color: rgba(202, 211, 245, 0.9);
+}
+
+.text-gray-600 {
+    color: #939ab7;
+}
+
+.hover\:text-white:hover {
+    color: #cad3f5;
+}
+
+.border-gray-200 {
+    border-color: #5b6078;
+}
+
+.border-gray-700 {
+    border-color: #494d64;
+}
+
+.border-transparent {
+    border-color: transparent;
+}
+
+.hover\:bg-gray-700:hover {
+    background-color: #363a4f;
+}
+
+.hover\:bg-white\/10:hover {
+    background-color: rgba(202, 211, 245, 0.1);
+}
+
+.hover\:text-gray-600:hover {
+    color: #939ab7;
+}
+
+.hover\:border-gray-300:hover {
+    border-color: #5b6078;
+}
+
+input[type="radio"]:checked {
+    border: none;
+    background: #8aadf4;
+}
+
+.fwSelected {
+    background-color: #8aadf4;
+    color: #24273a;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #8aadf4;
+    border-radius: 10px;
+}
+
+.category-tools {
+    background-color: rgba(166, 218, 149, 0.2);
+    color: #a6da95;
+    border: none !important;
+}
+
+.category-advanced {
+    background-color: rgba(237, 135, 150, 0.2);
+    color: #ed8796;
+}
+
+.category-linux {
+    background-color: rgba(198, 160, 246, 0.2);
+    color: #c6a0f6;
+}
+
+.tabs ul {
+    border-color: #494d64;
+}
+
+.tabs button {
+    font-family: sans-serif;
+    border-color: transparent;
+    color: rgba(202, 211, 245, 0.8);
+}
+
+.tabs button[aria-selected="true"] {
+    border-color: #8aadf4;
+    color: #8aadf4;
+    border-bottom: 1px solid #8aadf4;
+}
+
+.tabs button:not([aria-selected="true"]):hover {
+    color: #939ab7;
+    border-color: #5b6078;
+}
+
+.catppuccin-macchiato {
+    color: #cad3f5;
+    background: #1e2030;
+    border: 1px solid #494d64;
+}

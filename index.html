@@ -3,12 +3,51 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
     <title>WebKitty</title>
-    <meta name="description" content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 6.70 - 11.02." />
+
+    <!-- Basic Metadata -->
+    <meta name="description"
+        content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 6.70 - 13.52.">
+
     <meta name="author" content="ArabPixel">
-    <meta name="keywords" content="PS4, PlayStation 4, webkit exploit, jailbreak, psfree lapse, cssfontface, WebKitty, PSFree Enhanced">
-    <link rel="icon" href="includes/assets/icons/favicon.ico" type="image/x-icon">
+
+    <meta name="keywords"
+        content="PS4, PlayStation 4, webkit exploit, jailbreak, PSFree, Lapse, CSSFontFace, WebKitty, PSFree Enhanced">
+
+    <!-- Site Icon -->
+    <link rel="icon"
+        href="includes/assets/icons/favicon.ico"
+        type="image/x-icon">
+
+    <!-- Discord / Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://webkitty.arabpixel.isroot.in/">
+    <meta property="og:title" content="WebKitty">
+    <meta property="og:description"
+        content="A user-friendly, feature-rich PS4 exploit host for firmware 6.70 - 13.52.">
+    <meta property="og:site_name" content="WebKitty">
+    <meta property="og:image"
+        content="http://webkitty.arabpixel.isroot.in/includes/assets/icons/webkitty.png">
+    <meta property="og:image:alt" content="WebKitty">
+    <meta property="og:image:type" content="image/png">
+
+    <!-- Optional image dimensions -->
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="WebKitty">
+    <meta name="twitter:description"
+        content="A user-friendly, feature-rich PS4 exploit host for firmware 6.70 - 13.52.">
+    <meta name="twitter:image"
+        content="http://webkitty.arabpixel.isroot.in/includes/assets/icons/webkitty.png">
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" id="main-stylesheet" href="">
     <link rel="stylesheet" id="color-stylesheet" href="">
     <script>
@@ -535,15 +574,72 @@
                 </div>
                 <!-- Color  -->
                 <h3 class="text-lg font-semibold mb-2" id="colorWord">Color</h3>
-                <div class="radio-group space-y-2 flex flex-wrap" id="colors">
-                    <label class="flex items-center text-white/80">
-                        <input type="radio" name="colorTheme" value="default" onchange="setColors(this.value);">
-                        <p id="defaultColor">Default</p>
+                <div class="radio-group space-y-2 flex flex-wrap gap-2" id="colors">
+
+                    <label class="color-option flex items-center text-white/80">
+                        <input
+                            type="radio"
+                            name="colorTheme"
+                            value="default"
+                            onchange="setColors(this.value);"
+                        >
+                        <span>Default</span>
                     </label>
-                    <label class="flex items-center text-white/80">
-                        <input type="radio" name="colorTheme" value="vibrant" onchange="setColors(this.value);">
-                        <p id="vibrantColor">Vibrant</p>
+
+                    <label class="color-option flex items-center text-white/80">
+                        <input
+                            type="radio"
+                            name="colorTheme"
+                            value="vibrant"
+                            onchange="setColors(this.value);"
+                        >
+                        <span>Vibrant</span>
                     </label>
+
+                    <label class="color-option catppuccin-latte flex items-center"
+                        title="Catppuccin Latte">
+                        <input
+                            type="radio"
+                            name="colorTheme"
+                            value="catppuccin-latte"
+                            onchange="setColors(this.value);"
+                        >
+                        <span>Catppuccin Latte</span>
+                    </label>
+
+                    <label class="color-option catppuccin-frappe flex items-center"
+                        title="Catppuccin Frappé">
+                        <input
+                            type="radio"
+                            name="colorTheme"
+                            value="catppuccin-frappe"
+                            onchange="setColors(this.value);"
+                        >
+                        <span>Catppuccin Frappé</span>
+                    </label>
+
+                    <label class="color-option catppuccin-macchiato flex items-center"
+                        title="Catppuccin Macchiato">
+                        <input
+                            type="radio"
+                            name="colorTheme"
+                            value="catppuccin-macchiato"
+                            onchange="setColors(this.value);"
+                        >
+                        <span>Catppuccin Macchiato</span>
+                    </label>
+
+                    <label class="color-option catppuccin-mocha flex items-center"
+                        title="Catppuccin Mocha">
+                        <input
+                            type="radio"
+                            name="colorTheme"
+                            value="catppuccin-mocha"
+                            onchange="setColors(this.value);"
+                        >
+                        <span>Catppuccin Mocha</span>
+                    </label>
+
                 </div>
             </div>
             <button onclick="themePopup()"

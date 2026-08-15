@@ -1,0 +1,198 @@
+/* Catppuccin Latte
+ * Official palette:
+ * https://catppuccin.com/palette/
+ */
+
+#ps-logo {
+    fill: #1e66f5 !important;
+}
+
+#initial-screen.compact {
+    background-color: #e6e9ef !important;
+}
+
+/* Base */
+.bg-gray-900 {
+    background-color: #eff1f5;
+}
+
+.bg-gray-800 {
+    background-color: #e6e9ef;
+}
+
+.bg-gray-700 {
+    background-color: #ccd0da;
+}
+
+.bg-gray-700\/60 {
+    background-color: rgba(204, 208, 218, 0.6);
+}
+
+.bg-black\/50 {
+    background-color: rgba(76, 79, 105, 0.5);
+}
+
+.bg-white\/5 {
+    background-color: rgba(76, 79, 105, 0.05);
+}
+
+.bg-white\/10 {
+    background-color: rgba(76, 79, 105, 0.1);
+}
+
+/* Blue / primary */
+.bg-blue-600 {
+    background-color: #1e66f5;
+}
+
+.hover\:bg-blue-700:hover {
+    background-color: #1a5bd7;
+}
+
+.text-blue-500 {
+    color: #1e66f5;
+}
+
+.border-blue-500 {
+    border-color: #1e66f5;
+}
+
+.focus-within\:border-blue-500:focus-within {
+    border-color: #1e66f5;
+}
+
+.accent-blue-500 {
+    accent-color: #1e66f5;
+}
+
+.focus\:ring-2:focus,
+.focus\:ring-blue-400:focus {
+    box-shadow: 0 0 0 2px #7287fd;
+}
+
+/* Text */
+.text-white {
+    color: #4c4f69;
+}
+
+.text-white\/70 {
+    color: rgba(76, 79, 105, 0.7);
+}
+
+.text-white\/80 {
+    color: rgba(76, 79, 105, 0.8);
+}
+
+.text-white\/90 {
+    color: rgba(76, 79, 105, 0.9);
+}
+
+.text-gray-600 {
+    color: #6c6f85;
+}
+
+.hover\:text-white:hover {
+    color: #4c4f69;
+}
+
+/* Borders */
+.border-gray-200 {
+    border-color: #ccd0da;
+}
+
+.border-gray-700 {
+    border-color: #bcc0cc;
+}
+
+.border-blue-500 {
+    border-color: #1e66f5;
+}
+
+.border-transparent {
+    border-color: transparent;
+}
+
+/* Hover */
+.hover\:bg-gray-700:hover {
+    background-color: #ccd0da;
+}
+
+.hover\:bg-white\/10:hover {
+    background-color: rgba(76, 79, 105, 0.1);
+}
+
+.hover\:text-gray-600:hover {
+    color: #6c6f85;
+}
+
+.hover\:border-gray-300:hover {
+    border-color: #bcc0cc;
+}
+
+/* Radio */
+input[type="radio"]:checked {
+    border: none;
+    background: #1e66f5;
+}
+
+/* Firmware */
+.fwSelected {
+    background-color: #1e66f5;
+    color: #eff1f5;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1e66f5;
+    border-radius: 10px;
+}
+
+/* Payload categories */
+.category-tools {
+    background-color: rgba(64, 160, 43, 0.2);
+    color: #40a02b;
+    border: none !important;
+}
+
+.category-advanced {
+    background-color: rgba(210, 15, 57, 0.2);
+    color: #d20f39;
+}
+
+.category-linux {
+    background-color: rgba(136, 57, 239, 0.2);
+    color: #8839ef;
+}
+
+/* Tabs */
+.tabs ul {
+    border-color: #bcc0cc;
+}
+
+.tabs button {
+    font-family: sans-serif;
+    border-color: transparent;
+    color: rgba(76, 79, 105, 0.8);
+}
+
+.tabs button[aria-selected="true"] {
+    border-color: #1e66f5;
+    color: #1e66f5;
+    border-bottom: 1px solid #1e66f5;
+}
+
+.tabs button:not([aria-selected="true"]):hover {
+    color: #6c6f85;
+    border-color: #bcc0cc;
+}
+
+/* Color selector */
+.catppuccin-latte {
+    color: #4c4f69;
+    background: #e6e9ef;
+    border: 1px solid #ccd0da;
+}
