@@ -119,7 +119,7 @@ function CheckFW() {
                 buttons[i].classList.add('border', 'border-white/20', 'rounded-xl');
             }
         } else {
-            elementsToHide.push('theme', 'layouts');
+            elementsToHide.push('theme', 'layouts', "updateCache", "settings-btn");
         }
         ui.ps4FwStatus.style.color = 'red';
         document.getElementById('PS4FW').style.width = "100%";
