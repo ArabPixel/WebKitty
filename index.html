@@ -7,7 +7,22 @@
     <title>WebKitty</title>
     <meta name="description" content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 6.70 - 11.02." />
     <meta name="author" content="ArabPixel">
-    <meta name="keywords" content="PS4, PlayStation 4, webkit exploit, jailbreak, psfree lapse, cssfontface, WebKitty, PSFree Enhanced">
+    <meta name="keywords"
+        content="PS4, PlayStation 4, webkit exploit, jailbreak, psfree lapse, cssfontface, WebKitty, PSFree Enhanced">
+
+    
+    <!-- Facebook / Discord / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="WebKitty">
+    <meta property="og:description" content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 6.70 - 11.02.">
+    <meta property="og:image" content="http://webkitty.arabpixel.isroot.in/includes/assets/icons/webkitty.svg">
+    <meta property="og:url" content="http://webkitty.arabpixel.isroot.in">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="WebKitty">
+    <meta name="twitter:description" content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 6.70 - 11.02.">
+    <meta name="twitter:image" content="http://webkitty.arabpixel.isroot.in/includes/assets/icons/webkitty.svg">
     <link rel="icon" href="includes/assets/icons/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" id="main-stylesheet" href="">
     <link rel="stylesheet" id="color-stylesheet" href="">
@@ -30,31 +45,41 @@
             opacity-100">
             <!-- Header Buttons -->
             <header class="absolute top-6 left-6 flex space-x-3 rtl:space-x-reverse z-10">
-                <button onclick="settingsPopup()" id="settings-btn"
-                    class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
-                    title="Settings">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor"
-                        class="bi bi-gear" viewBox="0 0 16 16">
-                        <path
-                            d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
-                        <path
-                            d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
-                    </svg>
-                </button>
-                <button onclick="aboutPopup()" id="about-btn"
-                    class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
-                    title="About">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor"
-                        viewBox="0 0 512 512">
-                        <path
-                            d="M256,56C145.72,56,56,145.72,56,256s89.72,200,200,200,200-89.72,200-200S366.28,56,256,56Zm0,82a26,26,0,1,1-26,26A26,26,0,0,1,256,138Zm64,226H200V332h44V244H212V212h64V332h44Z" />
-                    </svg>
-                </button>
-                <button onclick="themePopup()" class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" class="bi bi-brush" viewBox="0 0 16 16">
-                        <path d="M15.825.12a.5.5 0 0 1 .132.584c-.198.456-.583 1.157-1.074 1.954-.493.796-1.112 1.666-1.745 2.502L10.64 2.661c.836-.633 1.706-1.252 2.502-1.745C13.939.424 14.64.04 15.096.16a.5.5 0 0 1 .557.142Z"/>
-                        <path d="M10.02 3.486 3.102 10.4a4.5 4.5 0 0 0-1.102 1.832L1 15a.5.5 0 0 0 .647.606l3.376-.845a4.5 4.5 0 0 0 1.92-1.205l6.776-6.776zM1.986 14.01l.44-1.32a3.5 3.5 0 0 1 .857-1.424l6.03-6.03 1.414 1.414-6.03 6.03a3.5 3.5 0 0 1-1.424.856l-1.32.44Z"/>
-                    </svg>
+                <div>
+                    <button onclick="settingsPopup()" id="settings-btn"
+                        class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
+                        title="Settings">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor"
+                            class="bi bi-gear" viewBox="0 0 16 16">
+                            <path
+                                d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
+                            <path
+                                d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
+                        </svg>
+                    </button>
+                    <button onclick="aboutPopup()" id="about-btn"
+                        class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
+                        title="About">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor"
+                            viewBox="0 0 512 512">
+                            <path
+                                d="M256,56C145.72,56,56,145.72,56,256s89.72,200,200,200,200-89.72,200-200S366.28,56,256,56Zm0,82a26,26,0,1,1-26,26A26,26,0,0,1,256,138Zm64,226H200V332h44V244H212V212h64V332h44Z" />
+                        </svg>
+                    </button>
+                    <button onclick="themePopup()"
+                        class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor"
+                            class="bi bi-brush" viewBox="0 0 16 16">
+                            <path
+                                d="M15.825.12a.5.5 0 0 1 .132.584c-.198.456-.583 1.157-1.074 1.954-.493.796-1.112 1.666-1.745 2.502L10.64 2.661c.836-.633 1.706-1.252 2.502-1.745C13.939.424 14.64.04 15.096.16a.5.5 0 0 1 .557.142Z" />
+                            <path
+                                d="M10.02 3.486 3.102 10.4a4.5 4.5 0 0 0-1.102 1.832L1 15a.5.5 0 0 0 .647.606l3.376-.845a4.5 4.5 0 0 0 1.92-1.205l6.776-6.776zM1.986 14.01l.44-1.32a3.5 3.5 0 0 1 .857-1.424l6.03-6.03 1.414 1.414-6.03 6.03a3.5 3.5 0 0 1-1.424.856l-1.32.44Z" />
+                        </svg>
+                    </button>
+                </div>
+                <button id="updateCache"
+                    class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white">
+                    Update Cache
                 </button>
             </header>
 
@@ -188,10 +213,14 @@
                                             d="M256,56C145.72,56,56,145.72,56,256s89.72,200,200,200,200-89.72,200-200S366.28,56,256,56Zm0,82a26,26,0,1,1-26,26A26,26,0,0,1,256,138Zm64,226H200V332h44V244H212V212h64V332h44Z" />
                                     </svg>
                                 </button>
-                                <button onclick="themePopup()" class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" class="bi bi-brush" viewBox="0 0 16 16">
-                                        <path d="M15.825.12a.5.5 0 0 1 .132.584c-.198.456-.583 1.157-1.074 1.954-.493.796-1.112 1.666-1.745 2.502L10.64 2.661c.836-.633 1.706-1.252 2.502-1.745C13.939.424 14.64.04 15.096.16a.5.5 0 0 1 .557.142Z"/>
-                                        <path d="M10.02 3.486 3.102 10.4a4.5 4.5 0 0 0-1.102 1.832L1 15a.5.5 0 0 0 .647.606l3.376-.845a4.5 4.5 0 0 0 1.92-1.205l6.776-6.776zM1.986 14.01l.44-1.32a3.5 3.5 0 0 1 .857-1.424l6.03-6.03 1.414 1.414-6.03 6.03a3.5 3.5 0 0 1-1.424.856l-1.32.44Z"/>
+                                <button onclick="themePopup()"
+                                    class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor"
+                                        class="bi bi-brush" viewBox="0 0 16 16">
+                                        <path
+                                            d="M15.825.12a.5.5 0 0 1 .132.584c-.198.456-.583 1.157-1.074 1.954-.493.796-1.112 1.666-1.745 2.502L10.64 2.661c.836-.633 1.706-1.252 2.502-1.745C13.939.424 14.64.04 15.096.16a.5.5 0 0 1 .557.142Z" />
+                                        <path
+                                            d="M10.02 3.486 3.102 10.4a4.5 4.5 0 0 0-1.102 1.832L1 15a.5.5 0 0 0 .647.606l3.376-.845a4.5 4.5 0 0 0 1.92-1.205l6.776-6.776zM1.986 14.01l.44-1.32a3.5 3.5 0 0 1 .857-1.424l6.03-6.03 1.414 1.414-6.03 6.03a3.5 3.5 0 0 1-1.424.856l-1.32.44Z" />
                                     </svg>
                                 </button>
                             </header>
@@ -476,8 +505,7 @@
 
     <div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden"
         id="theme-popup-overlay">
-        <div id="theme-popup"
-            class="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+        <div id="theme-popup" class="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
             <h2 class="text-2xl font-bold mb-4">Customization Settings</h2>
             <!-- Language chooser -->
             <div id="chooselang" class="mb-6">
@@ -534,7 +562,7 @@
                     </label>
                 </div>
                 <!-- Color  -->
-                <h3 class="text-lg font-semibold mb-2" id="colorWord">Color</h3>
+                <h3 class="text-lg font-semibold mb-2" id="themeWord">Theme</h3>
                 <div class="radio-group space-y-2 flex flex-wrap" id="colors">
                     <label class="flex items-center text-white/80">
                         <input type="radio" name="colorTheme" value="default" onchange="setColors(this.value);">
@@ -543,6 +571,10 @@
                     <label class="flex items-center text-white/80">
                         <input type="radio" name="colorTheme" value="vibrant" onchange="setColors(this.value);">
                         <p id="vibrantColor">Vibrant</p>
+                    </label>
+                    <label class="flex items-center text-white/80">
+                        <input type="radio" name="colorTheme" value="catppuccino" onchange="setColors(this.value);">
+                        <p id="catppuccinoColor">Catppuccino</p>
                     </label>
                 </div>
             </div>

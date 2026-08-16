@@ -698,6 +698,12 @@ section {
 
 /* --- Media Queries for Responsive Classes --- */
 
+@media (max-width: 450px) {
+    #ps4IpInput{
+        width: 80%;
+    }
+}
+
 /* Small devices (sm) */
 @media (min-width: 640px) {
     .sm\:flex-row {
@@ -851,6 +857,10 @@ button {
 
 #initial-screen header {
     gap: 5px;
+    max-width: 96%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 #defaultTempDiv {

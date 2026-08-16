@@ -51,7 +51,7 @@ window.lang = {
     "defaultTheme": "Default",
     "compactTheme": "Compact",
     "vibrantColor": "Vibrant",
-    "colorWord": "Color",
+    "themeWord": "Theme",
     "autoJbRetryText": "Auto-Retry Jailbreak",
     "autoJbRetryConfirm": "Jailbreak now? The jailbreak function will automatically retry if it fails until it succeeds.",
     "jailbreakCountDown": "Retrying jailbreak in {seconds}...",
@@ -61,5 +61,7 @@ window.lang = {
     "modularLapse": "PSFree Lapse modular",
     "bundleLapse": "PSFree Lapse bundle",
     "creditsHeader": "Credits",
-    "themeSettingsHeader": "Customization"
+    "themeSettingsHeader": "Customization",
+    "updateCache": "Update Cache",
+    "catppuccino": "Catppuccino",
 }

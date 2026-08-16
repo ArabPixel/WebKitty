@@ -92,7 +92,7 @@ function renderPayloads(payloads) {
         payloadCard.dataset.payloadId = payload.id;
 
         payloadCard.innerHTML = `
-    <button style="width: 100%;">
+    <button class="w-full payloadContainer">
       <div class="bg-gray-800 border border-white/20 rounded-xl p-6 h-full">
           <div class="flex items-start justify-between mb-4">
               <div class="flex items-center space-x-3">

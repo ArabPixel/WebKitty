@@ -158,8 +158,12 @@ function chooseFanThreshold() {
     ui.chooseFanThresholdOverlay.classList.toggle('hidden');
 }
 
+ui.updateCacheBtn.addEventListener('click', function () {
+    window.location.href = './cache.html';
+});
+
 // display settings panel for new users to explore the options :)
-if (localStorage.getItem("NewUser") != "0") {
+if (localStorage.getItem("NewUser") != "0" && isPS4) {
     settingsPopup();
 }
 

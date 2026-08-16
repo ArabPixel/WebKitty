@@ -1,6 +1,6 @@
 CACHE MANIFEST
-# v1
-# Generated on 2026-08-12 12:54:17.642822
+# v2
+# Generated on 2026-08-16 10:51
 
 CACHE:
 ../../../
@@ -73,6 +73,10 @@ CACHE:
 ../../../includes/css/layouts/compact.css
 ../../../includes/css/colors/default.css
 ../../../includes/css/colors/vibrant.css
+../../../includes/assets/icons/cat-paw-btns.svg
+../../../includes/assets/icons/cat-paw.svg
+../../../includes/assets/icons/peeking-cat.svg
+../../../includes/assets/icons/sleeping-cat.svg
 ../../../src/psfree-lapse/alert.mjs
 ../../../src/psfree-lapse/config.mjs
 ../../../src/psfree-lapse/psfree.mjs

@@ -51,7 +51,7 @@ window.lang = {
   "defaultTheme": "الإفتراضي",
   "compactTheme": "مُدمَج",
   "vibrantColor": "مشرق",
-  "colorWord":  "اللون",
+  "themeWord":  "الثيم",
   "autoJbRetryText": "إعادة محاولة التعديلة تلقائيا",
   "autoJbRetryConfirm": "هل تريد تعديل الجهاز الآن؟ سيتم اعادة المحاولة تلقائيا إذا فشلت حتى تنجح.",
   "jailbreakCountDown": "إعادة محاولة التعديل في {seconds}...",
@@ -61,5 +61,7 @@ window.lang = {
   "modularLapse": "PSFree Lapse تركيبي",
   "bundleLapse": "PSFree Lapse مجمعة",
   "creditsHeader": "الفضل يعود إلى",
-  "themeSettingsHeader": "التخصيص"
+  "themeSettingsHeader": "التخصيص",
+  "updateCache": "تحديث الكاش",
+  "catppuccino": "كابتشينو قطط",
 }

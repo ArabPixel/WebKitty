@@ -1102,7 +1102,11 @@ button {
 
 #initial-screen header {
     gap: 5px;
-    position: initial;
+    position: initial !important;
+}
+
+#initial-screen header div {
+    display: flex;
 }
 
 #header2 button{

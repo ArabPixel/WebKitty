@@ -128,6 +128,7 @@ function applyLanguage(lang) {
         updateText(ui.themePopup.querySelector('#chooselang h3'), 'languageHeader');
         updateText(ui.themePopup.querySelector('h2'), 'themeSettingsHeader');
         updateText(ui.themePopup.querySelector('#close-theme'), 'closeButton');
+        updateText(document.getElementById('catppuccinoColor'), 'catppuccino');
     }
     updateText(document.getElementById('showAdvancedPayloads'), 'showAdvancedPayloads');
     updateText(document.getElementById('optionsHeader'), 'optionsHeader');
@@ -135,7 +136,7 @@ function applyLanguage(lang) {
     updateText(document.getElementById('defaultTheme'), 'defaultTheme');
     updateText(document.getElementById('compactTheme'), 'compactTheme');
     updateText(document.getElementById('vibrantColor'), 'vibrantColor');
-    updateText(document.getElementById('colorWord'), 'colorWord');
+    updateText(document.getElementById('themeWord'), 'themeWord');
     updateText(document.getElementById('defaultColor'), 'defaultTheme');
     updateText(document.getElementById('modularLapse'), 'modularLapse');
     updateText(document.getElementById('bundleLapse'), 'bundleLapse');
@@ -160,6 +161,7 @@ function applyLanguage(lang) {
     updateText(ui.linuxTab, 'payloadsLinuxHeader');
     updateText(ui.advancedPayloadsTab, 'advanced');
     updateText(ui.consoleElement.querySelector('center'), 'waitingUserInput');
+    updateText(ui.updateCacheBtn, 'updateCache');
 
     // Change direction of 'Default' option text for the fan threshold panel
     document.getElementById('defaultTempDiv').style.float = rtlLangs.includes(user.currentLanguage) ? "left" : "right";

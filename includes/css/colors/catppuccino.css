@@ -1,0 +1,224 @@
+/* Catppuccino Theme (Name suggested by GattoDev) */
+
+/* Cat Paw Pattern */
+body, .bg-gray-900 {
+    background-color: #2b221e !important;
+    background-image: url('/includes/assets/icons/cat-paw.svg') !important;
+    color: #f5e6d3 !important;
+}
+
+#initial-screen.compact{
+    background-color: #3d312a !important;
+    border: 1px solid #5a483e !important
+}
+
+.bg-gray-800, 
+#choosejb-initial, 
+#exploit-status-panel, 
+#payloadsSection, 
+#about-popup, 
+#settings-popup, 
+#theme-popup, 
+#choose-fanThreshold,
+#default-tab-content {
+    background-color: #3d312a !important;
+    border-radius: 12px !important;
+    border: 1px solid #5a483e !important;
+}
+
+/* Peeking Cartoon Cat */
+#choosejb-initial, #theme-popup, #about-popup, #settings-popup {
+    position: relative !important;
+}
+
+#scrollDown svg{
+    color: #f2a65a !important;
+}
+
+#choosejb-initial::before {
+    content: "" !important;
+    position: absolute !important;
+    top: -15px !important;
+    right: -16px !important;
+    width: 60px !important;
+    height: 30px !important;
+    background-image: url('/includes/assets/icons/peeking-cat.svg') !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    pointer-events: none !important;
+    z-index: 5 !important;
+    transform: rotate(8deg);
+}
+
+#theme-popup::before, #about-popup::before, #settings-popup::before {
+    content: "" !important;
+    position: absolute !important;
+    /* top: -26px !important; */
+    right: 20px !important;
+    width: 60px !important;
+    height: 30px !important;
+    background-image: url('/includes/assets/icons/peeking-cat.svg') !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    pointer-events: none !important;
+    z-index: 5 !important;
+}
+
+/* RTL Support for Popup Cats */
+html[dir="rtl"] #theme-popup::before,
+html[dir="rtl"] #about-popup::before,
+html[dir="rtl"] #settings-popup::before {
+    right: auto !important;
+    left: 20px !important;
+}
+
+
+/* Debug Console Container with Sleeping Cat Background */
+#DebugConsole {
+    background-color: #1f1714 !important;
+    border: 1px solid #4a3a31 !important;
+    color: #f5e6d3 !important;
+    position: relative !important;
+    background-image: url('/includes/assets/icons/sleeping-cat.svg') !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: 180px auto !important;
+}
+
+.bg-gray-700, 
+.bg-gray-700\/60,
+input[type="text"],
+input[type="file"] {
+    background-color: #1f1714 !important;
+    border: 1px solid #4a3a31 !important;
+    color: #f5e6d3 !important;
+}
+
+#ps-logo-container {
+    background-color: #3d312a !important;
+    border: 3px solid #f2a65a !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    position: relative !important;
+}
+
+/* Ear accents on PS logo */
+#ps-logo-container::before,
+#ps-logo-container::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 1px !important;
+    width: 0 !important;
+    height: 0 !important;
+    border-left: 18px solid transparent !important;
+    border-right: 18px solid transparent !important;
+    border-bottom: 24px solid #f2a65a !important;
+}
+
+#ps-logo-container::before {
+    left: 8px !important;
+    transform: rotate(-15deg) !important;
+    -webkit-transform: rotate(-40deg) !important;
+}
+
+#ps-logo-container::after {
+    right: 8px !important;
+    transform: rotate(15deg) !important;
+    -webkit-transform: rotate(40deg) !important;
+}
+
+#ps-logo {
+    fill: #f2a65a !important;
+}
+
+/* Buttons with Paw Watermark Background */
+.bg-blue-600, 
+.hover\:bg-blue-700, 
+#exploitRun {
+    background-color: #e07a5f !important;
+    background-image: url('/includes/assets/icons/cat-paw-btns.svg') !important;
+    background-repeat: no-repeat !important;
+    background-position: right 8px center !important;
+    background-size: 20px 20px !important;
+    color: #ffffff !important;
+    border-radius: 8px !important;
+    border: none !important;
+}
+
+ul li:hover,
+.fwSelected,
+header button:hover,
+.payloadContainer:hover,
+#successRate:hover,
+.bg-blue-600:hover,
+.hover\:bg-blue-700:hover {
+    background-color: #d6684c !important;
+}
+
+#choosejb-initial label:hover {
+    border: 1px solid #d6684c !important;
+}
+
+.bg-red-600, 
+.bg-red-700 {
+    background-color: #bc4749 !important;
+    color: #ffffff !important;
+}
+
+.text-white, 
+.text-white\/90, 
+.text-white\/80, 
+.text-white\/70,
+#click-to-start-text {
+    color: #f5e6d3 !important;
+}
+
+.text-blue-500 {
+    color: #f2a65a !important;
+}
+
+.category-tools {
+    background-color: #4a3e35 !important;
+    color: #f2a65a !important;
+    border-left: 4px solid #f2a65a !important;
+}
+
+.category-advanced {
+    background-color: #4a3535 !important;
+    color: #e07a5f !important;
+    border-left: 4px solid #e07a5f !important;
+}
+
+.category-linux {
+    background-color: #3b354a !important;
+    color: #b5838d !important;
+    border-left: 4px solid #b5838d !important;
+}
+
+/* Tabs Styling */
+.tabs button[aria-selected="true"] {
+    border-color: #f2a65a !important;
+    color: #f2a65a !important;
+    border-bottom: 2px solid #f2a65a !important;
+}
+
+.tabs button:not([aria-selected="true"]) {
+    color: #a89284 !important;
+}
+
+/* Radio Buttons & Checkboxes */
+input[type="radio"]:checked,
+input[type="checkbox"]:checked {
+    background-color: #f2a65a !important;
+    border-color: #f2a65a !important;
+    accent-color: #f2a65a;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar-thumb {
+    background: #e07a5f !important;
+    border-radius: 6px !important;
+}
+
+::-webkit-scrollbar-track {
+    background: #1f1714 !important;
+}

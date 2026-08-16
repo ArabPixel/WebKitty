@@ -36,6 +36,7 @@ const ui = {
   clickToStartText: document.getElementById('click-to-start-text'),
   ps4FwStatus: document.getElementById('PS4FW'),
   stopAutoJbBtn: document.getElementById('stopAutoJb'),
+  updateCacheBtn: document.getElementById("updateCache"),
 
   // Exploit screen elements
   consoleElement: document.getElementById('console'),
@@ -267,12 +268,14 @@ function cleanUp() {
     'toolsSection', 'toolsTab', 'linuxSection', 'linuxTab', 'advancedPayloadsSection', 'advancedPayloadsTab',
     'advancedPayloadsContainer', 'advancedPayloadsInput', 'customPayloadsSection', 'customPayloadsTab', 'customPayloadInput',
     'sendCustomPayloadBtn', 'exploitRunBtn', 'secondHostBtn', 'aboutPopupOverlay', 'settingsPopupOverlay', 'chooseFanThresholdOverlay',
-    'exploitChainTitle', 'theme-popup-overlay'
+    'exploitChainTitle', 'theme-popup', 'theme-popup-overlay'
   ];
   toDestroy.forEach(key => {
-    if (ui[key]) {
-      if (typeof ui[key].remove === 'function') ui[key].remove();
-      ui[key] = null;
+    const domElement = document.getElementById(key);
+    let elementToRemove = ui[key] || domElement;
+    if (elementToRemove) {
+      if (typeof elementToRemove.remove === 'function') elementToRemove.remove();
+      elementToRemove = null;
     }
   });
 

@@ -93,11 +93,31 @@ This table indicates firmware versions for which the _current version_ of this r
       <b>About</b>
     </td>
   </tr>
+  <tr>
+  <td align="center" style="border: none;">
+      <img src="includes/assets/showcase/customization-vibrant.png" width="350" alt="Customization">
+      <br>
+      <b>Customization</b>
+    </td>
+    <td align="center" style="border: none;">
+      <img src="includes/assets/showcase/about-catppuccino.png" width="350" alt="About Catppuccino">
+      <br>
+      <b>About Catppuccino</b>
+    </td>
+  </tr>
+  <tr>
+  <td align="center" style="border: none;">
+      <img src="includes/assets/showcase/catppuccino-layout-1.png" width="350" alt="Catppuccino">
+      <br>
+      <b>Catppuccino: Initial Screen</b>
+    </td>
+    <td align="center" style="border: none;">
+      <img src="includes/assets/showcase/catppuccino-layout-2.png" width="350" alt="Catppuccino">
+      <br>
+      <b>Catppuccino: Exploit Screen</b>
+    </td>
+  </tr>
 </table>
-<p align="center">
-  <img src="includes/assets/showcase/customization-vibrant.png" width="350" alt="About">
-  <br>
-  <b>Customization Settings</b>
 
 - **Independent colors per layout**
 - **Multiple languages**
