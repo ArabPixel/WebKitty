@@ -2,3 +2,4 @@ src/kpatch/*.bin
 src/kpatch/*.elf
 src/kpatch/*.o
 node_modules/
+/.vs

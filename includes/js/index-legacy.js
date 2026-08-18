@@ -26,7 +26,7 @@ var autoJbInterval;
 var lastScrollY = 0;
 var lastSection = "initial";
 var devMode = false; // Dev mode for PC debugging
-var rtlLangs = ["ar", "fa"];
+var rtlLangs = ["ar", "fa", "he"];
 var webKitMin = 6.00;
 var webKitMax = 11.02;
 var ui = {
