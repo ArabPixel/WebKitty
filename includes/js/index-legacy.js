@@ -27,8 +27,9 @@ var lastScrollY = 0;
 var lastSection = "initial";
 var devMode = false; // Dev mode for PC debugging
 var rtlLangs = ["ar", "fa"];
-var webKitMin = 6.00;
+var webKitMin = 6.70;
 var webKitMax = 11.02;
+var projectName = "WebKitty";
 var ui = {
   mainContainer: document.querySelector('.mainContainer'),
   // Sections
@@ -41,6 +42,7 @@ var ui = {
   clickToStartText: document.getElementById('click-to-start-text'),
   ps4FwStatus: document.getElementById('PS4FW'),
   stopAutoJbBtn: document.getElementById('stopAutoJb'),
+  updateCacheBtn: document.getElementById("updateCache"),
   // Exploit screen elements
   consoleElement: document.getElementById('console'),
   toolsSection: document.getElementById('tools'),
@@ -68,6 +70,8 @@ var ui = {
   aboutPopup: document.getElementById('about-popup'),
   settingsPopupOverlay: document.getElementById('settings-popup-overlay'),
   settingsPopup: document.getElementById('settings-popup'),
+  themePopupOverlay: document.getElementById('theme-popup-overlay'),
+  themePopup: document.getElementById('theme-popup'),
   chooseFanThresholdOverlay: document.getElementById('choose-fanThreshold-overlay'),
   chooseFanThreshold: document.getElementById('choose-fanThreshold'),
   scanGoldHENPayLoader: document.getElementById('scanPayLoader'),
@@ -389,11 +393,13 @@ function cleanUp() {
   }
 
   // Wipe individual refs
-  var toDestroy = ['settingsBtn', 'aboutBtn', 'initialScreen', 'chooseGoldHEN', 'psLogoContainer', 'clickToStartText', 'ps4FwStatus', 'stopAutoJbBtn', 'payloadsSection', 'payloadsList', 'payloadsSectionTitle', 'ps4IpInput', 'ps4FwSelect', 'scanGoldHENPayLoader', 'shutdownServerBtn', 'aboutPopup', 'settingsPopup', 'chooseFanThreshold', 'autoJbRetry', 'chooselang', 'toolsSection', 'toolsTab', 'linuxSection', 'linuxTab', 'advancedPayloadsSection', 'advancedPayloadsTab', 'advancedPayloadsContainer', 'advancedPayloadsInput', 'customPayloadsSection', 'customPayloadsTab', 'customPayloadInput', 'sendCustomPayloadBtn', 'exploitRunBtn', 'secondHostBtn', 'aboutPopupOverlay', 'settingsPopupOverlay', 'chooseFanThresholdOverlay', 'exploitChainTitle'];
+  var toDestroy = ['settingsBtn', 'aboutBtn', 'scrollDown', 'initialScreen', 'chooseGoldHEN', 'psLogoContainer', 'clickToStartText', 'ps4FwStatus', 'stopAutoJbBtn', 'payloadsSection', 'payloadsList', 'payloadsSectionTitle', 'ps4IpInput', 'ps4FwSelect', 'scanGoldHENPayLoader', 'shutdownServerBtn', 'aboutPopup', 'settingsPopup', 'chooseFanThreshold', 'autoJbRetry', 'chooselang', 'toolsSection', 'toolsTab', 'linuxSection', 'linuxTab', 'advancedPayloadsSection', 'advancedPayloadsTab', 'advancedPayloadsContainer', 'advancedPayloadsInput', 'customPayloadsSection', 'customPayloadsTab', 'customPayloadInput', 'sendCustomPayloadBtn', 'exploitRunBtn', 'secondHostBtn', 'aboutPopupOverlay', 'settingsPopupOverlay', 'chooseFanThresholdOverlay', 'exploitChainTitle', 'theme-popup', 'theme-popup-overlay'];
   toDestroy.forEach(function (key) {
-    if (ui[key]) {
-      if (typeof ui[key].remove === 'function') ui[key].remove();
-      ui[key] = null;
+    var domElement = document.getElementById(key);
+    var elementToRemove = ui[key] || domElement;
+    if (elementToRemove) {
+      if (typeof elementToRemove.remove === 'function') elementToRemove.remove();
+      elementToRemove = null;
     }
   });
 

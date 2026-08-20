@@ -72,6 +72,7 @@ CACHE:
 ../../../includes/css/layouts/compact.css
 ../../../includes/css/colors/default.css
 ../../../includes/css/colors/vibrant.css
+../../../includes/css/colors/catppuccino.css
 ../../../includes/assets/icons/cat-paw-btns.svg
 ../../../includes/assets/icons/cat-paw.svg
 ../../../includes/assets/icons/peeking-cat.svg
