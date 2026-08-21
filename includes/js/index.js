@@ -108,7 +108,10 @@ async function jailbreak() {
     return;
   }
   // add one jailbreak attempt to stats
-  updateJbStats(1, 0);
+  // prevent double exploit attempt for 6.7x
+  if (sessionStorage.getItem('jailbreakNow') != "true"){
+    updateJbStats(1, 0);
+  }
 
   // checkFw.js already guarantees exploitChain is valid for the current firmware
   switch (user.exploitChain) {

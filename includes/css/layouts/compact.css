@@ -1010,11 +1010,14 @@ html {
 }
 
 .tabs button {
-    font-family: sans-serif;
     border-color: transparent;
     /* Default for inactive tabs */
     color: rgba(255, 255, 255, 0.8);
     /* Default text color for inactive tabs */
+}
+
+.tabs button, #updateCache {
+    font-family: sans-serif
 }
 
 .tabs button[aria-selected="true"] {

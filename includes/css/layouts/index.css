@@ -784,6 +784,9 @@ section {
     list-style: none;
 }
 
+.tabs button, #updateCache {
+    font-family: sans-serif
+}
 
 /* Manual css */
 button {

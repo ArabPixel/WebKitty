@@ -243,7 +243,6 @@ input[type="radio"]:checked {
 }
 
 .tabs button {
-    font-family: sans-serif;
     border-color: transparent;
     /* Default for inactive tabs */
     color: rgba(255, 255, 255, 0.8);
