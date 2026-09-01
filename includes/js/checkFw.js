@@ -145,6 +145,10 @@ function firstTimeExploitChain(fwVersion){
     }
     else if (fwNum >= 7.00 && fwNum <= 9.60) {
         chain = 1; // Feyzee61's PSFree Lapse
+    }else if (fwNum >= 11.50 && fwNum <= 12.02) {
+        chain = 5; // SlopKit lapse
+    }else if (fwNum >= 12.50 && fwNum <= webKitMax) {
+        chain = 6; // SlopKit Netctrl
     }
     exploitChain(chain);
     loadExploitChain();
