@@ -31,8 +31,9 @@ function CheckFW() {
             var dotIndex = fwVersion.indexOf('.');
             var major = dotIndex !== -1 ? fwVersion.substring(0, dotIndex) : fwVersion;
             var fwElement = "fw" + major;
-            if (fwVersion.indexOf('11.0') === 0) {
-                fwElement = "fw110";
+
+            if (fwElement == "fw13") {
+                fwElement = "fw1300";
             }
             var el = document.getElementById(fwElement);
             if (el) el.classList.add('fwSelected');
@@ -42,7 +43,7 @@ function CheckFW() {
         } else {
             ui.ps4FwStatus.style.color = 'orange';
             document.getElementById('layouts').style.display = "none";
-            document.getElementById('theme').style.display = "none";
+            document.getElementById('layout').style.display = "none";
             if (isHttps()) {
                 if (ui.secondHostBtn && ui.secondHostBtn[0]) {
                     ui.secondHostBtn[0].style.display = "block";
@@ -106,7 +107,7 @@ function CheckFW() {
                 document.getElementById('exploitContainer').style.display = "block";
                 ui.exploitScreen.style.padding = "0";
                 document.getElementById('layouts').style.display = "none";
-                document.getElementById('theme').style.display = "none";
+                document.getElementById('layout').style.display = "none";
             }
             ui.payloadsSection.style.width = "100%";
             ui.payloadsSection.style.margin = "auto";
@@ -119,7 +120,7 @@ function CheckFW() {
                 buttons[i].classList.add('border', 'border-white/20', 'rounded-xl');
             }
         } else {
-            elementsToHide.push('theme', 'layouts', "updateCache", "settings-btn");
+            elementsToHide.push('layout', 'layouts', "updateCache", "settings-btn");
         }
         ui.ps4FwStatus.style.color = 'red';
         document.getElementById('PS4FW').style.width = "100%";
@@ -178,4 +179,9 @@ function updateExploitChainVisibility(fwVersion) {
     var showPsfreeLapse = (fwNum >= 7.00 && fwNum <= 9.60);
     toggleVisibility('modularLapseExp', showPsfreeLapse);
     toggleVisibility('bundleLapseExp', showPsfreeLapse);
+
+    var showSlopKitLapse = (fwNum >= 11.00 && fwNum <= 12.02);
+    var showSlopKitNetCtrl = (fwNum >= 12.50 && fwNum <= webKitMax);
+    toggleVisibility('slopKitLapseExp', showSlopKitLapse);
+    toggleVisibility('slopKitNetCtrlExp', showSlopKitNetCtrl);
 }

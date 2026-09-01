@@ -79,10 +79,10 @@ html[dir="rtl"] #settings-popup::before {
     border: 1px solid #4a3a31 !important;
     color: #f5e6d3 !important;
     position: relative !important;
-    background-image: url('/includes/assets/icons/sleeping-cat.svg') !important;
+    background-image: url('/includes/assets/icons/cat-face.svg') !important;
     background-repeat: no-repeat !important;
     background-position: center center !important;
-    background-size: 180px auto !important;
+    background-size: 200px auto !important;
 }
 
 .bg-gray-700, 

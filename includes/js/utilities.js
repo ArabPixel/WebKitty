@@ -3,10 +3,11 @@ function sleep(ms = 0) {
 }
 
 // Taken from Feyzee61's ps4jb
-function getScript(source) {
+function getScript(source, isModule = false) {
     return new Promise((resolve, reject) => {
         const gs = document.createElement('script');
         gs.src = source;
+        gs.type = isModule ? 'module' : 'text/javascript';
         gs.async = false;
         gs.onload = () => resolve();
         gs.onerror = () => reject(new Error("Script load failed: " + source));
@@ -72,9 +73,8 @@ function updateJbStats(attempt, isSuccess) {
     }
 }
 
-function jailbreakSuccess(fwValue) {
-    var fw = (typeof user !== 'undefined') ? user.ps4Fw : fwValue;
-    if (sessionStorage.getItem('jailbreakNow') == "true" && fw >= 6.70 && fw <= 6.72) {
+function jailbreakSuccess() {
+    if (sessionStorage.getItem('jailbreakNow') == "true") {
         sessionStorage.removeItem('jailbreakNow');
     }
     sessionStorage.setItem('autoJbRetry', 'false');

@@ -50,6 +50,7 @@ function saveJbFlavor(name, value) {
     const otherHenRadio = document.querySelector(`input[name="${name == "hen" ? "hen2" : "hen"}"][value="${value}"]`);
     if (otherHenRadio) otherHenRadio.checked = true;
     user.currentJbFlavor = value;
+    // chooseHEN();
 };
 
 function loadJbFlavor() {

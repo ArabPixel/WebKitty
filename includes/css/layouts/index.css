@@ -600,13 +600,12 @@ html {
 
 
 /* Animation */
-.animate-bounce {
+/* .animate-bounce {
     -webkit-animation: bounce 1s infinite;
     animation: bounce 1s infinite;
     left: 50%;
     margin-left: -15px;
-    /* Half of width (30px) for centering on old webkit */
-}
+} */
 
 @-webkit-keyframes bounce {
 

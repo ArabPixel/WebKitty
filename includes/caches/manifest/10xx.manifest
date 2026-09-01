@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # v2
-# Generated on 2026-08-16 10:51
+# Generated on 2026-08-30
 
 CACHE:
 ../../../
@@ -76,7 +76,7 @@ CACHE:
 ../../../includes/assets/icons/cat-paw-btns.svg
 ../../../includes/assets/icons/cat-paw.svg
 ../../../includes/assets/icons/peeking-cat.svg
-../../../includes/assets/icons/sleeping-cat.svg
+../../../includes/assets/icons/cat-face.svg
 ../../../src/cssfontface/workers.js
 ../../../src/cssfontface/lapse.js
 ../../../src/cssfontface/loader.js
@@ -89,8 +89,6 @@ CACHE:
 ../../../src/cssfontface/ps4/userland.js
 ../../../src/cssfontface/ps4/patches/1000.bin
 ../../../src/cssfontface/ps4/patches/1050.bin
-../../../src/cssfontface/ps4/patches/1100.bin
-../../../src/cssfontface/ps4/patches/1102.bin
 
 NETWORK:
 *

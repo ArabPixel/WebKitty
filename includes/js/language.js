@@ -35,9 +35,9 @@ function applyLanguage(lang) {
      * @param {string} key - The key in the 'strings' object.
      */
     const updateText = (element, key) => {
-        const translation = strings[key] || key;
+        const translation = strings[key];
         // Check if element exists, and translation is a non-empty string.
-        if (element) {
+        if (element && translation) {
             element.textContent = translation;
         }
     };
@@ -50,7 +50,7 @@ function applyLanguage(lang) {
     const updateTitle = (element, key) => {
         const translation = strings[key];
         // Check if element exists, and translation is a non-empty string.
-        if (element && translation && typeof translation === 'string' && translation.length > 0) {
+        if (element && translation) {
             element.title = translation;
         }
     };
@@ -129,10 +129,11 @@ function applyLanguage(lang) {
         updateText(ui.themePopup.querySelector('h2'), 'themeSettingsHeader');
         updateText(ui.themePopup.querySelector('#close-theme'), 'closeButton');
         updateText(document.getElementById('catppuccinoColor'), 'catppuccino');
+        updateTitle(document.getElementById('theme-btn'), 'layout');
     }
     updateText(document.getElementById('showAdvancedPayloads'), 'showAdvancedPayloads');
     updateText(document.getElementById('optionsHeader'), 'optionsHeader');
-    updateText(document.getElementById('theme'), 'theme');
+    updateText(document.getElementById('layout'), 'layouts');
     updateText(document.getElementById('defaultTheme'), 'defaultTheme');
     updateText(document.getElementById('compactTheme'), 'compactTheme');
     updateText(document.getElementById('vibrantColor'), 'vibrantColor');

@@ -19,7 +19,7 @@ var devMode = false;   // Dev mode for PC debugging
 var rtlLangs = ["ar", "fa"];
 
 const webKitMin = 6.70;
-const webKitMax = 11.02;
+const webKitMax = 13.00;
 const projectName = "WebKitty";
 
 const ui = {
@@ -109,7 +109,7 @@ async function jailbreak() {
   }
   // add one jailbreak attempt to stats
   // prevent double exploit attempt for 6.7x
-  if (sessionStorage.getItem('jailbreakNow') != "true"){
+  if (sessionStorage.getItem('jailbreakNow') != "true") {
     updateJbStats(1, 0);
   }
 
@@ -126,6 +126,12 @@ async function jailbreak() {
     case 4: // cssfontface lapse
       cssFontFaceJailbreak();
       break;
+    case 5: // slopkit lapse
+    case 6: // slopkit netctrl
+      slopKit();
+      break;
+    default:
+      log("Error: Invalid exploit chain selected", "red");
   }
 }
 
@@ -202,10 +208,25 @@ async function badHoistJailbreak() {
   }
 }
 
-async function cssFontFaceJailbreak(){
+async function cssFontFaceJailbreak() {
   log("Loading ufm42's CSSFontFace exploit chain implementation..");
   await getScript('src/cssfontface/main.js');
   doCssFontFaceJailbreak();
+}
+
+async function slopKit() {
+  log("Loading Raw-Game's SlopKit exploit chain implementation..");
+  try {
+    if (user.exploitChain === 6) {
+      await getScript("src/slopkit/chain_poops.js", true);
+    } else {
+      await getScript("src/slopkit/chain_lapse.js", true);
+    }
+  } catch (error) {
+    log(error)
+    alert(error)
+  }
+
 }
 
 // Apply lanuage after loading the language file
@@ -239,56 +260,31 @@ async function loadSettings() {
   }
 }
 
-async function ipGuess(){
+async function ipGuess() {
   await getScript("./includes/js/goldhenScanner.js");
   guessIp();
 }
 
 // A try to free up some memory to improve success rate
 function cleanUp() {
-  // terminateCache(); Still not sure if this drops the success rate and makes more crashes
-  if (!window.ps4Fw) return;
-
-  // Stop auto-jailbreak counter
   if (autoJbInterval) {
     clearInterval(autoJbInterval);
     autoJbInterval = null;
   }
 
-  // Empty payloads sections
-  if (ui.payloadsList) {
-    ui.payloadsList.innerHTML = '';
+  if (ui.initialScreen) {
+    ui.initialScreen.style.display = 'none';
   }
 
-
-  // Wipe individual refs
-  const toDestroy = [
-    'settingsBtn', 'aboutBtn', 'scrollDown', 'initialScreen', 'chooseGoldHEN',
-    'psLogoContainer', 'clickToStartText',
-    'ps4FwStatus', 'stopAutoJbBtn', 'payloadsSection', 'payloadsList', 'payloadsSectionTitle',
-    'ps4IpInput', 'ps4FwSelect', 'scanGoldHENPayLoader', 'shutdownServerBtn',
-    'aboutPopup', 'settingsPopup', 'chooseFanThreshold', 'autoJbRetry', 'chooselang',
-    'toolsSection', 'toolsTab', 'linuxSection', 'linuxTab', 'advancedPayloadsSection', 'advancedPayloadsTab',
-    'advancedPayloadsContainer', 'advancedPayloadsInput', 'customPayloadsSection', 'customPayloadsTab', 'customPayloadInput',
-    'sendCustomPayloadBtn', 'exploitRunBtn', 'secondHostBtn', 'aboutPopupOverlay', 'settingsPopupOverlay', 'chooseFanThresholdOverlay',
-    'exploitChainTitle', 'theme-popup', 'theme-popup-overlay'
-  ];
-  toDestroy.forEach(key => {
-    const domElement = document.getElementById(key);
-    let elementToRemove = ui[key] || domElement;
-    if (elementToRemove) {
-      if (typeof elementToRemove.remove === 'function') elementToRemove.remove();
-      elementToRemove = null;
-    }
-  });
-
-  // Null the payload arrays — forces GC eligibility on their objects
-  if (typeof payloadsList !== 'undefined' && Array.isArray(payloadsList)) {
-    payloadsList.length = 0;
+  // 3. Ensure the exploit status console is displayed
+  const exploitContainer = document.getElementById('exploitContainer');
+  const payloadsSection = document.getElementById('payloadsSection');
+  const playButton = document.getElementById('exploitRun');
+  if (exploitContainer && payloadsSection) {
+    exploitContainer.style.display = 'block';
+    payloadsSection.style.display = 'none';
+    playButton.style.display = 'none';
   }
-
-  // Make console full screen
-  document.getElementById('exploitContainer').style.display = "block";
 }
 
 function updateBareboneJB() {

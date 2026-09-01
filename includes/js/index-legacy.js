@@ -28,7 +28,7 @@ var lastSection = "initial";
 var devMode = false; // Dev mode for PC debugging
 var rtlLangs = ["ar", "fa"];
 var webKitMin = 6.70;
-var webKitMax = 11.02;
+var webKitMax = 13.00;
 var projectName = "WebKitty";
 var ui = {
   mainContainer: document.querySelector('.mainContainer'),
@@ -132,21 +132,27 @@ function _jailbreak() {
 
           // checkFw.js already guarantees exploitChain is valid for the current firmware
           _t = user.exploitChain;
-          _context.n = _t === 0 ? 3 : _t === 1 ? 3 : _t === 2 ? 4 : _t === 3 ? 5 : _t === 4 ? 5 : 6;
+          _context.n = _t === 0 ? 3 : _t === 1 ? 3 : _t === 2 ? 4 : _t === 3 ? 5 : _t === 4 ? 5 : _t === 5 ? 6 : _t === 6 ? 6 : 7;
           break;
         case 3:
           // bundle psfree lapse
           psfreeLapse();
-          return _context.a(3, 6);
+          return _context.a(3, 8);
         case 4:
           // badhoist (6.70 - 6.72 only)
           badHoistJailbreak();
-          return _context.a(3, 6);
+          return _context.a(3, 8);
         case 5:
           // cssfontface lapse
           cssFontFaceJailbreak();
-          return _context.a(3, 6);
+          return _context.a(3, 8);
         case 6:
+          // slopkit netctrl
+          slopKit();
+          return _context.a(3, 8);
+        case 7:
+          log("Error: Invalid exploit chain selected", "red");
+        case 8:
           return _context.a(2);
       }
     }, _callee);
@@ -278,7 +284,7 @@ function _badHoistJailbreak() {
 }
 function cssFontFaceJailbreak() {
   return _cssFontFaceJailbreak.apply(this, arguments);
-} // Apply lanuage after loading the language file
+}
 function _cssFontFaceJailbreak() {
   _cssFontFaceJailbreak = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4() {
     return _regenerator().w(function (_context4) {
@@ -296,31 +302,69 @@ function _cssFontFaceJailbreak() {
   }));
   return _cssFontFaceJailbreak.apply(this, arguments);
 }
-function initLanguage() {
-  return _initLanguage.apply(this, arguments);
-} // Load settings
-function _initLanguage() {
-  _initLanguage = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5() {
+function slopKit() {
+  return _slopKit.apply(this, arguments);
+} // Apply lanuage after loading the language file
+function _slopKit() {
+  _slopKit = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5() {
     var _t4;
     return _regenerator().w(function (_context5) {
       while (1) switch (_context5.p = _context5.n) {
         case 0:
-          _context5.p = 0;
-          _context5.n = 1;
+          log("Loading Raw-Game's SlopKit exploit chain implementation..");
+          _context5.p = 1;
+          if (!(user.exploitChain === 6)) {
+            _context5.n = 3;
+            break;
+          }
+          _context5.n = 2;
+          return getScript("src/slopkit/chain_poops.js", true);
+        case 2:
+          _context5.n = 4;
+          break;
+        case 3:
+          _context5.n = 4;
+          return getScript("src/slopkit/chain_lapse.js", true);
+        case 4:
+          _context5.n = 6;
+          break;
+        case 5:
+          _context5.p = 5;
+          _t4 = _context5.v;
+          log(_t4);
+          alert(_t4);
+        case 6:
+          return _context5.a(2);
+      }
+    }, _callee5, null, [[1, 5]]);
+  }));
+  return _slopKit.apply(this, arguments);
+}
+function initLanguage() {
+  return _initLanguage.apply(this, arguments);
+} // Load settings
+function _initLanguage() {
+  _initLanguage = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6() {
+    var _t5;
+    return _regenerator().w(function (_context6) {
+      while (1) switch (_context6.p = _context6.n) {
+        case 0:
+          _context6.p = 0;
+          _context6.n = 1;
           return loadLanguage();
         case 1:
           applyLanguage(user.currentLanguage);
           updateJbStats(false, false);
-          _context5.n = 3;
+          _context6.n = 3;
           break;
         case 2:
-          _context5.p = 2;
-          _t4 = _context5.v;
-          console.error(_t4);
+          _context6.p = 2;
+          _t5 = _context6.v;
+          console.error(_t5);
         case 3:
-          return _context5.a(2);
+          return _context6.a(2);
       }
-    }, _callee5, null, [[0, 2]]);
+    }, _callee6, null, [[0, 2]]);
   }));
   return _initLanguage.apply(this, arguments);
 }
@@ -328,15 +372,15 @@ function loadSettings() {
   return _loadSettings.apply(this, arguments);
 }
 function _loadSettings() {
-  _loadSettings = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6() {
-    var _t5;
-    return _regenerator().w(function (_context6) {
-      while (1) switch (_context6.p = _context6.n) {
+  _loadSettings = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7() {
+    var _t6;
+    return _regenerator().w(function (_context7) {
+      while (1) switch (_context7.p = _context7.n) {
         case 0:
-          _context6.p = 0;
+          _context7.p = 0;
           CheckFW();
           loadJbFlavor();
-          _context6.n = 1;
+          _context7.n = 1;
           return initLanguage();
         case 1:
           loadTheme();
@@ -348,16 +392,16 @@ function _loadSettings() {
           autoJailbreak();
           updateBareboneJB();
           loadExploitChain();
-          _context6.n = 3;
+          _context7.n = 3;
           break;
         case 2:
-          _context6.p = 2;
-          _t5 = _context6.v;
-          alert("Error in loadSettings: " + _t5.message);
+          _context7.p = 2;
+          _t6 = _context7.v;
+          alert("Error in loadSettings: " + _t6.message);
         case 3:
-          return _context6.a(2);
+          return _context7.a(2);
       }
-    }, _callee6, null, [[0, 2]]);
+    }, _callee7, null, [[0, 2]]);
   }));
   return _loadSettings.apply(this, arguments);
 }
@@ -365,54 +409,39 @@ function ipGuess() {
   return _ipGuess.apply(this, arguments);
 } // A try to free up some memory to improve success rate
 function _ipGuess() {
-  _ipGuess = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7() {
-    return _regenerator().w(function (_context7) {
-      while (1) switch (_context7.n) {
+  _ipGuess = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8() {
+    return _regenerator().w(function (_context8) {
+      while (1) switch (_context8.n) {
         case 0:
-          _context7.n = 1;
+          _context8.n = 1;
           return getScript("./includes/js/goldhenScanner.js");
         case 1:
           guessIp();
         case 2:
-          return _context7.a(2);
+          return _context8.a(2);
       }
-    }, _callee7);
+    }, _callee8);
   }));
   return _ipGuess.apply(this, arguments);
 }
 function cleanUp() {
-  // terminateCache(); Still not sure if this drops the success rate and makes more crashes
-  if (!window.ps4Fw) return;
-
-  // Stop auto-jailbreak counter
   if (autoJbInterval) {
     clearInterval(autoJbInterval);
     autoJbInterval = null;
   }
-
-  // Empty payloads sections
-  if (ui.payloadsList) {
-    ui.payloadsList.innerHTML = '';
+  if (ui.initialScreen) {
+    ui.initialScreen.style.display = 'none';
   }
 
-  // Wipe individual refs
-  var toDestroy = ['settingsBtn', 'aboutBtn', 'scrollDown', 'initialScreen', 'chooseGoldHEN', 'psLogoContainer', 'clickToStartText', 'ps4FwStatus', 'stopAutoJbBtn', 'payloadsSection', 'payloadsList', 'payloadsSectionTitle', 'ps4IpInput', 'ps4FwSelect', 'scanGoldHENPayLoader', 'shutdownServerBtn', 'aboutPopup', 'settingsPopup', 'chooseFanThreshold', 'autoJbRetry', 'chooselang', 'toolsSection', 'toolsTab', 'linuxSection', 'linuxTab', 'advancedPayloadsSection', 'advancedPayloadsTab', 'advancedPayloadsContainer', 'advancedPayloadsInput', 'customPayloadsSection', 'customPayloadsTab', 'customPayloadInput', 'sendCustomPayloadBtn', 'exploitRunBtn', 'secondHostBtn', 'aboutPopupOverlay', 'settingsPopupOverlay', 'chooseFanThresholdOverlay', 'exploitChainTitle', 'theme-popup', 'theme-popup-overlay'];
-  toDestroy.forEach(function (key) {
-    var domElement = document.getElementById(key);
-    var elementToRemove = ui[key] || domElement;
-    if (elementToRemove) {
-      if (typeof elementToRemove.remove === 'function') elementToRemove.remove();
-      elementToRemove = null;
-    }
-  });
-
-  // Null the payload arrays — forces GC eligibility on their objects
-  if (typeof payloadsList !== 'undefined' && Array.isArray(payloadsList)) {
-    payloadsList.length = 0;
+  // 3. Ensure the exploit status console is displayed
+  var exploitContainer = document.getElementById('exploitContainer');
+  var payloadsSection = document.getElementById('payloadsSection');
+  var playButton = document.getElementById('exploitRun');
+  if (exploitContainer && payloadsSection) {
+    exploitContainer.style.display = 'block';
+    payloadsSection.style.display = 'none';
+    playButton.style.display = 'none';
   }
-
-  // Make console full screen
-  document.getElementById('exploitContainer').style.display = "block";
 }
 function updateBareboneJB() {
   if (ui.bareboneJBInput) {

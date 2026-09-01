@@ -25,6 +25,8 @@ CACHE:
 ../../../includes/js/languages/fa.js
 ../../../includes/js/languages/ru.js
 ../../../includes/js/languages/es.js
+../../../includes/assets/icons/webkitty.svg
+../../../includes/assets/icons/favicon.ico
 ../../../includes/payloads/payloads.js
 ../../../includes/payloads/Bins/Orbis-Toolbox-900.bin
 ../../../includes/payloads/Bins/WebRTE.bin
@@ -77,7 +79,7 @@ CACHE:
 ../../../includes/assets/icons/cat-paw-btns.svg
 ../../../includes/assets/icons/cat-paw.svg
 ../../../includes/assets/icons/peeking-cat.svg
-../../../includes/assets/icons/sleeping-cat.svg
+../../../includes/assets/icons/cat-face.svg
 ../../../src/psfree-lapse/alert.mjs
 ../../../src/psfree-lapse/config.mjs
 ../../../src/psfree-lapse/psfree.mjs

@@ -29,19 +29,30 @@
     <script>
         var fwVersion = getPs4FwVersion(navigator.userAgent);
 
-        var targetPage = '';
-        if (fwVersion >= 6.70 && fwVersion <= 6.72) {
-            targetPage = 'includes/caches/cache67x.html';
-        } else if (fwVersion >= 7.00 && fwVersion <= 8.52) {
-            targetPage = 'includes/caches/cache7-8xx.html';
-        } else if (fwVersion >= 9.00 && fwVersion <= 9.60) {
-            targetPage = 'includes/caches/cache9xx.html';
-        } else if (fwVersion >= 10.00 && fwVersion <= 11.02) {
-            targetPage = 'includes/caches/cache10-1102.html';
-        } else {
-            // Unsupported firmware / payloads only
-            targetPage = 'includes/caches/cachePayloads.html';
+        function getCachePage(fwVersion) {
+            var routes = [
+                { min: 6.70, max: 6.72, page: 'cache67x.html' },
+                { min: 7.00, max: 7.99, page: 'cache7xx.html' },
+                { min: 8.00, max: 8.99, page: 'cache8xx.html' },
+                { min: 9.00, max: 9.60, page: 'cache9xx.html' },
+                { min: 10.00, max: 10.71, page: 'cache10xx.html' },
+                { min: 11.00, max: 11.52, page: 'cache11xx.html' },
+                { min: 12.00, max: 12.52, page: 'cache12xx.html' },
+                { min: 13.00, max: 13.00, page: 'cache1300.html' }
+            ];
+
+            var matchedPage = 'cachePayloads.html';
+            for (var i = 0; i < routes.length; i++) {
+                if (fwVersion >= routes[i].min && fwVersion <= routes[i].max) {
+                    matchedPage = routes[i].page;
+                    break;
+                }
+            }
+
+            return 'includes/caches/' + matchedPage;
         }
+
+        var targetPage = getCachePage(fwVersion);
 
         var statusEl = document.getElementById('cacheStatus');
         var fillEl = document.getElementById('progressFill');
