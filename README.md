@@ -157,7 +157,7 @@ You can contribute to WebKitty by:
 - Modifying, updating, or implementing new host features.
 - Reporting bugs or suggesting enhancements via [issues](https://github.com/ArabPixel/WebKitty/issues/new).
 - In case your PR has edits inside `index.js file`, do not forget to generate `index-legacy.js` by typing
-- ```
+```
 npm install # in case you didn't install them already.
 npm run build
 ```
