@@ -170,8 +170,8 @@ function updateExploitChainVisibility(fwVersion) {
     if (isNaN(fwNum)) return;
 
     // cssfontface lapse and netctrl 9.00 - 11.02
-    var showCssFontFaceLapse = (fwNum >= 9.00 && fwNum <= webKitMax);
-    var showCssFontFaceNetctrl = (fwNum >= 9.00 && fwNum <= webKitMax);
+    var showCssFontFaceLapse = (fwNum >= 9.00 && fwNum <= 11.02);
+    var showCssFontFaceNetctrl = (fwNum >= 9.00 && fwNum <= 11.02);
     toggleVisibility('cssFontFaceNetCtrlExp', showCssFontFaceNetctrl);
     toggleVisibility('cssFontFaceLapseExp', showCssFontFaceLapse);
 
