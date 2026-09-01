@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # v1
-# Generated on 2026-09-1
+# Generated on 2026-09-1.1
 
 CACHE:
 ../../../
@@ -91,7 +91,6 @@ CACHE:
 ../../../src/cssfontface/ps4/userland.js
 ../../../src/cssfontface/ps4/patches/1100.bin
 ../../../src/cssfontface/ps4/patches/1102.bin
-../../../src/cssfontface/ps4/patches/1150.bin
 ../../../src/slopkit/core.js
 ../../../src/slopkit/core.js?v=10
 ../../../src/slopkit/int64.js
