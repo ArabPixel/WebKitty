@@ -134,12 +134,6 @@ ui.stopAutoJbBtn.addEventListener('click', () => {
     } else ui.clickToStartText.textContent = window.lang.clickToStart;
 });
 
-// turn off auto settings tab clicker after the user clicks close for the first time.
-document.getElementById("close-settings").addEventListener('click', function () {
-    if (localStorage.getItem("NewUser") != "0") {
-        localStorage.setItem("NewUser", "0");
-    }
-});
 
 // Popups
 function aboutPopup() {
@@ -161,11 +155,6 @@ function chooseFanThreshold() {
 ui.updateCacheBtn.addEventListener('click', function () {
     window.location.href = './cache.html';
 });
-
-// display settings panel for new users to explore the options :)
-if (localStorage.getItem("NewUser") != "0" && isPS4) {
-    settingsPopup();
-}
 
 function setAdvancedPayloads(inputState) {
     // Update variable/localstorage value

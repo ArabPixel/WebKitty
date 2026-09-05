@@ -137,14 +137,15 @@ function CheckFW() {
 }
 
 function firstTimeExploitChain(fwVersion){
-    if (localStorage.getItem('exploitChain') != null) return;
+    const currentExploitChain = localStorage.getItem('exploitChain');
+    if (currentExploitChain != null && !isNaN(currentExploitChain)) return;
     var fwNum = parseFloat(fwVersion);
     var chain = 4; // Default to CSSFontFace Lapse
     if (fwNum >= 6.70 && fwNum <= 6.72){
         chain = 2; // BadHoist
     }
     else if (fwNum >= 7.00 && fwNum <= 9.60) {
-        chain = 1; // Feyzee61's PSFree Lapse
+        chain = 1; // Bundle PSFree Lapse
     }else if (fwNum >= 11.50 && fwNum <= 12.02) {
         chain = 5; // SlopKit lapse
     }else if (fwNum >= 12.50 && fwNum <= webKitMax) {

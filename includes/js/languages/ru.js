@@ -7,7 +7,7 @@ window.lang = {
     "exploitStatusHeader": "Статус",
     "payloadsHeader": "Payloads",
     "settingsBtnTitle": "Настройки",
-    "aboutMenu": "О WebKitty",
+    "aboutMenu": "О",
     "payloadsToolsHeader": "Инструменты",
     "payloadsGameHeader": "Модификации игр",
     "payloadsLinuxHeader": "Linux",

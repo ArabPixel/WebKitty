@@ -37,7 +37,7 @@
 ### Advanced Local & Network Features
 Offers expanded functionality when hosted locally on a PC or PS4 using **[PS4-Websrv](https://github.com/ArabPixel/ps4-websrv)**:
 - **Network Scanner:** Ability to scan the local network to find the PS4.
-- **Remote Payload Dispatch:** Send the available or custom payloads from any smart device directly to the PS4.
+- **Remote Payload Delivery:** Send the available or custom payloads from any smart device directly to the PS4.
 
 ---
 
@@ -181,10 +181,10 @@ AGPL-3.0-or-later (see [LICENSE](LICENSE)). Part of this repo belongs to the gro
 - **Fire30:** For Bad Hoist userland exploit.
 - **Egycnq:**: Porting Netctrl to slopkit.
 - **Jordy and Sonic-Iso:** Original Slopkit project.
-- **Al-Azif:** For the modular PSFree Lapse and AIO workaround implementations.
+- **Al-Azif:** For the modular (multi-file) PSFree Lapse and AIO workaround implementations.
 - **Nathan Fargo and ufm42:** For CSSFontFace userland exploit.
 - **ufm42:** For CSSFontFace Netctrl and Lapse implementation.
-- **Feyzee61:** For the PSFree lapse bundle and 6.7x exploit implementations.
+- **Feyzee61:** For the PSFree lapse bundle (single file) and 6.7x exploit implementations.
 - **Dr.Yenyen:** For intensive multi-firmware testing.
 - **Nazky:** For being the first host I took a peek at.
 - **GattoDev:** For the WebKitty logo.
