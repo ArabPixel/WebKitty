@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # v1
-# Generated on 2026-09-02
+# Generated on 2026-09-2
 
 CACHE:
 ../../../
@@ -80,19 +80,6 @@ CACHE:
 ../../../includes/payloads/Linux/linux-4096mb.elf
 ../../../includes/payloads/Linux/linux-512mb.elf
 ../../../includes/payloads/Linux/linux-64mb.elf
-../../../src/cssfontface/lapse.js
-../../../src/cssfontface/loader.js
-../../../src/cssfontface/main.js
-../../../src/cssfontface/misc.js
-../../../src/cssfontface/worker.js
-../../../src/cssfontface/workers.js
-../../../src/cssfontface/ps4/kernel.js
-../../../src/cssfontface/ps4/userland.js
-../../../src/cssfontface/ps4/constants.js
-../../../src/cssfontface/ps4/patches/700.bin
-../../../src/cssfontface/ps4/patches/750.bin
-../../../src/cssfontface/ps4/patches/800.bin
-../../../src/cssfontface/ps4/patches/850.bin
 ../../../src/psfree-lapse/alert.mjs
 ../../../src/psfree-lapse/bundle.js
 ../../../src/psfree-lapse/config.mjs
