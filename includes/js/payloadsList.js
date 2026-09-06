@@ -99,6 +99,15 @@ const payloadsList = [
     funcName: "load_RestoreDB"
   },
   {
+    id: "DBRebuilder",
+    name: "DB-Rebuilder",
+    author: "4GAMER",
+    description: "Rebuilds the PS4's databases, fixing corrupted data.",
+    specificFW: "",
+    category: "tools",
+    funcName: "load_DBRebuilder"
+  },
+  {
     id: "ExitIDU",
     name: "ExitIDU",
     author: "Scene Collective",

@@ -156,6 +156,10 @@ function load_RestoreDB(name) {
     Loadpayloadlocal("./includes/payloads/Bins/ps4-restore.bin", name);
 }
 
+function load_DBRebuilder(name) {
+    Loadpayloadlocal("./includes/payloads/Bins/db-rebuilder-v0.1.bin", name);
+}
+
 function load_DisableASLR(name) {
     Loadpayloadlocal("./includes/payloads/Bins/ps4-disable-aslr.bin", name);
 }
