@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # v2.1
-# Generated on 2026-09-21
+# Generated on 2026-10-16
 
 CACHE:
 ../../../
@@ -12,11 +12,14 @@ CACHE:
 ../../../includes/js/checkFw.js
 ../../../includes/js/language.js
 ../../../includes/js/payloadsList.js
-../../../includes/js/index.js
+../../../includes/js/jailbreak.js
 ../../../includes/js/goldhenScanner.js
+../../../includes/js/initial.js
 ../../../includes/js/cache.js
 ../../../includes/js/payloadsHandler.js
 ../../../includes/js/events.js
+../../../includes/js/storage.js
+../../../includes/js/firmware.js
 ../../../includes/js/utilities.js
 ../../../includes/js/languages/ar.js
 ../../../includes/js/languages/en.js
@@ -27,8 +30,7 @@ CACHE:
 ../../../includes/js/languages/es.js
 ../../../includes/assets/icons/webkitty.svg
 ../../../includes/assets/icons/favicon.ico
-../../../includes/payloads/payloads.js
-../../../includes/payloads/Bins/Orbis-Toolbox-900.bin
+../../../includes/js/deliverPayload.js
 ../../../includes/payloads/Bins/WebRTE.bin
 ../../../includes/payloads/Bins/np-fake-signin-ps4.elf
 ../../../includes/payloads/Bins/ps4-app-dumper.bin
@@ -44,10 +46,10 @@ CACHE:
 ../../../includes/payloads/Bins/ps4-permanent-uart.bin
 ../../../includes/payloads/Bins/ps4-pup-decrypt.bin
 ../../../includes/payloads/Bins/ps4-restore.bin
-../../../includes/payloads/Bins/db-rebuilder-v0.1.1.bin
+../../../includes/payloads/Bins/db-rebuilder-v0.2.bin
 ../../../includes/payloads/Bins/ps4-rif-renamer.bin
 ../../../includes/payloads/Bins/ps4-websrv.bin
-../../../includes/payloads/Bins/ps4debug.bin
+../../../includes/payloads/Bins/ps4debug-ng_v1.3.2.bin
 ../../../includes/payloads/Bins/elfldr.bin
 ../../../includes/payloads/Bins/elfldr.elf
 ../../../includes/payloads/Bins/ps4-kernel-dumper.bin
@@ -56,14 +58,14 @@ CACHE:
 ../../../includes/payloads/Bins/fan-thresholds/ps4-fan-threshold70.bin
 ../../../includes/payloads/Bins/fan-thresholds/ps4-fan-threshold80.bin
 ../../../includes/payloads/Bins/fan-thresholds/ps4-fan-threshold85.bin
-../../../includes/payloads/GoldHEN/goldhen_v2.4b18.12.bin
-../../../includes/payloads/GoldHEN/goldhen_v2.4b18.6.bin
-../../../includes/payloads/GoldHEN/goldhen_v2.4b18.7.bin
-../../../includes/payloads/GoldHEN/goldhen_v2.4b18.8.bin
-../../../includes/payloads/GoldHEN/goldhen_v2.4b18.9.bin
-../../../includes/payloads/GoldHEN/goldhen_v2.4b18.10.bin
-../../../includes/payloads/HEN/HEN.bin
-../../../includes/payloads/Linux/linux-32mb.elf
+../../../includes/payloads/HEN/goldhen_v2.4b18.12.bin
+../../../includes/payloads/HEN/goldhen_v2.4b18.6.bin
+../../../includes/payloads/HEN/goldhen_v2.4b18.7.bin
+../../../includes/payloads/HEN/goldhen_v2.4b18.8.bin
+../../../includes/payloads/HEN/goldhen_v2.4b18.9.bin
+../../../includes/payloads/HEN/goldhen_v2.4b18.10.bin
+../../../includes/payloads/HEN/PS4HEN.bin
+\../../../includes/payloads/Linux/linux-32mb.elf
 ../../../includes/payloads/Linux/linux-64mb.elf
 ../../../includes/payloads/Linux/linux-128mb.elf
 ../../../includes/payloads/Linux/linux-256mb.elf

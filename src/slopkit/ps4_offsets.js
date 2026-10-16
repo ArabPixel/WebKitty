@@ -26,7 +26,121 @@ export const OPTIONAL_KEYS = [
     "alias_of",
 ];
 
+
+
 export const PS4 = {
+    "10.00": {
+
+        fw_status: "state=proven step4q=90/0 reboot=0 kernel_rvas=5/5-vs-dump",
+
+        wk_expm1_builtin: 0x218bb70,
+
+        wk_JSFunction_m_function: 0x28,
+
+        wk_CSSFontFace_vtable: 0x3617a38,
+
+        wk___imp___error: 0x36d1bf0,
+        k__error: 0x14f40,
+        wk___imp_strerror: 0x36d1c20,
+        c_strerror: 0x10d00,
+
+        wk_POP_RDI_RET: 0x51056,
+        wk_POP_RAX_RET: 0xe882,
+
+        wk_MOV_RDI_RSI_30_CALL: 0x24d28f8,
+
+        wk_POP_RAX_MOV_RAX_JMP_18: 0xaa6d13,
+
+        wk_PUSH_RBP_MOV_RBP_RSP_10: 0x830f70,
+
+        wk_MOV_RDI_RAX_8_CALL_20: 0xdca531,
+
+        wk_MOV_RDX_RAX_18_CALL_10: 0x68b090,
+
+        wk_PUSH_RDX_POP_RSP_RET: 0x168bc7a,
+
+        wk_MOV_QWORD_PTR_RDI_RAX_RET: 0xc037,
+        wk_LEAVE_RET: 0x2ca6c3,
+
+        wk_POP_RSI_RET: 0xbe86,
+        wk_POP_RDX_RET: 0x1644b2,
+        wk_POP_RCX_RET: 0x3a6c9,
+
+        wk_POP_R8_RET: 0xe881,
+        wk_POP_R9_RET: 0x947b91,
+
+        pivot_view_sp: 0x18,
+
+        wk_ArrayBuffer_m_impl: 0x10,
+
+        wk_ArrayBuffer_m_contents_m_data: 0x10,
+
+        // k_getpid: 0x0,
+
+        k_scan_stage1: 0x40000,
+        k_scan_stage2: 0x60000,
+
+        k_evf_cv: 0x7b5133,
+        k_sysent_661: 0x110a980,
+        k_jmp_rsi: 0x68b1,
+    },
+
+    "10.50": {
+
+        fw_status: "state=proven step4q=90/0 reboot=0 kernel_rvas=5/5-vs-dump",
+
+        wk_expm1_builtin: 0x218dcd0,
+
+        wk_JSFunction_m_function: 0x28,
+
+        wk_CSSFontFace_vtable: 0x361ba28,
+
+        wk___imp___error: 0x36d5be8,
+        k__error: 0x1470,
+        wk___imp_strerror: 0x36d5c18,
+        c_strerror: 0x10d00,
+
+        wk_POP_RDI_RET: 0x5b8a9,
+        wk_POP_RAX_RET: 0x2cd92,
+
+        wk_MOV_RDI_RSI_30_CALL: 0x24d49c8,
+
+        wk_POP_RAX_MOV_RAX_JMP_18: 0x410583,
+
+        wk_PUSH_RBP_MOV_RBP_RSP_10: 0xb1f280,
+
+        wk_MOV_RDI_RAX_8_CALL_20: 0x10e302c,
+
+        wk_MOV_RDX_RAX_18_CALL_10: 0x136d5a6,
+
+        wk_PUSH_RDX_POP_RSP_RET: 0x179186a,
+
+        wk_MOV_QWORD_PTR_RDI_RAX_RET: 0x18b1b,
+        wk_LEAVE_RET: 0x38712,
+
+        wk_POP_RSI_RET: 0x13b027,
+        wk_POP_RDX_RET: 0x1d9eb,
+        wk_POP_RCX_RET: 0x1da1c,
+
+        wk_POP_R8_RET: 0x2cd91,
+        wk_POP_R9_RET: 0x58104d,
+
+        pivot_view_sp: 0x18,
+
+        wk_ArrayBuffer_m_impl: 0x10,
+
+        wk_ArrayBuffer_m_contents_m_data: 0x10,
+
+        // k_getpid: 0x0,
+
+        k_scan_stage1: 0x40000,
+        k_scan_stage2: 0x60000,
+
+        k_evf_cv: 0x7a7b14,
+        k_sysent_661: 0x110a5b0,
+        k_jmp_rsi: 0x50ded,
+    },
+
     "11.00": {
 
         fw_status: "state=proven step4q=90/0 reboot=0 kernel_rvas=5/5-vs-dump",
@@ -410,8 +524,27 @@ export const PS4 = {
     },
 };
 
+PS4["10.01"] = Object.assign({}, PS4["10.00"], {
+    alias_of: "10.01",
+    fw_status: "state=UNTESTED-on-hardware shares=10.00 "
+        + "kpatch=1000.bin-10-sites-verified bug=lapse",
+});
+
+PS4["10.70"] = Object.assign({}, PS4["10.50"], {
+    alias_of: "10.70",
+    fw_status: "state=UNTESTED-on-hardware shares=10.50 "
+        + "kpatch=1050.bin-10-sites-verified bug=lapse",
+});
+
+PS4["10.71"] = Object.assign({}, PS4["10.50"], {
+    alias_of: "10.71",
+    fw_status: "state=UNTESTED-on-hardware shares=10.50 "
+        + "kpatch=1050.bin-10-sites-verified bug=lapse",
+});
+
+
 PS4["11.02"] = Object.assign({}, PS4["11.00"], {
-    alias_of: "11.02",
+    alias_of: "11.00",
     fw_status: "state=Tested-on-hardware shares=11.00 "
         + "kernel_rvas=untested-vs-dump "
         + "kpatch=1102.bin",

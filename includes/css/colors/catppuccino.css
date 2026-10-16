@@ -12,6 +12,12 @@ body, .bg-gray-900 {
     border: 1px solid #5a483e !important
 }
 
+select option{
+    background-color: #3d312a;
+    border: 1px solid #4a3a31;
+    color: white;
+}
+
 .bg-gray-800, 
 #choosejb-initial, 
 #exploit-status-panel, 
@@ -24,6 +30,13 @@ body, .bg-gray-900 {
     background-color: #3d312a !important;
     border-radius: 12px !important;
     border: 1px solid #5a483e !important;
+}
+#tools-tab:hover,
+#homebrew-tab:hover,
+#linux-tab:hover,
+#advanced-tab:hover,
+#custom-tab:hover {
+    color: white !important;
 }
 
 /* Peeking Cartoon Cat */
@@ -196,6 +209,12 @@ header button:hover,
     background-color: #3b354a !important;
     color: #b5838d !important;
     border-left: 4px solid #b5838d !important;
+}
+
+.category-homebrew {
+    background-color: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+    border-left: 4px solid #fbbf24 !important;
 }
 
 /* Tabs Styling */

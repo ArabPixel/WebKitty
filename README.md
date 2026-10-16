@@ -47,6 +47,7 @@ This table indicates firmware versions for which the *current version* of this r
 
 | Userland | Kernel | Firmware |
 | :--- | :---: | :--- |
+| **Have A Bad Time & <br> Stack Unitialized Read** | Bpf Double Free | 4.50 - 5.07 |
 | **Bad Hoist** | sleirsgoevy's kexploit | 6.70 - 6.72 |
 | **PSFree** | Lapse | 7.00 - 9.60 |
 | **CSSFontFace** | Lapse | 7.00 - 11.02 |
@@ -54,7 +55,7 @@ This table indicates firmware versions for which the *current version* of this r
 | **Slopkit**     | Lapse  |  11.00 - 12.02 |
 | **Slopkit**     | Netctrl  |  12.50 - 13.00 |
 | **Slopkit**     | Relapse  |  13.02 - 13.52 |
-| **GoldHEN's PayLoader** | - | 5.05 - latest |
+| **Payload Loader** | - | 5.05 - latest |
 
 ---
 
@@ -62,7 +63,7 @@ This table indicates firmware versions for which the *current version* of this r
 
 ### Option 1: Access via Remote Host
 Open the PS4 web browser and navigate directly http://webkitty.arabpixel.net/
-> In case the above link can not be resolved or similarly, you may want to attempt to use the following mirror of WebKitty: http://webkitty.free.nf
+> In case the above link can not be resolved or similarly, you may want to attempt to use the following mirror of WebKitty: arabpixel.gitlab.io/WebKitty
 
 ### Option 2: Local Hosting (PC / PS4 Server)
 1. Clone the repository:
@@ -158,7 +159,7 @@ You can contribute to WebKitty by:
 - Creating pull requests for new translations in the [`languages` folder](includes/js/languages).
 - Modifying, updating, or implementing new host features.
 - Reporting bugs or suggesting enhancements via [issues](https://github.com/ArabPixel/WebKitty/issues/new).
-- In case your PR has edits inside `index.js file`, do not forget to generate `index-legacy.js` by typing
+- In case your PR has edits inside `jailbreak.js` file, do not forget to generate `jailbreak-legacy.js` by typing
 ```
 npm install # in case you didn't install them already.
 npm run build
@@ -174,23 +175,24 @@ AGPL-3.0-or-later (see [LICENSE](LICENSE)). Part of this repo belongs to the gro
 
 ---
 
-## Credits
-- **anonymous:** For PS4 firmware kernel dumps.
-- **Flatz:** Duh
-- **TheFlow:** For Netctrl kernel exploit.
+## Credits in alphabetical order
 - **abc:** For PSFree userland and Lapse kernel exploits.
-- **sleirsgoevy:** For 6.7x kernel exploit. 
-- **Fire30:** For Bad Hoist userland exploit.
-- **Egycnq:** Porting Netctrl to slopkit.
-- **Jordy and Sonic-Iso:** Original Slopkit project.
 - **Al-Azif:** For the modular (multi-file) PSFree Lapse and AIO workaround implementations.
-- **Nathan Fargo and ufm42:** For CSSFontFace userland exploit.
-- **ufm42:** For CSSFontFace Netctrl and Lapse implementation.
-- **Feyzee61:** For the PSFree lapse bundle (single file) and 6.7x exploit implementations.
-- **Raw Game**: For implementing a PS4 port for the Slopkit Lapse and Netctrl and also SlopKit Relapse.
+- **anonymous:** For PS4 firmware kernel dumps.
 - **Dr.Yenyen:** For intensive multi-firmware testing.
-- **Nazky:** For being the first host I took a peek at.
+- **Egycnq:** Porting Netctrl to slopkit.
+- **Feyzee61:** For the PSFree lapse bundle (single file) and 6.7x exploit implementations.
+- **Fire30:** For Bad Hoist userland exploit.
+- **Flatz:** Duh
 - **GattoDev:** For the WebKitty logo.
+- **Jordy and Sonic-Iso:** Original Slopkit project.
+- **Nathan Fargo and ufm42:** For CSSFontFace userland exploit.
 - **Payload developers:** For their payloads.
+- **Nazky:** For being the first host I took a peek at.
+- **qwertyoruiopz:** for BPF Double Free
+- **Raw Game:** For implementing a PS4 port for the Slopkit Lapse and Netctrl and also SlopKit Relapse.
+- **sleirsgoevy:** For 6.7x kernel exploit. 
+- **TheFlow:** For Netctrl kernel exploit.
+- **ufm42:** For CSSFontFace Netctrl and Lapse implementation.
 
 Check the appropriate files for any **extra** contributors. Unless otherwise stated, everything here can also be credited to us.

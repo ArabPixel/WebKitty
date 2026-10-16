@@ -1,72 +1,69 @@
-function setTheme(theme) {
-    const styleSheet = document.getElementById('main-stylesheet');
+function setLayout(theme) {
+    var styleSheet = document.getElementById('main-stylesheet');
     if (styleSheet) {
         // Ensure we don't end up with "index.css.css"
-        const fileName = theme.endsWith('.css') ? theme : `${theme}.css`;
-        styleSheet.setAttribute('href', `./includes/css/layouts/${fileName}`);
-        localStorage.setItem('theme', theme);
+        var fileName = (theme.slice(-4) === '.css') ? theme : theme + '.css';
+        styleSheet.setAttribute('href', './includes/css/layouts/' + fileName);
+        storage.set('theme', theme);
+
         if (theme == 'compact') {
             ui.initialScreen.classList.add('compact');
             ui.clickToStartText.innerText = projectName;
         } else {
             ui.initialScreen.classList.remove('compact');
-            ui.clickToStartText.innerText = window.lang.clickToStart;
+            ui.clickToStartText.innerText = (window.lang && window.lang.clickToStart) || 'Click to Start';
         }
     }
 }
 
-function setColors(color) {
-    const styleSheet = document.getElementById('color-stylesheet');
+function setTheme(color) {
+    var styleSheet = document.getElementById('color-stylesheet');
     if (styleSheet) {
-        const fileName = color.endsWith('.css') ? color : color + '.css';
+        var fileName = (color.slice(-4) === '.css') ? color : color + '.css';
         styleSheet.setAttribute('href', './includes/css/colors/' + fileName);
-        localStorage.setItem('color', color)
+        storage.set('color', color);
     }
 }
 
-function loadTheme() {
-    var savedTheme = localStorage.getItem('theme') || 'index';
+function loadLayout() {
+    var savedTheme = storage.getString('theme', 'index');
 
-    // Find the radio button
-    var radioElement = document.querySelector(`input[name="theme"][value="${savedTheme}"]`);
+    // Find the radio button matching the saved layout
+    var radioElement = document.querySelector('input[name="theme"][value="' + savedTheme + '"]');
 
-    // Fallback if the saved theme doesn't exist or is invalid
+    // Fallback if the saved layout doesn't exist or is invalid
     if (!radioElement) {
         savedTheme = 'index';
-        radioElement = document.querySelector(`input[name="theme"][value="index"]`);
-        localStorage.setItem('theme', 'index');
-        // Apply the CSS file
-        setTheme(savedTheme);
+        radioElement = document.querySelector('input[name="theme"][value="index"]');
+        storage.set('theme', 'index');
+        setLayout(savedTheme);
     }
 
-    if (radioElement.value == "compact") {
+    if (radioElement && radioElement.value == 'compact') {
         ui.initialScreen.classList.add('compact');
         ui.clickToStartText.textContent = projectName;
-    } else{
+    } else {
         ui.initialScreen.classList.remove('compact');
-        ui.clickToStartText.textContent = window.lang.clickToStart;
+        ui.clickToStartText.textContent = (window.lang && window.lang.clickToStart) || 'Click to Start';
     }
-    // Update the UI radio button if it exists
     if (radioElement) {
         radioElement.checked = true;
     }
 }
 
-function loadColor() {
-    var savedColor = localStorage.getItem('color') || 'default';
+function loadTheme() {
+    var savedColor = storage.getString('color', 'default');
 
-    // Find the radio button
-    var radioElement = document.querySelector(`input[name="colorTheme"][value="${savedColor}"]`);
+    // Find the radio button matching the saved theme
+    var radioElement = document.querySelector('input[name="colorTheme"][value="' + savedColor + '"]');
 
     // Fallback if the saved theme doesn't exist or is invalid
     if (!radioElement) {
-        savedColor = 'index';
-        radioElement = document.querySelector(`input[name="colorTheme"][value="default"]`);
-        localStorage.setItem('color', 'default');
-        // Apply the CSS file
-        setColors(savedColor);
+        savedColor = 'default';
+        radioElement = document.querySelector('input[name="colorTheme"][value="default"]');
+        storage.set('color', 'default');
+        setTheme(savedColor);
     }
-    // Update the UI radio button if it exists
     if (radioElement) {
         radioElement.checked = true;
     }

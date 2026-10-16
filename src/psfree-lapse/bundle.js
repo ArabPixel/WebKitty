@@ -18,7 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 // PSFree is a WebKit exploit using CVE-2022-22620 to gain arbitrary read/write
 //
 // vulnerable:
-// * PS4 [6.00, 9.60)
+// * PS4 [6.00, 10.00)
 // * PS5 [1.00, 6.00)
 //
 // * CelesteBlue from ps4-dev on discord.com
@@ -2607,7 +2607,7 @@ function runBinLoader() {
   }
   sessionStorage.removeItem('binloader');
   sessionStorage.setItem('autoJbRetry', 'false');
-  window.log("BinLoader is ready. Send a payload to port 9020 now", "green");
+  window.log("Awaiting payload on port 9020", "green");
 }
 //================================================================================================
 // Init LapseGlobal Variables ====================================================================
@@ -3118,7 +3118,7 @@ function Init_LapseGlobals() {
   return 1;
 }
 //================================================================================================
-// Lapse Init Function ========================================================================
+// Lapse Init Function ===========================================================================
 //================================================================================================
 async function doLapseInit() {
   try {
@@ -3133,31 +3133,11 @@ async function doLapseInit() {
     window.log("An error occured during Lapse initialization\nPlease refresh page and try again...\nError definition: " + error, "red");
     return 0;
   }
-  try {
+try {
     // Check if jailbreak already done before
     if (sysi("setuid", 0) == 0) {
       window.log("\nAlready jailbroken, no need to re-jailbreak.", "green");
-
-      if (sessionStorage.getItem("payload_path") == null) {
-        let currentJbFlavor = user.currentJbFlavor || localStorage.getItem("currentJbFlavor") || "GoldHEN";
-        if (confirm("Load " + currentJbFlavor + "? Otherwise we'll launch a BinLoader!")){
-
-          if (currentJbFlavor == "HEN") {
-            HEN();
-          } else GoldHEN();
-          PayloadLoader(sessionStorage.getItem("payload_path"));
-
-        }else runBinLoader();
-      } 
-      if (sessionStorage.getItem('binloader')) {
-        runBinLoader();
-      }else {
-        PayloadLoader(sessionStorage.getItem("payload_path"));
-        if (typeof jailbreakSuccess == "function"){
-        jailbreakSuccess();
-      }
-      }
-
+      kexSuccess();
       return 0;
     }
   }
@@ -4576,7 +4556,7 @@ async function PayloadLoader(Pfile) {
   return 1;
 }
 //================================================================================================
-// Cleanup Function ========================================================================
+// Cleanup Function ==============================================================================
 //================================================================================================
 var block_fd, unblock_fd, current_core, current_rtprio, current_core_stored;
 var sds, block_id, groom_ids, pktopts_sds, dirty_sd, sd_pair_main;
@@ -4724,6 +4704,7 @@ async function doLapseExploit() {
         return 1;
       } else {
         window.log("An error occured during if KEX succeeded test\nPlease restart console and try again...", "red");
+        return 0;
       }
     } catch {
       // Still not exploited, something failed, but it made it here...
@@ -4731,14 +4712,14 @@ async function doLapseExploit() {
     }
   } catch (error) {
     window.log("An error occured during Lapse\nPlease restart console and try again...\nError definition: " + error, "red");
-    
     // Al-Azif's minimal cleanup on failure
     if (unblock_fd !== -1) {
-      try { close(unblock_fd); } catch (e) {}
+      try {
+        close(unblock_fd);
+      } catch (e) {}
       unblock_fd = -1;
     }
     return 0;
-
   } finally {
     // Always restore core and priority
     if (current_core_stored === 1) {
@@ -4759,7 +4740,7 @@ function checkPlatformIsSupported() {
   var fwVersion = match[2]; // "9.00", "9.03", etc.
   // Convert "9.00" to 0x900
   config_target = parseInt(fwVersion.replace('.', ''), 16);
-  window.log("Detected FW: PS" + device + " v" + fwVersion + ", Exploit Version: v2.2\n");
+  window.log("Detected FW: PS" + device + " v" + fwVersion + ", Exploit Version: v2.3\n");
   // Supported FW lists
   var supportedFW = {
     "4": ["0.00",
@@ -4773,6 +4754,7 @@ function checkPlatformIsSupported() {
   // FW control
   return supportedFW[device].indexOf(fwVersion) !== -1;
 }
+
 // Main Jailbreak Function
 async function doJailBreak() {
   if (!checkPlatformIsSupported()) {
@@ -4818,12 +4800,35 @@ async function doJailBreak() {
     if (jb_step_status !== 1) return;
     await sleep(500); // Wait 500ms
 
-    if (sessionStorage.getItem('binloader')) {
-      sessionStorage.removeItem('binloader');
-      runBinLoader();
-    }else{
+    kexSuccess();
+  }
+  else {
+    window.log("Kernel Exploit not implemented!", "red");
+  }
+}
+
+async function kexSuccess() {
+  if (sessionStorage.getItem('binloader')) {
+    sessionStorage.removeItem('binloader');
+    runBinLoader();
+  } else {
+    let payload_path = sessionStorage.getItem("payload_path");
+    if (payload_path.indexOf("nexHEN-ps4.bin") !== -1) payload_path = payload_path.replace('.bin', '.elf');
+    window.log("Payload path: " + payload_path);
+
+    if (payload_path && payload_path.indexOf(".elf") !== -1 && payload_path.indexOf("linux") == -1) {
+      // [!] Checking for if elfldr is loaded takes much time so we might as well just load both each time.
+      const elfLoaderPayload = payloadsList.find(item => item.id === "ElfLoader");
+      const elfldrPath = elfLoaderPayload ? elfLoaderPayload.src : null;
+
+      await PayloadLoader(elfldrPath.replace('.elf', '.bin'));
+      await sleep(3000); // Wait 3000ms for elfldr to start
+
+      // Sending to elfldr
+      await sendToElfldr(payload_path, window.log);
+    } else {
       // Inject HEN payload
-      jb_step_status = await PayloadLoader(sessionStorage.getItem('payload_path')); // Read payload from .bin file
+      const jb_step_status = await PayloadLoader(sessionStorage.getItem('payload_path'));
       if (jb_step_status !== 1) {
         window.log("Failed to load HEN!\nPlease restart console and try again...", "red");
         return;
@@ -4831,13 +4836,10 @@ async function doJailBreak() {
       
       window.log("Homebrew Enabler loaded", "green");
       window.log("\nPSFree & Lapse exploit with AIO fixes by ABC");
-      if (typeof jailbreakSuccess == "function"){
-        jailbreakSuccess();
-      }
     }
-  }
-  else {
-    window.log("Kernel Exploit not implemented!", "red");
+    if (typeof jailbreakSuccess === "function") {
+      jailbreakSuccess();
+    }
   }
 }
 //================================================================================================

@@ -56,6 +56,14 @@ input[type="radio"]:checked {
     border: none !important;
 }
 
+.category-homebrew {
+    background-color: rgba(6, 182, 212, 0.2);
+    /* 20% cyan */
+    color: #38bdf8;
+    /* bright cyan */
+    border: none !important;
+}
+
 /* Background Colors */
 .bg-gray-900 {
     background-color: transparent;

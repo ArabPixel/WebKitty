@@ -4,8 +4,8 @@
   "description": "A web interface to jailbreak your PS4",
   "main": "index.html",
   "scripts": {
-    "build": "babel includes/js/index.js --out-file includes/js/index-legacy.js --presets=@babel/preset-env",
-    "watch": "babel includes/js/index.js --out-file includes/js/index-legacy.js --presets=@babel/preset-env --watch"
+    "build": "babel includes/js/jailbreak.js --out-file includes/js/jailbreak-legacy.js --presets=@babel/preset-env",
+    "watch": "babel includes/js/jailbreak.js --out-file includes/js/jailbreak-legacy.js --presets=@babel/preset-env --watch"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.1",

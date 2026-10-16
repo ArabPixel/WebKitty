@@ -1,3 +1,4 @@
+// Scans the local network for a PS4 running the PayLoader server.
 
 // keep base ip and chop the rest
 // e.g. 192.168.20.156 => 192.168.20
@@ -6,15 +7,15 @@ function baseIp(ip) {
 }
 
 function guessIp() {
-    const host = window.location.hostname;
-    const inputIp = ui.ps4IpInput.value;
-    const isPS4 = (user.platform === "PS4" || typeof window.ps4Fw !== 'undefined');
+    var host = window.location.hostname;
+    var inputIp = ui.ps4IpInput ? ui.ps4IpInput.value : '';
+    var isPS4 = isPS4Console();
 
     // 1. is it a local network ? (192.168.x.x, 10.x.x.x, etc.)
     if (isLocalIP(host)) {
         if (isPS4) {
             user.ip = "127.0.0.1";
-            if (!ui.ps4IpInput.classList.contains("hidden")) {
+            if (ui.ps4IpInput && !ui.ps4IpInput.classList.contains("hidden")) {
                 ui.ps4IpInput.value = user.ip;
             }
             return; // PS4 browsing its own local server
@@ -26,7 +27,7 @@ function guessIp() {
     }
 
     // 2. is it localhost or 127.0.0.1
-    const isLoopback = (host === "localhost" || host === "127.0.0.1");
+    var isLoopback = (host === "localhost" || host === "127.0.0.1");
     if (isLoopback) {
         if (isPS4) {
             return host;
@@ -35,21 +36,21 @@ function guessIp() {
             if (inputIp !== 'localhost' && inputIp !== '127.0.0.1') {
                 findPs4FromBaseIP(inputIp);
             } else {
-                alert("Can't scan for ip since its not provided")
+                alert("Can't scan for ip since its not provided");
             }
-            // PC browsing a PC-hosted site.
-            // Cant scan for a PayLoader server because we only have localhost or 127.0.0.1
             return;
         }
     }
 }
 
 function findPs4FromBaseIP(ip) {
-    return new Promise((resolve, reject) => {
-        const base = baseIp(ip);
-        let checked = 0;
-        const total = 254;
-        let found = false;
+    return new Promise(function (resolve, reject) {
+        var base = baseIp(ip);
+        var checked = 0;
+        var total = 254;
+        var found = false;
+        var batchSize = 20;
+        var nextIndex = 1;
 
         function onDone() {
             checked++;
@@ -58,35 +59,69 @@ function findPs4FromBaseIP(ip) {
             }
         }
 
-        for (let i = 1; i <= total; i++) {
-            const checkIp = `${base}.${i}`;
-            const req = new XMLHttpRequest();
-            req.open('POST', `http://${checkIp}:9090/status`);
-            req.timeout = 1000;
+        function checkNextBatch() {
+            if (found || nextIndex > total) return;
 
-            req.onload = function () {
-                if (found) { onDone(); return; }
-                try {
-                    const json = JSON.parse(req.responseText);
-                    if (json.status === 'ready') {
-                        found = true;
-                        user.ip = checkIp;
-                        try { localStorage.setItem('PayLoaderIp', checkIp); } catch (_) { }
-                        if (ui.ps4IpInput && !ui.ps4IpInput.classList.contains('hidden')) {
-                            ui.ps4IpInput.value = checkIp;
-                            localStorage.setItem('ps4Ip', checkIp);
+            var batchEnd = Math.min(nextIndex + batchSize, total + 1);
+            var currentBatchStart = nextIndex;
+            nextIndex = batchEnd;
+
+            for (var i = currentBatchStart; i < batchEnd; i++) {
+                (function (index) {
+                    var checkIp = base + '.' + index;
+                    var req = new XMLHttpRequest();
+                    req.open('POST', 'http://' + checkIp + ':9090/status');
+                    req.timeout = 1000;
+
+                    req.onload = function () {
+                        if (found) {
+                            onDone();
+                            return;
                         }
-                        alert(window.lang.payLoaderFound + checkIp);
-                        resolve(checkIp);
-                    }
-                } catch (_) { }
-                onDone();
-            };
+                        var isFound = false;
+                        try {
+                            var json = JSON.parse(req.responseText);
+                            if (json && json.status === 'ready') {
+                                isFound = true;
+                            }
+                        } catch (_) { }
 
-            req.onerror = function () { onDone(); };
-            req.ontimeout = function () { onDone(); };
+                        // Detect nexHEN response (HTTP 405/400 with text "Use POST / or POST /payload")
+                        if (!isFound && req.responseText && req.responseText.indexOf('POST /') !== -1) {
+                            isFound = true;
+                        }
 
-            req.send();
+                        if (isFound) {
+                            found = true;
+                            user.ip = checkIp;
+                            storage.set('PayLoaderIp', checkIp);
+                            if (ui.ps4IpInput && !ui.ps4IpInput.classList.contains('hidden')) {
+                                ui.ps4IpInput.value = checkIp;
+                                storage.set('ps4Ip', checkIp);
+                            }
+                            alert((window.lang ? window.lang.payLoaderFound : 'Found PayLoader: ') + checkIp);
+                            resolve(checkIp);
+                            return;
+                        }
+                        onDone();
+                        checkNextBatch();
+                    };
+
+                    req.onerror = function () {
+                        onDone();
+                        checkNextBatch();
+                    };
+                    req.ontimeout = function () {
+                        onDone();
+                        checkNextBatch();
+                    };
+
+                    req.send();
+                })(i);
+            }
         }
+
+        // Launch initial batch
+        checkNextBatch();
     });
 }

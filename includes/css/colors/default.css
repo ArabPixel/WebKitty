@@ -52,6 +52,12 @@ input[type="radio"]:checked {
     border: none !important;
 }
 
+.category-homebrew {
+    background-color: #354a42 !important;
+    color: #81b29a !important;
+    border: none !important;
+}
+
 /* Background Colors */
 .bg-gray-900 {
     background-color: #111827;

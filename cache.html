@@ -25,33 +25,11 @@
 
     <iframe id="cacheFrame" src="about:blank"></iframe>
 
-    <script src="includes/js/checkFw.js"></script>
+    <script src="includes/js/storage.js"></script>
+    <script src="includes/js/testMode.js"></script>
+    <script src="includes/js/firmware.js"></script>
     <script>
-        var fwVersion = getPs4FwVersion(navigator.userAgent);
-
-        function getCachePage(fwVersion) {
-            var routes = [
-                { min: 6.70, max: 6.72, page: 'cache67x.html' },
-                { min: 7.00, max: 8.52, page: 'cache7-8xx.html' },
-                { min: 9.00, max: 9.60, page: 'cache9xx.html' },
-                { min: 10.00, max: 10.71, page: 'cache10xx.html' },
-                { min: 11.00, max: 11.52, page: 'cache11xx.html' },
-                { min: 12.00, max: 12.52, page: 'cache12xx.html' },
-                { min: 13.00, max: 13.00, page: 'cache1300.html' },
-                { min: 13.02, max: 13.52, page: 'cache1302-1352.html' },
-            ];
-
-            var matchedPage = 'cachePayloads.html';
-            for (var i = 0; i < routes.length; i++) {
-                if (fwVersion >= routes[i].min && fwVersion <= routes[i].max) {
-                    matchedPage = routes[i].page;
-                    break;
-                }
-            }
-
-            return 'includes/caches/' + matchedPage;
-        }
-
+        var fwVersion = getPs4FwVersion();
         var targetPage = getCachePage(fwVersion);
 
         var statusEl = document.getElementById('cacheStatus');
@@ -74,7 +52,7 @@
                 fillEl.style.width = '100%';
                 statusEl.textContent = data.type === 'CACHE_EXISTS' ? 'Already cached! Redirecting...' : 'Done! Redirecting...';
                 setTimeout(function () {
-                    window.location.replace('./');
+                    window.location.replace(mainPage);
                 }, 1000);
 
             } else if (data.type === 'CACHE_CHECKING') {
@@ -85,7 +63,7 @@
                 var reason = data.reason || 'Unknown error';
                 statusEl.textContent = 'Cache error: ' + reason;
                 setTimeout(function () {
-                    window.location.replace('./');
+                    window.location.replace(mainPage);
                 }, 3000);
             }
         }, false);

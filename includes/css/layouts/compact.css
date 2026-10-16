@@ -14,7 +14,6 @@ body {
     /* smoother scrolling on touch devices */
 }
 
-
 input,
 svg,
 label {
@@ -64,10 +63,11 @@ input[type="radio"]:checked {
 }
 
 #exploitContainer {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
     width: 100%;
-    height: 100%;
-    padding: 0;
-    box-sizing: border-box;
+    gap: 8px !important;
 }
 
 .tabs {
@@ -112,6 +112,14 @@ input[type="radio"]:checked {
     /* 20% purple */
     color: #a78bfa;
     /* light purple */
+    border: none !important;
+}
+
+.category-homebrew {
+    background-color: rgba(245, 158, 11, 0.2);
+    /* 20% amber */
+    color: #fbbf24;
+    /* bright amber */
     border: none !important;
 }
 
@@ -927,6 +935,17 @@ html {
     margin-left: 0;
 }
 
+@media (max-width: 980px) {
+    #henSelection {
+        display: contents;
+    }
+
+    #exploitRun{
+        width: 100% !important;
+    }
+    
+}
+
 /* --- Media Queries for Responsive Classes --- */
 
 /* Small devices (sm) */
@@ -974,6 +993,7 @@ html {
         /* Force each panel to take exactly 50% minus half of the total middle gap (16px total gap) */
         flex: 1 !important; /* Ensures exact equal balance split */
         height: 100% !important;
+        width: 50%;
     }
 
     /* Left panel spaces only to the right */
@@ -1038,6 +1058,7 @@ button {
 }
 
 #tools,
+#homebrew,
 #linux,
 #advanced,
 #custom {
@@ -1131,33 +1152,34 @@ button {
    ========================================== */
 
 /* 1. Global Reset of Scrolling Blocks */
-html, body, .mainContainer {
+html, body {
     height: 100vh !important;
     max-height: 100vh !important;
     overflow: hidden !important;
-    scroll-snap-type: none !important;
 }
 
 /* 2. Turn the Main Container into a 2-Row Grid */
 .mainContainer {
     display: flex !important;
-    flex-direction: column;
-    padding: 16px !important;
+    flex-direction: column !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    padding: 12px !important;
     box-sizing: border-box !important;
+    overflow: hidden !important;
 }
 
 /* 3. Transform Initial Screen into a Slim Top Header Dashboard */
 #initial-screen {
-    height: auto;
-    min-height: initial;
+    flex: 0 0 auto !important;
+    height: auto !important;
+    min-height: initial !important;
     display: flex;
-    flex-direction: row-reverse;      /* Align elements horizontally */
+    flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 24px;
-    border-radius: 0.75rem;    /* Matches rounded-xl */
-    position: relative;
-    margin-bottom: 12px;
+    padding: 8px 16px !important;
+    margin-bottom: 8px !important;
 }
 
 #initial-screen #pslogo{
@@ -1203,7 +1225,9 @@ html, body, .mainContainer {
 
 /* 4. Fit the Exploit Screens Perfectly on the Remaining Viewport Space */
 #exploit-main-screen {
-    height: 100% !important;
+    flex: 1 1 auto !important;
+    height: 91% !important;  /* Forces flex child to respect container bounds */
+    min-height: 0 !important;
     overflow: hidden !important;
 }
 
@@ -1213,6 +1237,10 @@ html, body, .mainContainer {
     flex-grow: 1 !important;
     min-height: 100px !important;
     margin-bottom: 8px !important;
+}
+
+#DebugConsole:hover {
+    cursor: pointer;
 }
 
 #payloadsGrid {
@@ -1229,4 +1257,9 @@ html, body, .mainContainer {
 
 #exploitRun{
     width: 50%;
+}
+
+#exploitRun svg{
+    width: 100%;
+    text-align: center;
 }

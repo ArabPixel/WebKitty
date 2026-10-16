@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <title>WebKitty</title>
-    <meta name="description" content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 6.70 - 13.00." />
+    <meta name="description" content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 13.52." />
     <meta name="author" content="ArabPixel">
     <meta name="keywords"
-        content="PS4, PlayStation 4, webkit exploit, jailbreak, psfree lapse, cssfontface, WebKitty, PSFree Enhanced">
+        content="PS4, PlayStation 4, webkit exploit, jailbreak, psfree lapse, cssfontface, WebKitty, PSFree Enhanced, cssfontface, lapse, netctrl, slopkit, relapse">
 
 
     <!-- Facebook / Discord / WhatsApp -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="WebKitty">
     <meta property="og:description"
-        content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 6.70 - 13.52.">
+        content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 13.52.">
     <meta property="og:image" content="http://webkitty.arabpixel.net/includes/assets/icons/webkitty.svg">
     <meta property="og:url" content="http://webkitty.arabpixel.net">
 
@@ -23,20 +23,12 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="WebKitty">
     <meta name="twitter:description"
-        content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 6.70 - 13.52.">
+        content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 13.52.">
     <meta name="twitter:image" content="http://webkitty.arabpixel.net/includes/assets/icons/webkitty.svg">
     <link rel="icon" href="includes/assets/icons/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" id="main-stylesheet" href="">
     <link rel="stylesheet" id="color-stylesheet" href="">
     <script>
-        // Immediately redirect PS4 from HTTPS to HTTP before loading DOM or scripts
-        if (window.location.protocol === 'https:' &&
-            window.location.hostname === 'webkitty.arabpixel.net' &&
-            navigator.userAgent.indexOf('PlayStation 4') !== -1) {
-            window.abortLoading = true;
-            window.location.replace(window.location.href.replace(/^https:/, 'http:'));
-        }
-
         // Prevent "Theme Flash" by applying the href before the body renders
         var savedTheme = localStorage.getItem('theme') || "index";
         var savedColor = localStorage.getItem('color') || "default";
@@ -46,6 +38,11 @@
         if (savedColor) {
             document.getElementById('color-stylesheet').setAttribute('href', './includes/css/colors/' + savedColor + '.css');
         }
+        var rtlLangs = ["ar", "fa"];
+        if (rtlLangs.indexOf(localStorage.getItem('language')) !== -1)
+            document.dir = "rtl";
+        else
+            document.dir = "ltr";
     </script>
 </head>
 
@@ -56,8 +53,8 @@
             <!-- Header Buttons -->
             <header class="absolute top-6 left-6 flex space-x-3 rtl:space-x-reverse z-10">
                 <div>
-                    <button onclick="settingsPopup()" id="settings-btn"
-                        class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
+                    <button onclick="settingsPopup()"
+                        class="settings-btn p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
                         title="Settings">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="bi bi-gear" viewBox="0 0 16 16">
@@ -67,8 +64,8 @@
                                 d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
                         </svg>
                     </button>
-                    <button onclick="aboutPopup()" id="about-btn"
-                        class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
+                    <button onclick="aboutPopup()"
+                        class="about-btn p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
                         title="About">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             viewBox="0 0 512 512">
@@ -76,8 +73,8 @@
                                 d="M256,56C145.72,56,56,145.72,56,256s89.72,200,200,200,200-89.72,200-200S366.28,56,256,56Zm0,82a26,26,0,1,1-26,26A26,26,0,0,1,256,138Zm64,226H200V332h44V244H212V212h64V332h44Z" />
                         </svg>
                     </button>
-                    <button onclick="themePopup()" id="theme-btn"
-                        class="h-10 p-2 inline-flex items-center justify-center rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
+                    <button onclick="themePopup()"
+                        class="theme-btn h-10 p-2 inline-flex items-center justify-center rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
                         title="Theme Customization">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -119,16 +116,15 @@
 
             <!-- Compatibility message -->
             <p id="PS4FW" class="text-white/70 text-lg mt-4 mb-6">-</p>
-            <a hidden
-                class="secondHostBtn bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold disabled:opacity-50 transition-colors text-white text-center"
+            <a class="hidden secondHostBtn bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold disabled:opacity-50 transition-colors text-white text-center"
                 href="http://webkitty.arabpixel.net/" style="text-decoration: none;">
                 <button
                     class="bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold disabled:opacity-50 transition-colors text-white text-center">Load
-                    payloads using GoldHEN's PayLoader - External link</button>
+                    payloads using a PayLoader - External link</button>
             </a>
 
             <!-- Jailbreak flavor options -->
-            <div id="choosejb-initial" class="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-sm text-center">
+            <div id="choosejb-initial" class="bg-gray-800 p-6 rounded-lg shadow-xl text-center">
                 <h3 class="text-xl font-semibold mb-4">Choose your HEN flavor</h3>
                 <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 rtl:gap-4 sm:rtl:gap-8">
                     <label
@@ -138,11 +134,17 @@
                             class="accent-blue-500 w-5 h-5 ml-3 focus:ring-2 focus:ring-blue-400">
                         <span class="text-lg font-semibold text-white/90 select-none">GoldHEN</span>
                     </label>
-                    <label
+                    <label id="PS4HEN-label-initial"
                         class="flex items-center px-4 py-2 rounded-lg bg-gray-700/60 hover:bg-gray-700 transition-colors cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500 w-full sm:w-auto">
-                        <input type="radio" name="hen" value="HEN" onchange="saveJbFlavor(this.name, this.value)"
+                        <input type="radio" name="hen" value="PS4HEN" onchange="saveJbFlavor(this.name, this.value)"
                             class="accent-blue-500 w-5 h-5 ml-3 focus:ring-2 focus:ring-blue-400">
-                        <span class="text-lg font-semibold text-white/90 select-none">HEN</span>
+                        <span class="text-lg font-semibold text-white/90 select-none">PS4HEN</span>
+                    </label>
+                    <label id="nexHEN-label-initial"
+                        class="flex items-center px-4 py-2 rounded-lg bg-gray-700/60 hover:bg-gray-700 transition-colors cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500 w-full sm:w-auto">
+                        <input type="radio" name="hen" value="nexHEN" onchange="saveJbFlavor(this.name, this.value)"
+                            class="accent-blue-500 w-5 h-5 ml-3 focus:ring-2 focus:ring-blue-400">
+                        <span class="text-lg font-semibold text-white/90 select-none">nexHEN<br>Experimental</span>
                     </label>
                 </div>
             </div>
@@ -183,11 +185,17 @@
                                 onchange="saveJbFlavor(this.name, this.value)">
                             <span class="text-base font-semibold text-white/90 select-none">GoldHEN</span>
                         </label>
-                        <label
+                        <label id="PS4HEN-label-exploit"
                             class="flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500">
-                            <input type="radio" name="hen2" value="HEN" class="accent-blue-500 w-4 h-4 ml-2"
+                            <input type="radio" name="hen2" value="PS4HEN" class="accent-blue-500 w-4 h-4 ml-2"
                                 onchange="saveJbFlavor(this.name, this.value)">
-                            <span class="text-base font-semibold text-white/90 select-none">HEN</span>
+                            <span class="text-base font-semibold text-white/90 select-none">PS4HEN</span>
+                        </label>
+                        <label id="nexHEN-label-exploit"
+                            class="flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500">
+                            <input type="radio" name="hen2" value="nexHEN" class="accent-blue-500 w-4 h-4 ml-2"
+                                onchange="saveJbFlavor(this.name, this.value)">
+                            <span class="text-base font-semibold text-white/90 select-none">nexHEN</span>
                         </label>
                         <button id="exploitRun"
                             class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 p-2 rounded-full transition-colors">
@@ -208,8 +216,8 @@
                                 Payloads
                             </h2>
                             <header class="flex space-x-3 rtl:space-x-reverse hidden" id="header2">
-                                <button onclick="settingsPopup()" id="settings-btn"
-                                    class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
+                                <button onclick="settingsPopup()"
+                                    class="settings-btn p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
                                     title="Settings">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor"
                                         class="bi bi-gear" viewBox="0 0 16 16">
@@ -219,8 +227,8 @@
                                             d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
                                     </svg>
                                 </button>
-                                <button onclick="aboutPopup()" id="about-btn"
-                                    class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
+                                <button onclick="aboutPopup()"
+                                    class="about-btn p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
                                     title="About">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor"
                                         viewBox="0 0 512 512">
@@ -228,8 +236,8 @@
                                             d="M256,56C145.72,56,56,145.72,56,256s89.72,200,200,200,200-89.72,200-200S366.28,56,256,56Zm0,82a26,26,0,1,1-26,26A26,26,0,0,1,256,138Zm64,226H200V332h44V244H212V212h64V332h44Z" />
                                     </svg>
                                 </button>
-                                <button onclick="themePopup()" id="theme-btn"
-                                    class="h-10 p-2 inline-flex items-center justify-center rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
+                                <button onclick="themePopup()"
+                                    class="theme-btn h-10 p-2 inline-flex items-center justify-center rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
                                     title="Theme Customization">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -295,6 +303,7 @@
                                 <option value="13.04">13.04</option>
                                 <option value="13.50">13.50</option>
                                 <option value="13.52">13.52</option>
+                                <option value="14.00">14.00</option>
                             </select>
                         </div>
                     </div>
@@ -305,6 +314,11 @@
                                 <button class="w-full inline-block p-4 border-b-2 rounded-t-lg" id="tools-tab"
                                     data-tabs-target="#tools" type="button" role="tab" aria-controls="tools"
                                     aria-selected="false">Tools</button>
+                            </li>
+                            <li class="flex-1" role="presentation">
+                                <button class="w-full inline-block p-4 border-b-2 rounded-t-lg" id="homebrew-tab"
+                                    data-tabs-target="#homebrew" type="button" role="tab" aria-controls="homebrew"
+                                    aria-selected="false">Homebrew</button>
                             </li>
                             <li class="flex-1" role="presentation">
                                 <button
@@ -318,7 +332,7 @@
                                     id="advanced-tab" data-tabs-target="#advanced" type="button" role="tab"
                                     aria-controls="advanced" aria-selected="false">Advanced</button>
                             </li>
-                            <li class="hidden flex-1 customPayloadsTab" role="presentation">
+                            <li class="hidden flex-1" id="customPayloadsTab" role="presentation">
                                 <button
                                     class="w-full inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 hover:text-gray-300"
                                     id="custom-tab" data-tabs-target="#custom" type="button" role="tab"
@@ -332,6 +346,9 @@
                             <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="tools" role="tabpanel"
                                 aria-labelledby="tools-tab">
                             </div>
+                            <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="homebrew" role="tabpanel"
+                                aria-labelledby="homebrew-tab">
+                            </div>
                             <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="linux" role="tabpanel"
                                 aria-labelledby="linux-tab">
                             </div>
@@ -340,7 +357,7 @@
                             </div>
                             <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="custom" role="tabpanel"
                                 aria-labelledby="custom-tab">
-                                <p class="text-sm text-white/80 mb-2">Upload a custom payload file.</p>
+                                <p class="text-sm text-white/80 mb-2" id="customPayloadUpload">Upload a custom payload file</p>
                                 <div class="flex gap-2">
                                     <input type="file" id="customPayloadInput" style="width: 150px;"
                                         class="bg-gray-700 p-2 rounded flex-grow text-white border-transparent focus:ring-2 focus:ring-blue-500"
@@ -364,7 +381,7 @@
                         href="http://webkitty.arabpixel.net/" style="text-decoration: none;">
                         <button
                             class="w-full bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold disabled:opacity-50 transition-colors text-white text-center">Load
-                            payloads using GoldHEN's PayLoader - External link</button>
+                            payloads using a payload loader - External link</button>
                     </a>
                 </div>
             </div>
@@ -385,6 +402,7 @@
             <div id="PS4FWOK" class="mt-4">
                 <h3 class="text-l font-bold mb-4">Supported PS4 firmware</h3>
                 <div id="listfw" class="grid-cols-4 text-sm text-white/70 mb-4">
+                    <p id="fw450-507">4.50-5.07</p>
                     <p id="fw67">6.7x</p>
                     <p id="fw7">7.xx</p>
                     <p id="fw8">8.xx</p>
@@ -395,30 +413,30 @@
                     <p id="fw13">13.xx</p>
                 </div>
             </div>
-            <small id="goldhenFirmwareSemiSupported">
-                <i class="text-white/70">* Loading payloads through GoldHEN's PayLoader is supported.</i>
+            <small id="payloaderFirmwareSemiSupported">
+                <i class="text-white/70">* Loading payloads through a Payload Loader server is supported.</i>
             </small>
             <h3 class="text-l font-bold mt-4 mb-2" id="creditsHeader">Credits</h3>
-            <div class="flex flex-wrap justify-evenly text-sm text-white/70 mb-2">
+            <div class="flex flex-wrap justify-around text-sm text-white/70 mb-2">
                 <p>abc</p>
                 <p>sleirsgoevy</p>
                 <p>TheFlow</p>
                 <p>Flatz</p>
                 <p>Al Azif</p>
             </div>
-            <div class="flex flex-wrap justify-evenly text-sm text-white/70 mt-2">
+            <div class="flex flex-wrap justify-around text-sm text-white/70 mt-2">
                 <p>Nathan Fargo</p>
                 <p>ufm42</p>
                 <p>Egycnq</p>
                 <p>Fire30</p>
             </div>
-            <div class="flex flex-wrap justify-evenly text-sm text-white/70 mt-2">
+            <div class="flex flex-wrap justify-around text-sm text-white/70 mt-2">
                 <p>Jordy</p>
                 <p>Sonic-Iso</p>
                 <p>Feyzee61</p>
                 <p>Raw Game</p>
             </div>
-            <div class="flex flex-wrap justify-evenly text-sm text-white/70 mt-2">
+            <div class="flex flex-wrap justify-around text-sm text-white/70 mt-2">
                 <p>ArabPixel</p>
                 <p>Dr.Yenyen</p>
                 <p>Teligin174</p>
@@ -439,7 +457,7 @@
             <h2 class="text-2xl font-bold mb-4">WebKitty settings</h2>
             <!-- Choose GoldHEN version -->
             <div id="chooseGoldHEN" class="mb-4">
-                <h3 class="text-lg font-semibold mb-2" id="ghVer">GoldHEN versions</h3>
+                <h3 class="text-lg font-semibold mb-2" id="ghVer">GoldHEN Versions</h3>
                 <div class="radio-group space-y-2">
                     <label class="flex items-center text-white/80">
                         <input type="radio" name="goldhen" value="GHv2.4b18.12" onchange="setGoldHENVer(this.value);">
@@ -511,6 +529,10 @@
                         <input type="radio" name="exploitChain" value="7" onchange="exploitChain(this.value);">
                         <p id="relapse">Slopkit Relapse</p>
                     </label>
+                    <label class="flex items-center text-white/80" id="bpfDoubleFreeExp">
+                        <input type="radio" name="exploitChain" value="8" onchange="exploitChain(this.value);">
+                        <p id="bpfDoubleFree">Bpf Double Free</p>
+                    </label>
                 </div>
             </div>
             <div id="advancedPayloads" class="mb-6">
@@ -537,7 +559,7 @@
             <button onclick="ipGuess()"
                 class="hidden bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold transition-colors"
                 id="scanPayLoader">
-                Scan for GoldHEN's PayLoader
+                Scan for payload loader server
             </button>
             <button onclick="shutdownServer()"
                 class="hidden mt-2 bg-red-600 hover:bg-red-700 p-3 rounded font-semibold transition-colors"
@@ -600,11 +622,11 @@
                 <h3 class="text-lg font-semibold mb-2" id="layout">Layout</h3>
                 <div class="radio-group space-y-2 flex flex-wrap flex-row" id="layouts">
                     <label class="flex items-center text-white/80">
-                        <input type="radio" name="theme" value="index" onchange="setTheme(this.value);">
+                        <input type="radio" name="theme" value="index" onchange="setLayout(this.value);">
                         <p id="defaultTheme">Default</p>
                     </label>
                     <label class="flex items-center text-white/80">
-                        <input type="radio" name="theme" value="compact" onchange="setTheme(this.value);">
+                        <input type="radio" name="theme" value="compact" onchange="setLayout(this.value);">
                         <p id="compactTheme">Compact</p>
                     </label>
                 </div>
@@ -612,15 +634,15 @@
                 <h3 class="text-lg font-semibold mb-2" id="themeWord">Theme</h3>
                 <div class="radio-group space-y-2 flex flex-wrap" id="colors">
                     <label class="flex items-center text-white/80">
-                        <input type="radio" name="colorTheme" value="default" onchange="setColors(this.value);">
+                        <input type="radio" name="colorTheme" value="default" onchange="setTheme(this.value);">
                         <p id="defaultColor">Default</p>
                     </label>
                     <label class="flex items-center text-white/80">
-                        <input type="radio" name="colorTheme" value="vibrant" onchange="setColors(this.value);">
+                        <input type="radio" name="colorTheme" value="vibrant" onchange="setTheme(this.value);">
                         <p id="vibrantColor">Vibrant</p>
                     </label>
                     <label class="flex items-center text-white/80">
-                        <input type="radio" name="colorTheme" value="catppuccino" onchange="setColors(this.value);">
+                        <input type="radio" name="colorTheme" value="catppuccino" onchange="setTheme(this.value);">
                         <p id="catppuccinoColor">Catppuccino</p>
                     </label>
                 </div>
@@ -665,23 +687,41 @@
 
     <script>
         // Global Error Tracker
+        function reportGlobalError(title, details) {
+            var errorConsole = document.getElementById('console');
+            if (!errorConsole) return;
+
+            if (errorConsole.textContent.trim() === '--') {
+                errorConsole.textContent = '';
+            }
+
+            var entry = document.createElement('span');
+            entry.style.color = '#f87171';
+            entry.style.whiteSpace = 'pre-wrap';
+            entry.textContent = title + '\n' + details + '\n\n';
+            errorConsole.appendChild(entry);
+
+            var consolePanel = document.getElementById('DebugConsole');
+            if (consolePanel) consolePanel.scrollTop = consolePanel.scrollHeight;
+        }
+
         window.onerror = function (msg, url, lineno, colno, error) {
-            const stack = error.stack || 'No stack trace';
-            console.error('[onerror]', { msg, url, lineno, colno, stack });
-            alert(`Error: ${msg}\nURL: ${url}\nLine: ${lineno}, Col: ${colno}\n\nOpen an issue on github or contact me on discord '@arabpixel'`);
+            var stack = error && error.stack ? error.stack : 'No stack trace';
+            var details = 'URL: ' + url + '\nLine: ' + lineno + ', Col: ' + colno + '\n\n' + stack;
+            console.error('[onerror]', msg, url, lineno, colno, stack);
+            reportGlobalError('Error: ' + msg, details);
             return true;
         };
 
         // Catch unhandled promise rejections
         window.addEventListener('unhandledrejection', function (event) {
-            const reason = event.reason;
-            const msg = reason instanceof Error
-                ? `${reason.message}\n\nStack:\n${reason.stack}`
+            var reason = event.reason;
+            var msg = reason instanceof Error
+                ? reason.message + '\n\nStack:\n' + reason.stack
                 : String(reason);
             console.error('[unhandledrejection]', reason);
-            alert(`Unhandled Promise Rejection:\n${msg}\n\nOpen an issue on github or contact me on discord '@arabpixel'`);
+            reportGlobalError('Unhandled Promise Rejection:', msg);
         });
-
 
         var ua = navigator.userAgent;
         var isPS4 = ua.indexOf("PlayStation 4") !== -1;
@@ -691,6 +731,7 @@
 
         var jailbreakNow = sessionStorage.getItem("jailbreakNow") != null;
         // Load 6.7x entrypoint if needed conditionally
+        // This MUST run before DOMContentLoaded for the exploit timing to work.
         if (isPS4 && is67x && jailbreakNow) {
             try {
                 var xhr = new XMLHttpRequest();
@@ -700,38 +741,42 @@
                     eval.call(top.window, xhr.responseText);
                 }
             } catch (e) {
-                // Safe non-breaking fallbacks if DOM isn't ready
+                // Non-breaking. the entrypoint check in badHoistJailbreak() will handle failure
                 console.error("Early entrypoint hook failed: " + e.message);
             }
         }
-
-        // Cache
-        document.addEventListener('DOMContentLoaded', () => {
+    </script>
+    <script src="./includes/js/storage.js"></script>
+    <script src="./includes/js/testMode.js"></script>
+    <script src="./includes/js/firmware.js"></script>
+    <script src="./includes/js/utilities.js"></script>
+    <script src="./includes/js/HENs.js"></script>
+    <script src="./includes/js/checkFw.js"></script>
+    <!-- Choose jailbreak.js or jailbreak-legacy.js for older browsers, generated with Babel -->
+    <script id="main-logic-loader">
+        (function () {
+            var isModern = 'noModule' in document.createElement('script');
+            var scriptPath = isModern ? './includes/js/jailbreak.js' : './includes/js/jailbreak-legacy.js';
+            document.write('<script src="' + scriptPath + '"><\/script>');
+        })();
+    </script>
+    <script src="./includes/js/initial.js"></script>
+    <script src="./includes/js/cache.js"></script>
+    <script src="./includes/js/deliverPayload.js"></script>
+    <script src="./includes/js/payloadsList.js"></script>
+    <script src="./includes/js/design.js"></script>
+    <script src="./includes/js/language.js"></script>
+    <script src="./includes/js/autoJbRetry.js"></script>
+    <script src="./includes/js/events.js"></script>
+    <script src="./includes/js/payloadsHandler.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
             if (window.abortLoading) return;
             if (typeof loadSettings === 'function') {
                 loadSettings();
             }
         });
     </script>
-    <!-- Choose index.js or index-legacy.js for older browsers, generated with Babel -->
-    <script id="main-logic-loader">
-        (function () {
-            var isModern = 'noModule' in document.createElement('script');
-            var scriptPath = isModern ? './includes/js/index.js' : './includes/js/index-legacy.js';
-            document.write('<script src="' + scriptPath + '"><\/script>');
-        })();
-    </script>
-    <script src="./includes/payloads/payloads.js"></script>
-    <script src="./includes/js/payloadsList.js"></script>
-    <script src="./includes/js/design.js"></script>
-    <script src="./includes/js/language.js"></script>
-    <script src="./includes/js/HENs.js"></script>
-    <script src="./includes/js/checkFw.js"></script>
-    <script src="./includes/js/cache.js"></script>
-    <script src="./includes/js/autoJbRetry.js"></script>
-    <script src="./includes/js/events.js"></script>
-    <script src="./includes/js/payloadsHandler.js"></script>
-    <script src="./includes/js/utilities.js"></script>
 </body>
 
 </html>

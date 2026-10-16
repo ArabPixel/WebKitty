@@ -1,37 +1,46 @@
+// Handles automatic jailbreak retry logic and countdown timers.
+
 function setAutoJbRetry(checked) {
-    localStorage.setItem('autoJbRetry', checked);
-    sessionStorage.setItem('autoJbRetry', checked);
+    storage.set('autoJbRetry', checked);
+    storage.session.set('autoJbRetry', checked);
 
     if (!checked) return;
     if (confirm(window.lang.autoJbRetryConfirm)) jailbreak();
 }
 
-// When jailbreak succeds, this will be stopped
+// When jailbreak succeeds, this will be stopped
 function autoJailbreak() {
     // used for 6.7x jailbreak when userland is loaded on jailbreak only.
-    if (sessionStorage.getItem('jailbreakNow') == "true") {
+    var jbNow = storage.session.getBoolean('jailbreakNow', false);
+    if (jbNow) {
         jailbreak();
         return;
     }
-    var checked = (localStorage.getItem('autoJbRetry') || 'true') === 'true'; // default to true if not set
-    var sessionChecked = sessionStorage.getItem('autoJbRetry') == 'true';
-    ui.autoJbRetry.checked = checked;
+
+    var checked = storage.getBoolean('autoJbRetry', true);
+    var sessionChecked = storage.session.getBoolean('autoJbRetry', false);
+
+    if (ui.autoJbRetry) ui.autoJbRetry.checked = checked;
+
     // check if supported ps4
-    if (window.ps4Fw < webKitMin || window.ps4Fw > webKitMax || !window.ps4Fw) return;
+    var isSupported = isFirmwareSupported(window.ps4Fw);
+    if (!isSupported || !window.ps4Fw) return;
+
     // If auto jb is checked and previous jailbreak attempt was unsuccessful, retry jailbreak with a timer
     if (checked && sessionChecked) {
         autoJailbreakTimer();
     }
 }
 
-// localStorage retry value true but no sessionStorage value? use timer.
+// Storage retry value true but no sessionStorage value? use timer.
 function autoJailbreakTimer() {
     var timer = 3; // Start a longer countdown immediately
-    ui.stopAutoJbBtn.classList.toggle('hidden');
-    autoJbInterval = setInterval(() => {
-
-        ui.clickToStartText.textContent = window.lang.jailbreakCountDown.replace('{seconds}', timer);
-        ui.clickToStartText.style.fontSize = "15px";
+    if (ui.stopAutoJbBtn) toggleVisibility(ui.stopAutoJbBtn.id);
+    autoJbInterval = setInterval(function () {
+        if (ui.clickToStartText) {
+            ui.clickToStartText.textContent = (window.lang.jailbreakCountDown || 'Retrying in {seconds} seconds...').replace('{seconds}', timer);
+            ui.clickToStartText.style.fontSize = "15px";
+        }
         if (timer <= 0) {
             clearInterval(autoJbInterval);
             jailbreak();
@@ -40,14 +49,13 @@ function autoJailbreakTimer() {
     }, 1000);
 }
 
-
 function setReloadAfterJb(checked) {
-    localStorage.setItem('reloadAfterJb', checked);
+    storage.set('reloadAfterJb', checked);
 }
 
 function getReloadAfterJb() {
-    const checked = (localStorage.getItem('reloadAfterJb') || 'true') === 'true'; // default to true if not set
-    const input = document.getElementById('reloadAfterJbInput');
+    var checked = storage.getBoolean('reloadAfterJb', false);
+    var input = document.getElementById('reloadAfterJbInput');
     if (input) input.checked = checked;
     return checked;
 }
