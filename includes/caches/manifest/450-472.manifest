@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# v1
+# v2
 # Generated on 2026-10-16
 
 CACHE:
@@ -24,6 +24,7 @@ CACHE:
 ../../../includes/js/design.js
 ../../../includes/js/events.js
 ../../../includes/js/storage.js
+../../../includes/js/testMode.js
 ../../../includes/js/firmware.js
 ../../../includes/js/goldhenScanner.js
 ../../../includes/js/initial.js
