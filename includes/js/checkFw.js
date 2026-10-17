@@ -11,7 +11,7 @@ function CheckFW() {
         'click-to-start-text', 'chooseGoldHEN', 'advancedPayloads', 'chooseExploitChain', 'reloadAfterJb',
     ];
 
-    if (ps4Console && !devMode) {
+    if (ps4Console) {
         window.ps4Fw = fwVersion;
         user.ip = '127.0.0.1';
         user.ps4Fw = fwVersion;
