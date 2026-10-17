@@ -1,6 +1,6 @@
 CACHE MANIFEST
-# v2.2
-# Generated on 2026-10-16
+# v2.6
+# Generated on 2026-10-17
 
 CACHE:
 ../../../
@@ -66,7 +66,8 @@ CACHE:
 ../../../includes/payloads/HEN/goldhen_v2.4b18.9.bin
 ../../../includes/payloads/HEN/goldhen_v2.4b18.10.bin
 ../../../includes/payloads/HEN/PS4HEN.bin
-\../../../includes/payloads/Linux/linux-32mb.elf
+../../../includes/payloads/HEN/nexHEN-ps4.elf
+../../../includes/payloads/Linux/linux-32mb.elf
 ../../../includes/payloads/Linux/linux-64mb.elf
 ../../../includes/payloads/Linux/linux-128mb.elf
 ../../../includes/payloads/Linux/linux-256mb.elf

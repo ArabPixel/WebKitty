@@ -147,32 +147,44 @@ function toggleVisibility(id, show) {
 /**
  * HTTP payload sender to elfldr using GET (ES5 Compatible)
  * 
- * @param {string} payload_path path to the payload. e.g. /includes/payloads/HEN/nexHEN-ps4.elf
+ * @param {string} payload_path path to the payload. e.g. ./includes/payloads/HEN/nexHEN-ps4.elf
  * @param {function} log - The logging function to use
- * @param {number} timeoutMs - The timeout in milliseconds
+ * @param {number} retryForMs - How long to retry connection failures while elfldr starts
  */
-function sendToElfldr(payload_path, log) {
+function sendToElfldr(payload_path, log, retryForMs) {
     if (payload_path.indexOf("nexHEN-ps4.bin") !== -1) payload_path = payload_path.replace('.bin', '.elf');
-    var urlPrefix = window.location.protocol;
-    var fullHostPath = urlPrefix + "//" + window.location.host + payload_path;
+    var payloadLink = document.createElement('a');
+    payloadLink.href = payload_path;
+    var fullHostPath = payloadLink.href;
 
     var targetUrl = "http://127.0.0.1:9021/?uri=" + fullHostPath;
+    var deadline = Date.now() + (retryForMs || 0);
     log("Sending payload to elfldr...\nPayload Path: " + payload_path);
-    return fetch(targetUrl, {
-        method: 'GET'
-    })
+    function attempt() {
+        return fetch(targetUrl, {
+            method: 'GET'
+        })
         .then(function (response) {
             return response.text().then(function (responseText) {
-                if (response.status == 200 && responseText.indexOf("Error") != -1) {
-                    log("elfldr returned an error: " + responseText, 'orange');
-                }else {
-                    log("Payload Sent successfully!\nStatus: " + response.status + " " + response.statusText + "\nResponse: " + responseText, 'green');
+                if (response.status !== 200 || responseText.indexOf("Error") !== -1) {
+                    log("elfldr returned an error: " + response.status + " " + responseText, 'orange');
+                    return false;
                 }
+                log("Payload Sent successfully!\nStatus: " + response.status + " " + response.statusText + "\nResponse: " + responseText, 'green');
                 return true;
+            }, function (error) {
+                log("Could not read elfldr response: " + error.message, 'orange');
+                return false;
             });
-        })
-        .catch(function (error) {
+        }, function (error) {
+            if (Date.now() < deadline) {
+                return new Promise(function (resolve) {
+                    setTimeout(resolve, 1000);
+                }).then(attempt);
+            }
             log("Error: " + error.message + "\n(elfldr looks to be inaccessible)", 'orange');
             return false;
         });
+    }
+    return attempt();
 }

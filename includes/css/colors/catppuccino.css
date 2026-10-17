@@ -3,7 +3,7 @@
 /* Cat Paw Pattern */
 body, .bg-gray-900 {
     background-color: #2b221e !important;
-    background-image: url('/includes/assets/icons/cat-paw.svg') !important;
+    background-image: url('../../assets/icons/cat-paw.svg') !important;
     color: #f5e6d3 !important;
 }
 
@@ -55,7 +55,7 @@ select option{
     right: -16px !important;
     width: 60px !important;
     height: 30px !important;
-    background-image: url('/includes/assets/icons/peeking-cat.svg') !important;
+    background-image: url('../../assets/icons/peeking-cat.svg') !important;
     background-repeat: no-repeat !important;
     background-size: contain !important;
     pointer-events: none !important;
@@ -70,7 +70,7 @@ select option{
     right: 20px !important;
     width: 60px !important;
     height: 30px !important;
-    background-image: url('/includes/assets/icons/peeking-cat.svg') !important;
+    background-image: url('../../assets/icons/peeking-cat.svg') !important;
     background-repeat: no-repeat !important;
     background-size: contain !important;
     pointer-events: none !important;
@@ -92,7 +92,7 @@ html[dir="rtl"] #settings-popup::before {
     border: 1px solid #4a3a31 !important;
     color: #f5e6d3 !important;
     position: relative !important;
-    background-image: url('/includes/assets/icons/cat-face.svg') !important;
+    background-image: url('../../assets/icons/cat-face.svg') !important;
     background-repeat: no-repeat !important;
     background-position: center center !important;
     background-size: 200px auto !important;
@@ -152,7 +152,7 @@ input[type="file"] {
 .hover\:bg-blue-700, 
 #exploitRun {
     background-color: #e07a5f !important;
-    background-image: url('/includes/assets/icons/cat-paw-btns.svg') !important;
+    background-image: url('../../assets/icons/cat-paw-btns.svg') !important;
     background-repeat: no-repeat !important;
     background-position: right 8px center !important;
     background-size: 20px 20px !important;

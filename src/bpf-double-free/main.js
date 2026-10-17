@@ -136,25 +136,25 @@ function _loadBpfDoubleFree() {
             while (1) switch (_context1.n) {
                 case 0:
                     _context1.n = 1;
-                    return getScript("/src/bpf-double-free/common.js", false);
+                    return getScript("./src/bpf-double-free/common.js", false);
                 case 1:
                     _context1.n = 2;
-                    return getScript("/src/bpf-double-free/rop.js", false);
+                    return getScript("./src/bpf-double-free/rop.js", false);
                 case 2:
                     _context1.n = 3;
-                    return getScript("/src/bpf-double-free/offsets.js", false);
+                    return getScript("./src/bpf-double-free/offsets.js", false);
                 case 3:
                     _context1.n = 4;
-                    return getScript("/src/bpf-double-free/kernelExploit_bpf_double_free.js", false);
+                    return getScript("./src/bpf-double-free/kernelExploit_bpf_double_free.js", false);
                 case 4:
                     _context1.n = 5;
-                    return getScript("/src/bpf-double-free/userland.js", false);
+                    return getScript("./src/bpf-double-free/userland.js", false);
                 case 5:
                     _context1.n = 6;
-                    return getScript("/src/bpf-double-free/webkitExploit_stackUnitializedRead.js", false);
+                    return getScript("./src/bpf-double-free/webkitExploit_stackUnitializedRead.js", false);
                 case 6:
                     _context1.n = 7;
-                    return getScript("/src/bpf-double-free/webkitExploit_haveABadTime.js", false);
+                    return getScript("./src/bpf-double-free/webkitExploit_haveABadTime.js", false);
                 case 7:
                     startbpfDoubleFree(0);
                 case 8:

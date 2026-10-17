@@ -210,8 +210,8 @@ function makeRpc(worker) {
         // off.kpatch wins when a firmware shares another's kernel and therefore
         // its blob -- 12.02 uses 1200.bin. Otherwise derive it from the key.
         const kpatchName = fwResolved.off && fwResolved.off.kpatch
-            ? "/src/slopkit/patches/" + fwResolved.off.kpatch
-            : fwKey ? "/src/slopkit/patches/" + fwKey.replace(".", "") + ".bin" : null;        let kpatch = null;
+            ? "./src/slopkit/patches/" + fwResolved.off.kpatch
+            : fwKey ? "./src/slopkit/patches/" + fwKey.replace(".", "") + ".bin" : null;        let kpatch = null;
         try {
             if (kpatchName) {
                 const rsp = await fetch(kpatchName);
@@ -700,7 +700,7 @@ function makeRpc(worker) {
             })() + " are available to this process)");
 
         state("wiring the worker...", "warn");
-        worker = new Worker("/src/slopkit/rpc_worker.js");
+        worker = new Worker("./src/slopkit/rpc_worker.js");
         rpc = makeRpc(worker);
         await rpc("ping");
         const markerArr = await rpc("init", SENT_LO, SENT_HI);

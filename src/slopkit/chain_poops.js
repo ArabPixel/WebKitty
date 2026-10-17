@@ -140,8 +140,8 @@ let allDone = false;
         let kpatch = null, payload = null;
         // off.kpatch wins when a firmware shares another's kernel and therefore
         // its blob -- 12.02 uses 1200.bin. Otherwise derive it from the key.
-        const kpatchName = off && off.kpatch ? "/src/slopkit/patches/" + off.kpatch
-            : key ? "/src/slopkit/patches/" + key.replace(".", "") + ".bin" : null;
+        const kpatchName = off && off.kpatch ? "./src/slopkit/patches/" + off.kpatch
+            : key ? "./src/slopkit/patches/" + key.replace(".", "") + ".bin" : null;
         const KPATCH_JMP_SITES = [];
         try {
             if (kpatchName) {
@@ -572,7 +572,7 @@ let allDone = false;
                 + (i < NUM_IOV_WORKER ? i : i - NUM_IOV_WORKER);
             const w = { name: name, armed: false, wired: false };
             workers.push(w);
-            w.worker = new Worker("/src/slopkit/rpc_worker.js");
+            w.worker = new Worker("./src/slopkit/rpc_worker.js");
             w.rpc = makeRpc(w.worker, name);
             if ((await w.rpc("ping", 15000)) !== "pong")
                 throw new Error(name + " did not answer ping");

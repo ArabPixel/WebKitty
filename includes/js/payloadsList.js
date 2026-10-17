@@ -1,7 +1,7 @@
-var payloadsPath = "/includes/payloads/Bins/";
-var legacyPayloadsPath = "/includes/payloads/Legacy/";
-var homebrewPath = "/includes/payloads/Homebrew/";
-var linuxPath = "/includes/payloads/Linux/";
+var payloadsPath = "./includes/payloads/Bins/";
+var legacyPayloadsPath = "./includes/payloads/Legacy/";
+var homebrewPath = "./includes/payloads/Homebrew/";
+var linuxPath = "./includes/payloads/Linux/";
 
 var payloadsList = [
   {

@@ -1965,6 +1965,7 @@ function runPayload(path, isElfldr = false) {
           sysi("munmap", payload_buffer, padded_buffer.length);
 
           if (!isElfldr){
+            log("Homebrew Enabler loaded", "green");
             doneSuccessfully();
           }
         } catch (e) {
@@ -2004,19 +2005,26 @@ async function kexSuccess() {
       const elfLoaderPayload = payloadsList.find(item => item.id === "ElfLoader");
       const elfldrPath = elfLoaderPayload ? elfLoaderPayload.src : null;
 
+      if (!elfldrPath) {
+        log("ElfLoader payload is unavailable", "red");
+        return;
+      }
       runPayload(elfldrPath.replace('.elf', '.bin'), true);
       await sleep(3000); // Wait 3000ms for elfldr to start
 
       // Sending to elfldr
-      await sendToElfldr(payload_path, window.log);
+      if (!await sendToElfldr(payload_path, window.log, 15000)) {
+        log("ELF payload was not loaded", "red");
+        return;
+      }
+      doneSuccessfully();
     } else {
       // Inject HEN payload
       runPayload(sessionStorage.getItem('payload_path'));
-      
+
       window.log("Homebrew Enabler loaded", "green");
       window.log("\nPSFree & Lapse exploit with AIO fixes by ABC");
     }
-    doneSuccessfully();
   }
 }
 
