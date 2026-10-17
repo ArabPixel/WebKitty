@@ -147,14 +147,15 @@ function toggleVisibility(id, show) {
 /**
  * HTTP payload sender to elfldr using GET (ES5 Compatible)
  * 
- * @param {string} payload_path path to the payload. e.g. /includes/payloads/HEN/nexHEN-ps4.elf
+ * @param {string} payload_path path to the payload. e.g. ./includes/payloads/HEN/nexHEN-ps4.elf
  * @param {function} log - The logging function to use
  * @param {number} timeoutMs - The timeout in milliseconds
  */
 function sendToElfldr(payload_path, log) {
     if (payload_path.indexOf("nexHEN-ps4.bin") !== -1) payload_path = payload_path.replace('.bin', '.elf');
-    var urlPrefix = window.location.protocol;
-    var fullHostPath = urlPrefix + "//" + window.location.host + payload_path;
+    var payloadLink = document.createElement('a');
+    payloadLink.href = payload_path;
+    var fullHostPath = payloadLink.href;
 
     var targetUrl = "http://127.0.0.1:9021/?uri=" + fullHostPath;
     log("Sending payload to elfldr...\nPayload Path: " + payload_path);

@@ -8,7 +8,7 @@ var GOLDHEN_VERSIONS = {
 };
 
 var GOLDHEN_DEFAULT = 'GHv2.4b18.12'; // Latest
-var HEN_BASE_PATH   = '/includes/payloads/HEN/';
+var HEN_BASE_PATH   = './includes/payloads/HEN/';
 var DEFAULT_HEN     = "GoldHEN";
 
 function GoldHEN() {
