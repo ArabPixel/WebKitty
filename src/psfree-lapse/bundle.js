@@ -4821,11 +4821,17 @@ async function kexSuccess() {
       const elfLoaderPayload = payloadsList.find(item => item.id === "ElfLoader");
       const elfldrPath = elfLoaderPayload ? elfLoaderPayload.src : null;
 
-      await PayloadLoader(elfldrPath.replace('.elf', '.bin'));
+      if (!elfldrPath || await PayloadLoader(elfldrPath.replace('.elf', '.bin')) !== 1) {
+        window.log("Failed to start elfldr; the loader payload could not be loaded", "red");
+        return;
+      }
       await sleep(3000); // Wait 3000ms for elfldr to start
 
       // Sending to elfldr
-      await sendToElfldr(payload_path, window.log);
+      if (!await sendToElfldr(payload_path, window.log, 15000)) {
+        window.log("ELF payload was not loaded", "red");
+        return;
+      }
     } else {
       // Inject HEN payload
       const jb_step_status = await PayloadLoader(sessionStorage.getItem('payload_path'));
