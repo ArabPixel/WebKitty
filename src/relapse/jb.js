@@ -16,7 +16,7 @@ const STOP_BEFORE_DOUBLE = params.get("stop") === "beforedouble";
 function post(tag, detail) {
   try {
     const x = new XMLHttpRequest();
-    x.open("POST", "/t", true);
+    x.open("POST", "t", true);
     x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     x.send(
       "PS4-JB&tag=" +
@@ -201,7 +201,7 @@ let allDone = false,
       return;
 
     const KPATCH_FILE =
-      "/src/relapse/patches/" + (off.kpatch || fwKey.replace(".", "") + ".bin");
+      "./src/relapse/patches/" + (off.kpatch || fwKey.replace(".", "") + ".bin");
     const PAYLOAD_FILE = sessionStorage.getItem("payload_path");
     const needPatch = ["k_sysent_661", "k_jmp_rsi"].filter(
       (k) => off[k] === undefined,
@@ -746,7 +746,7 @@ let allDone = false,
 
     async function bringWorker(name) {
       const w = { name: name, armed: false, wired: false };
-      w.worker = new Worker("/src/relapse/rpc_worker.js");
+      w.worker = new Worker("./src/relapse/rpc_worker.js");
       w.rpc = makeRpc(w.worker, name);
       if ((await w.rpc("ping", 15000)) !== "pong")
         throw new Error(name + " ping");
