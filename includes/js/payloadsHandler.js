@@ -70,6 +70,28 @@ function Loadpayloads(payload) {
     }
 }
 
+function loadFanThreshold(temperature) {
+    var supportedTemperatures = {
+        "60": true,
+        "70": true,
+        "80": true,
+        "85": true
+    };
+
+    if (!Object.prototype.hasOwnProperty.call(supportedTemperatures, temperature)) {
+        alert('Invalid fan threshold selection.');
+        return;
+    }
+
+    toggleVisibility(ui.chooseFanThresholdOverlay.id, false);
+    Loadpayloads({
+        id: 'FanThreshold' + temperature,
+        name: 'Fan Threshold (' + temperature + '°C)',
+        specificFW: '4.73 - latest',
+        src: payloadsPath + 'fan-thresholds/ps4-fan-threshold' + temperature + '.bin'
+    });
+}
+
 function renderPayloads(payloads) {
     if (!payloads || !payloads.length) return;
 

@@ -25,7 +25,7 @@
     <meta name="twitter:description"
         content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 13.52.">
     <meta name="twitter:image" content="http://webkitty.arabpixel.net/includes/assets/icons/webkitty.svg">
-    <link rel="icon" href="includes/assets/icons/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./includes/assets/icons/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" id="main-stylesheet" href="">
     <link rel="stylesheet" id="color-stylesheet" href="">
     <script>
@@ -259,7 +259,23 @@
                             <select style="background: transparent;" id="ps4FwSelect"
                                 class="hidden p-1 text-center rounded font-semibold transition-colors text-white">
                                 <option selected hidden>PS4 FW</option>
-                                <option value="lower">Lower</option>
+                                <option value="4.50">4.50</option>
+                                <option value="4.55">4.55</option>
+                                <option value="4.70">4.70</option>
+                                <option value="4.71">4.71</option>
+                                <option value="4.72">4.72</option>
+                                <option value="4.73">4.73</option>
+                                <option value="4.71">4.71</option>
+                                <option value="4.74">4.74</option>
+                                <option value="5.00">5.00</option>
+                                <option value="5.01">5.01</option>
+                                <option value="5.03">5.03</option>
+                                <option value="5.05">5.05</option>
+                                <option value="5.07">5.07</option>
+                                <option value="5.50">5.50</option>
+                                <option value="5.53">5.53</option>
+                                <option value="5.55">5.55</option>
+                                <option value="5.56">5.56</option>
                                 <option value="6.00">6.00</option>
                                 <option value="6.02">6.02</option>
                                 <option value="6.20">6.20</option>
@@ -664,13 +680,13 @@
                 <h3 class="text-l font-bold mb-4">Select a temperature</h3>
                 <div class="flex justify-around gap-2 text-sm text-white/70 w-full">
                     <button class="mt-6 hover:bg-blue-700 p-3 rounded font-semibold transition-colors" id="60"
-                        onclick="Loadpayloads('load_FanThreshold');sessionStorage.setItem('fanTemp', this.id);">60°C</button>
+                        onclick="loadFanThreshold(this.id);">60°C</button>
                     <button class="mt-6 hover:bg-blue-700 p-3 rounded font-semibold transition-colors" id="70"
-                        onclick="Loadpayloads('load_FanThreshold');sessionStorage.setItem('fanTemp', this.id);">70°C</button>
+                        onclick="loadFanThreshold(this.id);">70°C</button>
                     <button class="mt-6 hover:bg-blue-700 p-3 rounded font-semibold transition-colors" id="80"
-                        onclick="Loadpayloads('load_FanThreshold');sessionStorage.setItem('fanTemp', this.id);">80°C</button>
+                        onclick="loadFanThreshold(this.id);">80°C</button>
                     <button class="mt-6 hover:bg-blue-700 p-3 rounded font-semibold transition-colors" id="85"
-                        onclick="Loadpayloads('load_FanThreshold');sessionStorage.setItem('fanTemp', this.id);">85°C</button>
+                        onclick="loadFanThreshold(this.id);">85°C</button>
                 </div>
             </div>
 
@@ -735,7 +751,7 @@
         if (isPS4 && is67x && jailbreakNow) {
             try {
                 var xhr = new XMLHttpRequest();
-                xhr.open('GET', 'src/badhoist/672entrypoint.js', false);
+                xhr.open('GET', './src/badhoist/672entrypoint.js', false);
                 xhr.send('');
                 if (xhr.status === 200) {
                     eval.call(top.window, xhr.responseText);

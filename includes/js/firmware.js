@@ -228,5 +228,5 @@ function getCachePage(fwVersion) {
         }
     }
 
-    return 'includes/caches/' + matchedPage;
+    return './includes/caches/' + matchedPage;
 }

@@ -39,8 +39,8 @@ function sendPayloadWithTimeout(url, data, timeoutMs, onResult) {
         if (req.status === 200 || req.status == 202) {
             complete(true);
         } else {
-            log("HTTP Status: " + req.status, "red");
-            log("Response Body: " + req.responseText, "red");
+            log(window.lang.httpStatus.replace("{status}", req.status), "red");
+            log(window.lang.responseBody.replace("{body}", req.responseText), "red");
             complete(false);
         }
     };
@@ -71,10 +71,9 @@ function Loadpayloadlocal(PLfile, name, id, needsPayloadLoader, customPort) {
     var ps4Ip = (typeof user !== "undefined" && user.ip) ? user.ip : "127.0.0.1";
 
     var handleFallback = function () {
-        if (name === "Elf Loader") {
+        if (id === "ElfLoader") {
             PLfile = "./includes/payloads/Bins/elfldr.bin";
         }
-
         if (isFirmwareSupported(user.ps4Fw)) {
             if (!isHttps()) {
                 if (requiresPayloadServer(needsPayloadLoader)) {
@@ -92,7 +91,7 @@ function Loadpayloadlocal(PLfile, name, id, needsPayloadLoader, customPort) {
     };
 
     // Helper to fetch payload binary and send via GoldHEN port 9090
-    var sendViaGoldHen = function (binPath, onComplete) {
+    var sendViaBinLoader = function (binPath, onComplete) {
         getPayload(binPath, function (fetchReq) {
             if (!fetchReq || (fetchReq.status !== 200 && fetchReq.status !== 304) || !fetchReq.response) {
                 onComplete(false);
@@ -100,7 +99,7 @@ function Loadpayloadlocal(PLfile, name, id, needsPayloadLoader, customPort) {
             }
 
             var payloadData = fetchReq.response;
-            var targets = customPort ? [{ name: "Custom Port", port: customPort }] : PAYLOAD_RECEIVER_TARGETS;
+            var targets = customPort ? [{ name: window.lang.customPort, port: customPort }] : PAYLOAD_RECEIVER_TARGETS;
             var currentTargetIndex = 0;
 
             function tryNextTarget() {
@@ -127,7 +126,7 @@ function Loadpayloadlocal(PLfile, name, id, needsPayloadLoader, customPort) {
     };
 
     // If the payload is an ELF file and not a Linux payload, attempt to send it to elfldr first
-    if (PLfile.indexOf(".elf") !== -1 && PLfile.indexOf("linux") == -1) {
+    if (PLfile.indexOf(".elf") !== -1 && PLfile.indexOf("linux") == -1 && getPs4FwVersion() >= 6.00) {
         sendToElfldr(PLfile, log).then(function (success) {
             if (success) {
                 return; // Successfully sent to elfldr directly
@@ -142,26 +141,21 @@ function Loadpayloadlocal(PLfile, name, id, needsPayloadLoader, customPort) {
                 var elfldrBinPath = "./includes/payloads/Bins/elfldr.bin";
                 // log("Loading elfldr.bin via GoldHEN...", "orange");
 
-                sendViaGoldHen(elfldrBinPath, function (goldHenSuccess) {
+                sendViaBinLoader(elfldrBinPath, function (goldHenSuccess) {
                     if (!goldHenSuccess) {
                         if (!needsPayloadLoader){
-                            log("GoldHEN payload loader not responding. Falling back to exploit...", "red");
+                            log(window.lang.binLoaderNotResponding, "red");
                         }
                         handleFallback();
                         return;
                     }
 
-                    log("elfldr.bin sent via GoldHEN. Waiting for elfldr to start...");
+                    log(window.lang.elfLoaderStarting);
 
                     // Wait 5 seconds for elfldr to boot up on port 9021
                     setTimeout(function () {
                         sendToElfldr(PLfile, log).then(function (retrySuccess) {
-                            if (retrySuccess) {
-                                log("Payload sent successfully to elfldr!", "green");
-                            } else {
-                                log("Failed to send payload to elfldr. Falling back to exploit...", "red");
-                                handleFallback();
-                            }
+                            if (!retrySuccess) handleFallback();
                         });
                     }, 5000);
                 });
@@ -182,7 +176,7 @@ function Loadpayloadlocal(PLfile, name, id, needsPayloadLoader, customPort) {
         // load using GoldHEN / nexHEN payload loader directly
         getPayload(PLfile, function (fetchReq) {
             if (fetchReq && fetchReq.status === 404) {
-                log(window.lang.payloadNotFound.replace("{payload}", name) + " " + PLfile, "red");
+                log(window.lang.payloadNotFound.replace("{payload}", name) + PLfile, "red");
                 return;
             }
 
@@ -191,15 +185,15 @@ function Loadpayloadlocal(PLfile, name, id, needsPayloadLoader, customPort) {
                 return;
             }
 
-            log(window.lang.payloadSending.replace("{payload}", name));
+            log(window.lang.payloadLoaderSending.replace("{payload}", name));
 
             var payloadData = fetchReq.response;
-            var targets = customPort ? [{ name: "Custom Port", port: customPort }] : PAYLOAD_RECEIVER_TARGETS;
+            var targets = customPort ? [{ name: window.lang.customPort, port: customPort }] : PAYLOAD_RECEIVER_TARGETS;
             var currentTargetIndex = 0;
 
             function tryNextTarget() {
                 if (currentTargetIndex >= targets.length) {
-                    var errorMsg = window.lang.failedToSendToPayLoader.replace("{payload}", name) + ps4Ip;
+                    var errorMsg = window.lang.payloadLoaderSendFailed.replace("{payload}", name) + ps4Ip;
                     log(errorMsg, "red");
                     if (requiresPayloadServer(needsPayloadLoader)) {
                         return;
@@ -216,9 +210,9 @@ function Loadpayloadlocal(PLfile, name, id, needsPayloadLoader, customPort) {
                 var targetUrl = "http://" + ps4Ip + ":" + target.port + "/";
                 sendPayloadWithTimeout(targetUrl, payloadData, 5000, function (success) {
                     if (success) {
-                        var msg = window.lang.payloadSentToPayLoader.replace("{payload}", name) + ps4Ip + " (" + target.name + ")";
+                        var msg = window.lang.payloadLoaderSendSuccess.replace("{payload}", name) + ps4Ip + " (" + target.name + ")";
                         log(msg);
-                        if (getPs4FwVersion() == 4.74) log("Payloads work on this firmware, however no notifications are shown!", "grey");
+                        if (getPs4FwVersion() == 4.74) log(window.lang.firmwareNotificationsUnavailable, "grey");
                     } else {
                         tryNextTarget();
                     }
@@ -249,7 +243,7 @@ function Loadpayloadonline(PLfile) {
 // Custom Uploaded Payload
 function customPayload(payloadFile) {
     if (!payloadFile) {
-        alert("Empty file");
+        alert(window.lang.emptyPayloadFile);
         return;
     }
     Loadpayloadlocal(URL.createObjectURL(payloadFile), payloadFile.name, payloadFile.id);
@@ -282,7 +276,7 @@ function payloadRouter(payload) {
 
 function requiresPayloadServer(needsPayloadLoader) {
     if (needsPayloadLoader) {
-        alert(window.lang.binLoaderNotDetected + "\n\n" + window.lang.payloadRequiresPayloader);
+        alert(window.lang.binLoaderNotDetected + "\n\n" + window.lang.payloadRequiresPayloadLoader);
         return true;
     }
     return false;

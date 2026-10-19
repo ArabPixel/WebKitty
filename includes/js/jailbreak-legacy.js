@@ -35,7 +35,10 @@ function _jailbreak() {
             // Choose HEN
             chooseHEN();
           }
+          cleanUp();
           payloadPath = storage.session.getString('payload_path', null);
+          log("Loading: " + payloadPath);
+
           // Check if .elf is selected or nexHEN
           if (!(payloadPath && (payloadPath.indexOf('.elf') !== -1 || payloadPath.indexOf("nexHEN-ps4") !== -1))) {
             _context.n = 7;
@@ -54,7 +57,6 @@ function _jailbreak() {
             _context.n = 4;
             break;
           }
-          log("Payload successfully loaded via elfldr. Stopping exploit chain.", "green");
           return _context.a(2);
         case 4:
           _context.n = 6;
@@ -66,9 +68,6 @@ function _jailbreak() {
           _context.n = 7;
           return sleep(500);
         case 7:
-          cleanUp();
-
-          // barebone exploit preferred? go to exploit file
           if (!user.bareboneJB) {
             _context.n = 8;
             break;
@@ -234,7 +233,7 @@ function _cssFontFaceJailbreak() {
         case 0:
           log("Loading ufm42's CSSFontFace exploit chain implementation..");
           _context4.n = 1;
-          return getScript('src/cssfontface/main.js', false, devMode);
+          return getScript('./src/cssfontface/main.js', false, devMode);
         case 1:
           doCssFontFaceJailbreak();
         case 2:
@@ -260,13 +259,13 @@ function _slopKit() {
             break;
           }
           _context5.n = 2;
-          return getScript("src/slopkit/chain_poops.js", true, devMode);
+          return getScript("./src/slopkit/chain_poops.js", true, devMode);
         case 2:
           _context5.n = 4;
           break;
         case 3:
           _context5.n = 4;
-          return getScript("src/slopkit/chain_lapse.js", true, devMode);
+          return getScript("./src/slopkit/chain_lapse.js", true, devMode);
         case 4:
           _context5.n = 6;
           break;
@@ -293,7 +292,7 @@ function _relapseJailbreak() {
           log("Loading Raw Game's Relapse exploit chain implementation..");
           _context6.p = 1;
           _context6.n = 2;
-          return getScript("src/relapse/jb.js?v=10", true, devMode);
+          return getScript("./src/relapse/jb.js?v=10", true, devMode);
         case 2:
           _context6.n = 4;
           break;
@@ -320,7 +319,7 @@ function _bpfDoubleFree() {
           log("Loading bpf double free exploit chain implementation..");
           _context7.p = 1;
           _context7.n = 2;
-          return getScript("src/bpf-double-free/main.js", false, devMode);
+          return getScript("./src/bpf-double-free/main.js", false, devMode);
         case 2:
           loadBpfDoubleFree();
           _context7.n = 4;

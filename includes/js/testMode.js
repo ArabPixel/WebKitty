@@ -1,5 +1,20 @@
-var testModeParams = new URLSearchParams(window.location.search);
-var testModeRequest = testModeParams.get('test');
+// custom url parameter reading for legacy support
+function getQueryParam(name) {
+    var search = window.location.search.substring(1);
+    if (!search) return null;
+    
+    // Split into pairs and loop through them
+    var pairs = search.split('&');
+    for (var i = 0; i < pairs.length; i++) {
+        var pair = pairs[i].split('=');
+        if (decodeURIComponent(pair[0]) === name) {
+            return decodeURIComponent(pair[1] || '');
+        }
+    }
+    return null;
+}
+
+var testModeRequest = getQueryParam('test');
 var testModeStorageUpdated = true;
 
 if (testModeRequest === '1') {

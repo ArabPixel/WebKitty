@@ -4828,7 +4828,7 @@ async function kexSuccess() {
       await sleep(3000); // Wait 3000ms for elfldr to start
 
       // Sending to elfldr
-      if (!await sendToElfldr(payload_path, window.log, 15000)) {
+      if (!await sendToElfldr(payload_path, window.log, 8000)) {
         window.log("ELF payload was not loaded", "red");
         return;
       }

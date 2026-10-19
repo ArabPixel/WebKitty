@@ -18,7 +18,11 @@ async function jailbreak() {
     chooseHEN();
   }
 
+  cleanUp();
+  
   payloadPath = storage.session.getString('payload_path', null);
+  log("Loading: " + payloadPath);
+
   // Check if .elf is selected or nexHEN
   if (payloadPath && (payloadPath.indexOf('.elf') !== -1 || payloadPath.indexOf("nexHEN-ps4") !== -1)) {
     if (payloadPath.indexOf("nexHEN-ps4") !== -1) {
@@ -29,15 +33,12 @@ async function jailbreak() {
     try {
       let success = await sendToElfldr(payloadPath, log);
       if (success) {
-        log("Payload successfully loaded via elfldr. Stopping exploit chain.", "green");
         return; // Stop on success
       }
     } catch (error) {}
 
     await sleep(500);
   }
-  
-  cleanUp();
 
   // barebone exploit preferred? go to exploit file
   if (user.bareboneJB) {
@@ -140,7 +141,7 @@ async function badHoistJailbreak() {
 
 async function cssFontFaceJailbreak() {
   log("Loading ufm42's CSSFontFace exploit chain implementation..");
-  await getScript('src/cssfontface/main.js', false, devMode);
+  await getScript('./src/cssfontface/main.js', false, devMode);
   doCssFontFaceJailbreak();
 }
 
@@ -148,9 +149,9 @@ async function slopKit() {
   log("Loading Raw-Game's SlopKit exploit chain implementation..");
   try {
     if (user.exploitChain === EXPLOIT_CHAINS.SLOPKIT_NETCTRL) {
-      await getScript("src/slopkit/chain_poops.js", true, devMode);
+      await getScript("./src/slopkit/chain_poops.js", true, devMode);
     } else {
-      await getScript("src/slopkit/chain_lapse.js", true, devMode);
+      await getScript("./src/slopkit/chain_lapse.js", true, devMode);
     }
   } catch (error) {
     log(error);
@@ -160,7 +161,7 @@ async function slopKit() {
 async function relapseJailbreak() {
   log("Loading Raw Game's Relapse exploit chain implementation..");
   try {
-    await getScript("src/relapse/jb.js?v=10", true, devMode);
+    await getScript("./src/relapse/jb.js?v=10", true, devMode);
   } catch (error) {
     log(error);
   }
@@ -169,7 +170,7 @@ async function relapseJailbreak() {
 async function bpfDoubleFree() {
   log("Loading bpf double free exploit chain implementation..");
   try {
-    await getScript("src/bpf-double-free/main.js", false, devMode);
+    await getScript("./src/bpf-double-free/main.js", false, devMode);
     loadBpfDoubleFree();
   } catch (error) {
     log(error);

@@ -1,4 +1,4 @@
-// Scans the local network for a PS4 running the PayLoader server.
+// Scans the local network for a PS4 running a Payload Loader server.
 
 // keep base ip and chop the rest
 // e.g. 192.168.20.156 => 192.168.20
@@ -55,7 +55,7 @@ function findPs4FromBaseIP(ip) {
         function onDone() {
             checked++;
             if (checked === total && !found) {
-                alert(window.lang.payLoaderNotFound);
+                alert(window.lang.payloadLoaderNotFound);
             }
         }
 
@@ -99,7 +99,7 @@ function findPs4FromBaseIP(ip) {
                                 ui.ps4IpInput.value = checkIp;
                                 storage.set('ps4Ip', checkIp);
                             }
-                            alert((window.lang ? window.lang.payLoaderFound : 'Found PayLoader: ') + checkIp);
+                            alert((window.lang ? window.lang.payloadLoaderFound : 'Payload Loader server found at: ') + checkIp);
                             resolve(checkIp);
                             return;
                         }

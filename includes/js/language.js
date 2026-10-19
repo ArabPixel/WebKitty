@@ -6,17 +6,48 @@ function loadLanguage() {
     }
     if (langRadio) langRadio.checked = true;
 
-    var langScript = document.getElementById("langScript");
-    if (langScript) langScript.remove();
-
-    // Load language file, returns a Promise for initLanguage()
+    var selectedLanguage = user.currentLanguage;
     return new Promise(function (resolve, reject) {
-        var script = document.createElement('script');
-        script.src = './includes/js/languages/' + user.currentLanguage + '.js';
-        script.id = "langScript";
-        script.onload = function () { resolve(window.lang); };
-        script.onerror = function () { reject(new Error('Failed to load ' + user.currentLanguage)); };
-        document.head.appendChild(script);
+        function loadScript(language, onLoad) {
+            var langScript = document.getElementById("langScript");
+            if (langScript) langScript.remove();
+
+            var script = document.createElement('script');
+            script.src = './includes/js/languages/' + language + '.js';
+            script.id = "langScript";
+            script.onload = onLoad;
+            script.onerror = function () { reject(new Error('Failed to load ' + language)); };
+            document.head.appendChild(script);
+        }
+
+        function loadSelectedLanguage(englishStrings) {
+            loadScript(selectedLanguage, function () {
+                var selectedStrings = window.lang;
+                var combinedStrings = {};
+                var key;
+                for (key in englishStrings) {
+                    if (Object.prototype.hasOwnProperty.call(englishStrings, key)) {
+                        combinedStrings[key] = englishStrings[key];
+                    }
+                }
+                for (key in selectedStrings) {
+                    if (Object.prototype.hasOwnProperty.call(selectedStrings, key)) {
+                        combinedStrings[key] = selectedStrings[key];
+                    }
+                }
+                window.lang = combinedStrings;
+                resolve(window.lang);
+            });
+        }
+
+        if (selectedLanguage === 'en') {
+            loadScript('en', function () { resolve(window.lang); });
+        } else {
+            loadScript('en', function () {
+                var englishStrings = window.lang;
+                loadSelectedLanguage(englishStrings);
+            });
+        }
     });
 }
 
@@ -126,13 +157,13 @@ function applyLanguage(lang) {
 
     // Settings Popup
     if (ui.settingsPopup) {
-        updateText(ui.settingsPopup.querySelector('h2'), 'settingsPsfreeHeader');
+        updateText(ui.settingsPopup.querySelector('h2'), 'settingsBtnTitle');
         updateText(ui.settingsPopup.querySelector('#close-settings'), 'closeButton');
         updateText(ui.settingsPopup.querySelector('#ghVer'), 'ghVer');
         var ghOtherVer = ui.settingsPopup.querySelector('#chooseGoldHEN summary');
         if (ghOtherVer) updateText(ghOtherVer, 'otherVer');
         updateText(ui.settingsPopup.querySelector('#latestVer'), 'latestVer');
-        updateText(ui.settingsPopup.querySelector('#scanPayLoader'), 'scanPayLoader');
+        updateText(ui.settingsPopup.querySelector('#scanPayLoader'), 'scanPayloadLoader');
         updateText(ui.settingsPopup.querySelector('#shutdownServerBtn'), 'shutdownServerBtn');
         updateText(ui.settingsPopup.querySelector('#reloadAfterJbText'), 'reloadAfterJbText');
     }
@@ -146,11 +177,11 @@ function applyLanguage(lang) {
     updateText(document.getElementById('showAdvancedPayloads'), 'showAdvancedPayloads');
     updateText(document.getElementById('optionsHeader'), 'optionsHeader');
     updateText(document.getElementById('layout'), 'layouts');
-    updateText(document.getElementById('defaultTheme'), 'defaultTheme');
+    updateText(document.getElementById('defaultTheme'), 'default');
     updateText(document.getElementById('compactTheme'), 'compactTheme');
     updateText(document.getElementById('vibrantColor'), 'vibrantColor');
     updateText(document.getElementById('themeWord'), 'themeWord');
-    updateText(document.getElementById('defaultColor'), 'defaultTheme');
+    updateText(document.getElementById('defaultColor'), 'default');
     updateText(document.getElementById('modularLapse'), 'modularLapse');
     updateText(document.getElementById('bundleLapse'), 'bundleLapse');
     updateText(document.getElementById('autoJbRetryText'), 'autoJbRetryText');
