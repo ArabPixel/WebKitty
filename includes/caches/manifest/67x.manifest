@@ -40,6 +40,7 @@ CACHE:
 ../../../includes/js/languages/ru.js
 ../../../includes/js/languages/tr.js
 ../../../includes/js/languages/zh-cn.js
+../../../includes/js/languages/it.js
 ../../../includes/js/deliverPayload.js
 ../../../includes/payloads/Bins/WebRTE.bin
 ../../../includes/payloads/Bins/elfldr.bin

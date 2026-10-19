@@ -24,6 +24,7 @@ CACHE:
 ../../../includes/js/utilities.js
 ../../../includes/js/languages/ar.js
 ../../../includes/js/languages/en.js
+../../../includes/js/languages/it.js
 ../../../includes/js/languages/tr.js
 ../../../includes/js/languages/zh-cn.js
 ../../../includes/js/languages/fa.js

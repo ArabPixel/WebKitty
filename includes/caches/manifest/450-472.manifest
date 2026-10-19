@@ -35,6 +35,7 @@ CACHE:
 ../../../includes/js/utilities.js
 ../../../includes/js/languages/ar.js
 ../../../includes/js/languages/en.js
+../../../includes/js/languages/it.js
 ../../../includes/js/languages/es.js
 ../../../includes/js/languages/fa.js
 ../../../includes/js/languages/ru.js
