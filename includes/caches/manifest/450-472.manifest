@@ -41,6 +41,7 @@ CACHE:
 ../../../includes/js/languages/ru.js
 ../../../includes/js/languages/tr.js
 ../../../includes/js/languages/zh-cn.js
+../../../includes/css/colors/terminal.css
 ../../../includes/js/deliverPayload.js
 ../../../includes/payloads/Legacy/ps4-disable-updates-legacy.bin
 ../../../includes/payloads/Legacy/ps4-enable-browser-legacy.bin

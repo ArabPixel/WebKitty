@@ -27,6 +27,7 @@ CACHE:
 ../../../includes/js/languages/it.js
 ../../../includes/js/languages/tr.js
 ../../../includes/js/languages/zh-cn.js
+../../../includes/css/colors/terminal.css
 ../../../includes/js/languages/fa.js
 ../../../includes/js/languages/ru.js
 ../../../includes/js/languages/es.js

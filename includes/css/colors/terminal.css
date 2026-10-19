@@ -1,0 +1,216 @@
+/* Terminal Theme for WebKitty - Matches user's preferred aesthetic */
+/* Background: #0c0d10 (very dark, almost black) */
+/* Text: #00ff66 (bright green, like old terminal displays) */
+/* Font: JetBrains Mono (monospace family) */
+
+/* Override base styles */
+body {
+    background-color: #0c0d10 !important;
+    color: #00ff66 !important;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Hack', 'Source Code Pro', 'Consolas', 'Monaco', 'Courier New', monospace !important;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Override text colors */
+.text-white {
+    color: #00ff66 !important;
+}
+.text-white\/70 {
+    color: #00ff66bf !important; /* 75% opacity */
+}
+.text-white\/80 {
+    color: #00ff66cc !important; /* 80% opacity */
+}
+.text-white\/90 {
+    color: #00ff66e6 !important; /* 90% opacity */
+}
+
+/* Override background colors */
+.bg-gray-900 {
+    background-color: #0c0d10 !important;
+}
+.bg-gray-800 {
+    background-color: #0a0b0d !important;
+}
+.bg-gray-700 {
+    background-color: #08090a !important;
+}
+.bg-gray-700\/60 {
+    background-color: rgba(8, 9, 10, 0.6) !important;
+}
+.bg-black\/50 {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+.bg-white\/5 {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+.bg-white\/10 {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Override border colors */
+.border-white\/20 {
+    border-color: rgba(0, 255, 102, 0.2) !important;
+}
+.border-gray-200 {
+    border-color: #00ff6633 !important;
+}
+.border-gray-700 {
+    border-color: #00ff6680 !important;
+}
+
+/* Override hover states */
+.hover\:bg-gray-700:hover {
+    background-color: #08090a !important;
+}
+.hover\:text-white:hover {
+    color: #00ff66 !important;
+}
+.hover\:bg-white\/10:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+.hover\:bg-gray-800:hover {
+    background-color: #0a0b0d !important;
+}
+
+/* Override focus states */
+.focus-within\:border-blue-500:focus-within {
+    border-color: #00ff66 !important;
+}
+.focus\:ring-2:focus {
+    box-shadow: 0 0 0 2px #00ff66 !important;
+}
+.focus\:ring-blue-400:focus {
+    box-shadow: 0 0 0 2px #00ff66 !important;
+}
+
+/* Override accent color for radio/checkbox */
+.accent-blue-500 {
+    accent-color: #00ff66 !important;
+}
+
+/* Override tab colors */
+.tabs ul {
+    border-color: #00ff6633 !important;
+}
+.tabs button {
+    color: #00ff6680 !important;
+}
+.tabs button[aria-selected="true"] {
+    border-color: #00ff66 !important;
+    color: #00ff66 !important;
+    border-bottom: 1px solid #00ff66 !important;
+}
+.tabs button:not([aria-selected="true"]):hover {
+    color: #00ff66bf !important;
+    border-color: #00ff6633 !important;
+}
+
+/* Override button styles */
+button {
+    background-color: transparent !important;
+    border: 1px solid #00ff6633 !important;
+    color: #00ff66 !important;
+}
+button:hover {
+    background-color: rgba(0, 255, 102, 0.1) !important;
+    border-color: #00ff6666 !important;
+    color: #00ff66 !important;
+}
+button:active {
+    background-color: rgba(0, 255, 102, 0.2) !important;
+}
+
+/* Override input styles */
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #00ff6633;
+    border-radius: 50%;
+    background: #0c0d10;
+    cursor: pointer;
+}
+input[type="radio"]:checked {
+    border: 2px solid #00ff66;
+    background: #00ff66;
+}
+input[type="radio"]:hover {
+    border-color: #00ff6666;
+}
+
+/* Override labels */
+label {
+    color: #00ff66 !important;
+}
+
+/* Override SVG icons */
+svg {
+    fill: #00ff66 !important;
+}
+
+/* Override console text */
+#console {
+    color: #00ff66 !important;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Hack', 'Source Code Pro', 'Consolas', 'Monaco', 'Courier New', monospace !important;
+}
+
+/* Override exploit status */
+#state {
+    color: #00ff66 !important;
+}
+
+/* Override PS4 firmware status */
+#PS4FW {
+    color: #00ff66 !important;
+}
+
+/* Add a subtle scanline effect for terminal feel */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Create subtle scanlines */
+    background-image: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 1px,
+            rgba(0, 255, 102, 0.05) 1px,
+            rgba(0, 255, 102, 0.05) 2px
+        );
+    z-index: 9999;
+}
+
+/* Add terminal-like cursor blinking effect to active elements */
+input:focus, textarea:focus, button:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 2px #00ff66 !important;
+}
+
+/* Make the interface feel more like a terminal */
+.mainContainer {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Reduce padding for tighter terminal-like layout */
+section {
+    padding: 1rem !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #00ff66 !important;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Hack', 'Source Code Pro', 'Consolas', 'Monaco', 'Courier New', monospace !important;
+}
+
+p, span, div, li {
+    color: #00ff66 !important;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Hack', 'Source Code Pro', 'Consolas', 'Monaco', 'Courier New', monospace !important;
+}
