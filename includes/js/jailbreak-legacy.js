@@ -30,8 +30,8 @@ function _jailbreak() {
           storage.session.set('autoJbRetry', true);
 
           // Skip if payload was chosen, useful when a payload was chosen from deliverPayload.js
-          payloadPath = storage.session.getString('`payload_path`', undefined);
-          if (!payloadPath || payloadPath == "undefined") {
+          payloadPath = storage.session.getString('`payload_path`', null);
+          if (!payloadPath || payloadPath == null) {
             // Choose HEN
             chooseHEN();
           }

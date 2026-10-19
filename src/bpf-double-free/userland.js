@@ -628,7 +628,7 @@ function userland() {
   } else if (kernel_dump) {
     // This should have run in kernExploit()
     allset();
-  } else if (bin_loader || payload_location == null) {
+  } else if (bin_loader || payload_location == undefined) {
     storage.session.remove("binloader");
     binLoader();
   } else if (embedded_payload) {
