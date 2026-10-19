@@ -11,6 +11,7 @@ let passCount = 0,
   failCount = 0;
 let armedEver = false;
 const params = new URLSearchParams(location.search);
+const allowAllPayloads = true;
 const STOP_BEFORE_DOUBLE = params.get("stop") === "beforedouble";
 
 function post(tag, detail) {
@@ -149,6 +150,8 @@ let allDone = false,
   jailbroken = false,
   kpatched = false,
   payloadRunning = false;
+let selectedPayloadPath = "",
+  selectedNexHEN = false;
 
 (async function () {
   let p = null;
@@ -202,7 +205,12 @@ let allDone = false,
 
     const KPATCH_FILE =
       "./src/relapse/patches/" + (off.kpatch || fwKey.replace(".", "") + ".bin");
-    const PAYLOAD_FILE = sessionStorage.getItem("payload_path");
+    selectedPayloadPath = sessionStorage.getItem("payload_path") || "";
+    selectedNexHEN =
+      /(?:^|\/)nexHEN-ps4\.bin(?:[?#]|$)/i.test(selectedPayloadPath);
+    const PAYLOAD_FILE = selectedNexHEN
+      ? "./includes/payloads/Bins/elfldr.bin"
+      : selectedPayloadPath;
     const needPatch = ["k_sysent_661", "k_jmp_rsi"].filter(
       (k) => off[k] === undefined,
     );
@@ -550,7 +558,7 @@ let allDone = false,
         const r = await fetch(PAYLOAD_FILE);
         if (r.ok) blob = new Uint8Array(await r.arrayBuffer());
       } catch (e) {}
-      if (!blob || blob[0] !== 0xe9) {
+      if (!blob || !(allowAllPayloads) && blob[0] !== 0xe9) {
         mark("JB-RELAUNCH", "file=" + PAYLOAD_FILE + " blob=unusable");
         return;
       }
@@ -3480,7 +3488,8 @@ let allDone = false,
               kpDone &&
               DO_PAYLOAD &&
               payloadBlob &&
-              payloadBlob[0] === 0xe9
+              payloadBlob[0] === 0xe9 &&
+              !(allowAllPayloads)
             ) {
               const sz = (payloadBlob.length + 0x3fff) & ~0x3fff;
               const m = sc(SYS.mmap, 0, sz, 7, 0x1002, -1, 0);
@@ -3873,6 +3882,20 @@ let allDone = false,
         failCount +
         (allDone ? "" : "  INCOMPLETE"),
     );
+    if (payloadRunning && selectedNexHEN) {
+      try {
+        const handoff = await sendNexHENAfterElfLoader(
+          selectedPayloadPath,
+          window.log,
+        );
+        if (handoff === true)
+          mark("NEXHEN-HANDOFF", "accepted by Elf Loader");
+        else if (handoff === false)
+          mark("NEXHEN-HANDOFF-FAILED", "Elf Loader did not accept nexHEN");
+      } catch (error) {
+        mark("NEXHEN-HANDOFF-THREW", error.message || String(error));
+      }
+    }
     try {
       finishUI(payloadRunning);
     } catch (eUI) {}

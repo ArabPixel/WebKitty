@@ -239,7 +239,7 @@ function sendToElfldr(payload_path, log, retryForMs) {
 }
 
 function sendNexHENAfterElfLoader(payload_path, log) {
-    if (!/(?:^|\/)elfldr\.bin(?:[?#]|$)/i.test(payload_path || "")) {
+    if (!/(?:^|\/)nexHEN-ps4\.bin(?:[?#]|$)/i.test(payload_path || "")) {
         return Promise.resolve(null);
     }
 

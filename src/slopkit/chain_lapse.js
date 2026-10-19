@@ -239,13 +239,21 @@ function makeRpc(worker) {
             : (kpatchName ? "NOT LOADED (" + kpatchName + ") -- stage 9 will not run"
                           : "no firmware key, so no blob name -- stage 9 will not run"));
 
+        const selectedPayloadPath = sessionStorage.getItem("payload_path") || "";
+        const selectedNexHEN =
+            /(?:^|\/)nexHEN-ps4\.bin(?:[?#]|$)/i.test(selectedPayloadPath);
+        const payloadPath = selectedNexHEN
+            ? "./includes/payloads/Bins/elfldr.bin"
+            : selectedPayloadPath;
         let payload = null;
         try {
-            const prsp = await fetch(sessionStorage.getItem("payload_path"));
+            const prsp = await fetch(payloadPath);
             if (prsp.ok) payload = new Uint8Array(await prsp.arrayBuffer());
         } catch (e) {
             mark("PAYLOAD-FETCH-FAILED", (e && e.message) ? e.message : String(e));
         }
+        if (selectedNexHEN)
+            mark("NEXHEN-ELFLOADER", "launching Elf Loader before nexHEN");
         mark("PAYLOAD-BLOB", payload
             ? "bytes=" + payload.length + " head=" + hexBytes(payload.subarray(0, 12))
                 + (payload[0] === 0xe9 ? " entry=e9-jmp-rel32"
@@ -3818,6 +3826,20 @@ function makeRpc(worker) {
                 : "the corrupted context is repaired and the environment is "
                   + "torn down" + (jailbroken ? ", and the process is root"
                     : "") + ". See the stage 8/9/10 marks for what is left.");
+            if (payloadRunning) {
+                try {
+                    const handoff = await sendNexHENAfterElfLoader(
+                        selectedPayloadPath, window.log);
+                    if (handoff === true)
+                        mark("NEXHEN-HANDOFF", "accepted by Elf Loader");
+                    else if (handoff === false)
+                        mark("NEXHEN-HANDOFF-FAILED",
+                            "Elf Loader did not accept nexHEN");
+                } catch (error) {
+                    mark("NEXHEN-HANDOFF-THREW",
+                        error.message || String(error));
+                }
+            }
             try {
                 stateEl.textContent = payloadRunning
                     ? "ALL DONE"
