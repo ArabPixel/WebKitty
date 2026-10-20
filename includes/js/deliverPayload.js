@@ -228,7 +228,7 @@ function Loadpayloadlocal(PLfile, name, id, needsPayloadLoader, customPort) {
  * Loads a payload directly via WebKit exploit / session storage.
  */
 function Loadpayloadonline(PLfile) {
-    if (PLfile == null) {
+    if (PLfile == undefined || PLfile == null) {
         // Run BinLoader
         storage.session.set("binloader", 1);
     } else {
@@ -257,8 +257,8 @@ function payloadRouter(payload) {
         return;
     }
     // It's a BinLoader
-    if (payload.src == null && payload.legacySrc == null) {
-        Loadpayloadonline(null);
+    if (payload.src == undefined && payload.legacySrc == undefined) {
+        Loadpayloadonline(undefined);
     } else {
         // check for firmware to load a legacy payload instead
         if (getPs4FwVersion() <= 4.74 && payload.legacySrc != undefined) {

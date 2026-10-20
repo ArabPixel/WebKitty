@@ -16,9 +16,10 @@ var module_dump_name = 'libSceWebKit2';                                        /
 var kernel_dump = false;                                                       // Do you want to dump the kernel?
 var kernel_dump_size = 0x69B8000;                                              // How big of a dump should be made?
 
-var bin_loader = storage.session.getBoolean("binloader", false);               // Do you want to listen for payloads on port 9020?
+// the '1' comes from deliverPayloads.js inside Loadpayloadonline
+var bin_loader = sessionStorage.getItem("binloader") === "1";                  // Do you want to listen for payloads on port 9020?
 var embedded_payload = true;                                                   // Do you want to load an embedded payload?
-var payload_location = storage.session.getString('payload_path', null);        // What location do you want to load the payload from?
+var payload_location = sessionStorage.getItem('payload_path') || undefined;         // What location do you want to load the payload from?
 
 function iframeMessage(message) {
     try {
@@ -38,7 +39,9 @@ function awaitpl() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', './success', true);
     xhr.send();
-    updateJbStats(0, 1);
+    if (typeof jailbreakSuccess === "function") {
+        jailbreakSuccess();
+    }
     log('\nAwaiting Payload on port 9020...', 'green');
 }
 

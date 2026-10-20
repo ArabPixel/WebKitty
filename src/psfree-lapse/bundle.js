@@ -2602,11 +2602,9 @@ function runBinLoader() {
     payload_buffer // The ARGUMENT to pass to the shellcode.
   );
   // Update stats
-    if (typeof updateJbStats === "function"){
-    updateJbStats(false, true);
+  if (typeof jailbreakSuccess == "function") {
+    jailbreakSuccess();
   }
-  sessionStorage.removeItem('binloader');
-  sessionStorage.setItem('autoJbRetry', 'false');
   window.log("Awaiting payload on port 9020", "green");
 }
 //================================================================================================
@@ -4809,7 +4807,6 @@ async function doJailBreak() {
 
 async function kexSuccess() {
   if (sessionStorage.getItem('binloader')) {
-    sessionStorage.removeItem('binloader');
     runBinLoader();
   } else {
     let payload_path = sessionStorage.getItem("payload_path");

@@ -1993,7 +1993,7 @@ kexploit().then((success) => {
 
 async function kexSuccess() {
   if (sessionStorage.getItem('binloader')) {
-    sessionStorage.removeItem('binloader');
+    doneSuccessfully();
     runBinLoader();
   } else {
     let payload_path = sessionStorage.getItem("payload_path");
@@ -2028,8 +2028,8 @@ async function kexSuccess() {
   }
 }
 
-function doneSuccessfully(){
+function doneSuccessfully(optionalCustomMessage) {
   if (typeof jailbreakSuccess == "function"){
-    jailbreakSuccess();
+    jailbreakSuccess(optionalCustomMessage);
   }
 }

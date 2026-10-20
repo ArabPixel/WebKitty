@@ -628,8 +628,8 @@ function userland() {
   } else if (kernel_dump) {
     // This should have run in kernExploit()
     allset();
-  } else if (bin_loader) {
-    storage.session.remove("binloader");
+  } else if (bin_loader || payload_location == undefined) {
+    storage.session.set("binloader", 1);
     binLoader();
   } else if (embedded_payload) {
     runPayload(payload_location);

@@ -22,8 +22,8 @@ var payloadsList = [
     description: "Launches BinLoader server on port 9020 to send bin payloads.",
     specificFW: "4.50 - 5.07, 7.00 - 9.60",
     category: "tools",
-    src: null,
-    legacySrc: null
+    src: undefined,
+    legacySrc: undefined
   },
   {
     id: "ElfLoader",
