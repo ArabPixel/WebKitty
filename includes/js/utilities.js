@@ -5,6 +5,108 @@ function sleep(ms) {
     return new Promise(function (resolve) { setTimeout(resolve, ms); });
 }
 
+// Exploit timer - shows elapsed time during jailbreak to indicate progress
+var exploitTimerInterval = null;
+var exploitTimerStart = 0;
+
+// Elf Loader status check - prevents sending payloads before jailbreak is active
+function checkElfLoaderStatus() {
+    return new Promise(function (resolve) {
+        var xhr = new XMLHttpRequest();
+        xhr.timeout = 2000;
+        xhr.onload = function () {
+            resolve(xhr.status === 200);
+        };
+        xhr.onerror = function () { resolve(false); };
+        xhr.ontimeout = function () { resolve(false); };
+        xhr.open('GET', 'http://127.0.0.1:9021/', true);
+        xhr.send();
+    });
+}
+
+function updateElfLoaderStatusUI() {
+    var statusEl = document.getElementById('elfLoaderStatus');
+    if (!statusEl) return;
+    
+    checkElfLoaderStatus().then(function (ready) {
+        if (ready) {
+            statusEl.classList.add('hidden');
+        } else {
+            statusEl.classList.remove('hidden');
+        }
+    });
+}
+
+// Periodically check Elf Loader status when on exploit screen
+function startElfLoaderStatusPolling() {
+    updateElfLoaderStatusUI();
+    setInterval(updateElfLoaderStatusUI, 5000); // Check every 5 seconds
+}
+
+function startExploitTimer() {
+    var timerEl = document.getElementById('exploitTimer');
+    if (!timerEl) return;
+    
+    exploitTimerStart = Date.now();
+    timerEl.classList.remove('hidden');
+    timerEl.textContent = 'Tempo: 0s';
+    
+    if (exploitTimerInterval) clearInterval(exploitTimerInterval);
+    exploitTimerInterval = setInterval(function () {
+        var elapsed = Math.floor((Date.now() - exploitTimerStart) / 1000);
+        timerEl.textContent = 'Tempo: ' + elapsed + 's';
+    }, 1000);
+}
+
+function stopExploitTimer() {
+    if (exploitTimerInterval) {
+        clearInterval(exploitTimerInterval);
+        exploitTimerInterval = null;
+    }
+    var timerEl = document.getElementById('exploitTimer');
+    if (timerEl) {
+        timerEl.classList.add('hidden');
+    }
+}
+
+// Copy log to clipboard for easy debugging/sharing
+function copyLog() {
+    var consoleEl = document.getElementById('console');
+    if (!consoleEl) return;
+    
+    var logText = consoleEl.textContent || consoleEl.innerText || '';
+    if (!logText.trim() || logText.trim() === '--') {
+        log('Nessun log da copiare', 'orange');
+        return;
+    }
+    
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(logText).then(function () {
+            log('Log copiato negli appunti!', 'green');
+        }).catch(function () {
+            fallbackCopy(logText);
+        });
+    } else {
+        fallbackCopy(logText);
+    }
+}
+
+function fallbackCopy(text) {
+    var textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+        document.execCommand('copy');
+        log('Log copiato negli appunti!', 'green');
+    } catch (e) {
+        log('Impossibile copiare: ' + e.message, 'red');
+    }
+    document.body.removeChild(textarea);
+}
+
 // Taken from Feyzee61's ps4jb
 // Pass isModule=true only for ES module scripts (.mjs).
 function getScript(source, isModule, devMode) {
@@ -56,14 +158,20 @@ function log(message, color, consoleEl) {
     }
     if (!consoleEl) return;
 
-    var span = document.createElement('span');
-    // break text into a new line to keep it visible
-    span.style.whiteSpace = "pre-wrap";
-    span.style.fontSize = "14px";
-    span.textContent = message + '\n';
-    if (color) span.style.color = color;
-    consoleEl.appendChild(span);
-}
+        var span = document.createElement('span');
+        // break text into a new line to keep it visible
+        span.style.whiteSpace = "pre-wrap";
+        span.style.fontSize = "14px";
+        span.textContent = message + '\n';
+        if (color) span.style.color = color;
+        consoleEl.appendChild(span);
+
+        // Show copy log button when there's actual content (not just initial "--")
+        var copyBtn = document.getElementById('copyLogBtn');
+        if (copyBtn && consoleEl.textContent.trim() !== '--') {
+            copyBtn.classList.remove('hidden');
+        }
+    }
 
 function getReloadAfterJbValue() {
     return storage.getBoolean('reloadAfterJb', true);
@@ -105,6 +213,12 @@ function jailbreakSuccess(statusMessage) {
     storage.session.remove('payload_path');
     storage.session.remove('binloader');
 
+    // Stop exploit timer on success
+    stopExploitTimer();
+
+    // Re-enable exploit run button
+    resetJailbreakUI(true);
+
     updateJbStats(0, 1);
 
     if (getReloadAfterJbValue() && !isBinLoader) {
@@ -120,6 +234,29 @@ function jailbreakSuccess(statusMessage) {
         if (stateEl && statusMessage) {
             stateEl.textContent = statusMessage;
         }
+    }
+}
+
+// Called when jailbreak fails - re-enables UI for retry
+function jailbreakFailure() {
+    // Stop exploit timer on failure
+    stopExploitTimer();
+    
+    // Re-enable exploit run button for retry
+    resetJailbreakUI(false);
+    
+    // Clear the auto-retry flag so user can manually retry
+    storage.session.remove('autoJbRetry');
+    user.blockJailbreak = false;
+}
+
+// Reset jailbreak UI state (button, etc.)
+function resetJailbreakUI(success) {
+    user.blockJailbreak = false;
+    if (typeof ui !== 'undefined' && ui.exploitRunBtn) {
+        ui.exploitRunBtn.disabled = false;
+        ui.exploitRunBtn.style.opacity = '';
+        ui.exploitRunBtn.style.cursor = '';
     }
 }
 

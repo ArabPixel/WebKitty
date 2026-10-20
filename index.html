@@ -164,13 +164,21 @@
                 <!-- Exploit console panel -->
                 <div id="exploit-status-panel" class="gap-4 bg-gray-800 p-6 rounded-lg flex flex-col h-full w-full">
                     <div class="flex justify-between w-auto" style="align-items: baseline;">
-                        <h2 class="text-xl font-semibold mb-4" id="state">Exploit status</h2>
-                        <button id="successRate" style="white-space: nowrap;"
-                            class="text-base font-semibold duration-300 transform hover:scale-102 hover:border-bottom cursor-pointer"
-                            onclick="clearStats()">
-                            Success rate
-                        </button>
-                    </div>
+                                            <h2 class="text-xl font-semibold mb-4" id="state">Exploit status</h2>
+                                            <div class="flex items-center gap-2">
+                                                <span id="exploitTimer" class="text-xs font-mono text-white/60 hidden">Tempo: 0s</span>
+                                                <button id="copyLogBtn" 
+                                                    class="hidden px-2 py-1 text-xs font-mono bg-gray-700 hover:bg-gray-600 rounded transition-colors cursor-pointer"
+                                                    onclick="copyLog()" title="Copia log negli appunti">
+                                                    Copia Log
+                                                </button>
+                                                <button id="successRate" style="white-space: nowrap;"
+                                                    class="text-base font-semibold duration-300 transform hover:scale-102 hover:border-bottom cursor-pointer"
+                                                    onclick="clearStats()">
+                                                    Success rate
+                                                </button>
+                                            </div>
+                                        </div>
                     <div id="DebugConsole"
                         class="flex-grow min-h-0 min-h-[150px] bg-black/50 p-4 rounded-lg overflow-y-auto mb-4 text-xs font-mono"
                         dir="ltr">
@@ -178,27 +186,35 @@
                     </div>
                     <!-- HEN Selector -->
                     <div id="henSelection" class="flex items-center justify-center gap-4">
-                        <label
-                            class="flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500"
-                            id="goldhen-label-exploit">
-                            <input type="radio" name="hen2" value="GoldHEN" class="accent-blue-500 w-4 h-4 ml-2"
-                                onchange="saveJbFlavor(this.name, this.value)">
-                            <span class="text-base font-semibold text-white/90 select-none">GoldHEN</span>
-                        </label>
-                        <label id="PS4HEN-label-exploit"
-                            class="flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500">
-                            <input type="radio" name="hen2" value="PS4HEN" class="accent-blue-500 w-4 h-4 ml-2"
-                                onchange="saveJbFlavor(this.name, this.value)">
-                            <span class="text-base font-semibold text-white/90 select-none">PS4HEN</span>
-                        </label>
-                        <label id="nexHEN-label-exploit"
-                            class="flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500">
-                            <input type="radio" name="hen2" value="nexHEN" class="accent-blue-500 w-4 h-4 ml-2"
-                                onchange="saveJbFlavor(this.name, this.value)">
-                            <span class="text-base font-semibold text-white/90 select-none">nexHEN</span>
-                        </label>
-                        <button id="exploitRun"
-                            class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 p-2 rounded-full transition-colors">
+                                            <label
+                                                class="flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500"
+                                                id="goldhen-label-exploit">
+                                                <input type="radio" name="hen2" value="GoldHEN" class="accent-blue-500 w-4 h-4 ml-2"
+                                                    onchange="saveJbFlavor(this.name, this.value)">
+                                                <span class="text-base font-semibold text-white/90 select-none">GoldHEN</span>
+                                            </label>
+                                            <label id="PS4HEN-label-exploit"
+                                                class="flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500">
+                                                <input type="radio" name="hen2" value="PS4HEN" class="accent-blue-500 w-4 h-4 ml-2"
+                                                    onchange="saveJbFlavor(this.name, this.value)">
+                                                <span class="text-base font-semibold text-white/90 select-none">PS4HEN</span>
+                                            </label>
+                                            <label id="nexHEN-label-exploit"
+                                                class="flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500">
+                                                <input type="radio" name="hen2" value="nexHEN" class="accent-blue-500 w-4 h-4 ml-2"
+                                                    onchange="saveJbFlavor(this.name, this.value)">
+                                                <span class="text-base font-semibold text-white/90 select-none">nexHEN</span>
+                                            </label>
+                                            <div id="elfLoaderStatus" class="hidden px-2 py-1 text-xs text-orange-400 flex items-center gap-1">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                                                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                                </svg>
+                                                <span>Elf Loader non pronto - Esegui prima il jailbreak</span>
+                                            </div>
+                                            <button id="exploitRun"
+                                                class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 p-2 rounded-full transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-play" viewBox="0 0 16 16">
                                 <path

@@ -8,6 +8,9 @@ async function jailbreak() {
   // stop counter
   if (autoJbInterval) clearInterval(autoJbInterval);
 
+  // Start exploit timer
+  startExploitTimer();
+
   // Make it retry until success
   storage.session.set('autoJbRetry', true);
 
@@ -68,6 +71,7 @@ async function psfreeLapse() {
       await getScript('./src/psfree-lapse/alert.mjs', true, devMode);
     } catch (e) {
       log("alert.mjs is not defined", "red");
+      jailbreakFailure();
     }
   } else { // bundle lapse
     log("Loading Feyzee61's PSFree Lapse Bundle implementation..");
@@ -78,9 +82,11 @@ async function psfreeLapse() {
         doJailBreak();
       } else {
         log("Error: doJailBreak is not defined", "red");
+        jailbreakFailure();
       }
     } catch (e) {
       log("Failed to load bundle script: " + e.message, "red");
+      jailbreakFailure();
     }
   }
 }
@@ -117,32 +123,38 @@ async function badHoistJailbreak() {
   var payloadPath = storage.session.getString('payload_path', '');
 
   if (result === 0 || result === 91) {
-    log("\nKernel exploit succeeded", "green");
-    // Inject HEN payload
-    log("Injecting payload: " + payloadPath);
-    getPayload672(payloadPath);
+      log("\nKernel exploit succeeded", "green");
+      // Inject HEN payload
+      log("Injecting payload: " + payloadPath);
+      getPayload672(payloadPath);
 
-    log("\nBad Hoist by Fire30, 6.7x Kernel Exploit by Sleirsgoevy");
-    log("Implementation taken from Feyzee61");
-    jailbreakSuccess();
-  } else if (result === 179) {
-    log("\nAlready jailbroken, skipping..", "green");
-    log("Injecting payload: " + payloadPath);
-    getPayload672(payloadPath);
-    log("Payload injected successfully", "green");
-    log("\nBad Hoist by Fire30, 6.7x Kernel Exploit by Sleirsgoevy");
-    log("Implementation taken from Feyzee61");
-    jailbreakSuccess();
-  } else {
-    log("\nAn error occured during Kernel Exploit\nPlease restart console and try again...", "red");
-    storage.session.remove('jailbreakNow');
+      log("\nBad Hoist by Fire30, 6.7x Kernel Exploit by Sleirsgoevy");
+      log("Implementation taken from Feyzee61");
+      jailbreakSuccess();
+    } else if (result === 179) {
+      log("\nAlready jailbroken, skipping..", "green");
+      log("Injecting payload: " + payloadPath);
+      getPayload672(payloadPath);
+      log("Payload injected successfully", "green");
+      log("\nBad Hoist by Fire30, 6.7x Kernel Exploit by Sleirsgoevy");
+      log("Implementation taken from Feyzee61");
+      jailbreakSuccess();
+    } else {
+      log("\nAn error occured during Kernel Exploit\nPlease restart console and try again...", "red");
+      storage.session.remove('jailbreakNow');
+      jailbreakFailure();
+    }
   }
-}
 
 async function cssFontFaceJailbreak() {
   log("Loading ufm42's CSSFontFace exploit chain implementation..");
-  await getScript('./src/cssfontface/main.js', false, devMode);
-  doCssFontFaceJailbreak();
+  try {
+    await getScript('./src/cssfontface/main.js', false, devMode);
+    doCssFontFaceJailbreak();
+  } catch (e) {
+    log("Failed to load CSSFontFace exploit: " + e.message, "red");
+    jailbreakFailure();
+  }
 }
 
 async function slopKit() {
@@ -154,7 +166,8 @@ async function slopKit() {
       await getScript("./src/slopkit/chain_lapse.js", true, devMode);
     }
   } catch (error) {
-    log(error);
+    log("Failed to load SlopKit exploit: " + error.message, "red");
+    jailbreakFailure();
   }
 }
 
@@ -163,7 +176,8 @@ async function relapseJailbreak() {
   try {
     await getScript("./src/relapse/jb.js?v=10", true, devMode);
   } catch (error) {
-    log(error);
+    log("Failed to load Relapse exploit: " + error.message, "red");
+    jailbreakFailure();
   }
 }
 
@@ -173,7 +187,8 @@ async function bpfDoubleFree() {
     await getScript("./src/bpf-double-free/main.js", false, devMode);
     loadBpfDoubleFree();
   } catch (error) {
-    log(error);
+    log("Failed to load BPF Double Free exploit: " + error.message, "red");
+    jailbreakFailure();
   }
 }
 
@@ -242,6 +257,11 @@ function cleanUp() {
     toggleVisibility(payloadsSection.id, 0);
     if (playButton) toggleVisibility(playButton.id, 0);
     if (exploitStatusPanel) exploitStatusPanel.style.setProperty("width", "100%", "important");
+  }
+
+  // Start Elf Loader status polling when exploit screen is shown
+  if (typeof startElfLoaderStatusPolling === 'function') {
+    startElfLoaderStatusPolling();
   }
 }
 

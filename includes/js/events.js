@@ -22,6 +22,10 @@ ui.mainContainer.addEventListener('scroll', function () {
 ui.exploitRunBtn.addEventListener('click', function () {
     if (user.blockJailbreak) return;
     user.blockJailbreak = true;
+    // Visually disable the button immediately
+    ui.exploitRunBtn.disabled = true;
+    ui.exploitRunBtn.style.opacity = '0.5';
+    ui.exploitRunBtn.style.cursor = 'not-allowed';
     chooseHEN();
     jailbreak();
 });
