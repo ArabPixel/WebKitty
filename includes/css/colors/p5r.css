@@ -1,0 +1,560 @@
+/* Persona 5 Royal Theme for WebKitty */
+/* Inspired by the Phantom Thieves' aesthetic - Deep reds, blacks, and stylish UI */
+
+/* Base Colors */
+:root {
+    --p5r-black: #0d0d0d;
+    --p5r-dark-gray: #1a1a1a;
+    --p5r-mid-gray: #2a2a2a;
+    --p5r-light-gray: #3a3a3a;
+    --p5r-red: #e91e2a;
+    --p5r-red-bright: #ff2d3a;
+    --p5r-red-dark: #b31820;
+    --p5r-red-glow: rgba(233, 30, 42, 0.4);
+    --p5r-white: #ffffff;
+    --p5r-off-white: #f0f0f0;
+    --p5r-gold: #d4a81a;
+    --p5r-gold-bright: #f5c518;
+}
+
+/* Override base styles */
+body {
+    background-color: var(--p5r-black) !important;
+    color: var(--p5r-off-white) !important;
+    font-family: 'Segoe UI', 'Meiryo', 'Yu Gothic', 'Noto Sans JP', sans-serif !important;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Text colors */
+.text-white { color: var(--p5r-off-white) !important; }
+.text-white\/70 { color: rgba(240, 240, 240, 0.7) !important; }
+.text-white\/80 { color: rgba(240, 240, 240, 0.8) !important; }
+.text-white\/90 { color: rgba(240, 240, 240, 0.9) !important; }
+.text-red-500 { color: var(--p5r-red) !important; }
+.text-yellow-200 { color: var(--p5r-gold) !important; }
+.text-yellow-200\/80 { color: rgba(212, 168, 26, 0.8) !important; }
+.text-gray-600 { color: var(--p5r-light-gray) !important; }
+
+/* Background colors */
+.bg-gray-900 { background-color: var(--p5r-black) !important; }
+.bg-gray-800 { background-color: var(--p5r-dark-gray) !important; }
+.bg-gray-700 { background-color: var(--p5r-mid-gray) !important; }
+.bg-gray-700\/60 { background-color: rgba(42, 42, 42, 0.6) !important; }
+.bg-black\/50 { background-color: rgba(13, 13, 13, 0.5) !important; }
+.bg-white\/5 { background-color: rgba(255, 255, 255, 0.03) !important; }
+.bg-white\/10 { background-color: rgba(255, 255, 255, 0.06) !important; }
+.bg-red-600 { background-color: var(--p5r-red) !important; }
+.bg-red-700 { background-color: var(--p5r-red-dark) !important; }
+.bg-blue-600 { background-color: var(--p5r-red) !important; }
+.bg-yellow-600\/20 { background-color: rgba(212, 168, 26, 0.2) !important; }
+
+/* Borders */
+.border-white\/20 { border-color: rgba(255, 255, 255, 0.1) !important; }
+.border-gray-700 { border-color: var(--p5r-light-gray) !important; }
+.border-blue-500 { border-color: var(--p5r-red) !important; }
+.border-yellow-500\/50 { border-color: rgba(212, 168, 26, 0.5) !important; }
+.border-transparent { border-color: transparent !important; }
+
+/* Hover states */
+.hover\:bg-gray-700:hover { background-color: var(--p5r-mid-gray) !important; }
+.hover\:text-white:hover { color: var(--p5r-off-white) !important; }
+.hover\:bg-white\/10:hover { background-color: rgba(255, 255, 255, 0.06) !important; }
+.hover\:bg-red-700:hover { background-color: var(--p5r-red-dark) !important; }
+.hover\:bg-red-600:hover { background-color: var(--p5r-red) !important; }
+.hover\:bg-blue-700:hover { background-color: var(--p5r-red-dark) !important; }
+.hover\:bg-blue-500\/40:hover { background-color: var(--p5r-red-glow) !important; }
+.hover\:text-gray-600:hover { color: var(--p5r-light-gray) !important; }
+.hover\:border-gray-300:hover { border-color: var(--p5r-mid-gray) !important; }
+
+/* Focus states */
+.focus-within\:border-blue-500:focus-within { border-color: var(--p5r-red) !important; }
+.focus\:ring-2:focus { box-shadow: 0 0 0 2px var(--p5r-red) !important; }
+.focus\:ring-blue-400:focus { box-shadow: 0 0 0 2px var(--p5r-red-bright) !important; }
+
+/* Accent color for radio/checkbox */
+.accent-blue-500 { accent-color: var(--p5r-red) !important; }
+
+/* Tab styles */
+.tabs ul { border-color: var(--p5r-light-gray) !important; }
+.tabs button { border-color: transparent !important; color: rgba(240, 240, 240, 0.6) !important; }
+.tabs button[aria-selected="true"] { 
+    border-color: var(--p5r-red) !important; 
+    color: var(--p5r-red) !important; 
+    border-bottom: 2px solid var(--p5r-red) !important;
+    background: linear-gradient(180deg, transparent, rgba(233, 30, 42, 0.1));
+}
+.tabs button:not([aria-selected="true"]):hover { 
+    color: var(--p5r-red) !important; 
+    border-color: var(--p5r-red) !important; 
+}
+
+/* Buttons */
+button { 
+    background-color: transparent !important; 
+    border: 1px solid rgba(233, 30, 42, 0.3) !important; 
+    color: var(--p5r-off-white) !important; 
+    transition: all 0.2s ease !important;
+}
+button:hover { 
+    background-color: rgba(233, 30, 42, 0.15) !important; 
+    border-color: var(--p5r-red) !important; 
+    color: var(--p5r-red) !important; 
+    box-shadow: 0 0 15px rgba(233, 30, 42, 0.3) !important;
+    transform: translateY(-1px) !important;
+}
+button:active { 
+    background-color: rgba(233, 30, 42, 0.3) !important; 
+    transform: translateY(0) !important;
+}
+
+/* Primary buttons (exploit run, etc.) */
+button.bg-red-600, button.bg-blue-600,
+button[class*="bg-red-600"], button[class*="bg-blue-600"] {
+    background: linear-gradient(135deg, var(--p5r-red), var(--p5r-red-dark)) !important;
+    border: none !important;
+    color: var(--p5r-white) !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+button.bg-red-600:hover, button.bg-blue-600:hover,
+button[class*="bg-red-600"]:hover, button[class*="bg-blue-600"]:hover {
+    background: linear-gradient(135deg, var(--p5r-red-bright), var(--p5r-red)) !important;
+    box-shadow: 0 0 25px var(--p5r-red-glow), 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Input styles */
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(233, 30, 42, 0.4);
+    border-radius: 50%;
+    background: var(--p5r-dark-gray);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+input[type="radio"]:checked {
+    border-color: var(--p5r-red) !important;
+    background: var(--p5r-red) !important;
+    box-shadow: 0 0 10px var(--p5r-red-glow);
+}
+input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--p5r-white);
+}
+input[type="radio"]:hover {
+    border-color: var(--p5r-red-bright);
+    box-shadow: 0 0 8px rgba(233, 30, 42, 0.3);
+}
+
+input[type="text"], input[type="file"], select {
+    background-color: var(--p5r-dark-gray) !important;
+    border: 1px solid rgba(233, 30, 42, 0.3) !important;
+    color: var(--p5r-off-white) !important;
+    border-radius: 6px !important;
+}
+input[type="text"]:focus, select:focus {
+    border-color: var(--p5r-red) !important;
+    box-shadow: 0 0 0 2px var(--p5r-red-glow) !important;
+    outline: none !important;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(233, 30, 42, 0.4);
+    border-radius: 4px;
+    background: var(--p5r-dark-gray);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+input[type="checkbox"]:checked {
+    background: linear-gradient(135deg, var(--p5r-red), var(--p5r-red-dark)) !important;
+    border-color: var(--p5r-red) !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3E%3Cpath d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'/%3E%3C/svg%3E") !important;
+    background-size: 12px 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+input[type="checkbox"]:hover {
+    border-color: var(--p5r-red-bright);
+    box-shadow: 0 0 8px rgba(233, 30, 42, 0.3);
+}
+
+/* Labels */
+label { color: var(--p5r-off-white) !important; }
+label:hover { color: var(--p5r-red) !important; }
+
+/* SVG icons */
+svg { fill: var(--p5r-red) !important; }
+
+/* Console text */
+#console { 
+    color: var(--p5r-red) !important; 
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace !important;
+    text-shadow: 0 0 5px rgba(233, 30, 42, 0.3);
+}
+
+/* Exploit status */
+#state { color: var(--p5r-red) !important; }
+
+/* PS4 firmware status */
+#PS4FW { color: var(--p5r-red) !important; }
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--p5r-dark-gray); }
+::-webkit-scrollbar-thumb { 
+    background: linear-gradient(180deg, var(--p5r-red), var(--p5r-red-dark));
+    border-radius: 4px;
+    border: 1px solid var(--p5r-dark-gray);
+}
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, var(--p5r-red-bright), var(--p5r-red)); }
+::-webkit-scrollbar-corner { background: var(--p5r-black); }
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 { 
+    color: var(--p5r-off-white) !important; 
+    font-weight: 700 !important;
+    letter-spacing: 0.5px;
+}
+
+/* Payload cards */
+.payload { 
+    border: 1px solid rgba(233, 30, 42, 0.2) !important;
+    background: linear-gradient(145deg, var(--p5r-dark-gray), var(--p5r-mid-gray)) !important;
+    transition: all 0.3s ease !important;
+    position: relative;
+    overflow: hidden;
+}
+.payload::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(233, 30, 42, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+.payload:hover {
+    border-color: var(--p5r-red) !important;
+    box-shadow: 0 8px 25px rgba(233, 30, 42, 0.2) !important;
+    transform: translateY(-3px) !important;
+}
+.payload:hover::before { left: 100%; }
+
+/* Category colors with P5R twist */
+.category-tools { 
+    background-color: rgba(233, 30, 42, 0.15) !important; 
+    color: var(--p5r-red) !important; 
+    border-color: rgba(233, 30, 42, 0.3) !important;
+}
+.category-advanced { 
+    background-color: rgba(212, 168, 26, 0.15) !important; 
+    color: var(--p5r-gold) !important; 
+    border-color: rgba(212, 168, 26, 0.3) !important;
+}
+.category-linux { 
+    background-color: rgba(120, 50, 180, 0.15) !important; 
+    color: #a855f7 !important; 
+    border-color: rgba(120, 50, 180, 0.3) !important;
+}
+.category-homebrew { 
+    background-color: rgba(30, 180, 120, 0.15) !important; 
+    color: #22c55e !important; 
+    border-color: rgba(30, 180, 120, 0.3) !important;
+}
+
+/* Links */
+a { color: var(--p5r-red) !important; }
+a:hover { color: var(--p5r-red-bright) !important; text-shadow: 0 0 8px var(--p5r-red-glow); }
+
+/* Animations */
+@keyframes p5r-pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 5px var(--p5r-red-glow); }
+    50% { opacity: 0.7; box-shadow: 0 0 20px var(--p5r-red-glow); }
+}
+
+@keyframes p5r-slide-in {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes p5r-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes p5r-red-glow-pulse {
+    0%, 100% { box-shadow: 0 0 10px var(--p5r-red-glow); }
+    50% { box-shadow: 0 0 30px var(--p5r-red-glow), 0 0 40px rgba(233, 30, 42, 0.2); }
+}
+
+/* Persona 5 style transitions */
+* { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important; }
+
+/* Exploit run button special styling */
+#exploitRun {
+    background: linear-gradient(135deg, var(--p5r-red), var(--p5r-red-dark)) !important;
+    border: none !important;
+    animation: p5r-red-glow-pulse 3s ease-in-out infinite !important;
+}
+#exploitRun:hover {
+    background: linear-gradient(135deg, var(--p5r-red-bright), var(--p5r-red)) !important;
+    transform: scale(1.05) !important;
+}
+
+/* PS Logo animation */
+#ps-logo-container {
+    animation: p5r-fade-in 1s ease-out !important;
+}
+#ps-logo-container:hover #ps-logo {
+    animation: p5r-pulse 2s ease-in-out infinite !important;
+    filter: drop-shadow(0 0 15px var(--p5r-red)) !important;
+}
+
+/* Scroll down indicator */
+#scrollDown {
+    animation: p5r-pulse 2s ease-in-out infinite !important;
+    color: var(--p5r-red) !important;
+}
+
+/* Popup overlays */
+.fixed.inset-0.bg-black\/50 {
+    background: rgba(13, 13, 13, 0.85) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* Popup content */
+.fixed.inset-0 .bg-gray-800 {
+    background: linear-gradient(145deg, var(--p5r-dark-gray), var(--p5r-mid-gray)) !important;
+    border: 1px solid rgba(233, 30, 42, 0.3) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(233, 30, 42, 0.1) !important;
+}
+
+/* Persona 5 style "calling card" effect for popups */
+#about-popup, #settings-popup, #theme-popup, #choose-fanThreshold {
+    animation: p5r-slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    position: relative;
+}
+#about-popup::before, #settings-popup::before, #theme-popup::before, #choose-fanThreshold::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--p5r-red), var(--p5r-gold), var(--p5r-red));
+    background-size: 200% 200%;
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    animation: p5r-border-glow 3s linear infinite;
+    filter: blur(8px);
+}
+
+@keyframes p5r-border-glow {
+    0% { background-position: 0% 50%; opacity: 0.3; }
+    50% { background-position: 100% 50%; opacity: 0.6; }
+    100% { background-position: 0% 50%; opacity: 0.3; }
+}
+
+/* Gold accent for selected items */
+.fwSelected {
+    background: linear-gradient(135deg, rgba(212, 168, 26, 0.3), rgba(233, 30, 42, 0.2)) !important;
+    border-color: var(--p5r-gold) !important;
+    color: var(--p5r-gold) !important;
+    box-shadow: inset 0 0 20px rgba(212, 168, 26, 0.1);
+}
+
+/* Firmware list styling */
+#listfw p {
+    background: var(--p5r-dark-gray) !important;
+    border: 1px solid rgba(233, 30, 42, 0.2) !important;
+    transition: all 0.2s ease !important;
+}
+#listfw p:hover {
+    background: rgba(233, 30, 42, 0.1) !important;
+    border-color: var(--p5r-red) !important;
+    color: var(--p5r-red) !important;
+    transform: scale(1.05);
+}
+#listfw .fwSelected {
+    background: linear-gradient(135deg, rgba(233, 30, 42, 0.2), rgba(212, 168, 26, 0.2)) !important;
+    border-color: var(--p5r-red) !important;
+    color: var(--p5r-gold) !important;
+    font-weight: 700;
+}
+
+/* Fan threshold buttons */
+#choose-fanThreshold button {
+    background: linear-gradient(145deg, var(--p5r-dark-gray), var(--p5r-mid-gray)) !important;
+    border: 1px solid rgba(233, 30, 42, 0.3) !important;
+    color: var(--p5r-off-white) !important;
+    font-weight: 600 !important;
+}
+#choose-fanThreshold button:hover {
+    background: linear-gradient(145deg, var(--p5r-red-dark), var(--p5r-red)) !important;
+    border-color: var(--p5r-red) !important;
+    color: var(--p5r-white) !important;
+    box-shadow: 0 0 20px var(--p5r-red-glow) !important;
+}
+
+/* Settings radio groups */
+.radio-group label {
+    background: var(--p5r-dark-gray) !important;
+    border: 1px solid rgba(233, 30, 42, 0.2) !important;
+    transition: all 0.2s ease !important;
+}
+.radio-group label:hover {
+    background: rgba(233, 30, 42, 0.1) !important;
+    border-color: var(--p5r-red) !important;
+}
+.radio-group input[type="radio"]:checked + p {
+    color: var(--p5r-red) !important;
+    font-weight: 600;
+}
+
+/* Close buttons */
+button[id^="close-"] {
+    background: linear-gradient(135deg, var(--p5r-red-dark), var(--p5r-red)) !important;
+    border: none !important;
+    font-weight: 600 !important;
+}
+button[id^="close-"]:hover {
+    background: linear-gradient(135deg, var(--p5r-red), var(--p5r-red-bright)) !important;
+    box-shadow: 0 0 20px var(--p5r-red-glow) !important;
+}
+
+/* Success rate button */
+#successRate {
+    color: var(--p5r-gold) !important;
+    border-bottom: 1px dashed var(--p5r-gold) !important;
+}
+#successRate:hover {
+    color: var(--p5r-gold-bright) !important;
+    border-bottom-color: var(--p5r-gold-bright) !important;
+}
+
+/* Elf loader status */
+#elfLoaderStatus {
+    background: rgba(233, 30, 42, 0.15) !important;
+    border: 1px solid rgba(233, 30, 42, 0.3) !important;
+    animation: p5r-pulse 2s ease-in-out infinite !important;
+}
+
+/* Last attempt banner */
+#lastAttemptBanner {
+    background: linear-gradient(135deg, rgba(212, 168, 26, 0.2), rgba(233, 30, 42, 0.15)) !important;
+    border: 1px solid rgba(212, 168, 26, 0.4) !important;
+    animation: p5r-slide-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Exploit timer */
+#exploitTimer {
+    color: var(--p5r-gold) !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 10px rgba(212, 168, 26, 0.5);
+}
+
+/* Copy log button */
+#copyLogBtn {
+    background: rgba(212, 168, 26, 0.15) !important;
+    border-color: rgba(212, 168, 26, 0.3) !important;
+    color: var(--p5r-gold) !important;
+}
+#copyLogBtn:hover {
+    background: rgba(212, 168, 26, 0.3) !important;
+    border-color: var(--p5r-gold) !important;
+    color: var(--p5r-gold-bright) !important;
+    box-shadow: 0 0 15px rgba(212, 168, 26, 0.3) !important;
+}
+
+/* Initial screen text */
+#click-to-start-text {
+    color: var(--p5r-red) !important;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: p5r-pulse 3s ease-in-out infinite;
+}
+
+/* HEN flavor labels */
+[id$="-label-initial"], [id$="-label-exploit"] {
+    background: var(--p5r-dark-gray) !important;
+    border: 1px solid rgba(233, 30, 42, 0.2) !important;
+    transition: all 0.2s ease !important;
+}
+[id$="-label-initial"]:hover, [id$="-label-exploit"]:hover {
+    background: rgba(233, 30, 42, 0.1) !important;
+    border-color: var(--p5r-red) !important;
+}
+[id$="-label-initial"] input:checked + span, 
+[id$="-label-exploit"] input:checked + span {
+    color: var(--p5r-red) !important;
+    font-weight: 700;
+}
+
+/* Update cache button */
+#updateCache {
+    border-color: rgba(212, 168, 26, 0.3) !important;
+    color: var(--p5r-gold) !important;
+}
+#updateCache:hover {
+    background: rgba(212, 168, 26, 0.2) !important;
+    border-color: var(--p5r-gold) !important;
+    color: var(--p5r-gold-bright) !important;
+}
+
+/* Theme/Color/Layout radio options in popups */
+#colors label, #layouts label {
+    background: var(--p5r-dark-gray) !important;
+    border: 1px solid rgba(233, 30, 42, 0.2) !important;
+}
+#colors label:hover, #layouts label:hover {
+    border-color: var(--p5r-red) !important;
+    background: rgba(233, 30, 42, 0.1) !important;
+}
+
+/* Terminal theme compatibility - ensure P5R overrides work */
+body.terminal-theme {
+    /* P5R theme takes precedence */
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode adjustments */
+@media (prefers-contrast: high) {
+    :root {
+        --p5r-red: #ff0000;
+        --p5r-gold: #ffd700;
+    }
+}
+
+/* Print styles */
+@media print {
+    .fixed, button, #exploitRun, #scrollDown { display: none !important; }
+    body { background: white !important; color: black !important; }
+}

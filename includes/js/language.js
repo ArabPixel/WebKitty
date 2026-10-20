@@ -173,8 +173,9 @@ function applyLanguage(lang) {
         updateText(ui.themePopup.querySelector('h2'), 'themeSettingsHeader');
         updateText(ui.themePopup.querySelector('#close-theme'), 'closeButton');
         updateText(document.getElementById('catppuccinoColor'), 'catppuccino');
-    }
-    updateText(document.getElementById('showAdvancedPayloads'), 'showAdvancedPayloads');
+        		updateText(document.getElementById('p5rColor'), 'p5r');
+        	}
+        	updateText(document.getElementById('showAdvancedPayloads'), 'showAdvancedPayloads');
     updateText(document.getElementById('optionsHeader'), 'optionsHeader');
     updateText(document.getElementById('layout'), 'layouts');
     updateText(document.getElementById('defaultTheme'), 'default');

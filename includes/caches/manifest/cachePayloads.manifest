@@ -41,6 +41,7 @@ CACHE:
 ../../../includes/js/languages/tr.js
 ../../../includes/js/languages/zh-cn.js
 ../../../includes/css/colors/terminal.css
+../../../includes/css/colors/p5r.css
 ../../../includes/js/deliverPayload.js
 ../../../includes/payloads/Bins/WebRTE.bin
 ../../../includes/payloads/Bins/elfldr.bin

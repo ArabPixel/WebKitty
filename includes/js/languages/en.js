@@ -81,7 +81,8 @@ window.lang = {
     "themeSettingsHeader": "Customization",
     "updateCache": "Update Cache",
     "catppuccino": "Catppuccino",
-    "jailbreakSuccess": "Jailbreak successful!",
+        "p5r": "Persona 5 Royal",
+        "jailbreakSuccess": "Jailbreak successful!",
     "alreadyJailbroken": "Already Jailbroken ...",
     "reloadAfterJbText": "Reload after a successful jailbreak",
 }
