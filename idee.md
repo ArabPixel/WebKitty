@@ -18,13 +18,9 @@ Questo documento raccoglie proposte di miglioramento architetturale, di usabilit
 - **Stato**: Implementato in `utilities.js` (`startExploitTimer`, `stopExploitTimer`) e integrato in `jailbreak.js`. Mostra "Tempo: Xs" nell'header del pannello exploit.
 - **Impatto sul jailbreak**: **Nessuno**. Aiuta l'utente a capire se l'exploit sta lavorando (es. scansione primitiva bug 663 su 13.02-13.52) o se la console è in freeze/KP.
 
-### 2.2 Notifiche Sonore tramite Web Audio API
-- **Problema**: Spesso l'utente lancia il jailbreak e si allontana dal divano o guarda altrove.
-- **Miglioramento**: Utilizzare la Web Audio API nativa (supportata dal WebKit della PS4 senza file audio esterni) per emettere brevi beep discreti con `AudioContext`:
-  - 1 beep breve = Avvio catena exploit
-  - 2 beep ascendenti = Jailbreak completato con successo
-  - 1 tono basso = Errore / Ricarica necessaria
-- **Impatto sul jailbreak**: **Nessuno**. Non tocca il DOM né blocca il thread principale.
+### 2.2 Notifiche Sonore tramite Web Audio API [COMPLETATO]
+- **Stato**: Implementato in `utilities.js` con `AudioContext` nativo. Funzioni: `notifyJailbreakStart()`, `notifyJailbreakSuccess()`, `notifyJailbreakError()`, `notifyJailbreakRetry()`. Chiamate da `jailbreak()` e `jailbreakSuccess()`/`jailbreakFailure()`.
+- **Impatto sul jailbreak**: **Nessuno**. Non tocca il DOM né blocca il thread principale. Compatibile con WebKit PS4.
 
 ### 2.3 Pulsante "Copia / Esporta Log" [COMPLETATO]
 - **Stato**: Implementato in `utilities.js` (`copyLog`, `fallbackCopy`) con pulsante in `index.html` (`copyLogBtn`). Appare automaticamente quando c'è contenuto nel log.
@@ -42,10 +38,9 @@ Questo documento raccoglie proposte di miglioramento architetturale, di usabilit
   - `jailbreakFailure()` chiamato in tutti i percorsi di errore degli exploit
 - **Impatto sul jailbreak**: **Positivo (Previene crash accidentali da doppi click su DualShock 4)**.
 
-### 3.2 Watchdog Timeout sul Caricamento Script
-- **Problema**: Se la connessione di rete locale ha una latenza o un pacchetto si perde prima che la cache sia pronta, un `getScript` o un import dinamico può rimanere bloccato indefinitamente.
-- **Miglioramento**: Integrare un timeout di sicurezza (es. 20 secondi) sui caricamenti prima dell'innesco dell'exploit; se fallisce, avvisa chiaramente l'utente con un messaggio di ricaricare la pagina invece di restare con lo schermo fermo.
-- **Impatto sul jailbreak**: **Positivo**.
+### 3.2 Watchdog Timeout sul Caricamento Script [COMPLETATO]
+- **Stato**: Aggiunto parametro `timeoutMs` (default 20s) a `getScript()` in `utilities.js`. Se lo script non carica entro il timeout, rifiuta la Promise con errore chiaro. Previene hang indefiniti su rete lenta o file mancanti.
+- **Impatto sul jailbreak**: **Positivo**. Evita schermo bloccato senza feedback.
 
 ### 3.3 Controllo Preventivo Storage (Quota / Private Mode)
 - **Problema**: Se la cache o il browser è in modalità ristretta, chiamate a `localStorage.setItem` o `sessionStorage.setItem` possono lanciare un'eccezione `QuotaExceededError`, bloccando lo script prima dell'exploit.
@@ -100,14 +95,12 @@ Questo documento raccoglie proposte di miglioramento architetturale, di usabilit
   - **"Manutenzione"** → Disable Updates + Enable Updates + DB Rebuilder
 - **Impatto**: **Zero rischi**, solo comodità.
 
-### 6.4 Log "Ultimo Tentativo" Persistente
-- **Problema**: Se il jailbreak fallisce e l'utente ricarica/chiude la pagina, perde il log dell'errore per chiedere aiuto.
-- **Miglioramento**: Salvare automaticamente l'ultimo log (ultime 50 righe) in `localStorage` con timestamp. Al ricarico, mostrare un banner "Ultimo tentativo fallito alle 14:32 - [Visualizza log]".
+### 6.4 Log "Ultimo Tentativo" Persistente [COMPLETATO]
+- **Stato**: Implementato in `utilities.js`: `saveLastAttemptLog()`, `restoreLastAttemptLog()`, `showLastAttemptLog()`, `dismissLastAttemptBanner()`, `clearLastAttemptLog()`. Banner arancione sopra la console al reload se ultimo tentativo < 24h fa. Mostra FW, chain, timestamp e log completo. Salvataggio automatico su fallimento, pulizia su successo.
 - **Impatto**: **Zero rischi**, molto utile per debug.
 
-### 6.5 Tema "Terminal" di Default su PS4
-- **Problema**: Il tema default è "blu moderno", ma su PS4 il tema terminale (verde su nero) è più leggibile su TV e consuma meno energia OLED.
-- **Miglioramento**: Rilevare `isPS4Console()` e impostare `theme=terminal` come default invece di `default` per le console PS4. L'utente può sempre cambiare.
+### 6.5 Tema "Terminal" di Default su PS4 [COMPLETATO]
+- **Stato**: Modificato `index.html` head script: se `navigator.userAgent` contiene "PlayStation 4" e nessun tema salvato, usa `color=terminal` (verde su nero). Più leggibile su TV, risparmia batteria OLED.
 - **Impatto**: **Zero rischi**, solo preferenza visiva.
 
 ### 6.6 Auto-Selezione Exploit Chain Ottimale

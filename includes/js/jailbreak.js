@@ -11,6 +11,9 @@ async function jailbreak() {
   // Start exploit timer
   startExploitTimer();
 
+  // Notify jailbreak start (audio)
+  if (typeof notifyJailbreakStart === 'function') notifyJailbreakStart();
+
   // Make it retry until success
   storage.session.set('autoJbRetry', true);
 
@@ -219,6 +222,9 @@ async function loadSettings() {
     autoJailbreak();
     updateBareboneJB();
     loadExploitChain();
+
+    // Restore last failed attempt log banner (6.4)
+    if (typeof restoreLastAttemptLog === 'function') restoreLastAttemptLog();
   } catch (e) {
     alert("Error in loadSettings: " + e.message);
   }

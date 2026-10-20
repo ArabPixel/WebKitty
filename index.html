@@ -29,21 +29,27 @@
     <link rel="stylesheet" id="main-stylesheet" href="">
     <link rel="stylesheet" id="color-stylesheet" href="">
     <script>
-        // Prevent "Theme Flash" by applying the href before the body renders
-        var savedTheme = localStorage.getItem('theme') || "index";
-        var savedColor = localStorage.getItem('color') || "default";
-        if (savedTheme) {
-            document.getElementById('main-stylesheet').setAttribute('href', './includes/css/layouts/' + savedTheme + '.css');
-        }
-        if (savedColor) {
-            document.getElementById('color-stylesheet').setAttribute('href', './includes/css/colors/' + savedColor + '.css');
-        }
-        var rtlLangs = ["ar", "fa"];
-        if (rtlLangs.indexOf(localStorage.getItem('language')) !== -1)
-            document.dir = "rtl";
-        else
-            document.dir = "ltr";
-    </script>
+            // Prevent "Theme Flash" by applying the href before the body renders
+            var savedTheme = localStorage.getItem('theme') || "index";
+            var savedColor = localStorage.getItem('color') || "default";
+        
+            // 6.5: Default to Terminal theme on PS4 for better readability on TV/OLED
+            if (!localStorage.getItem('color') && navigator.userAgent.indexOf("PlayStation 4") !== -1) {
+                savedColor = "terminal";
+            }
+        
+            if (savedTheme) {
+                document.getElementById('main-stylesheet').setAttribute('href', './includes/css/layouts/' + savedTheme + '.css');
+            }
+            if (savedColor) {
+                document.getElementById('color-stylesheet').setAttribute('href', './includes/css/colors/' + savedColor + '.css');
+            }
+            var rtlLangs = ["ar", "fa"];
+            if (rtlLangs.indexOf(localStorage.getItem('language')) !== -1)
+                document.dir = "rtl";
+            else
+                document.dir = "ltr";
+        </script>
 </head>
 
 <body class="bg-gray-900 text-white">
