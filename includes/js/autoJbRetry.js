@@ -54,7 +54,7 @@ function setReloadAfterJb(checked) {
 }
 
 function getReloadAfterJb() {
-    var checked = storage.getBoolean('reloadAfterJb', false);
+    var checked = getReloadAfterJbValue();
     var input = document.getElementById('reloadAfterJbInput');
     if (input) input.checked = checked;
     return checked;

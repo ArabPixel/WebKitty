@@ -39,7 +39,9 @@ function awaitpl() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', './success', true);
     xhr.send();
-    updateJbStats(0, 1);
+    if (typeof jailbreakSuccess === "function") {
+        jailbreakSuccess();
+    }
     log('\nAwaiting Payload on port 9020...', 'green');
 }
 

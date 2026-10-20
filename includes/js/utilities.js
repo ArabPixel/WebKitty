@@ -65,7 +65,7 @@ function log(message, color, consoleEl) {
     consoleEl.appendChild(span);
 }
 
-function getReloadAfterJb() {
+function getReloadAfterJbValue() {
     return storage.getBoolean('reloadAfterJb', true);
 }
 
@@ -97,15 +97,17 @@ function updateJbStats(attempt, isSuccess) {
 
 // Called by exploit implementations after a successful jailbreak.
 function jailbreakSuccess(statusMessage) {
+    var isBinLoader = storage.session.getBoolean('binloader', false);
     if (storage.session.getBoolean('jailbreakNow', true)) {
         storage.session.remove('jailbreakNow');
     }
     storage.session.remove('autoJbRetry');
     storage.session.remove('payload_path');
+    storage.session.remove('binloader');
 
     updateJbStats(0, 1);
 
-    if (getReloadAfterJb()) {
+    if (getReloadAfterJbValue() && !isBinLoader) {
         setTimeout(function () { window.location.href = mainPage; }, 5000);
     }
 
