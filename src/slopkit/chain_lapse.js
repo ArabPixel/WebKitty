@@ -7,6 +7,7 @@ const outEl = document.getElementById("console");
 const scrollEl = document.getElementById("DebugConsole") || outEl;
 const stateEl = document.getElementById("state");
 const lines = [];
+var selectedPayloadPath = sessionStorage.getItem("payload_path") || "";
 
 function post(tag, detail) {
     try {
@@ -239,7 +240,6 @@ function makeRpc(worker) {
             : (kpatchName ? "NOT LOADED (" + kpatchName + ") -- stage 9 will not run"
                           : "no firmware key, so no blob name -- stage 9 will not run"));
 
-        const selectedPayloadPath = sessionStorage.getItem("payload_path") || "";
         const selectedNexHEN =
             /(?:^|\/)nexHEN-ps4\.bin(?:[?#]|$)/i.test(selectedPayloadPath);
         const payloadPath = selectedNexHEN

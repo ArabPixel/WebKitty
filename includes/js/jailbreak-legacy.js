@@ -233,7 +233,7 @@ function _cssFontFaceJailbreak() {
         case 0:
           log("Loading ufm42's CSSFontFace exploit chain implementation..");
           _context4.n = 1;
-          return getScript('./src/cssfontface/main.js', false, devMode);
+          return getScript('src/cssfontface/main.js', false, devMode);
         case 1:
           doCssFontFaceJailbreak();
         case 2:
@@ -259,20 +259,20 @@ function _slopKit() {
             break;
           }
           _context5.n = 2;
-          return getScript("./src/slopkit/chain_poops.js", true, devMode);
+          return getScript("src/slopkit/chain_poops.js", true, devMode);
         case 2:
           _context5.n = 4;
           break;
         case 3:
           _context5.n = 4;
-          return getScript("./src/slopkit/chain_lapse.js", true, devMode);
+          return getScript("src/slopkit/chain_lapse.js", true, devMode);
         case 4:
           _context5.n = 6;
           break;
         case 5:
           _context5.p = 5;
           _t4 = _context5.v;
-          log(_t4);
+          log(_t4, "red");
         case 6:
           return _context5.a(2);
       }
@@ -292,14 +292,14 @@ function _relapseJailbreak() {
           log("Loading Raw Game's Relapse exploit chain implementation..");
           _context6.p = 1;
           _context6.n = 2;
-          return getScript("./src/relapse/jb.js?v=10", true, devMode);
+          return getScript("src/relapse/jb.js?v=10", true, devMode);
         case 2:
           _context6.n = 4;
           break;
         case 3:
           _context6.p = 3;
           _t5 = _context6.v;
-          log(_t5);
+          log(_t5, "red");
         case 4:
           return _context6.a(2);
       }
@@ -319,7 +319,7 @@ function _bpfDoubleFree() {
           log("Loading bpf double free exploit chain implementation..");
           _context7.p = 1;
           _context7.n = 2;
-          return getScript("./src/bpf-double-free/main.js", false, devMode);
+          return getScript("src/bpf-double-free/main.js", false, devMode);
         case 2:
           loadBpfDoubleFree();
           _context7.n = 4;
@@ -327,7 +327,7 @@ function _bpfDoubleFree() {
         case 3:
           _context7.p = 3;
           _t6 = _context7.v;
-          log(_t6);
+          log(_t6, "red");
         case 4:
           return _context7.a(2);
       }

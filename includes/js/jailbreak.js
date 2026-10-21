@@ -141,7 +141,7 @@ async function badHoistJailbreak() {
 
 async function cssFontFaceJailbreak() {
   log("Loading ufm42's CSSFontFace exploit chain implementation..");
-  await getScript('./src/cssfontface/main.js', false, devMode);
+  await getScript('src/cssfontface/main.js', false, devMode);
   doCssFontFaceJailbreak();
 }
 
@@ -149,31 +149,31 @@ async function slopKit() {
   log("Loading Raw-Game's SlopKit exploit chain implementation..");
   try {
     if (user.exploitChain === EXPLOIT_CHAINS.SLOPKIT_NETCTRL) {
-      await getScript("./src/slopkit/chain_poops.js", true, devMode);
+      await getScript("src/slopkit/chain_poops.js", true, devMode);
     } else {
-      await getScript("./src/slopkit/chain_lapse.js", true, devMode);
+      await getScript("src/slopkit/chain_lapse.js", true, devMode);
     }
   } catch (error) {
-    log(error);
+    log(error, "red");
   }
 }
 
 async function relapseJailbreak() {
   log("Loading Raw Game's Relapse exploit chain implementation..");
   try {
-    await getScript("./src/relapse/jb.js?v=10", true, devMode);
+    await getScript("src/relapse/jb.js?v=10", true, devMode);
   } catch (error) {
-    log(error);
+    log(error, "red");
   }
 }
 
 async function bpfDoubleFree() {
   log("Loading bpf double free exploit chain implementation..");
   try {
-    await getScript("./src/bpf-double-free/main.js", false, devMode);
+    await getScript("src/bpf-double-free/main.js", false, devMode);
     loadBpfDoubleFree();
   } catch (error) {
-    log(error);
+    log(error, "red");
   }
 }
 
