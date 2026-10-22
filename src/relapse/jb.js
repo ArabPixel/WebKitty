@@ -560,6 +560,7 @@ let allDone = false,
         async function relaunchPayload() {
             let blob = null;
             let choosePayload = isElfPayload ? elfldr_path : payload_path;
+            mark(choosePayload);
             try {
                 const r = await fetch(choosePayload);
                 if (r.ok) blob = new Uint8Array(await r.arrayBuffer());
@@ -3046,6 +3047,7 @@ let allDone = false,
                         if (DO_PAYLOAD) {
                             try {
                               let choosePayload = isElfPayload ? elfldr_path : payload_path;
+                              mark(choosePayload);
                                 const r = await fetch(choosePayload);
                                 if (r.ok) payloadBlob = new Uint8Array(await r.arrayBuffer());
                             } catch (e) {
