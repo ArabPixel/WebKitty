@@ -4826,6 +4826,8 @@ async function kexSuccess() {
         }
       }
 
+      await new Promise(function(resolve) { setTimeout(resolve, 2000); });
+
       // Sending to elfldr
       Loadpayloadlocal(payload_path, getPayloadName(payload_path));
     } else {

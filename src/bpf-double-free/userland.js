@@ -570,12 +570,29 @@ function userland() {
   };
 
   window.runPayload = function (path) {
-    var isElf = isPayloadElf(path);
+    var isElfldrBin = path.indexOf("elfldr.bin") !== -1;
+    var isElf = !isElfldrBin && (isPayloadElf(path) || path.indexOf("nexHEN") !== -1);
     var oldPath = path;
-    if (isElf){
-      log("Detected ELF payload, loading elfldr to load it...");
-      path = './includes/payloads/Bins/elfldr.bin';
+
+    if (isElf) {
+      log("Detected ELF/nexHEN payload, checking if elfldr is active...");
+      probeElfLoader().then(function (elfLoaderAvailable) {
+        if (elfLoaderAvailable) {
+          log("elfldr is already listening, loading payload...", "green");
+          Loadpayloadlocal(oldPath, getPayloadName(oldPath));
+        } else {
+          log("elfldr not running, booting elfldr.bin first...", "yellow");
+          // Boot elfldr.bin standalone via runPayload, then send target payload
+          window.runPayload('./includes/payloads/Bins/elfldr.bin');
+          setTimeout(function () {
+            log("Sending target payload to port 9021...");
+            Loadpayloadlocal(oldPath, getPayloadName(oldPath));
+          }, 3000);
+        }
+      });
+      return;
     }
+
     var xhr = new XMLHttpRequest();
     xhr.open('GET', path);
     xhr.responseType = 'arraybuffer';
@@ -615,19 +632,7 @@ function userland() {
     // TODO: sleep(1000);
     xhr.send();
     xhr.onload = function () {
-      log("Payload loaded successfully!");
-      if (isElf) {
-        probeElfLoader().then(function (eflLoaderLoaded) {
-          if (eflLoaderLoaded) {
-            log("Loading the elf payload...");
-            Loadpayloadlocal(oldPath, getPayloadName(oldPath));
-          }else {
-            log("elfldr.bin not loaded, failed to load elf payload!", "red");
-          }
-        });
-        log("Loading the elf payload...");
-        Loadpayloadlocal(oldPath, getPayloadName(oldPath));
-      }
+      log("Payload payload loaded successfully!", "green");
     }
     // TODO: sleep(3000);
   };

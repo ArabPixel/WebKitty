@@ -116,7 +116,7 @@ async function doCssFontFaceJailbreak() {
       kernel_patches(kpatches_u8);
 
       const payload_path = sessionStorage.getItem("payload_path");
-      if (payload_path && payload_path.indexOf(".elf") !== -1 || payload_path.indexOf("nexHEN") !== -1) {
+      if (isPayloadElf(payload_path)) {
         const elfLoaderAvailable = await probeElfLoader();
 
         if (!elfLoaderAvailable) {
@@ -127,6 +127,7 @@ async function doCssFontFaceJailbreak() {
           load_bin(bin_u8);
         }
 
+        await new Promise(function(resolve) { setTimeout(resolve, 2000); });
         Loadpayloadlocal(payload_path, getPayloadName(payload_path));
       }else {
         const bin_rsp = await fetch(sessionStorage.getItem("payload_path"));
@@ -134,7 +135,6 @@ async function doCssFontFaceJailbreak() {
         const bin_u8 = new Uint8Array(bin_buf);
   
         load_bin(bin_u8);
-        await new Promise(function(resolve) { setTimeout(resolve, 2000); });
       }
     }
 
