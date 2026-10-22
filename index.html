@@ -48,7 +48,7 @@
         var goToHttps = localStorage.getItem("dontHTTPS") != "1";
         var isThisPS4 = navigator.userAgent.indexOf("PlayStation 4") !== -1;
         var isLocalServer =  /^(127\.|192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.)/.test(window.location.hostname);
-        isCurrentHTTPS = window.location.protocol === 'https:';
+        var isCurrentHTTPS = window.location.protocol === 'https:';
         if (isThisPS4 && goToHttps && !isLocalServer && isCurrentHTTPS){
             if (confirm("You are currently using HTTPS, which prevents loading payloads through a bin/elf loader servers, switch to http instead? (recommended)")){
                 window.abortLoading = true;
