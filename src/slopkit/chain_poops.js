@@ -2326,7 +2326,6 @@ let allDone = false;
                                     if (payloadRunning){
                                         mark("PAYLOAD-RUNNING",
                                         "bytes=" + payload.length + " entry=" + entry);
-                                        log("<br>");
                                         if (isElfPayload) {
                                             Loadpayloadlocal(payload_path, getPayloadName(payload_path));
                                         }

@@ -153,7 +153,6 @@ function toggleVisibility(id, show) {
  * @param {number} retryForMs - How long to retry connection failures while the receiver starts
  */
 function sendToElfldr(payload_path, log, retryForMs) {
-    if (payload_path.indexOf("nexHEN-ps4.bin") !== -1) payload_path = payload_path.replace('.bin', '.elf');
     var payloadLink = document.createElement('a');
     payloadLink.href = payload_path;
     var targetUrl = "http://127.0.0.1:9021/?uri=" + payloadLink.href;

@@ -117,6 +117,12 @@ function probeElfLoader() {
         
         try {
             xhr.send();
+
+            log("[elfldr probe] ip: " + ps4Ip);
+            log("[elfldr probe] URL: " + endpoint);
+            log("[elfldr probe] Page: " + location.href);
+            log("[elfldr probe] Origin: " + location.origin);
+            return;
         } catch (e) {
             resolve(false);
         }
@@ -193,6 +199,7 @@ function Loadpayloadlocal(PLfile, name, id, needsPayloadLoader, customPort) {
                 if (requiresPayloadServer(needsPayloadLoader)) {
                     return;
                 }
+                if (id == "jailbreak") return;
                 if (confirm(window.lang.disabledBinloader)) {
                     Loadpayloadonline(PLfile);
                 }
@@ -218,10 +225,6 @@ function Loadpayloadlocal(PLfile, name, id, needsPayloadLoader, customPort) {
             });
         });
     };
-
-    if (PLfile && PLfile.indexOf("nexHEN-ps4.bin") !== -1) {
-        PLfile = PLfile.replace(".bin", ".elf");
-    }
 
     var resolvedName = name || getPayloadName(PLfile);
 

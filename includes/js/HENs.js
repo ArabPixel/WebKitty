@@ -27,7 +27,7 @@ function PS4HEN() {
 }
 
 function nexHEN() {
-    storage.session.set('payload_path', HEN_BASE_PATH + 'nexHEN-ps4.bin');
+    storage.session.set('payload_path', HEN_BASE_PATH + 'nexHEN-ps4.elf');
 }
 
 function chooseHEN() {

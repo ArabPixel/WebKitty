@@ -5,13 +5,11 @@ import { offsetsFor } from "./ps4_offsets.js";
 
 const outEl = document.getElementById("console");
 const scrollEl = document.getElementById("DebugConsole") || outEl;
-const stateEl = document.getElementById("state");
+const stateEl = document.getElementById("state") || outEl;
 var payload_path = sessionStorage.getItem("payload_path");
-var isElfPayload = payload_path && payload_path.endsWith(".elf") || payload_path.indexOf("nexHEN") !== -1;
-var elfLoaderAvailable;
-if (isElfPayload) {
-    elfLoaderAvailable = await probeElfLoader();
-}
+const elfldr_path = './includes/payloads/Bins/elfldr.bin';
+var isElfPayload = isPayloadElf(payload_path);
+var elfLoaderAvailable; // Needs to me validated somewhere
 
 const lines = [];
 let passCount = 0,
@@ -58,22 +56,29 @@ function terse(s) {
 
 const SHOW_LOG = true; // params.get("log") === "1";
 if (SHOW_LOG && document.body) document.body.className = "log";
-function finishUI(ok) {
+async function finishUI(ok) {
   const result = ok
       ? "DONE"
       : armedEver
         ? "Restart your console"
         : "Refresh the page and run again";
   document.body.className = ok ? "done" : "fail";
+  
   if (ok) {
     if (isElfPayload) {
-      Loadpayloadlocal(payload_path, getPayloadName(payload_path));
-    } else {
-      if (typeof jailbreakSuccess == "function") jailbreakSuccess();
+        elfLoaderAvailable = await probeElfLoader();
+        setTimeout(function (){
+            mark("ELFLDR-SEND", "Sending the elf payload: " + payload_path);
+            // 3. Send the actual ELF/nexHEN payload
+            if (window.log) log("<br>");
+            Loadpayloadlocal(payload_path, getPayloadName(payload_path), "jailbreak");
+        },2000);
     }
+    if (typeof jailbreakSuccess == "function") jailbreakSuccess();
   }
   state(result);
 }
+
 function mark(tag, detail) {
     const raw = detail;
     detail = terse(detail);
@@ -554,13 +559,9 @@ let allDone = false,
         }
         async function relaunchPayload() {
             let blob = null;
-            let r;
+            let choosePayload = isElfPayload ? elfldr_path : payload_path;
             try {
-              if (isElfPayload) {
-                r = await fetch('./includes/payloads/Bins/elfldr.bin');
-              }else{
-                r = await fetch(payload_path);
-              }
+                const r = await fetch(choosePayload);
                 if (r.ok) blob = new Uint8Array(await r.arrayBuffer());
             } catch (e) { }
             if (!blob) {
@@ -759,7 +760,7 @@ let allDone = false,
 
         async function bringWorker(name) {
             const w = { name: name, armed: false, wired: false };
-            w.worker = new Worker("/src/relapse/rpc_worker.js");
+            w.worker = new Worker("./src/relapse/rpc_worker.js");
             w.rpc = makeRpc(w.worker, name);
             if ((await w.rpc("ping", 15000)) !== "pong")
                 throw new Error(name + " ping");
@@ -3040,14 +3041,12 @@ let allDone = false,
                                 SITES.length,
                             );
                         }
+
+                        state("Loading the kernel patches...", 'warn');
                         if (DO_PAYLOAD) {
                             try {
-                              let r;
-                              if (isElfPayload) {
-                                r = await fetch('./includes/payloads/Bins/elfldr.bin');
-                              }else{
-                                r = await fetch(payload_path);
-                              }
+                              let choosePayload = isElfPayload ? elfldr_path : payload_path;
+                                const r = await fetch(choosePayload);
                                 if (r.ok) payloadBlob = new Uint8Array(await r.arrayBuffer());
                             } catch (e) {
                                 mark("PAYLOAD-FETCH-THREW", (e && e.message) || String(e));
@@ -3066,7 +3065,7 @@ let allDone = false,
                                     : "none"),
                             );
                         }
-
+                        state("Applying the exploit...", "warn");
                         if (DO_JB) {
                             const P_UCRED = 0x40,
                                 P_FD = 0x48,
