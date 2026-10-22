@@ -7,14 +7,18 @@ import { int64 } from "./int64.js";
 import { offsetsFor } from "./ps4_offsets.js";
 
 const outEl = document.getElementById("console");
-const stateEl = document.getElementById("state");
+const scrollEl = document.getElementById("DebugConsole") || outEl;
+const stateEl = document.getElementById("state") || outEl;
 const lines = [];
 let passCount = 0, failCount = 0;
 const params = new URLSearchParams(location.search);
 const STOP_BEFORE_DOUBLE = params.get("stop") === "beforedouble";
 const payload_path = sessionStorage.getItem("payload_path") || "";
-var isElfPayload = payload_path.indexOf("nexHEN") !== -1 || payload_path.indexOf(".elf") !== -1;
-
+var isElfPayload = isPayloadElf(payload_path);
+var elfLoaderAvailable;
+if (isElfPayload) {
+    elfLoaderAvailable = await probeElfLoader();
+}
 function post(tag, detail) {
     try {
         const x = new XMLHttpRequest();
@@ -56,7 +60,7 @@ function mark(tag, detail) {
                 : /\bOK\b|PASS|ACHIEVED|RUNNING|ARMED/i.test(l) ? "ok" : "";
         return c ? '<span class="' + c + '">' + l + "</span>" : l;
     }).join("\n");
-    outEl.scrollTop = outEl.scrollHeight;
+    scrollEl.scrollTop = scrollEl.scrollHeight;
     post(tag, raw);
 }
 
@@ -408,13 +412,14 @@ let allDone = false;
             var su0 = sc(SYS.setuid, 0).i32;
             if (uid0 === 0 || su0 === 0) {
                 mark("ALREADY-ROOT", "getuid=" + uid0 + " setuid(0)=" + su0);
-		state((window.lang.alreadyJailbroken || "Already Jailbroken ..."), "warn");
-		mark("Already Jailbroken ...");
-        if (isElfPayload && elfLoaderAvailable) {
-            Loadpayloadlocal(payload_path, getPayloadName(payload_path));                
-        }
-        window.jailbreakSuccess();
-        return;
+                state((window.lang.alreadyJailbroken || "Already Jailbroken ..."), "warn");
+                mark("Already Jailbroken ...");
+                log("<br>");
+                if (isElfPayload && elfLoaderAvailable) {
+                    Loadpayloadlocal(payload_path, getPayloadName(payload_path));                
+                }
+                window.jailbreakSuccess();
+                return;
             }
         } catch (e) {}
 
@@ -2321,6 +2326,7 @@ let allDone = false;
                                     if (payloadRunning){
                                         mark("PAYLOAD-RUNNING",
                                         "bytes=" + payload.length + " entry=" + entry);
+                                        log("<br>");
                                         if (isElfPayload) {
                                             Loadpayloadlocal(payload_path, getPayloadName(payload_path));
                                         }

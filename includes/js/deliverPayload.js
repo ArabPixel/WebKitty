@@ -80,6 +80,13 @@ function sendElfToElfldr(url, payloadName, onDone, args) {
 }
 
 /**
+ * Returns true if the payload path contains an elf extension or is nexHEN.
+ */
+function isPayloadElf(path) {
+    return (path.indexOf('.elf') != -1) || (path.indexOf('nexHEN') != -1);
+}
+
+/**
  * probes if elfldr is actively listening on port 9021.
  */
 function probeElfLoader() {

@@ -570,7 +570,7 @@ function userland() {
   };
 
   window.runPayload = function (path) {
-    var isElf = path.indexOf('.elf') != -1;
+    var isElf = isPayloadElf(path);
     var oldPath = path;
     if (isElf){
       log("Detected ELF payload, loading elfldr to load it...");

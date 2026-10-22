@@ -4810,10 +4810,10 @@ async function kexSuccess() {
     runBinLoader();
   } else {
     let payload_path = sessionStorage.getItem("payload_path");
-    if (payload_path.indexOf("nexHEN-ps4.bin") !== -1) payload_path = payload_path.replace('.bin', '.elf');
+    if (isPayloadElf(payload_path)) payload_path = payload_path.replace('.bin', '.elf');
     window.log("Payload path: " + payload_path);
 
-    if (payload_path && payload_path.indexOf(".elf") !== -1 && payload_path.indexOf("linux") == -1) {
+    if (payload_path && isPayloadElf(payload_path) && payload_path.indexOf("linux") == -1) {
       // check if elfldr is listening
       var elfLoaderAvailable = await probeElfLoader();
       

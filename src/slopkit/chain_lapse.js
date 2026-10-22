@@ -8,7 +8,7 @@ const scrollEl = document.getElementById("DebugConsole") || outEl;
 const stateEl = document.getElementById("state");
 const lines = [];
 var payload_path = sessionStorage.getItem("payload_path");
-var isElfPayload = payload_path.indexOf(".elf") !== -1 || payload_path.indexOf("nexHEN") !== -1;
+var isElfPayload = isPayloadElf(payload_path);
 var elfLoaderAvailable;
 if (isElfPayload) {
     elfLoaderAvailable = await probeElfLoader();
