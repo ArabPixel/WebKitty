@@ -59,14 +59,13 @@ function log(message, color, consoleEl) {
     var span = document.createElement('span');
     // break text into a new line to keep it visible
     span.style.whiteSpace = "pre-wrap";
-    span.style.fontSize = "14px";
     span.textContent = message + '\n';
     if (color) span.style.color = color;
     consoleEl.appendChild(span);
 }
 
 function getReloadAfterJbValue() {
-    return storage.getBoolean('reloadAfterJb', true);
+    return storage.getBoolean('reloadAfterJb', false);
 }
 
 /**
@@ -237,17 +236,5 @@ function sendToElfldr(payload_path, log, retryForMs) {
         }
 
         attempt();
-    });
-}
-
-function sendNexHENAfterElfLoader(payload_path, log) {
-    if (!/(?:^|\/)nexHEN-ps4\.bin(?:[?#]|$)/i.test(payload_path || "")) {
-        return Promise.resolve(null);
-    }
-
-    return new Promise(function (resolve) {
-        setTimeout(resolve, 3000);
-    }).then(function () {
-        return sendToElfldr("./includes/payloads/HEN/nexHEN-ps4.elf", log, 5000);
     });
 }

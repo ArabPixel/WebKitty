@@ -1,10 +1,120 @@
 // @ts-nocheck
 
-var PAYLOAD_RECEIVER_TARGETS = [
-    { name: "GoldHEN / nexHEN", port: 9090 },
-];
+var ELFLDR = 'http://127.0.0.1:9021';
 
 var needsPayloadLoader = false;
+
+/**
+ * POSTs raw ELF bytes directly to elfldr.
+ */
+function sendPayload(bytes, name, onDone, args) {
+    var endpoint = ELFLDR;
+    var payloadName = name || 'payload.elf';
+    var query = '?pipe=0' + (args ? '&args=' + encodeURIComponent(args) : '');
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', endpoint + '/' + encodeURIComponent(payloadName) + query);
+    xhr.setRequestHeader('Content-Type', 'text/plain');
+    xhr.onload = function () { if (onDone) onDone(xhr.status, xhr.responseText); };
+    xhr.onerror = function () { if (onDone) onDone(0, 'request failed'); };
+    var data = (bytes instanceof Uint8Array) ? bytes : new Uint8Array(bytes);
+    xhr.send(data);
+}
+
+/**
+ * Fetches a payload from url then POSTs its bytes to elfldr via sendPayload.
+ */
+function loadAndSend(url, onDone, name, args) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.responseType = 'arraybuffer';
+    xhr.onload = function () {
+        if (xhr.status === 200 || xhr.status === 304) {
+            // Updated to use getPayloadName
+            var payloadName = name || (url.indexOf("blob:") === 0 ? "payload.elf" : getPayloadName(url));
+            sendPayload(xhr.response, payloadName, onDone, args);
+        } else {
+            if (onDone) onDone(xhr.status, 'could not load ' + url);
+        }
+    };
+    xhr.onerror = function () { if (onDone) onDone(0, 'could not load ' + url); };
+    xhr.send();
+}
+
+/**
+ * A legacy friendly way to get the payload name from a URL.
+ */
+function getPayloadName(url) {
+    var dynamicName = "payload.elf";
+    if (url) {
+        var parts = url.split("/");
+        var lastPart = parts[parts.length - 1];
+        if (lastPart) {
+            var cleanName = lastPart.split("?")[0];
+            if (cleanName) {
+                dynamicName = cleanName;
+            }
+        }
+    }
+
+    return dynamicName;
+}
+
+/**
+ * sends an ELF to elfldr using the POST binary stream method.
+ */
+function sendElfToElfldr(url, payloadName, onDone, args) {
+    var fileName = payloadName || getPayloadName(url);
+
+    loadAndSend(url, function (status, responseText) {
+        var ok = (status === 200 || status === 202);
+        if (ok) {
+            var msg = (window.lang.elfLoaderResponse ||
+                "Payload sent successfully through the Elf Loader!\nStatus: {status} {statusText}\nResponse: {body}")
+                .replace("{status}", status)
+                .replace("{statusText}", "OK")
+                .replace("{body}", responseText || "");
+            log(msg, "green");
+        }
+        if (onDone) onDone(ok, responseText);
+    }, fileName, args);
+}
+
+/**
+ * probes if elfldr is actively listening on port 9021.
+ */
+function probeElfLoader() {
+    return new Promise(function (resolve) {
+        var ps4Ip = (typeof user !== "undefined" && user.ip) ? user.ip : "127.0.0.1";
+        var endpoint = "http://" + ps4Ip + ":9021/";
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", endpoint, true);
+        xhr.timeout = 2000; // 2 second timeout
+        
+        xhr.onload = function () {
+            log("Elfldr probe response: " + xhr.status + " " + xhr.statusText);
+            // Even a 404 or connection response means something is listening on port 9021
+            resolve(true);
+        };
+        
+        xhr.onerror = function () {
+            log("Elfldr probe failed: " + xhr.status + " " + xhr.statusText);
+            // Connection refused / unreachable means elfldr is not running
+            resolve(false);
+        };
+        
+        xhr.ontimeout = function () {
+            log("Elfldr probe timed out");
+            resolve(false);
+        };
+        
+        try {
+            xhr.send();
+        } catch (e) {
+            resolve(false);
+        }
+    });
+}
 
 function getPayload(payloadUrl, onLoadEndCallback) {
     var req = new XMLHttpRequest();
@@ -58,17 +168,14 @@ function sendPayloadWithTimeout(url, data, timeoutMs, onResult) {
 }
 
 /**
- * Sends a payload to the PS4 by trying available receivers (9090)
- * in sequence until one succeeds. If all fail, falls back to the online exploit runner.
- * 
- * @param {string} PLfile The path to the payload file.
- * @param {string} name The name of the payload.
- * @param {string} id The ID of the payload.
- * @param {string} needsPayloadLoader if the payload only loads with a payload loader e.g. through GoldHEN.
- * @param {number} [customPort] Optional custom port for the payload receiver.
+ * Sends a payload to the PS4.
+ *  - .elf: elfldr on port 9021 (POST binary upload)
+ *            If elfldr isn't running yet, boots it first via GoldHEN (port 9090).
+ *  - .bin: GoldHEN / nexHEN binloader on port 9090.
  */
 function Loadpayloadlocal(PLfile, name, id, needsPayloadLoader, customPort) {
     var ps4Ip = (typeof user !== "undefined" && user.ip) ? user.ip : "127.0.0.1";
+    ELFLDR = "http://" + ps4Ip + ":9021";
 
     var handleFallback = function () {
         if (id === "ElfLoader") {
@@ -90,90 +197,73 @@ function Loadpayloadlocal(PLfile, name, id, needsPayloadLoader, customPort) {
         }
     };
 
-    // Helper to fetch payload binary and send via GoldHEN port 9090
+    // fetch payload binary and send via GoldHEN port 9090
     var sendViaBinLoader = function (binPath, onComplete) {
         getPayload(binPath, function (fetchReq) {
             if (!fetchReq || (fetchReq.status !== 200 && fetchReq.status !== 304) || !fetchReq.response) {
                 onComplete(false);
                 return;
             }
-
-            var payloadData = fetchReq.response;
-            var targets = customPort ? [{ name: window.lang.customPort, port: customPort }] : PAYLOAD_RECEIVER_TARGETS;
-            var currentTargetIndex = 0;
-
-            function tryNextTarget() {
-                if (currentTargetIndex >= targets.length) {
-                    onComplete(false);
-                    return;
-                }
-
-                var target = targets[currentTargetIndex];
-                currentTargetIndex++;
-
-                var targetUrl = "http://" + ps4Ip + ":" + target.port + "/";
-                sendPayloadWithTimeout(targetUrl, payloadData, 5000, function (success) {
-                    if (success) {
-                        onComplete(true);
-                    } else {
-                        tryNextTarget();
-                    }
-                });
-            }
-
-            tryNextTarget();
+            var targetPort = customPort || 9090;
+            var targetUrl = "http://" + ps4Ip + ":" + targetPort + "/";
+            sendPayloadWithTimeout(targetUrl, fetchReq.response, 5000, function (success) {
+                onComplete(success);
+            });
         });
     };
 
-    // If the payload is an ELF file and not a Linux payload, attempt to send it to elfldr first
-    if (PLfile.indexOf(".elf") !== -1 && PLfile.indexOf("linux") == -1 && getPs4FwVersion() >= 6.00) {
-        sendToElfldr(PLfile, log).then(function (success) {
-            if (success) {
-                return; // Successfully sent to elfldr directly
-            }
+    if (PLfile && PLfile.indexOf("nexHEN-ps4.bin") !== -1) {
+        PLfile = PLfile.replace(".bin", ".elf");
+    }
 
-            // log("elfldr is not running, checking for GoldHEN payload server...", "orange");
+    var resolvedName = name || getPayloadName(PLfile);
 
-            // Ensure we have a valid IP or try scanning/guessing it if not set locally
-            var checkAndLoadElfLdr = function () {
-                ps4Ip = (typeof user !== "undefined" && user.ip) ? user.ip : "127.0.0.1";
+    var cleanPath = (PLfile || "").split('?')[0].split('#')[0].toLowerCase();
+    var isElf = cleanPath.indexOf(".elf") !== -1 ||
+        (resolvedName && resolvedName.toLowerCase().endsWith(".elf"));
 
-                var elfldrBinPath = "./includes/payloads/Bins/elfldr.bin";
-                // log("Loading elfldr.bin via GoldHEN...", "orange");
+    if (isElf) {
+        var checkAndBootElfldr = function () {
+            ps4Ip = (typeof user !== "undefined" && user.ip) ? user.ip : "127.0.0.1";
+            ELFLDR = "http://" + ps4Ip + ":9021";
 
-                sendViaBinLoader(elfldrBinPath, function (goldHenSuccess) {
-                    if (!goldHenSuccess) {
-                        if (!needsPayloadLoader){
-                            log(window.lang.binLoaderNotResponding, "red");
-                        }
-                        handleFallback();
-                        return;
+            log(window.lang.elfLoaderStarting || "Starting Elf Loader...");
+            sendViaBinLoader("./includes/payloads/Bins/elfldr.elf", function (goldHenSuccess) {
+                if (!goldHenSuccess) {
+                    if (!needsPayloadLoader) {
+                        log(window.lang.binLoaderNotResponding, "red");
                     }
+                    handleFallback();
+                    return;
+                }
 
-                    log(window.lang.elfLoaderStarting);
+                // Wait 5 s for elfldr to boot on port 9021, then retry sending the ELF
+                setTimeout(function () {
+                    log(window.lang.elfLoaderSending || "Sending payload to the Elf Loader...");
+                    sendElfToElfldr(PLfile, name, function (retrySuccess) {
+                        if (!retrySuccess) handleFallback();
+                    });
+                }, 3000);
+            });
+        };
 
-                    // Wait 5 seconds for elfldr to boot up on port 9021
-                    setTimeout(function () {
-                        sendToElfldr(PLfile, log).then(function (retrySuccess) {
-                            if (!retrySuccess) handleFallback();
-                        });
-                    }, 5000);
-                });
-            };
+        // First, check if elfldr is already running on port 9021
+        sendElfToElfldr(PLfile, name, function (success) {
+            if (success) return;
 
-            // If user.ip isn't set or is localhost while testing externally, try guessing IP first
+            // If not running, boot it via GoldHEN binloader
             if (ps4Ip === "127.0.0.1" && !isPS4Console() && !isLocalIP(window.location.hostname)) {
                 guessIp().then(function () {
-                    checkAndLoadElfLdr();
+                    checkAndBootElfldr();
                 }).catch(function () {
                     handleFallback();
                 });
             } else {
-                checkAndLoadElfLdr();
+                checkAndBootElfldr();
             }
         });
+
     } else {
-        // load using GoldHEN / nexHEN payload loader directly
         getPayload(PLfile, function (fetchReq) {
             if (fetchReq && fetchReq.status === 404) {
                 log(window.lang.payloadNotFound.replace("{payload}", name) + PLfile, "red");
@@ -187,12 +277,17 @@ function Loadpayloadlocal(PLfile, name, id, needsPayloadLoader, customPort) {
 
             log(window.lang.payloadLoaderSending.replace("{payload}", name));
 
-            var payloadData = fetchReq.response;
-            var targets = customPort ? [{ name: window.lang.customPort, port: customPort }] : PAYLOAD_RECEIVER_TARGETS;
-            var currentTargetIndex = 0;
+            var targetPort = customPort || 9090;
+            var targetName = customPort ? window.lang.customPort : "GoldHEN / nexHEN";
+            var targetUrl = "http://" + ps4Ip + ":" + targetPort + "/";
 
-            function tryNextTarget() {
-                if (currentTargetIndex >= targets.length) {
+            sendPayloadWithTimeout(targetUrl, fetchReq.response, 5000, function (success) {
+                if (success) {
+                    var msg = window.lang.payloadLoaderSendSuccess.replace("{payload}", name) +
+                        ps4Ip + " (" + targetName + ")";
+                    log(msg);
+                    if (getPs4FwVersion() == 4.74) log(window.lang.firmwareNotificationsUnavailable, "grey");
+                } else {
                     var errorMsg = window.lang.payloadLoaderSendFailed.replace("{payload}", name) + ps4Ip;
                     log(errorMsg, "red");
                     if (requiresPayloadServer(needsPayloadLoader)) {
@@ -201,25 +296,8 @@ function Loadpayloadlocal(PLfile, name, id, needsPayloadLoader, customPort) {
                     setTimeout(function () {
                         handleFallback();
                     }, 500);
-                    return;
                 }
-
-                var target = targets[currentTargetIndex];
-                currentTargetIndex++;
-
-                var targetUrl = "http://" + ps4Ip + ":" + target.port + "/";
-                sendPayloadWithTimeout(targetUrl, payloadData, 5000, function (success) {
-                    if (success) {
-                        var msg = window.lang.payloadLoaderSendSuccess.replace("{payload}", name) + ps4Ip + " (" + target.name + ")";
-                        log(msg);
-                        if (getPs4FwVersion() == 4.74) log(window.lang.firmwareNotificationsUnavailable, "grey");
-                    } else {
-                        tryNextTarget();
-                    }
-                });
-            }
-
-            tryNextTarget();
+            });
         });
     }
 }
@@ -250,7 +328,6 @@ function customPayload(payloadFile) {
     log(window.lang.customPayloadLoaded + payloadFile.name);
 }
 
-
 function payloadRouter(payload) {
     if (!isPayloadSupported(payload)) {
         alert(window.lang.unsupportedFirmware + user.ps4Fw);
@@ -267,7 +344,7 @@ function payloadRouter(payload) {
 
         Loadpayloadlocal(payload.src, payload.name, payload.id, payload.needsPayloadLoader);
         // install both base and update for psvue
-        if (payload.id == 'PSVue'){
+        if (payload.id == 'PSVue') {
             payload.src = payload.src.replace('base', '124');
             Loadpayloadlocal(payload.src, payload.name, payload.id, payload.needsPayloadLoader);
         }

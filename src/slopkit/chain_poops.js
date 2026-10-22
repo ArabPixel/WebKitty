@@ -12,6 +12,8 @@ const lines = [];
 let passCount = 0, failCount = 0;
 const params = new URLSearchParams(location.search);
 const STOP_BEFORE_DOUBLE = params.get("stop") === "beforedouble";
+const payload_path = sessionStorage.getItem("payload_path") || "";
+var isElfPayload = payload_path.indexOf("nexHEN") !== -1 || payload_path.indexOf(".elf") !== -1;
 
 function post(tag, detail) {
     try {
@@ -162,8 +164,13 @@ let allDone = false;
             ? "blob=" + kpatchName + " bytes=" + kpatch.length
               + " sites=" + KPATCH_JMP_SITES.length
             : "blob=" + kpatchName + " MISSING");
+            var r;
         try {
-            const r = await fetch(sessionStorage.getItem("payload_path"));
+            if (isElfPayload) {
+                r = await fetch('./includes/payloads/Bins/elfldr.bin');
+            } else {
+                r = await fetch(payload_path);
+            }
             if (r.ok) payload = new Uint8Array(await r.arrayBuffer());
         } catch (e) { mark("PAYLOAD-FETCH-THREW", e.message); }
         mark("PAYLOAD-BLOB", payload
@@ -401,11 +408,13 @@ let allDone = false;
             var su0 = sc(SYS.setuid, 0).i32;
             if (uid0 === 0 || su0 === 0) {
                 mark("ALREADY-ROOT", "getuid=" + uid0 + " setuid(0)=" + su0);
-                if (m) {
-                    state("Already Jailbroken ...", "warn");
-                    mark("Already Jailbroken ...");
-                }
-                return;
+		state((window.lang.alreadyJailbroken || "Already Jailbroken ..."), "warn");
+		mark("Already Jailbroken ...");
+        if (isElfPayload && elfLoaderAvailable) {
+            Loadpayloadlocal(payload_path, getPayloadName(payload_path));                
+        }
+        window.jailbreakSuccess();
+        return;
             }
         } catch (e) {}
 
@@ -2309,8 +2318,14 @@ let allDone = false;
                                         + " handle=" + handle);
                                     check("payload-thread-created",
                                         payloadRunning, "");
-                                    if (payloadRunning) mark("PAYLOAD-RUNNING",
+                                    if (payloadRunning){
+                                        mark("PAYLOAD-RUNNING",
                                         "bytes=" + payload.length + " entry=" + entry);
+                                        if (isElfPayload) {
+                                            Loadpayloadlocal(payload_path, getPayloadName(payload_path));
+                                        }
+                                        window.jailbreakSuccess();
+                                    } 
                                 }
                             }
                         }
@@ -2462,7 +2477,6 @@ let allDone = false;
               : triplets ? "FAILED IN leak_kqueue (triple free was OK) -- REBOOT"
               : committed ? "FAILED IN triple free -- REBOOT"
               : "no commit", allDone ? "ok" : kv ? "warn" : "bad");
-		window.jailbreakSuccess();
     } catch (e) {
         mark("STEP10-FAILED", (e && e.message) ? e.message : String(e));
         state("FAILED -- see log", "bad");

@@ -570,6 +570,12 @@ function userland() {
   };
 
   window.runPayload = function (path) {
+    var isElf = path.indexOf('.elf') != -1;
+    var oldPath = path;
+    if (isElf){
+      log("Detected ELF payload, loading elfldr to load it...");
+      path = './includes/payloads/Bins/elfldr.bin';
+    }
     var xhr = new XMLHttpRequest();
     xhr.open('GET', path);
     xhr.responseType = 'arraybuffer';
@@ -603,10 +609,26 @@ function userland() {
       */
     };
     xhr.onerror = function () {
+      log("Error Retreiving Payload! " + xhr.status + " " + xhr.statusText, "red");
       throw new Error('Issue Retreiving Payload! #1');
     };
     // TODO: sleep(1000);
     xhr.send();
+    xhr.onload = function () {
+      log("Payload loaded successfully!");
+      if (isElf) {
+        probeElfLoader().then(function (eflLoaderLoaded) {
+          if (eflLoaderLoaded) {
+            log("Loading the elf payload...");
+            Loadpayloadlocal(oldPath, getPayloadName(oldPath));
+          }else {
+            log("elfldr.bin not loaded, failed to load elf payload!", "red");
+          }
+        });
+        log("Loading the elf payload...");
+        Loadpayloadlocal(oldPath, getPayloadName(oldPath));
+      }
+    }
     // TODO: sleep(3000);
   };
 

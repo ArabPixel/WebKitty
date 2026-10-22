@@ -4814,21 +4814,20 @@ async function kexSuccess() {
     window.log("Payload path: " + payload_path);
 
     if (payload_path && payload_path.indexOf(".elf") !== -1 && payload_path.indexOf("linux") == -1) {
-      // [!] Checking for if elfldr is loaded takes much time so we might as well just load both each time.
-      const elfLoaderPayload = payloadsList.find(item => item.id === "ElfLoader");
-      const elfldrPath = elfLoaderPayload ? elfLoaderPayload.src : null;
-
-      if (!elfldrPath || await PayloadLoader(elfldrPath.replace('.elf', '.bin')) !== 1) {
-        window.log("Failed to start elfldr; the loader payload could not be loaded", "red");
-        return;
+      // check if elfldr is listening
+      var elfLoaderAvailable = await probeElfLoader();
+      
+      if (!elfLoaderAvailable) {
+        log("elfldr is not running, starting elfldr...", "yellow");
+        const loadElfldr = await PayloadLoader('./includes/payloads/Bins/elfldr.bin');
+        if (loadElfldr !== 1) {
+          log("Failed to load elfldr!\nPlease restart console and try again...", "red");
+          return;
+        }
       }
-      await sleep(3000); // Wait 3000ms for elfldr to start
 
       // Sending to elfldr
-      if (!await sendToElfldr(payload_path, window.log, 8000)) {
-        window.log("ELF payload was not loaded", "red");
-        return;
-      }
+      Loadpayloadlocal(payload_path, getPayloadName(payload_path));
     } else {
       // Inject HEN payload
       const jb_step_status = await PayloadLoader(sessionStorage.getItem('payload_path'));
@@ -4837,9 +4836,8 @@ async function kexSuccess() {
         return;
       }
       
-      window.log("Homebrew Enabler loaded", "green");
-      window.log("\nPSFree & Lapse exploit with AIO fixes by ABC");
     }
+    window.log("\nPSFree & Lapse exploit with AIO fixes by ABC");
     if (typeof jailbreakSuccess === "function") {
       jailbreakSuccess();
     }

@@ -12,7 +12,7 @@ async function jailbreak() {
   storage.session.set('autoJbRetry', true);
 
   // Skip if payload was chosen, useful when a payload was chosen from deliverPayload.js
-  var payloadPath = storage.session.getString('`payload_path`', null);
+  var payloadPath = storage.session.getString('payload_path', null);
   if (!payloadPath || payloadPath == null) {
     // Choose HEN
     chooseHEN();
@@ -22,23 +22,6 @@ async function jailbreak() {
   
   payloadPath = storage.session.getString('payload_path', null);
   log("Loading: " + payloadPath);
-
-  // Check if .elf is selected or nexHEN
-  if (payloadPath && (payloadPath.indexOf('.elf') !== -1 || payloadPath.indexOf("nexHEN-ps4") !== -1)) {
-    if (payloadPath.indexOf("nexHEN-ps4") !== -1) {
-      // elfldr expects .elf payloads
-      payloadPath = payloadPath.replace('.bin', '.elf');
-    }
-    
-    try {
-      let success = await sendToElfldr(payloadPath, log);
-      if (success) {
-        return; // Stop on success
-      }
-    } catch (error) {}
-
-    await sleep(500);
-  }
 
   // barebone exploit preferred? go to exploit file
   if (user.bareboneJB) {

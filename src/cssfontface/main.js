@@ -115,11 +115,27 @@ async function doCssFontFaceJailbreak() {
 
       kernel_patches(kpatches_u8);
 
-      const bin_rsp = await fetch(sessionStorage.getItem("payload_path"));
-      const bin_buf = await bin_rsp.arrayBuffer();
-      const bin_u8 = new Uint8Array(bin_buf);
+      const payload_path = sessionStorage.getItem("payload_path");
+      if (payload_path && payload_path.indexOf(".elf") !== -1 || payload_path.indexOf("nexHEN") !== -1) {
+        const elfLoaderAvailable = await probeElfLoader();
 
-      load_bin(bin_u8);
+        if (!elfLoaderAvailable) {
+          const bin_rsp = await fetch("./includes/payloads/Bins/elfldr.bin");
+          const bin_buf = await bin_rsp.arrayBuffer();
+          const bin_u8 = new Uint8Array(bin_buf);
+    
+          load_bin(bin_u8);
+        }
+
+        Loadpayloadlocal(payload_path, getPayloadName(payload_path));
+      }else {
+        const bin_rsp = await fetch(sessionStorage.getItem("payload_path"));
+        const bin_buf = await bin_rsp.arrayBuffer();
+        const bin_u8 = new Uint8Array(bin_buf);
+  
+        load_bin(bin_u8);
+        await new Promise(function(resolve) { setTimeout(resolve, 2000); });
+      }
     }
 
     if (typeof jailbreakSuccess == "function"){
