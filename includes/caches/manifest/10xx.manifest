@@ -93,8 +93,8 @@ CACHE:
 ../../../src/cssfontface/ps4/constants.js
 ../../../src/cssfontface/ps4/kernel.js
 ../../../src/cssfontface/ps4/userland.js
-../../../src/kpatches/aio/1000.bin
-../../../src/kpatches/aio/1050.bin
+../../../src/kpatches/1000.bin
+../../../src/kpatches/1050.bin
 ../../../src/slopkit/core.js
 ../../../src/slopkit/core.js?v=10
 ../../../src/slopkit/int64.js

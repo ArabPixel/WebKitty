@@ -149,8 +149,7 @@ let allDone = false;
         const kpatchFile = off && off.kpatch ? off.kpatch
             : key ? key.replace(".", "") + ".bin" : null;
         const kpatchName = kpatchFile
-            ? "./src/kpatches/" + (kpatchFile === "1250.bin" || kpatchFile === "1300.bin" ? "" : "aio/")
-                + kpatchFile
+            ? "./src/kpatches/" + kpatchFile
             : null;
         const KPATCH_JMP_SITES = [];
         try {

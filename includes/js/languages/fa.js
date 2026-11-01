@@ -69,6 +69,10 @@ window.lang = {
     "vibrantColor": "رنگارنگ",
 
     "autoJbRetryText": "تلاش خودکار مجدد برای جیلبریک",
+    "autoJbRetry": "تلاش مجدد تا {seconds} ثانیه دیگر...",
+    "autoJb": "جیلبریک خودکار فعال است. اجرا تا {seconds} ثانیه دیگر...",
+    "autoJbOption": "جیلبریک خودکار",
+    "stopAutoJbBtn": "توقف جیلبریک خودکار",
     "autoJbRetryConfirm": "هم‌اکنون جیلبریک انجام شود؟ در صورت شکست، فرآیند به صورت خودکار تا موفقیت دوباره تلاش خواهد کرد.",
     "jailbreakCountDown": "تلاش مجدد برای جیلبریک تا {seconds} دیگر...",
     "successRate": "نرخ موفقیت: ",

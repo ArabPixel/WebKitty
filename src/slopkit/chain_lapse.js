@@ -216,8 +216,8 @@ function makeRpc(worker) {
         // off.kpatch wins when a firmware shares another's kernel and therefore
         // its blob -- 12.02 uses 1200.bin. Otherwise derive it from the key.
         const kpatchName = fwResolved.off && fwResolved.off.kpatch
-            ? "./src/kpatches/aio/" + fwResolved.off.kpatch
-            : fwKey ? "./src/kpatches/aio/" + fwKey.replace(".", "") + ".bin" : null; let kpatch = null;
+            ? "./src/kpatches/" + fwResolved.off.kpatch
+            : fwKey ? "./src/kpatches/" + fwKey.replace(".", "") + ".bin" : null; let kpatch = null;
         try {
             if (kpatchName) {
                 const rsp = await fetch(kpatchName);

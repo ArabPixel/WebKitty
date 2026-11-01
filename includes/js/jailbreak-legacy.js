@@ -29,6 +29,10 @@ function _jailbreak() {
           // Make it retry until success
           storage.session.set('autoJbRetry', true);
 
+          // turn off auto-jailbreak for this session, so it doesn't loop forever
+          // autoJbRetry will pickup on userland fail and reload
+          storage.session.set('autoJb', false);
+
           // Skip if payload was chosen, useful when a payload was chosen from deliverPayload.js
           payloadPath = storage.session.getString('payload_path', null);
           if (!payloadPath || payloadPath == null) {
@@ -438,7 +442,7 @@ function cleanUp() {
 
   // if RTL language, keep text from left to right
   if (isRtl()) {
-    document.getElementById('DebugConsole').style.textAlign = 'end';
+    ui.debugConsoleElement.style.textAlign = 'end';
   }
 
   // Ensure the exploit status console is displayed

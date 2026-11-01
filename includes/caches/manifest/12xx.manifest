@@ -92,7 +92,7 @@ CACHE:
 ../../../src/slopkit/rpc_worker.js
 ../../../src/slopkit/chain_lapse.js
 ../../../src/slopkit/chain_poops.js
-../../../src/kpatches/aio/1200.bin
+../../../src/kpatches/1200.bin
 ../../../src/kpatches/1250.bin
 
 NETWORK:

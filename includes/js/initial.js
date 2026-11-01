@@ -38,6 +38,7 @@ var ui = {
 
   // Exploit screen elements
   consoleElement: document.getElementById('console'),
+  debugConsoleElement: document.getElementById('DebugConsole'),
   exploitState: document.getElementById('state'),
   toolsSection: document.getElementById('tools'),
   toolsTab: document.getElementById('tools-tab'),
@@ -74,6 +75,7 @@ var ui = {
   scanPayLoader: document.getElementById('scanPayLoader'),
   shutdownServerBtn: document.getElementById('shutdownServerBtn'),
   autoJbRetry: document.getElementById('autoJbRetry'),
+  autoJb: document.getElementById('autoJb'),
   bareboneJbBtn: document.getElementById('bareboneJB'),
   bareboneJBInput: document.getElementById('bareboneJBInput'),
   exploitChainTitle: document.getElementById('exploitChainTitle'),

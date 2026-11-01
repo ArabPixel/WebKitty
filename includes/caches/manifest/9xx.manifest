@@ -93,9 +93,9 @@ CACHE:
 ../../../src/psfree-lapse/lapse.mjs
 ../../../src/psfree-lapse/fonts/FONTS.LICENSE
 ../../../src/psfree-lapse/fonts/LiberationMono-Regular.ttf
-../../../src/kpatches/aio/psfree-lapse/900.bin
-../../../src/kpatches/aio/psfree-lapse/903.bin
-../../../src/kpatches/aio/psfree-lapse/950.bin
+../../../src/kpatches/psfree-lapse/900.bin
+../../../src/kpatches/psfree-lapse/903.bin
+../../../src/kpatches/psfree-lapse/950.bin
 ../../../src/psfree-lapse/lapse/ps4/700.mjs
 ../../../src/psfree-lapse/lapse/ps4/750.mjs
 ../../../src/psfree-lapse/lapse/ps4/751.mjs
@@ -129,9 +129,9 @@ CACHE:
 ../../../src/cssfontface/ps4/constants.js
 ../../../src/cssfontface/ps4/kernel.js
 ../../../src/cssfontface/ps4/userland.js
-../../../src/kpatches/aio/900.bin
-../../../src/kpatches/aio/903.bin
-../../../src/kpatches/aio/950.bin
+../../../src/kpatches/900.bin
+../../../src/kpatches/903.bin
+../../../src/kpatches/950.bin
 
 NETWORK:
 *

@@ -64,11 +64,9 @@ var FIRMWARE_RANGES = [
     {
         id:          EXPLOIT_CHAINS.CSSFONTFACE_LAPSE,
         label:       'CSSFontFace Lapse',
-        min:         9.00,
+        min:         7.00,
         max:         11.02,
-        isDefault:   true,
-        prefMin:     10.00,
-        prefMax:     10.71
+        isDefault:   false,
     },
     {
         id:          EXPLOIT_CHAINS.SLOPKIT_LAPSE,
@@ -76,7 +74,7 @@ var FIRMWARE_RANGES = [
         min:         10.00,
         max:         12.02,
         isDefault:   true,
-        prefMin:     11.00,
+        prefMin:     10.00,
         prefMax:     12.02
     },
     {
@@ -84,17 +82,15 @@ var FIRMWARE_RANGES = [
         label:       'SlopKit Netctrl',
         min:         12.50,
         max:         13.00,
-        isDefault:   true,
-        prefMin:     12.50,
-        prefMax:     13.00
+        isDefault:   false,
     },
     {
         id:          EXPLOIT_CHAINS.RELAPSE,
         label:       'Slopkit Relapse',
-        min:         13.02,
+        min:         12.50,
         max:         13.52,
         isDefault:   true,
-        prefMin:     13.02,
+        prefMin:     12.50,
         prefMax:     13.52
     }
 ];
@@ -211,7 +207,8 @@ function getCachePage(fwVersion) {
         { min: 4.50, max: 4.72, page: 'cache450-472.html' },
         { min: 4.73, max: 5.07, page: 'cache473-507.html' },
         { min: 6.70, max: 6.72, page: 'cache67x.html' },
-        { min: 7.00, max: 8.52, page: 'cache7-8xx.html' },
+        { min: 7.00, max: 7.55, page: 'cache7xx.html' },
+        { min: 8.00, max: 8.52, page: 'cache8xx.html' },
         { min: 9.00, max: 9.60, page: 'cache9xx.html' },
         { min: 10.00, max: 10.71, page: 'cache10xx.html' },
         { min: 11.00, max: 11.52, page: 'cache11xx.html' },

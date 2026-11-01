@@ -1,5 +1,5 @@
 TARGET_VERSIONS = 700 750 800 850 900 903 950
-OUTPUT_DIR = ../../kpatches/aio/psfree-lapse
+OUTPUT_DIR = ../../kpatches/psfree-lapse
 
 CC = gcc
 OBJCOPY = objcopy

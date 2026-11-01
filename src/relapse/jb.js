@@ -216,7 +216,7 @@ let allDone = false,
             return;
 
         const KPATCH_FILE =
-            "./src/kpatches/aio/" + (off.kpatch || fwKey.replace(".", "") + ".bin");
+            "./src/kpatches/" + (off.kpatch || fwKey.replace(".", "") + ".bin");
         const needPatch = ["k_sysent_661", "k_jmp_rsi"].filter(
             (k) => off[k] === undefined,
         );

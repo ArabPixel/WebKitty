@@ -109,7 +109,7 @@ async function doCssFontFaceJailbreak() {
     if (fn.setuid.invoke(0) === -1) {
       jailbreak();
 
-      const kpatches_rsp = await fetch(`./src/kpatches/aio/${constants.KPATCH}`);
+      const kpatches_rsp = await fetch(`./src/kpatches/${constants.KPATCH}`);
       const kpatches_buf = await kpatches_rsp.arrayBuffer();
       const kpatches_u8 = new Uint8Array(kpatches_buf);
 

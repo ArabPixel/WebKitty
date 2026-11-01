@@ -92,10 +92,8 @@ CACHE:
 ../../../src/psfree-lapse/send.mjs
 ../../../src/psfree-lapse/fonts/FONTS.LICENSE
 ../../../src/psfree-lapse/fonts/LiberationMono-Regular.ttf
-../../../src/kpatches/aio/psfree-lapse/700.bin
-../../../src/kpatches/aio/psfree-lapse/750.bin
-../../../src/kpatches/aio/psfree-lapse/800.bin
-../../../src/kpatches/aio/psfree-lapse/850.bin
+../../../src/kpatches/psfree-lapse/700.bin
+../../../src/kpatches/psfree-lapse/750.bin
 ../../../src/psfree-lapse/lapse/ps4/700.mjs
 ../../../src/psfree-lapse/lapse/ps4/750.mjs
 ../../../src/psfree-lapse/lapse/ps4/751.mjs
@@ -119,6 +117,18 @@ CACHE:
 ../../../src/psfree-lapse/rop/ps4/850.mjs
 ../../../src/psfree-lapse/rop/ps4/900.mjs
 ../../../src/psfree-lapse/rop/ps4/950.mjs
+../../../src/cssfontface/workers.js
+../../../src/cssfontface/lapse.js
+../../../src/cssfontface/loader.js
+../../../src/cssfontface/misc.js
+../../../src/cssfontface/netctrl.js
+../../../src/cssfontface/worker.js
+../../../src/cssfontface/main.js
+../../../src/cssfontface/ps4/constants.js
+../../../src/cssfontface/ps4/kernel.js
+../../../src/cssfontface/ps4/userland.js
+../../../src/kpatches/700.bin
+../../../src/kpatches/750.bin
 
 NETWORK:
 *

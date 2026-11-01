@@ -191,6 +191,7 @@ function applyLanguage(lang) {
     if (ui.secondHostBtn && ui.secondHostBtn[0]) updateText(ui.secondHostBtn[0], 'secondHostBtn');
     if (ui.secondHostBtn && ui.secondHostBtn[1]) updateText(ui.secondHostBtn[1], 'secondHostBtn');
     updateTitle(ui.exploitRunBtn, 'clickToStart');
+    updateText(ui.stopAutoJbBtn, 'stopAutoJbBtn');
 
     updateTitle(ui.aboutBtns[0], 'aboutMenu');
     updateTitle(ui.aboutBtns[1], 'aboutMenu');

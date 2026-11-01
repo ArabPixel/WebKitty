@@ -116,10 +116,13 @@ ui.ps4FwSelect.addEventListener('change', function () {
     if (typeof CheckFW === 'function') CheckFW();
 });
 
-// Auto-jailbreak stop button
+// Auto-jailbreak/Auto-jailbreak retry stop button
 ui.stopAutoJbBtn.addEventListener('click', function () {
     clearInterval(autoJbInterval);
+
     storage.session.set('autoJbRetry', false);
+    storage.session.set('autoJb', false);
+
     toggleVisibility(ui.stopAutoJbBtn.id);
     var currentTheme = storage.getString('theme', 'index');
     if (currentTheme === 'compact') {
@@ -129,9 +132,8 @@ ui.stopAutoJbBtn.addEventListener('click', function () {
     }
 });
 
-document.getElementById('DebugConsole').addEventListener('click', function () {
-    ui.consoleElement.innerText = '';
-    log("Debug console cleared.");
+ui.debugConsoleElement.addEventListener('click', function () {
+    ui.consoleElement.innerHTML = '<center>' + (window.lang && window.lang.waitingUserInput) || 'Waiting for user action...' + '</center>';
 });
 
 // Update-cache button

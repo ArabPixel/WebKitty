@@ -54,7 +54,7 @@ This table indicates firmware versions for which the *current version* of this r
 | **CSSFontFace** | Netctrl | 9.00 - 11.02 |
 | **Slopkit**     | Lapse  |  10.00 - 12.02 |
 | **Slopkit**     | Netctrl  |  12.50 - 13.00 |
-| **Slopkit**     | Relapse  |  13.02 - 13.52 |
+| **Slopkit**     | Relapse  |  12.50 - 13.52 |
 | **Payload Loader** | - | 5.05 - latest |
 
 ---
@@ -183,7 +183,6 @@ AGPL-3.0-or-later (see [LICENSE](LICENSE)). Part of this repo belongs to the gro
 - **Egycnq:** Porting Netctrl to slopkit.
 - **Feyzee61:** For the PSFree lapse bundle (single file) and 6.7x exploit implementations.
 - **Fire30:** For Bad Hoist userland exploit.
-- **Flatz:** Duh
 - **GattoDev:** For the WebKitty logo.
 - **Jordy and Sonic-Iso:** Original Slopkit project.
 - **Nathan Fargo and ufm42:** For CSSFontFace userland exploit.
