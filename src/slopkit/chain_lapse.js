@@ -216,8 +216,8 @@ function makeRpc(worker) {
         // off.kpatch wins when a firmware shares another's kernel and therefore
         // its blob -- 12.02 uses 1200.bin. Otherwise derive it from the key.
         const kpatchName = fwResolved.off && fwResolved.off.kpatch
-            ? "./src/slopkit/patches/" + fwResolved.off.kpatch
-            : fwKey ? "./src/slopkit/patches/" + fwKey.replace(".", "") + ".bin" : null; let kpatch = null;
+            ? "./src/kpatches/aio/" + fwResolved.off.kpatch
+            : fwKey ? "./src/kpatches/aio/" + fwKey.replace(".", "") + ".bin" : null; let kpatch = null;
         try {
             if (kpatchName) {
                 const rsp = await fetch(kpatchName);
@@ -246,13 +246,9 @@ function makeRpc(worker) {
                 : "no firmware key, so no blob name -- stage 9 will not run"));
 
         let payload = null;
-        let prsp;
+        let payloadSource = isElfPayload ? './includes/payloads/Bins/elfldr.bin' : payload_path;
         try {
-            if (isElfPayload) {
-                prsp = await fetch('./includes/payloads/Bins/elfldr.bin');
-            } else {
-                prsp = await fetch(payload_path);
-            }
+            const prsp = await fetch(payloadSource);
             if (prsp.ok) payload = new Uint8Array(await prsp.arrayBuffer());
         } catch (e) {
             mark("PAYLOAD-FETCH-FAILED", (e && e.message) ? e.message : String(e));
@@ -650,7 +646,7 @@ function makeRpc(worker) {
                 mark("Already Jailbroken ...");
                 log("<br>");
                 if (isElfPayload && elfLoaderAvailable) {
-                    Loadpayloadlocal(payload_path, getPayloadName(payload_path));                
+                    Loadpayloadlocal(payload_path, getPayloadName(payload_path), 'jailbreak');                
                 }
                 window.jailbreakSuccess();
                 return;
@@ -3362,7 +3358,7 @@ function makeRpc(worker) {
                                         mark("PAYLOAD-SKIPPED", "reason=kpatch-incomplete");
                                     }
                                     if (!payload) {
-                                        mark("PAYLOAD-NONE", "payload.bin was not loaded");
+                                        mark("PAYLOAD-NONE", payloadSource + " was not loaded");
                                     }
 
                                     if (payload && params.get("payload") === "0")
@@ -3844,7 +3840,7 @@ function makeRpc(worker) {
                             : "REPAIRED -- NO REBOOT NEEDED";
                 stateEl.className = "ok";
                 if (isElfPayload) {
-                    Loadpayloadlocal(payload_path, getPayloadName(payload_path));                
+                    Loadpayloadlocal(payload_path, getPayloadName(payload_path), 'jailbreak');                
                 }
                 window.jailbreakSuccess();
             } catch (e) { }

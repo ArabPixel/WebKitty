@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # v4
-# Generated on 2026-10-22
+# Generated on 2026-11-01
 
 CACHE:
 ../../../
@@ -91,7 +91,7 @@ CACHE:
 ../../../src/slopkit/ps4_offsets.js
 ../../../src/slopkit/rpc_worker.js
 ../../../src/slopkit/chain_poops.js
-../../../src/slopkit/patches/1300.bin
+../../../src/kpatches/1300.bin
 
 NETWORK:
 *

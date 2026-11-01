@@ -146,8 +146,12 @@ let allDone = false;
         let kpatch = null, payload = null;
         // off.kpatch wins when a firmware shares another's kernel and therefore
         // its blob -- 12.02 uses 1200.bin. Otherwise derive it from the key.
-        const kpatchName = off && off.kpatch ? "./src/slopkit/patches/" + off.kpatch
-            : key ? "./src/slopkit/patches/" + key.replace(".", "") + ".bin" : null;
+        const kpatchFile = off && off.kpatch ? off.kpatch
+            : key ? key.replace(".", "") + ".bin" : null;
+        const kpatchName = kpatchFile
+            ? "./src/kpatches/" + (kpatchFile === "1250.bin" || kpatchFile === "1300.bin" ? "" : "aio/")
+                + kpatchFile
+            : null;
         const KPATCH_JMP_SITES = [];
         try {
             if (kpatchName) {
@@ -168,13 +172,9 @@ let allDone = false;
             ? "blob=" + kpatchName + " bytes=" + kpatch.length
               + " sites=" + KPATCH_JMP_SITES.length
             : "blob=" + kpatchName + " MISSING");
-            var r;
+            var payloadSrc = isElfPayload ? './includes/payloads/Bins/elfldr.bin' : payload_path;
         try {
-            if (isElfPayload) {
-                r = await fetch('./includes/payloads/Bins/elfldr.bin');
-            } else {
-                r = await fetch(payload_path);
-            }
+            const r = await fetch(payloadSrc);
             if (r.ok) payload = new Uint8Array(await r.arrayBuffer());
         } catch (e) { mark("PAYLOAD-FETCH-THREW", e.message); }
         mark("PAYLOAD-BLOB", payload
@@ -416,7 +416,7 @@ let allDone = false;
                 mark("Already Jailbroken ...");
                 log("<br>");
                 if (isElfPayload && elfLoaderAvailable) {
-                    Loadpayloadlocal(payload_path, getPayloadName(payload_path));                
+                    Loadpayloadlocal(payload_path, getPayloadName(payload_path), 'jailbreak');                
                 }
                 window.jailbreakSuccess();
                 return;
@@ -2327,7 +2327,7 @@ let allDone = false;
                                         mark("PAYLOAD-RUNNING",
                                         "bytes=" + payload.length + " entry=" + entry);
                                         if (isElfPayload) {
-                                            Loadpayloadlocal(payload_path, getPayloadName(payload_path));
+                                            Loadpayloadlocal(payload_path, getPayloadName(payload_path), 'jailbreak');
                                         }
                                         window.jailbreakSuccess();
                                     } 

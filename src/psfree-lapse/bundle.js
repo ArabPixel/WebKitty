@@ -4829,7 +4829,7 @@ async function kexSuccess() {
       await new Promise(function(resolve) { setTimeout(resolve, 2000); });
 
       // Sending to elfldr
-      Loadpayloadlocal(payload_path, getPayloadName(payload_path));
+      Loadpayloadlocal(payload_path, getPayloadName(payload_path), 'jailbreak');
     } else {
       // Inject HEN payload
       const jb_step_status = await PayloadLoader(sessionStorage.getItem('payload_path'));

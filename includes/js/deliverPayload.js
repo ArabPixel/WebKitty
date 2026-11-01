@@ -199,7 +199,10 @@ function Loadpayloadlocal(PLfile, name, id, needsPayloadLoader, customPort) {
                 if (requiresPayloadServer(needsPayloadLoader)) {
                     return;
                 }
-                if (id == "jailbreak") return;
+                if (id == "jailbreak") {
+                    log("Failed to load with jailbreak id", 'orange');
+                    return; 
+                }
                 if (confirm(window.lang.disabledBinloader)) {
                     Loadpayloadonline(PLfile);
                 }

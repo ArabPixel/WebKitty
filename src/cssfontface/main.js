@@ -109,7 +109,7 @@ async function doCssFontFaceJailbreak() {
     if (fn.setuid.invoke(0) === -1) {
       jailbreak();
 
-      const kpatches_rsp = await fetch(`./src/cssfontface/ps4/patches/${constants.KPATCH}`);
+      const kpatches_rsp = await fetch(`./src/kpatches/aio/${constants.KPATCH}`);
       const kpatches_buf = await kpatches_rsp.arrayBuffer();
       const kpatches_u8 = new Uint8Array(kpatches_buf);
 
@@ -128,7 +128,7 @@ async function doCssFontFaceJailbreak() {
         }
 
         await new Promise(function(resolve) { setTimeout(resolve, 2000); });
-        Loadpayloadlocal(payload_path, getPayloadName(payload_path));
+        Loadpayloadlocal(payload_path, getPayloadName(payload_path), "jailbreak");
       }else {
         const bin_rsp = await fetch(sessionStorage.getItem("payload_path"));
         const bin_buf = await bin_rsp.arrayBuffer();

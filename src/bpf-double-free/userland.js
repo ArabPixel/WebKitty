@@ -579,14 +579,14 @@ function userland() {
       probeElfLoader().then(function (elfLoaderAvailable) {
         if (elfLoaderAvailable) {
           log("elfldr is already listening, loading payload...", "green");
-          Loadpayloadlocal(oldPath, getPayloadName(oldPath));
+          Loadpayloadlocal(oldPath, getPayloadName(oldPath), 'jailbreak');
         } else {
           log("elfldr not running, booting elfldr.bin first...", "yellow");
           // Boot elfldr.bin standalone via runPayload, then send target payload
           window.runPayload('./includes/payloads/Bins/elfldr.bin');
           setTimeout(function () {
             log("Sending target payload to port 9021...");
-            Loadpayloadlocal(oldPath, getPayloadName(oldPath));
+            Loadpayloadlocal(oldPath, getPayloadName(oldPath), 'jailbreak');
           }, 3000);
         }
       });

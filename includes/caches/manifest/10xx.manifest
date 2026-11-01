@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # v2.4
-# Generated on 2026-10-22
+# Generated on 2026-11-01
 
 CACHE:
 ../../../
@@ -93,8 +93,14 @@ CACHE:
 ../../../src/cssfontface/ps4/constants.js
 ../../../src/cssfontface/ps4/kernel.js
 ../../../src/cssfontface/ps4/userland.js
-../../../src/cssfontface/ps4/patches/1000.bin
-../../../src/cssfontface/ps4/patches/1050.bin
-
+../../../src/kpatches/aio/1000.bin
+../../../src/kpatches/aio/1050.bin
+../../../src/slopkit/core.js
+../../../src/slopkit/core.js?v=10
+../../../src/slopkit/int64.js
+../../../src/slopkit/mem.js
+../../../src/slopkit/ps4_offsets.js
+../../../src/slopkit/rpc_worker.js
+../../../src/slopkit/chain_lapse.js
 NETWORK:
 *

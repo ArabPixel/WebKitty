@@ -52,7 +52,7 @@ This table indicates firmware versions for which the *current version* of this r
 | **PSFree** | Lapse | 7.00 - 9.60 |
 | **CSSFontFace** | Lapse | 7.00 - 11.02 |
 | **CSSFontFace** | Netctrl | 9.00 - 11.02 |
-| **Slopkit**     | Lapse  |  11.00 - 12.02 |
+| **Slopkit**     | Lapse  |  10.00 - 12.02 |
 | **Slopkit**     | Netctrl  |  12.50 - 13.00 |
 | **Slopkit**     | Relapse  |  13.02 - 13.52 |
 | **Payload Loader** | - | 5.05 - latest |

@@ -102,10 +102,13 @@ async function badHoistJailbreak() {
 
   var payloadPath = storage.session.getString('payload_path', '');
   let isElfPayload = isPayloadElf(payloadPath);
-  let elfLoaderAvailable = await probeElfLoader();
+  let elfLoaderAvailable = null;
 
   let injectionPath = payloadPath;
   if (isElfPayload) {
+    elfLoaderAvailable = await probeElfLoader();
+    log("Waiting 600ms");
+    sleep(600);
     if (elfLoaderAvailable) {
       log("elfldr is already running. Skipping elfldr.bin boot.", "green");
     } else {
@@ -124,6 +127,7 @@ async function badHoistJailbreak() {
     // Inject either the binary payload or elfldr.bin
     log("Injecting payload: " + injectionPath);
     getPayload672(injectionPath);
+    await sleep(1000);
 
     if (isElfPayload) {
       if (elfLoaderAvailable) {

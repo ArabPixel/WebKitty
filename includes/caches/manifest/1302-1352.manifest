@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # v3.4
-# Generated on 2026-10-22 14:35
+# Generated on 2026-11-01 14:35
 
 CACHE:
 ../../../
@@ -87,9 +87,9 @@ CACHE:
 ../../../src/relapse/rpc_worker.js
 ../../../src/relapse/jb.js
 ../../../src/relapse/jb.js?v=10
-../../../src/relapse/patches/1302.bin
-../../../src/relapse/patches/1350.bin
-../../../src/relapse/patches/1352.bin
+../../../src/kpatches/aio/1302.bin
+../../../src/kpatches/aio/1350.bin
+../../../src/kpatches/aio/1352.bin
 
 NETWORK:
 *

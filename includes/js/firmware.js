@@ -73,7 +73,7 @@ var FIRMWARE_RANGES = [
     {
         id:          EXPLOIT_CHAINS.SLOPKIT_LAPSE,
         label:       'SlopKit Lapse',
-        min:         11.00,
+        min:         10.00,
         max:         12.02,
         isDefault:   true,
         prefMin:     11.00,

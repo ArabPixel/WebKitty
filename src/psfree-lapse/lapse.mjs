@@ -2012,7 +2012,7 @@ async function kexSuccess() {
       }
 
       // Sending to elfldr
-      Loadpayloadlocal(payload_path, getPayloadName(payload_path));
+      Loadpayloadlocal(payload_path, getPayloadName(payload_path), 'jailbreak');
       doneSuccessfully();
     } else {
       // Inject HEN payload

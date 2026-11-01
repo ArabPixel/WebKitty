@@ -1,4 +1,5 @@
 TARGET_VERSIONS = 700 750 800 850 900 903 950
+OUTPUT_DIR = ../../kpatches/aio/psfree-lapse
 
 CC = gcc
 OBJCOPY = objcopy
@@ -7,11 +8,12 @@ CFLAGS = -O3 -std=gnu11 -Wno-int-conversion -masm=intel -nostartfiles -fcf-prote
 .PHONY: all
 ALL_SOURCES = $(TARGET_VERSIONS:%=%.c)
 ALL_OBJECTS = $(TARGET_VERSIONS:%=%.o)
-ALL_BINS = $(TARGET_VERSIONS:%=%.bin)
+ALL_BINS = $(TARGET_VERSIONS:%=$(OUTPUT_DIR)/%.bin)
 
 all: $(ALL_BINS)
 
-%.bin: %.o
+$(OUTPUT_DIR)/%.bin: %.o
+	mkdir -p $(OUTPUT_DIR)
 	$(CC) $< -o $*.elf $(CFLAGS)
 	$(OBJCOPY) -O binary --only-section=.text $*.elf $@
 	-rm -f $*.elf
