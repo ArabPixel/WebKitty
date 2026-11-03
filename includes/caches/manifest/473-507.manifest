@@ -78,6 +78,7 @@ CACHE:
 ../../../includes/payloads/Linux/linux-512mb.elf
 ../../../includes/payloads/Linux/linux-64mb.elf
 ../../../includes/payloads/HEN/goldhen_v2.4b18.13.bin
+../../../includes/payloads/HEN/goldhen_v2.4b18.12.bin
 ../../../includes/payloads/HEN/PS4HEN-474.bin
 ../../../includes/payloads/HEN/PS4HEN.bin
 ../../../includes/payloads/Legacy/ps4-disable-updates-legacy.bin
