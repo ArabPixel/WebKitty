@@ -55,6 +55,7 @@ This table indicates firmware versions for which the *current version* of this r
 | **Slopkit**     | Lapse  |  10.00 - 12.02 |
 | **Slopkit**     | Netctrl  |  12.50 - 13.00 |
 | **Slopkit**     | Relapse  |  12.50 - 13.52 |
+| **Slopkit**     | Prolapse  |  14.00 |
 | **Payload Loader** | - | 5.05 - latest |
 
 ---
@@ -175,7 +176,7 @@ AGPL-3.0-or-later (see [LICENSE](LICENSE)). Part of this repo belongs to the gro
 
 ---
 
-## Credits in alphabetical order
+## Credits in no particular order
 - **abc:** For PSFree userland and Lapse kernel exploits.
 - **Al-Azif:** For the modular (multi-file) PSFree Lapse and AIO workaround implementations.
 - **anonymous:** For PS4 firmware kernel dumps.
@@ -193,5 +194,6 @@ AGPL-3.0-or-later (see [LICENSE](LICENSE)). Part of this repo belongs to the gro
 - **sleirsgoevy:** For 6.7x kernel exploit. 
 - **TheFlow:** For Netctrl kernel exploit.
 - **ufm42:** For CSSFontFace Netctrl and Lapse implementation.
+- **well0nex:** For slopkit prolapse source
 
 Check the appropriate files for any **extra** contributors. Unless otherwise stated, everything here can also be credited to us.

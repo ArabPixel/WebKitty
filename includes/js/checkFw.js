@@ -181,4 +181,5 @@ function updateExploitChainVisibility(fwVersion) {
     toggleVisibility('slopKitNetCtrlExp',     isChainSupported(EXPLOIT_CHAINS.SLOPKIT_NETCTRL, fwNum));
     toggleVisibility('relapseExp',            isChainSupported(EXPLOIT_CHAINS.RELAPSE, fwNum));
     toggleVisibility('bpfDoubleFreeExp',      isChainSupported(EXPLOIT_CHAINS.BPF_DOUBLE_FREE, fwNum));
+    toggleVisibility('slopkitProlapseExp',    isChainSupported(EXPLOIT_CHAINS.SLOPKIT_PROLAPSE, fwNum));
 }

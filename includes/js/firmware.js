@@ -14,6 +14,7 @@ var EXPLOIT_CHAINS = {
     SLOPKIT_NETCTRL:     6,   // src/slopkit/chain_poops.js       (12.50 – 13.00)
     RELAPSE:             7,   // src/relapse/jb.js                (12.50 – 13.52)
     BPF_DOUBLE_FREE:     8,   // src/bpf-double-free/main.js      (4.50 – 5.07)
+    SLOPKIT_PROLAPSE:    9,   // src/slopkit-prolapse/jb.js       (13.52 – 14.00)
 };
 
 // Exploit chain ranges and preferences
@@ -92,6 +93,15 @@ var FIRMWARE_RANGES = [
         isDefault:   true,
         prefMin:     12.50,
         prefMax:     13.52
+    },
+    {
+        id:          EXPLOIT_CHAINS.SLOPKIT_PROLAPSE,
+        label:       'SlopKit Prolapse',
+        min:         13.52,
+        max:         14.00,
+        isDefault:   true,
+        prefMin:     13.52,
+        prefMax:     14.00
     }
 ];
 
@@ -215,6 +225,7 @@ function getCachePage(fwVersion) {
         { min: 12.00, max: 12.52, page: 'cache12xx.html' },
         { min: 13.00, max: 13.00, page: 'cache1300.html' },
         { min: 13.02, max: 13.52, page: 'cache1302-1352.html' },
+        { min: 14.00, max: 14.00, page: 'cache1400.html' },
     ];
 
     var matchedPage = 'cachePayloads.html';

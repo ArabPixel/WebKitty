@@ -74,9 +74,15 @@ function getReloadAfterJbValue() {
  * @param {boolean} isSuccess - true when the jailbreak succeeds.
  * Passing both false refreshes the UI display without changing stored counts.
  */
-function updateJbStats(attempt, isSuccess) {
+function updateJbStats(attempt, isSuccess, revert) {
     var total = storage.getNumber('jbTotal', 0);
     var success = storage.getNumber('jbSuccess', 0);
+
+    if (revert) {
+        total--;
+        storage.set('jbTotal', total);
+        return;
+    }
 
     if (attempt) {
         total++;

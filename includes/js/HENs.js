@@ -84,7 +84,7 @@ function loadJbFlavor() {
 function updateHenFlavorVisibility(fwVersion) {
     var fwNum = parseFloat(fwVersion);
     if (isNaN(fwNum)) return;
-    var hideGoldHEN = (fwNum > 13.52 || fwNum < 5.05) ? true : false;
+    var hideGoldHEN = (fwNum > 14.00 || fwNum < 5.05) ? true : false;
     
     var hidenexHEN = !devMode;
 
