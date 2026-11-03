@@ -1,13 +1,13 @@
 var GOLDHEN_VERSIONS = {
-    'GHv2.4b18.12': 'goldhen_v2.4b18.12.bin',  
+    'GHv2.4b18.13': 'goldhen_v2.4b18.13.bin',
+    'GHv2.4b18.12': 'goldhen_v2.4b18.12.bin',
     'GHv2.4b18.10': 'goldhen_v2.4b18.10.bin',
     'GHv2.4b18.9':  'goldhen_v2.4b18.9.bin',
     'GHv2.4b18.8':  'goldhen_v2.4b18.8.bin',
     'GHv2.4b18.7':  'goldhen_v2.4b18.7.bin',
-    'GHv2.4b18.6':  'goldhen_v2.4b18.6.bin',
 };
 
-var GOLDHEN_DEFAULT = 'GHv2.4b18.12'; // Latest
+var GOLDHEN_DEFAULT = 'GHv2.4b18.13'; // Latest
 var HEN_BASE_PATH   = './includes/payloads/HEN/';
 var DEFAULT_HEN     = "GoldHEN";
 
