@@ -12,7 +12,7 @@ var EXPLOIT_CHAINS = {
     CSSFONTFACE_LAPSE:   4,   // src/cssfontface/main.js          (9.00 – 11.02)
     SLOPKIT_LAPSE:       5,   // src/slopkit/chain_lapse.js       (11.00 – 12.02)
     SLOPKIT_NETCTRL:     6,   // src/slopkit/chain_poops.js       (12.50 – 13.00)
-    RELAPSE:             7,   // src/relapse/jb.js                (13.02 – 13.52)
+    RELAPSE:             7,   // src/relapse/jb.js                (12.50 – 13.52)
     BPF_DOUBLE_FREE:     8,   // src/bpf-double-free/main.js      (4.50 – 5.07)
 };
 
