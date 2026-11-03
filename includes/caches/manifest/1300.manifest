@@ -91,6 +91,14 @@ CACHE:
 ../../../src/slopkit/ps4_offsets.js
 ../../../src/slopkit/rpc_worker.js
 ../../../src/slopkit/chain_poops.js
+../../../src/relapse/core.js
+../../../src/relapse/core.js?v=10
+../../../src/relapse/int64.js
+../../../src/relapse/mem.js
+../../../src/relapse/ps4_offsets.js
+../../../src/relapse/rpc_worker.js
+../../../src/relapse/jb.js
+../../../src/relapse/jb.js?v=10
 ../../../src/kpatches/1300.bin
 
 NETWORK:
