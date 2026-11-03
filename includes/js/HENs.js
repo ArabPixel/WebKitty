@@ -41,7 +41,7 @@ function chooseHEN() {
 }
 
 function setGoldHENVer(value) {
-    if (user.ps4Fw > 13.00 && value !== GOLDHEN_DEFAULT) {
+    if (user.ps4Fw > 13.00 && value !== GOLDHEN_DEFAULT && value != "GHv2.4b18.12") { 
         alert(window.lang.unsupportedFirmware + user.ps4Fw);
         // reset to latest version if firmware doesn't support older GoldHEN versions
         var goldHenRadio = document.querySelector('input[name="goldhen"][value="' + GOLDHEN_DEFAULT + '"]');
