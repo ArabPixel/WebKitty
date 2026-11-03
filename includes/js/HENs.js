@@ -1,13 +1,13 @@
 var GOLDHEN_VERSIONS = {
-    'GHv2.4b18.12': 'goldhen_v2.4b18.12.bin',  
+    'GHv2.4b18.13': 'goldhen_v2.4b18.13.bin',
+    'GHv2.4b18.12': 'goldhen_v2.4b18.12.bin',
     'GHv2.4b18.10': 'goldhen_v2.4b18.10.bin',
     'GHv2.4b18.9':  'goldhen_v2.4b18.9.bin',
     'GHv2.4b18.8':  'goldhen_v2.4b18.8.bin',
     'GHv2.4b18.7':  'goldhen_v2.4b18.7.bin',
-    'GHv2.4b18.6':  'goldhen_v2.4b18.6.bin',
 };
 
-var GOLDHEN_DEFAULT = 'GHv2.4b18.12'; // Latest
+var GOLDHEN_DEFAULT = 'GHv2.4b18.13'; // Latest
 var HEN_BASE_PATH   = './includes/payloads/HEN/';
 var DEFAULT_HEN     = "GoldHEN";
 
@@ -41,7 +41,7 @@ function chooseHEN() {
 }
 
 function setGoldHENVer(value) {
-    if (user.ps4Fw > 13.00 && value !== GOLDHEN_DEFAULT) {
+    if (user.ps4Fw > 13.00 && value !== GOLDHEN_DEFAULT && value != "GHv2.4b18.12") { 
         alert(window.lang.unsupportedFirmware + user.ps4Fw);
         // reset to latest version if firmware doesn't support older GoldHEN versions
         var goldHenRadio = document.querySelector('input[name="goldhen"][value="' + GOLDHEN_DEFAULT + '"]');
