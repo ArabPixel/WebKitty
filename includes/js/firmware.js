@@ -97,10 +97,10 @@ var FIRMWARE_RANGES = [
     {
         id:          EXPLOIT_CHAINS.SLOPKIT_PROLAPSE,
         label:       'SlopKit Prolapse',
-        min:         13.52,
+        min:         14.00,
         max:         14.00,
         isDefault:   true,
-        prefMin:     13.52,
+        prefMin:     14.00,
         prefMax:     14.00
     }
 ];
