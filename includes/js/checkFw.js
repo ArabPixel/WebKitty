@@ -26,6 +26,7 @@ function CheckFW() {
             var dotIndex = fwVersion.indexOf('.');
             var major = dotIndex !== -1 ? fwVersion.substring(0, dotIndex) : fwVersion;
             if (user.ps4Fw >= 4.50 && user.ps4Fw <= 5.07) major = '450-507';
+            if (user.ps4Fw == 14.00) major = '1400';
             var el = document.getElementById('fw' + major);
             if (el) el.classList.add('fwSelected');
 

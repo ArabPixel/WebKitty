@@ -194,6 +194,6 @@ AGPL-3.0-or-later (see [LICENSE](LICENSE)). Part of this repo belongs to the gro
 - **sleirsgoevy:** For 6.7x kernel exploit. 
 - **TheFlow:** For Netctrl kernel exploit.
 - **ufm42:** For CSSFontFace Netctrl and Lapse implementation.
-- **well0nex:** For slopkit prolapse source
+- **m0zz:** For slopkit prolapse source
 
 Check the appropriate files for any **extra** contributors. Unless otherwise stated, everything here can also be credited to us.
