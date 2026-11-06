@@ -14,7 +14,7 @@ var EXPLOIT_CHAINS = {
     SLOPKIT_NETCTRL:     6,   // src/slopkit/chain_poops.js       (12.50 – 13.00)
     RELAPSE:             7,   // src/relapse/jb.js                (12.50 – 13.52)
     BPF_DOUBLE_FREE:     8,   // src/bpf-double-free/main.js      (4.50 – 5.07)
-    SLOPKIT_PROLAPSE:    9,   // src/slopkit-prolapse/jb.js       (13.52 – 14.00)
+    SLOPKIT_AFTERGLOW:   9,   // src/slopkit-afterglow/jb.js      (13.52 – 14.00)
 };
 
 // Exploit chain ranges and preferences
@@ -95,8 +95,8 @@ var FIRMWARE_RANGES = [
         prefMax:     13.52
     },
     {
-        id:          EXPLOIT_CHAINS.SLOPKIT_PROLAPSE,
-        label:       'SlopKit Prolapse',
+        id:          EXPLOIT_CHAINS.SLOPKIT_AFTERGLOW,
+        label:       'SlopKit Afterglow',
         min:         14.00,
         max:         14.00,
         isDefault:   true,

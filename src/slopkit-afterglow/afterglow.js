@@ -48,6 +48,14 @@ const S = {
    written once. The 13.52 column was derived from the two kernel images
    offline and cross-checked against a second method per value. */
 const FIRMWARE = {
+  "14.02": {
+    anchor:    0xE6C30,   /* the lock the leak hands us */
+    swap_rbp:  0xa80f68,   /* xchg rbp,rax ; ret */
+    prison0:   0x111fa18,   /* holds a pointer to prison0, so read it */
+    rootvnode: 0x2136e90,
+    padding:   0xB3A290,   /* start of the zero run behind kernel text */
+    ghKmem:    0x466920,
+  },
   "14.00": {
     anchor:    0x00e6c60,   /* the lock the leak hands us */
     swap_rbp:  0x0a80f68,   /* xchg rbp,rax ; ret */
@@ -146,6 +154,23 @@ function setFirmware(fw) {
 }
 
 const PATCH_TABLE = {
+  "14.02": [
+  [0x0000acd,"eb",       "bcopy"],
+  [0x2BDA9D, "eb",       "bzero"],
+  [0x2BDAE1, "eb",       "pagezero"],
+  [0x2BDB5D, "eb",       "memcpy"],
+  [0x2BDBA1, "eb",       "pagecopy"],
+  [0x2BDD4D, "eb",       "copyin"],
+  [0x2BE1FD, "eb",       "copyinstr"],
+  [0x2BE2CD, "eb",       "copystr"],
+  [0x1B7C63, "eb04",     "dlsym, first check"],
+  [0x1B7C73, "eb04",     "dlsym, second check"],
+  [0x1B7C93, "90e9",     "dlsym, nop and jump"],
+  [0x1B7724, "90e9",     "load_prx"],
+  [0x1B7CD8, "90e93c01", "dlsym, open it to every caller"],
+  [0x628B04, "eb00",     "self verification"],
+  [0x6293EF, "eb00",     "delayed panic on suspend"],
+  ],
   "14.00": [
   [0x0000acd, "eb",       "bcopy"],
   [0x02bd79d, "eb",       "bzero"],

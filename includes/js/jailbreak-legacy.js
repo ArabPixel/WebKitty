@@ -315,19 +315,19 @@ function _relapseJailbreak() {
   }));
   return _relapseJailbreak.apply(this, arguments);
 }
-function slopkitProlapse() {
-  return _slopkitProlapse.apply(this, arguments);
+function slopkitAfterglow() {
+  return _slopkitAfterglow.apply(this, arguments);
 }
-function _slopkitProlapse() {
-  _slopkitProlapse = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7() {
+function _slopkitAfterglow() {
+  _slopkitAfterglow = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7() {
     var _t5;
     return _regenerator().w(function (_context7) {
       while (1) switch (_context7.p = _context7.n) {
         case 0:
-          log("Loading SlopKit Prolapse exploit chain implementation..");
+          log("Loading SlopKit Afterglow exploit chain implementation..");
           _context7.p = 1;
           _context7.n = 2;
-          return getScript("src/slopkit-prolapse/jb.js", true, devMode);
+          return getScript("src/slopkit-afterglow/jb.js", true, devMode);
         case 2:
           _context7.n = 4;
           break;
@@ -340,7 +340,7 @@ function _slopkitProlapse() {
       }
     }, _callee7, null, [[1, 3]]);
   }));
-  return _slopkitProlapse.apply(this, arguments);
+  return _slopkitAfterglow.apply(this, arguments);
 }
 function bpfDoubleFree() {
   return _bpfDoubleFree.apply(this, arguments);
@@ -494,5 +494,5 @@ EXPLOIT_HANDLERS[EXPLOIT_CHAINS.CSSFONTFACE_LAPSE] = cssFontFaceJailbreak;
 EXPLOIT_HANDLERS[EXPLOIT_CHAINS.SLOPKIT_LAPSE] = slopKit;
 EXPLOIT_HANDLERS[EXPLOIT_CHAINS.SLOPKIT_NETCTRL] = slopKit;
 EXPLOIT_HANDLERS[EXPLOIT_CHAINS.RELAPSE] = relapseJailbreak;
-EXPLOIT_HANDLERS[EXPLOIT_CHAINS.SLOPKIT_PROLAPSE] = slopkitProlapse;
+EXPLOIT_HANDLERS[EXPLOIT_CHAINS.SLOPKIT_AFTERGLOW] = slopkitAfterglow;
 EXPLOIT_HANDLERS[EXPLOIT_CHAINS.BPF_DOUBLE_FREE] = bpfDoubleFree;

@@ -80,12 +80,12 @@ CACHE:
 ../../../includes/payloads/Linux/linux-4096mb.elf
 ../../../includes/payloads/Linux/linux-512mb.elf
 ../../../includes/payloads/Linux/linux-64mb.elf
-../../../src/slopkit-prolapse/afterglow.js
-../../../src/slopkit-prolapse/core.js
-../../../src/slopkit-prolapse/int64.js
-../../../src/slopkit-prolapse/mem.js
-../../../src/slopkit-prolapse/ps4_offsets.js
-../../../src/slopkit-prolapse/jb.js
+../../../src/slopkit-afterglow/afterglow.js
+../../../src/slopkit-afterglow/core.js
+../../../src/slopkit-afterglow/int64.js
+../../../src/slopkit-afterglow/mem.js
+../../../src/slopkit-afterglow/ps4_offsets.js
+../../../src/slopkit-afterglow/jb.js
 ../../../src/kpatches/1400.bin
 
 NETWORK:

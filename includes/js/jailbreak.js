@@ -179,10 +179,10 @@ async function relapseJailbreak() {
   }
 }
 
-async function slopkitProlapse() {
-  log("Loading SlopKit Prolapse exploit chain implementation..");
+async function slopkitAfterglow() {
+  log("Loading SlopKit Afterglow exploit chain implementation..");
   try {
-    await getScript("src/slopkit-prolapse/jb.js", true, devMode);
+    await getScript("src/slopkit-afterglow/jb.js", true, devMode);
   } catch (error) {
     log(error, "red");
   }
@@ -275,5 +275,5 @@ EXPLOIT_HANDLERS[EXPLOIT_CHAINS.CSSFONTFACE_LAPSE] = cssFontFaceJailbreak;
 EXPLOIT_HANDLERS[EXPLOIT_CHAINS.SLOPKIT_LAPSE] = slopKit;
 EXPLOIT_HANDLERS[EXPLOIT_CHAINS.SLOPKIT_NETCTRL] = slopKit;
 EXPLOIT_HANDLERS[EXPLOIT_CHAINS.RELAPSE] = relapseJailbreak;
-EXPLOIT_HANDLERS[EXPLOIT_CHAINS.SLOPKIT_PROLAPSE] = slopkitProlapse;
+EXPLOIT_HANDLERS[EXPLOIT_CHAINS.SLOPKIT_AFTERGLOW] = slopkitAfterglow;
 EXPLOIT_HANDLERS[EXPLOIT_CHAINS.BPF_DOUBLE_FREE] = bpfDoubleFree;

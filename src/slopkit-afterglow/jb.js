@@ -398,7 +398,7 @@ let mainMf = null,
        re-checks the key. On a firmware it has no stage for, the chain would
        come up in WebKit and then write foreign addresses into the kernel --
        so it is refused here, before anything is touched. */
-    const SUPPORTED = ["14.00", "13.52"];
+    const SUPPORTED = ["14.02", "14.00", "13.52"];
     if (SUPPORTED.indexOf(fwKey) < 0) {
       mark("FW-UNSUPPORTED", fwKey + " -- this build has a kernel stage for "
            + SUPPORTED.join(", ") + " only");
