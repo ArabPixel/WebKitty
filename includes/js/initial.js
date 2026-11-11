@@ -48,7 +48,7 @@ var ui = {
   linuxTab: document.getElementById('linux-tab'),
   advancedPayloadsSection: document.getElementById('advanced'),
   advancedPayloadsTab: document.getElementById('advanced-tab'),
-  advancedPayloadsContainer: document.querySelector('.advancedPayloadsTab'),
+  advancedPayloadsContainer: document.getElementById('advancedPayloadsTab'),
   advancedPayloadsInput: document.getElementById('advancedPayloadsInput'),
   customPayloadsSection: document.getElementById('custom'),
   customPayloadsTab: document.getElementById('custom-tab'),

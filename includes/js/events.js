@@ -162,7 +162,7 @@ function chooseFanThreshold() {
 function setAdvancedPayloads(inputState) {
     user.advancedPayloads = inputState;
     storage.set('advancedPayloads', inputState);
-    if (inputState === true || inputState === 'true') {
+    if (inputState) {
         toggleVisibility(ui.advancedPayloadsContainer.id, 1);
         var advancedList = [];
         if (typeof payloadsList !== 'undefined') {
