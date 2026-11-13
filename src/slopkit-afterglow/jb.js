@@ -90,9 +90,6 @@ const SENT_HOME = (function () {
      or stepping back lands straight on it again. */
   setTimeout(function () {
     try {
-      if (typeof updateJbStats === "function") {
-        updateJbStats(0,0,1);
-      }
       sessionStorage.setItem('jailbreakNow', true);
       location.replace("index.html");
     } catch (e) {}
