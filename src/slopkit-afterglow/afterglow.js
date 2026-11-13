@@ -928,7 +928,7 @@ async function loadEnabler(url, k, kbase, room) {
     say("[e] " + blob.length + " bytes -- composite image, patch chain path");
     return loadGoldhen(url, k, kbase, room, blob);
   }
-  if (blob.length && blob[0] === 0xe9) {
+  if (blob.length) {
     say("[e] " + blob.length + " bytes, leading jmp -- raw payload path");
     // Here too: GoldHEN expects to find its patches in place.
     if (!(await runPatchSet(room))) return false;
@@ -957,10 +957,6 @@ async function loadPayload(url, preloaded) {
   }
 
   if (!blob.length) { say("[p] " + url + " is empty"); return false; }
-  if (blob[0] !== 0xe9) {
-    say("[p] " + url + " does not start with a jmp -- not a raw payload, refusing");
-    return false;
-  }
 
   const size = (blob.length + 0x3fff) & ~0x3fff;
   const m = sc(S.mmap, 0, size, 7, 0x1002, -1, 0);
@@ -1666,6 +1662,12 @@ async function attempt(ctx, opts) {
     if (m0.i32 !== -1 && sc(S.mprotect, v(m0.lo, m0.hi), 0x4000, 7).i32 === 0) {
       say("  this kernel is already open -- a run has succeeded on this boot.");
       say("  Not firing again; reboot the console for a fresh one.");
+
+      // load payload
+      const payload_path = sessionStorage.getItem("payload_path");
+      const blob = await fetchBytes(payload_path, "p");
+      await loadPayload(payload_path, blob)
+      say("  Payload loaded successfully!");
       window.jailbreakSuccess();
       return false;
     }
