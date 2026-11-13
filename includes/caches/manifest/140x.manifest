@@ -69,6 +69,7 @@ CACHE:
 ../../../includes/payloads/Bins/fan-thresholds/ps4-fan-threshold80.bin
 ../../../includes/payloads/Bins/fan-thresholds/ps4-fan-threshold85.bin
 ../../../includes/payloads/HEN/goldhen_v2.4b18.13.bin
+../../../includes/payloads/HEN/goldhen_v2.4b18.14.bin
 ../../../includes/payloads/HEN/goldhen_v2.4b18.12.bin
 ../../../includes/payloads/HEN/PS4HEN.bin
 ../../../includes/payloads/Linux/linux-1024mb.elf
