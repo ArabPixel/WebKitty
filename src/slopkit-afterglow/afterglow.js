@@ -53,7 +53,7 @@ const FIRMWARE = {
     swap_rbp:  0xa81478,   /* xchg rbp,rax ; ret */
     prison0:   0x111fa18,   /* holds a pointer to prison0, so read it */
     rootvnode: 0x2136e90,
-    padding:   0xB3A290,   /* start of the zero run behind kernel text */
+    padding:   0xB3A298,   /* start of the zero run behind kernel text */
     ghKmem:    0x466920,
   },
   "14.00": {
