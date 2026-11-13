@@ -95,8 +95,9 @@ function updateJbStats(attempt, isSuccess, revert) {
 
     if (typeof ui !== 'undefined' && ui.successRateText && window.lang) {
         var rate = total > 0 ? ((success / total) * 100).toFixed(0) : '0';
+        var displayRate = total > 0 ? rate + '%' : '-';
         ui.successRateText.textContent =
-            (window.lang.successRate || 'Success Rate: ') + rate + '% (' + success + '/' + total + ')';
+            (window.lang.successRate || 'Success Rate: ') + displayRate + ' (' + success + '/' + total + ')';
     }
 }
 

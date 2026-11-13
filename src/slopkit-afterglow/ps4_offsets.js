@@ -637,6 +637,10 @@ PS4["14.00"] = Object.assign({}, PS4["13.52"], {
   k_rootvnode: undefined,
 });
 
+PS4["14.02"] = Object.assign({}, PS4["14.00"], {
+
+});
+
 export function offsetsFor(uaString) {
   const m = (uaString || "").match(/PlayStation\s+4[\/ ](\d+)\.(\d+)/);
   if (!m) return { key: null, off: null };

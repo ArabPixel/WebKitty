@@ -98,10 +98,10 @@ var FIRMWARE_RANGES = [
         id:          EXPLOIT_CHAINS.SLOPKIT_AFTERGLOW,
         label:       'SlopKit Afterglow',
         min:         14.00,
-        max:         14.00,
+        max:         14.02,
         isDefault:   true,
         prefMin:     14.00,
-        prefMax:     14.00
+        prefMax:     14.02
     }
 ];
 
@@ -225,7 +225,7 @@ function getCachePage(fwVersion) {
         { min: 12.00, max: 12.52, page: 'cache12xx.html' },
         { min: 13.00, max: 13.00, page: 'cache1300.html' },
         { min: 13.02, max: 13.52, page: 'cache1302-1352.html' },
-        { min: 14.00, max: 14.00, page: 'cache1400.html' },
+        { min: 14.00, max: 14.02, page: 'cache140x.html' },
     ];
 
     var matchedPage = 'cachePayloads.html';

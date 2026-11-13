@@ -232,7 +232,7 @@ var payloadsList = [
     description: "Next-Gen version of ps4debug for PlayStation 4",
     specificFW: "5.05 - latest",
     category: "advanced",
-    src: payloadsPath + "ps4debug-ng_v1.3.3.bin"
+    src: payloadsPath + "ps4debug-ng_v1.3.4.bin"
   },
   {
     id: "PUPDecrypt",

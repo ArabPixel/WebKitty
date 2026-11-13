@@ -55,7 +55,7 @@ This table indicates firmware versions for which the *current version* of this r
 | **Slopkit**     | Lapse  |  10.00 - 12.02 |
 | **Slopkit**     | Netctrl  |  12.50 - 13.00 |
 | **Slopkit**     | Relapse  |  12.50 - 13.52 |
-| **Slopkit**     | Afterglow  |  14.00 |
+| **Slopkit**     | Afterglow  |  14.02 |
 | **Payload Loader** | - | 5.05 - latest |
 
 ---

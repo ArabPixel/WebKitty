@@ -208,7 +208,7 @@ function clearStats() {
     if (!confirm(window.lang.clearStatsConfirm)) return;
     storage.remove('jbTotal');
     storage.remove('jbSuccess');
-    ui.successRateText.textContent = (window.lang.successRate || 'Success Rate: ') + '0% (0/0)';
+    updateJbStats(0, 0)
 }
 
 // To be only used when this project is served on a PS4-Websrv payload on a PS4.
