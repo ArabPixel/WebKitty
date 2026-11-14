@@ -18,6 +18,7 @@ function autoJailbreak() {
     // used for 6.7x jailbreak when userland is loaded
     var jbNow = storage.session.getBoolean('jailbreakNow', false);
     if (jbNow) {
+        storage.session.remove('jailbreakNow');
         jailbreak();
         return;
     }

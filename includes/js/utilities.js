@@ -130,6 +130,9 @@ function jailbreakSuccess(statusMessage) {
 }
 
 function isLocalIP(ip) {
+    if (ip === 'localhost' || ip === '::1' || ip === '::ffff:127.0.0.1') {
+        return true;
+    }
     return /^(127\.|192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.)/.test(ip);
 }
 

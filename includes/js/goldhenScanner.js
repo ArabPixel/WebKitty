@@ -44,6 +44,12 @@ function guessIp() {
 }
 
 function findPs4FromBaseIP(ip) {
+    if (ip == 'localhost'){
+        log("Can't scan for ip using localhost (from url)", 'orange');
+        log("Tipp: browse this website using your local ip. Example: 192.168.2.123");
+        settingsPopup();
+        return;
+    }
     return new Promise(function (resolve, reject) {
         var base = baseIp(ip);
         var checked = 0;

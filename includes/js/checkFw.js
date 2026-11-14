@@ -100,7 +100,7 @@ function CheckFW() {
             });
             elementsToHide.push(
                 'initial-screen', 'henSelection', 'autoJbContainer', 'successRate',
-                'bareboneJBOption', 'chooseExploitChain', 'layouts', 'layout', 'theme'
+                'bareboneJBOption', 'chooseExploitChain', 'layouts', 'layout', 'theme', 'autoJbOption'
             );
 
             if (user.platform === 'Android' || user.platform === 'iOS') {
