@@ -93,7 +93,7 @@ const SENT_HOME = (function () {
       sessionStorage.setItem('jailbreakNow', true);
       location.replace("index.html");
     } catch (e) {}
-  }, 1500);
+  }, 500);
   return true;
 })();
 

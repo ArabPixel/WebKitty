@@ -78,7 +78,7 @@ function applyLanguage(lang) {
     function updateText(element, key) {
         var translation = strings[key];
         if (element && translation) {
-            element.textContent = translation;
+            element.innerHTML = translation;
         }
     }
 
@@ -166,6 +166,7 @@ function applyLanguage(lang) {
         updateText(ui.settingsPopup.querySelector('#scanPayLoader'), 'scanPayloadLoader');
         updateText(ui.settingsPopup.querySelector('#shutdownServerBtn'), 'shutdownServerBtn');
         updateText(ui.settingsPopup.querySelector('#reloadAfterJbText'), 'reloadAfterJbText');
+        updateText(document.getElementById('autoJbText'), 'autoJbOption');
     }
 
     if (ui.themePopup) {
