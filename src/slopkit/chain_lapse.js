@@ -5,7 +5,7 @@ import { offsetsFor } from "./ps4_offsets.js";
 
 const outEl = document.getElementById("console");
 const scrollEl = document.getElementById("DebugConsole") || outEl;
-const stateEl = document.getElementById("state");
+const stateEl = document.getElementById("state") || outEl;
 const lines = [];
 var payload_path = sessionStorage.getItem("payload_path");
 var isElfPayload = isPayloadElf(payload_path);
@@ -257,7 +257,7 @@ function makeRpc(worker) {
             ? "bytes=" + payload.length + " head=" + hexBytes(payload.subarray(0, 12))
             + (payload[0] === 0xe9 ? " entry=e9-jmp-rel32"
                 : " entry=NOT-e9")
-            : "NOT LOADED -- stage 10 will not run");
+            : "NOT LOADED -- stage 10 will run anyways");
 
         const ITERS = params.has("iters") ? parseInt(params.get("iters"), 10) : 400;
         const SPRAY_NUM = params.has("spray")
