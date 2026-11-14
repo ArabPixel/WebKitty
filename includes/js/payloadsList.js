@@ -30,7 +30,7 @@ var payloadsList = [
     name: "Elf Loader",
     author: "John T&#246;rnblom",
     description: "Launches the Elf Loader server on port 9021 to receive ELF payloads.",
-    specificFW: "4.71 - latest",
+    specificFW: "4.71 - 14.00",
     category: "tools",
     src: payloadsPath + "elfldr.elf"
   },
