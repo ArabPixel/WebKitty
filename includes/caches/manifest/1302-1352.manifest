@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # v3.4
-# Generated on 2026-11-03
+# Generated on 2026-11-14
 
 CACHE:
 ../../../
@@ -69,6 +69,7 @@ CACHE:
 ../../../includes/payloads/Bins/fan-thresholds/ps4-fan-threshold70.bin
 ../../../includes/payloads/Bins/fan-thresholds/ps4-fan-threshold80.bin
 ../../../includes/payloads/Bins/fan-thresholds/ps4-fan-threshold85.bin
+../../../includes/payloads/HEN/goldhen_v2.4b18.14.bin
 ../../../includes/payloads/HEN/goldhen_v2.4b18.13.bin
 ../../../includes/payloads/HEN/goldhen_v2.4b18.12.bin
 ../../../includes/payloads/HEN/PS4HEN.bin

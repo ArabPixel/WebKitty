@@ -72,7 +72,7 @@ function isGoldHENVersionAllowed(version) {
 
     // Firmware > 13.00: Only default and v18.12 are allowed
     if (fw > 13.00) {
-        return version === GOLDHEN_DEFAULT || version === 'GHv2.4b18.12';
+        return version === GOLDHEN_DEFAULT || version === 'GHv2.4b18.12' || version === 'GHv2.4b18.13';
     }
 
     // Default fallback for supported lower firmwares
