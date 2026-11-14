@@ -235,7 +235,7 @@ function Loadpayloadlocal(PLfile, name, id, needsPayloadLoader, customPort) {
     var isElf = cleanPath.indexOf(".elf") !== -1 ||
         (resolvedName && resolvedName.toLowerCase().endsWith(".elf"));
 
-    if (isElf) {
+    if (isElf && cleanPath.indexOf('linux') == -1) {
         var checkAndBootElfldr = function () {
             ps4Ip = (typeof user !== "undefined" && user.ip) ? user.ip : "127.0.0.1";
             ELFLDR = "http://" + ps4Ip + ":9021";
