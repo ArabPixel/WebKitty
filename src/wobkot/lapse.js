@@ -29,7 +29,6 @@ const pktopts_twins = new Array(2);
 const ipv6_socks = new Array(IPV6_SOCK_NUM);
 const spray_ids = new Uint32Array(SPRAY_NUM);
 const block_ids = new Uint32Array(WORKER_NUM);
-const batch_ids = new Uint32Array(HANDLES_NUM);
 const outs = new Uint32Array(AIO_MAX_NUM);
 
 let race_worker = undefined;
@@ -915,10 +914,6 @@ function double_free_reqs1() {
 
   // enable deletion of target_ids
   process_aio(AIO_OP_POLL, target_ids);
-
-  // Free All aio requests that were used to spray the fake aio_batch
-  // Safe since aio_batch remains intact by the time aio_multi_delete() is called
-  process_aio(AIO_OP_CANCEL | AIO_OP_POLL | AIO_OP_DELETE, batch_ids);
 
   const status = outs.slice(0, 2);
   logger.debug(`target status: ${status.hex()}`);

