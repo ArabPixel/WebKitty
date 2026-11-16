@@ -182,5 +182,6 @@ function updateExploitChainVisibility(fwVersion) {
     toggleVisibility('slopKitNetCtrlExp',     isChainSupported(EXPLOIT_CHAINS.SLOPKIT_NETCTRL, fwNum));
     toggleVisibility('relapseExp',            isChainSupported(EXPLOIT_CHAINS.RELAPSE, fwNum));
     toggleVisibility('bpfDoubleFreeExp',      isChainSupported(EXPLOIT_CHAINS.BPF_DOUBLE_FREE, fwNum));
-    toggleVisibility('slopkitAfterglowExp',    isChainSupported(EXPLOIT_CHAINS.SLOPKIT_AFTERGLOW, fwNum));
+    toggleVisibility('slopkitAfterglowExp',   isChainSupported(EXPLOIT_CHAINS.SLOPKIT_AFTERGLOW, fwNum));
+    toggleVisibility('wobkotLapseExp',        isChainSupported(EXPLOIT_CHAINS.WOBKOT_LAPSE, fwNum));
 }

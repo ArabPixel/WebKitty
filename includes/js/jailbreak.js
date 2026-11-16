@@ -198,6 +198,15 @@ async function bpfDoubleFree() {
   }
 }
 
+async function wobkot() {
+  log("Loading ufm42's wobkot exploit chain implementation..");
+  try {
+    await getScript("src/wobkot/main.js", false, devMode);
+  } catch (error) {
+    log(error, "red");
+  }
+}
+
 // Apply language after loading the language file
 async function initLanguage() {
   try {
@@ -277,3 +286,4 @@ EXPLOIT_HANDLERS[EXPLOIT_CHAINS.SLOPKIT_NETCTRL] = slopKit;
 EXPLOIT_HANDLERS[EXPLOIT_CHAINS.RELAPSE] = relapseJailbreak;
 EXPLOIT_HANDLERS[EXPLOIT_CHAINS.SLOPKIT_AFTERGLOW] = slopkitAfterglow;
 EXPLOIT_HANDLERS[EXPLOIT_CHAINS.BPF_DOUBLE_FREE] = bpfDoubleFree;
+EXPLOIT_HANDLERS[EXPLOIT_CHAINS.WOBKOT_LAPSE] = wobkot;

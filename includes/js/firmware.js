@@ -15,6 +15,7 @@ var EXPLOIT_CHAINS = {
     RELAPSE:             7,   // src/relapse/jb.js                (12.50 – 13.52)
     BPF_DOUBLE_FREE:     8,   // src/bpf-double-free/main.js      (4.50 – 5.07)
     SLOPKIT_AFTERGLOW:   9,   // src/slopkit-afterglow/jb.js      (13.52 – 14.00)
+    WOBKOT_LAPSE:        10,  // src/wobkot/main.js               (9.00 – 12.02)
 };
 
 // Exploit chain ranges and preferences
@@ -102,6 +103,13 @@ var FIRMWARE_RANGES = [
         isDefault:   true,
         prefMin:     14.00,
         prefMax:     14.02
+    },
+    {
+        id:          EXPLOIT_CHAINS.WOBKOT_LAPSE,
+        label:       'Wobkot lapse',
+        min:         9.00,
+        max:         12.02,
+        isDefault:   false,
     }
 ];
 

@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # v2.4
-# Generated on 2026-11-14
+# Generated on 2026-11-16
 
 CACHE:
 ../../../
@@ -94,6 +94,14 @@ CACHE:
 ../../../src/cssfontface/ps4/constants.js
 ../../../src/cssfontface/ps4/kernel.js
 ../../../src/cssfontface/ps4/userland.js
+../../../src/wobkot/ps4/impl.js
+../../../src/wobkot/kernel.js
+../../../src/wobkot/lapse.js
+../../../src/wobkot/main.js
+../../../src/wobkot/misc.js
+../../../src/wobkot/thread.js
+../../../src/wobkot/userland.js
+../../../src/wobkot/worker.js
 ../../../src/kpatches/1000.bin
 ../../../src/kpatches/1050.bin
 ../../../src/slopkit/core.js

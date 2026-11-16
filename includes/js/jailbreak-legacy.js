@@ -344,7 +344,7 @@ function _slopkitAfterglow() {
 }
 function bpfDoubleFree() {
   return _bpfDoubleFree.apply(this, arguments);
-} // Apply language after loading the language file
+}
 function _bpfDoubleFree() {
   _bpfDoubleFree = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8() {
     var _t6;
@@ -370,31 +370,58 @@ function _bpfDoubleFree() {
   }));
   return _bpfDoubleFree.apply(this, arguments);
 }
-function initLanguage() {
-  return _initLanguage.apply(this, arguments);
-} // Load settings
-function _initLanguage() {
-  _initLanguage = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9() {
+function wobkot() {
+  return _wobkot.apply(this, arguments);
+} // Apply language after loading the language file
+function _wobkot() {
+  _wobkot = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9() {
     var _t7;
     return _regenerator().w(function (_context9) {
       while (1) switch (_context9.p = _context9.n) {
         case 0:
-          _context9.p = 0;
-          _context9.n = 1;
+          log("Loading ufm42's wobkot exploit chain implementation..");
+          _context9.p = 1;
+          _context9.n = 2;
+          return getScript("src/wobkot/main.js", false, devMode);
+        case 2:
+          _context9.n = 4;
+          break;
+        case 3:
+          _context9.p = 3;
+          _t7 = _context9.v;
+          log(_t7, "red");
+        case 4:
+          return _context9.a(2);
+      }
+    }, _callee9, null, [[1, 3]]);
+  }));
+  return _wobkot.apply(this, arguments);
+}
+function initLanguage() {
+  return _initLanguage.apply(this, arguments);
+} // Load settings
+function _initLanguage() {
+  _initLanguage = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee0() {
+    var _t8;
+    return _regenerator().w(function (_context0) {
+      while (1) switch (_context0.p = _context0.n) {
+        case 0:
+          _context0.p = 0;
+          _context0.n = 1;
           return loadLanguage();
         case 1:
           applyLanguage(user.currentLanguage);
           updateJbStats(false, false);
-          _context9.n = 3;
+          _context0.n = 3;
           break;
         case 2:
-          _context9.p = 2;
-          _t7 = _context9.v;
-          console.error(_t7);
+          _context0.p = 2;
+          _t8 = _context0.v;
+          console.error(_t8);
         case 3:
-          return _context9.a(2);
+          return _context0.a(2);
       }
-    }, _callee9, null, [[0, 2]]);
+    }, _callee0, null, [[0, 2]]);
   }));
   return _initLanguage.apply(this, arguments);
 }
@@ -402,15 +429,15 @@ function loadSettings() {
   return _loadSettings.apply(this, arguments);
 }
 function _loadSettings() {
-  _loadSettings = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee0() {
-    var _t8;
-    return _regenerator().w(function (_context0) {
-      while (1) switch (_context0.p = _context0.n) {
+  _loadSettings = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee1() {
+    var _t9;
+    return _regenerator().w(function (_context1) {
+      while (1) switch (_context1.p = _context1.n) {
         case 0:
-          _context0.p = 0;
+          _context1.p = 0;
           CheckFW();
           loadJbFlavor();
-          _context0.n = 1;
+          _context1.n = 1;
           return initLanguage();
         case 1:
           loadTheme();
@@ -423,16 +450,16 @@ function _loadSettings() {
           autoJailbreak();
           updateBareboneJB();
           loadExploitChain();
-          _context0.n = 3;
+          _context1.n = 3;
           break;
         case 2:
-          _context0.p = 2;
-          _t8 = _context0.v;
-          alert("Error in loadSettings: " + _t8.message);
+          _context1.p = 2;
+          _t9 = _context1.v;
+          alert("Error in loadSettings: " + _t9.message);
         case 3:
-          return _context0.a(2);
+          return _context1.a(2);
       }
-    }, _callee0, null, [[0, 2]]);
+    }, _callee1, null, [[0, 2]]);
   }));
   return _loadSettings.apply(this, arguments);
 }
@@ -440,18 +467,18 @@ function ipGuess() {
   return _ipGuess.apply(this, arguments);
 }
 function _ipGuess() {
-  _ipGuess = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee1() {
-    return _regenerator().w(function (_context1) {
-      while (1) switch (_context1.n) {
+  _ipGuess = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee10() {
+    return _regenerator().w(function (_context10) {
+      while (1) switch (_context10.n) {
         case 0:
-          _context1.n = 1;
+          _context10.n = 1;
           return getScript("./includes/js/goldhenScanner.js", false, devMode);
         case 1:
           guessIp();
         case 2:
-          return _context1.a(2);
+          return _context10.a(2);
       }
-    }, _callee1);
+    }, _callee10);
   }));
   return _ipGuess.apply(this, arguments);
 }
@@ -496,3 +523,4 @@ EXPLOIT_HANDLERS[EXPLOIT_CHAINS.SLOPKIT_NETCTRL] = slopKit;
 EXPLOIT_HANDLERS[EXPLOIT_CHAINS.RELAPSE] = relapseJailbreak;
 EXPLOIT_HANDLERS[EXPLOIT_CHAINS.SLOPKIT_AFTERGLOW] = slopkitAfterglow;
 EXPLOIT_HANDLERS[EXPLOIT_CHAINS.BPF_DOUBLE_FREE] = bpfDoubleFree;
+EXPLOIT_HANDLERS[EXPLOIT_CHAINS.WOBKOT_LAPSE] = wobkot;

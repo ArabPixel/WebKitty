@@ -159,7 +159,7 @@ var payloadsList = [
     id: "Linux1024mb",
     name: "Linux Loader 1GB",
     author: "ps4boot<br>ArabPixel, rmux",
-    description: "Linux Loader for all consoles. 1GB VRAM. Select for first install",
+    description: "Linux Loader for all consoles. 1GB VRAM.",
     specificFW: "5.05, 6.72 - latest",
     category: "linux",
     src: linuxPath + "linux-1024mb.elf",

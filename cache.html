@@ -41,24 +41,43 @@
             var data = event.data;
             if (!data || !data.type) return;
 
-            if (data.type === 'CACHE_PROGRESS') {
+            if (data.type === 'CACHE_CHECKING') {
+                statusEl.textContent = 'Checking for updates...';
+
+            } else if (data.type === 'CACHE_DOWNLOADING') {
+                statusEl.textContent = 'Caching new files...';
+
+            } else if (data.type === 'CACHE_PROGRESS') {
                 if (data.percent >= 0) {
                     fillEl.style.width = data.percent + '%';
-                    statusEl.textContent = 'Downloading... ' + data.percent + '%';
+                    statusEl.textContent = 'Caching the update... ' + data.percent + '%';
+                } else if (data.loaded && data.total) {
+                    statusEl.textContent = 'Caching the update... (' + data.loaded + ' of ' + data.total + ')';
                 } else {
-                    statusEl.textContent = 'Downloading... (' + data.loaded + ' of ' + data.total + ')';
+                    statusEl.textContent = 'Caching the updates...';
                 }
-            } else if (data.type === 'CACHE_COMPLETE' || data.type === 'CACHE_EXISTS') {
+
+            } else if (data.type === 'CACHE_COMPLETE') {
                 fillEl.style.width = '100%';
-                statusEl.textContent = data.type === 'CACHE_EXISTS' ? 'Already cached! Redirecting...' : 'Done! Redirecting...';
+                statusEl.textContent = 'Cache complete! Redirecting...';
                 setTimeout(function () {
                     window.location.replace(mainPage);
                 }, 1000);
 
-            } else if (data.type === 'CACHE_CHECKING') {
-                statusEl.textContent = 'Checking cache...';
-            } else if (data.type === 'CACHE_DOWNLOADING') {
-                statusEl.textContent = 'Caching files...';
+            } else if (data.type === 'CACHE_UPDATED') {
+                fillEl.style.width = '100%';
+                statusEl.textContent = 'Updated to latest version! Redirecting...';
+                setTimeout(function () {
+                    window.location.replace(mainPage);
+                }, 1000);
+
+            } else if (data.type === 'CACHE_UP_TO_DATE') {
+                fillEl.style.width = '100%';
+                statusEl.textContent = 'Already up to date! Redirecting...';
+                setTimeout(function () {
+                    window.location.replace(mainPage);
+                }, 800);
+
             } else if (data.type === 'CACHE_ERROR') {
                 var reason = data.reason || 'Unknown error';
                 statusEl.textContent = 'Cache error: ' + reason;

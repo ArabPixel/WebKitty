@@ -20,21 +20,25 @@
         window.parent.postMessage({ type: 'CACHE_PROGRESS', percent: percent, loaded: e.loaded, total: e.total }, '*');
     }, false);
 
+    // Initial cache creation completed
     appCache.addEventListener('cached', function () {
         window.parent.postMessage({ type: 'CACHE_COMPLETE' }, '*');
     }, false);
 
+    // Server manifest hasn't changed (Cache is up to date)
     appCache.addEventListener('noupdate', function () {
-        window.parent.postMessage({ type: 'CACHE_EXISTS' }, '*');
+        window.parent.postMessage({ type: 'CACHE_UP_TO_DATE' }, '*');
     }, false);
 
+    // Updated files downloaded, swap cache so new assets are active immediately
     appCache.addEventListener('updateready', function () {
-        try { appCache.swapCache(); } catch (e) {}
-        window.parent.postMessage({ type: 'CACHE_COMPLETE' }, '*');
+        try { 
+            appCache.swapCache(); 
+        } catch (e) {}
+        window.parent.postMessage({ type: 'CACHE_UPDATED' }, '*');
     }, false);
 
     appCache.addEventListener('error', function () {
-        // Log the manifest URL and current appCache status to help diagnose
         var status = appCache.status;
         var statusNames = ['UNCACHED', 'IDLE', 'CHECKING', 'DOWNLOADING', 'UPDATEREADY', 'OBSOLETE'];
         var statusName = statusNames[status] || ('status=' + status);
