@@ -4,27 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>WebKitty</title>
-    <meta name="description" content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 14.02." />
-    <meta name="author" content="ArabPixel">
+    <title>NARFX Exploit Host</title>
+    <meta name="description" content="NARFX is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 14.02." />
+    <meta name="author" content="NARFX">
     <meta name="keywords"
-        content="PS4, PlayStation 4, webkit exploit, jailbreak, psfree lapse, cssfontface, WebKitty, PSFree Enhanced, cssfontface, lapse, netctrl, slopkit, relapse">
+        content="PS4, PlayStation 4, webkit exploit, jailbreak, psfree lapse, cssfontface, NARFX, PSFree Enhanced, cssfontface, lapse, netctrl, slopkit, relapse">
 
 
     <!-- Facebook / Discord / WhatsApp -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="WebKitty">
+    <meta property="og:title" content="NARFX Exploit Host">
     <meta property="og:description"
-        content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 14.02.">
-    <meta property="og:image" content="http://webkitty.arabpixel.net/includes/assets/icons/webkitty.svg">
-    <meta property="og:url" content="http://webkitty.arabpixel.net">
+        content="NARFX is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 14.02.">
+    <meta property="og:image" content="https://YOUR_USERNAME.github.io/YOUR_REPO/includes/assets/icons/webkitty.svg">
+    <meta property="og:url" content="https://YOUR_USERNAME.github.io/YOUR_REPO/">
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="WebKitty">
+    <meta name="twitter:title" content="NARFX Exploit Host">
     <meta name="twitter:description"
-        content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 14.02.">
-    <meta name="twitter:image" content="http://webkitty.arabpixel.net/includes/assets/icons/webkitty.svg">
+        content="NARFX is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 14.02.">
+    <meta name="twitter:image" content="https://YOUR_USERNAME.github.io/YOUR_REPO/includes/assets/icons/webkitty.svg">
     <link rel="icon" href="./includes/assets/icons/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" id="main-stylesheet" href="">
     <link rel="stylesheet" id="color-stylesheet" href="">
@@ -52,7 +52,8 @@
         if (isThisPS4 && goToHttps && !isLocalServer && isCurrentHTTPS){
             if (confirm("You are currently using HTTPS, which prevents loading payloads through a bin/elf loader servers, switch to http instead? (recommended)")){
                 window.abortLoading = true;
-                window.location.href = "http://webkitty.arabpixel.net";
+                // Note: HTTPS to HTTP redirect might be blocked by some browsers, but keeping the logic.
+                window.location.href = "http://" + window.location.host + window.location.pathname;
             } else{
                 localStorage.setItem("dontHTTPS", "1");
             }
@@ -62,8 +63,7 @@
 
 <body class="bg-gray-900 text-white">
     <main class="mainContainer">
-        <section id="initial-screen" class="relative flex flex-col items-center justify-center min-h-screen p-6 transition-opacity duration-700
-            opacity-100">
+        <section id="initial-screen" class="relative flex flex-col items-center justify-center min-h-screen p-6 transition-opacity duration-700 opacity-100">
             <!-- Header Buttons -->
             <header class="absolute top-6 left-6 flex space-x-3 rtl:space-x-reverse z-10">
                 <div>
@@ -72,19 +72,15 @@
                         title="Settings">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="bi bi-gear" viewBox="0 0 16 16">
-                            <path
-                                d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
-                            <path
-                                d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
+                            <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
+                            <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
                         </svg>
                     </button>
                     <button onclick="aboutPopup()"
                         class="about-btn p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
                         title="About">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                            viewBox="0 0 512 512">
-                            <path
-                                d="M256,56C145.72,56,56,145.72,56,256s89.72,200,200,200,200-89.72,200-200S366.28,56,256,56Zm0,82a26,26,0,1,1-26,26A26,26,0,0,1,256,138Zm64,226H200V332h44V244H212V212h64V332h44Z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 512 512">
+                            <path d="M256,56C145.72,56,56,145.72,56,256s89.72,200,200,200,200-89.72,200-200S366.28,56,256,56Zm0,82a26,26,0,1,1-26,26A26,26,0,0,1,256,138Zm64,226H200V332h44V244H212V212h64V332h44Z" />
                         </svg>
                     </button>
                     <button onclick="themePopup()"
@@ -96,76 +92,57 @@
                             <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
                             <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
                             <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
-                            <path
-                                d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.92 0 1.7-.71 1.7-1.63 0-.44-.17-.85-.45-1.16-.27-.3-.43-.71-.43-1.15 0-.92.75-1.66 1.67-1.66h2.24c2.8 0 5.07-2.27 5.07-5.07 0-5.25-4.38-9.33-9.7-9.33z" />
+                            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.92 0 1.7-.71 1.7-1.63 0-.44-.17-.85-.45-1.16-.27-.3-.43-.71-.43-1.15 0-.92.75-1.66 1.67-1.66h2.24c2.8 0 5.07-2.27 5.07-5.07 0-5.25-4.38-9.33-9.7-9.33z" />
                         </svg>
                     </button>
                 </div>
-                <button id="updateCache"
-                    class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white">
+                <button id="updateCache" class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white">
                     Update Cache
                 </button>
             </header>
 
             <!-- PS Button -->
             <button id="pslogo">
-                <div id="ps-logo-container"
-                    class="relative group cursor-pointer flex flex-col items-center justify-center p-8 rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300 transform hover:scale-102">
-                    <svg id="ps-logo" class="w-32 h-32 transition-all duration-500 ease-in-out" viewBox="0 0 32 32"
-                        fill="#3B82F6" xmlns="http://www.w3.org/2000/svg">
+                <div id="ps-logo-container" class="relative group cursor-pointer flex flex-col items-center justify-center p-8 rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300 transform hover:scale-102">
+                    <svg id="ps-logo" class="w-32 h-32 transition-all duration-500 ease-in-out" viewBox="0 0 32 32" fill="#3B82F6" xmlns="http://www.w3.org/2000/svg">
                         <g id="SVGRepo_iconCarrier">
-                            <path
-                                d="M0.69116 21.9548C-0.506476 22.7935 -0.284724 24.2384 2.44769 25.1419C5.18011 26.0455 8.35603 26.2323 11.1505 25.729C11.0707 25.729 11.3102 25.729 11.1505 25.729V22.8774L8.43588 23.8C7.39792 24.1355 6.35997 24.2194 5.32202 23.9677C4.5236 23.7161 4.68328 23.2129 5.64139 22.7935L11.1505 20.7806V17.6774L3.48565 20.4452C2.52754 20.7806 1.56943 21.2839 0.69116 21.9548ZM19.2146 9.37419V17.5097C22.4881 19.1871 25.0431 17.5097 25.0431 13.1484C25.0431 8.70323 23.5261 6.69032 19.1348 5.09677C16.8193 4.25806 14.4241 3.50323 12.0288 3V27.2387L17.6178 29V8.61935C17.6178 7.69677 17.6178 7.02581 18.2565 7.27742C19.1348 7.52903 19.2146 8.45161 19.2146 9.37419ZM29.5941 20.0258C27.2787 19.1871 24.8036 18.8516 22.4083 19.1032C21.0779 19.1906 19.8294 19.5869 18.5759 20.0258V23.2968L23.7656 21.2839C24.8036 20.9484 25.8415 20.8645 26.8795 21.1161C27.6779 21.3677 27.5182 21.871 26.5601 22.2903L18.5759 25.3935V28.5806L29.5941 24.3032C30.3925 23.9677 31.1111 23.5484 31.7499 22.8774C32.3088 22.0387 32.0692 20.8645 29.5941 20.0258Z">
-                            </path>
+                            <path d="M0.69116 21.9548C-0.506476 22.7935 -0.284724 24.2384 2.44769 25.1419C5.18011 26.0455 8.35603 26.2323 11.1505 25.729C11.0707 25.729 11.3102 25.729 11.1505 25.729V22.8774L8.43588 23.8C7.39792 24.1355 6.35997 24.2194 5.32202 23.9677C4.5236 23.7161 4.68328 23.2129 5.64139 22.7935L11.1505 20.7806V17.6774L3.48565 20.4452C2.52754 20.7806 1.56943 21.2839 0.69116 21.9548ZM19.2146 9.37419V17.5097C22.4881 19.1871 25.0431 17.5097 25.0431 13.1484C25.0431 8.70323 23.5261 6.69032 19.1348 5.09677C16.8193 4.25806 14.4241 3.50323 12.0288 3V27.2387L17.6178 29V8.61935C17.6178 7.69677 17.6178 7.02581 18.2565 7.27742C19.1348 7.52903 19.2146 8.45161 19.2146 9.37419ZM29.5941 20.0258C27.2787 19.1871 24.8036 18.8516 22.4083 19.1032C21.0779 19.1906 19.8294 19.5869 18.5759 20.0258V23.2968L23.7656 21.2839C24.8036 20.9484 25.8415 20.8645 26.8795 21.1161C27.6779 21.3677 27.5182 21.871 26.5601 22.2903L18.5759 25.3935V28.5806L29.5941 24.3032C30.3925 23.9677 31.1111 23.5484 31.7499 22.8774C32.3088 22.0387 32.0692 20.8645 29.5941 20.0258Z"></path>
                         </g>
                     </svg>
                 </div>
             </button>
             <h3 class="text-white/70 text-lg mt-4" id="click-to-start-text"></h3>
-            <button onclick="clearInterval(autoJbInterval);"
-                class="hidden mt-2 bg-red-600 hover:bg-red-700 p-3 rounded font-semibold transition-colors"
-                id="stopAutoJb">
+            <button onclick="clearInterval(autoJbInterval);" class="hidden mt-2 bg-red-600 hover:bg-red-700 p-3 rounded font-semibold transition-colors" id="stopAutoJb">
                 Stop Auto Jailbreak
             </button>
 
             <!-- Compatibility message -->
             <p id="PS4FW" class="text-white/70 text-lg mt-4 mb-6">-</p>
-            <a class="hidden secondHostBtn bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold disabled:opacity-50 transition-colors text-white text-center"
-                href="http://webkitty.arabpixel.net/" style="text-decoration: none;">
-                <button
-                    class="bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold disabled:opacity-50 transition-colors text-white text-center">Load
-                    payloads using a PayLoader - External link</button>
+            <a class="hidden secondHostBtn bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold disabled:opacity-50 transition-colors text-white text-center" href="http://YOUR_PS4_IP/" style="text-decoration: none;">
+                <button class="bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold disabled:opacity-50 transition-colors text-white text-center">Load payloads using a PayLoader - External link</button>
             </a>
 
             <!-- Jailbreak flavor options -->
             <div id="choosejb-initial" class="bg-gray-800 p-6 rounded-lg shadow-xl text-center">
                 <h3 class="text-xl font-semibold mb-4">Choose your HEN flavor</h3>
                 <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 rtl:gap-4 sm:rtl:gap-8">
-                    <label
-                        class="flex items-center px-4 py-2 rounded-lg bg-gray-700/60 hover:bg-gray-700 transition-colors cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500 w-full sm:w-auto mb-2 sm:mb-0"
-                        id="goldhen-label-initial">
-                        <input type="radio" name="hen" value="GoldHEN" onchange="saveJbFlavor(this.name, this.value)"
-                            class="accent-blue-500 w-5 h-5 ml-3 focus:ring-2 focus:ring-blue-400">
+                    <label class="flex items-center px-4 py-2 rounded-lg bg-gray-700/60 hover:bg-gray-700 transition-colors cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500 w-full sm:w-auto mb-2 sm:mb-0" id="goldhen-label-initial">
+                        <input type="radio" name="hen" value="GoldHEN" onchange="saveJbFlavor(this.name, this.value)" class="accent-blue-500 w-5 h-5 ml-3 focus:ring-2 focus:ring-blue-400">
                         <span class="text-lg font-semibold text-white/90 select-none">GoldHEN</span>
                     </label>
-                    <label id="PS4HEN-label-initial"
-                        class="flex items-center px-4 py-2 rounded-lg bg-gray-700/60 hover:bg-gray-700 transition-colors cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500 w-full sm:w-auto">
-                        <input type="radio" name="hen" value="PS4HEN" onchange="saveJbFlavor(this.name, this.value)"
-                            class="accent-blue-500 w-5 h-5 ml-3 focus:ring-2 focus:ring-blue-400">
+                    <label id="PS4HEN-label-initial" class="flex items-center px-4 py-2 rounded-lg bg-gray-700/60 hover:bg-gray-700 transition-colors cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500 w-full sm:w-auto">
+                        <input type="radio" name="hen" value="PS4HEN" onchange="saveJbFlavor(this.name, this.value)" class="accent-blue-500 w-5 h-5 ml-3 focus:ring-2 focus:ring-blue-400">
                         <span class="text-lg font-semibold text-white/90 select-none">PS4HEN</span>
                     </label>
-                    <label id="nexHEN-label-initial"
-                        class="hidden flex items-center px-4 py-2 rounded-lg bg-gray-700/60 hover:bg-gray-700 transition-colors cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500 w-full sm:w-auto">
-                        <input type="radio" name="hen" value="nexHEN" onchange="saveJbFlavor(this.name, this.value)"
-                            class="accent-blue-500 w-5 h-5 ml-3 focus:ring-2 focus:ring-blue-400">
+                    <label id="nexHEN-label-initial" class="hidden flex items-center px-4 py-2 rounded-lg bg-gray-700/60 hover:bg-gray-700 transition-colors cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500 w-full sm:w-auto">
+                        <input type="radio" name="hen" value="nexHEN" onchange="saveJbFlavor(this.name, this.value)" class="accent-blue-500 w-5 h-5 ml-3 focus:ring-2 focus:ring-blue-400">
                         <span class="text-lg font-semibold text-white/90 select-none">nexHEN<br>Experimental</span>
                     </label>
                 </div>
             </div>
 
             <!-- Scroll Down Icon -->
-            <button id="scrollDown" class="absolute bottom-10 cursor-pointer"
-                onclick="ui.exploitScreen.scrollIntoView({block: 'end'});">
+            <button id="scrollDown" class="absolute bottom-10 cursor-pointer" onclick="ui.exploitScreen.scrollIntoView({block: 'end'});">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" fill="currentColor" viewBox="0 0 512 512">
                     <polyline points="112 184 256 328 400 184"></polyline>
                 </svg>
@@ -179,44 +156,30 @@
                 <div id="exploit-status-panel" class="gap-4 bg-gray-800 p-6 rounded-lg flex flex-col h-full w-full">
                     <div class="flex justify-between w-auto" style="align-items: baseline;">
                         <h2 class="text-xl font-semibold mb-4" id="state">Exploit status</h2>
-                        <button id="successRate" style="white-space: nowrap;"
-                            class="text-base font-semibold duration-300 transform hover:scale-102 hover:border-bottom cursor-pointer"
-                            onclick="clearStats()">
+                        <button id="successRate" style="white-space: nowrap;" class="text-base font-semibold duration-300 transform hover:scale-102 hover:border-bottom cursor-pointer" onclick="clearStats()">
                             Success rate
                         </button>
                     </div>
-                    <div id="DebugConsole"
-                        class="flex-grow min-h-0 min-h-[150px] bg-black/50 p-4 rounded-lg overflow-y-auto mb-4 text-xs font-mono"
-                        dir="ltr">
+                    <div id="DebugConsole" class="flex-grow min-h-0 min-h-[150px] bg-black/50 p-4 rounded-lg overflow-y-auto mb-4 text-xs font-mono" dir="ltr">
                         <pre id='console'><center>--</center></pre>
                     </div>
                     <!-- HEN Selector -->
                     <div id="henSelection" class="flex items-center justify-center gap-4">
-                        <label
-                            class="flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500"
-                            id="goldhen-label-exploit">
-                            <input type="radio" name="hen2" value="GoldHEN" class="accent-blue-500 w-4 h-4 ml-2"
-                                onchange="saveJbFlavor(this.name, this.value)">
+                        <label class="flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500" id="goldhen-label-exploit">
+                            <input type="radio" name="hen2" value="GoldHEN" class="accent-blue-500 w-4 h-4 ml-2" onchange="saveJbFlavor(this.name, this.value)">
                             <span class="text-base font-semibold text-white/90 select-none">GoldHEN</span>
                         </label>
-                        <label id="PS4HEN-label-exploit"
-                            class="flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500">
-                            <input type="radio" name="hen2" value="PS4HEN" class="accent-blue-500 w-4 h-4 ml-2"
-                                onchange="saveJbFlavor(this.name, this.value)">
+                        <label id="PS4HEN-label-exploit" class="flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500">
+                            <input type="radio" name="hen2" value="PS4HEN" class="accent-blue-500 w-4 h-4 ml-2" onchange="saveJbFlavor(this.name, this.value)">
                             <span class="text-base font-semibold text-white/90 select-none">PS4HEN</span>
                         </label>
-                        <label id="nexHEN-label-exploit"
-                            class="hidden flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500">
-                            <input type="radio" name="hen2" value="nexHEN" class="accent-blue-500 w-4 h-4 ml-2"
-                                onchange="saveJbFlavor(this.name, this.value)">
+                        <label id="nexHEN-label-exploit" class="hidden flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500">
+                            <input type="radio" name="hen2" value="nexHEN" class="accent-blue-500 w-4 h-4 ml-2" onchange="saveJbFlavor(this.name, this.value)">
                             <span class="text-base font-semibold text-white/90 select-none">nexHEN</span>
                         </label>
-                        <button id="exploitRun"
-                            class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 p-2 rounded-full transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                                class="bi bi-play" viewBox="0 0 16 16">
-                                <path
-                                    d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" />
+                        <button id="exploitRun" class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 p-2 rounded-full transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
+                                <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" />
                             </svg>
                         </button>
                     </div>
@@ -230,205 +193,87 @@
                                 Payloads
                             </h2>
                             <header class="flex space-x-3 rtl:space-x-reverse hidden" id="header2">
-                                <button onclick="settingsPopup()"
-                                    class="settings-btn p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
-                                    title="Settings">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor"
-                                        class="bi bi-gear" viewBox="0 0 16 16">
-                                        <path
-                                            d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
-                                        <path
-                                            d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
+                                <button onclick="settingsPopup()" class="settings-btn p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white" title="Settings">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+                                        <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
+                                        <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
                                     </svg>
                                 </button>
-                                <button onclick="aboutPopup()"
-                                    class="about-btn p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
-                                    title="About">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor"
-                                        viewBox="0 0 512 512">
-                                        <path
-                                            d="M256,56C145.72,56,56,145.72,56,256s89.72,200,200,200,200-89.72,200-200S366.28,56,256,56Zm0,82a26,26,0,1,1-26,26A26,26,0,0,1,256,138Zm64,226H200V332h44V244H212V212h64V332h44Z" />
+                                <button onclick="aboutPopup()" class="about-btn p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white" title="About">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" viewBox="0 0 512 512">
+                                        <path d="M256,56C145.72,56,56,145.72,56,256s89.72,200,200,200,200-89.72,200-200S366.28,56,256,56Zm0,82a26,26,0,1,1-26,26A26,26,0,0,1,256,138Zm64,226H200V332h44V244H212V212h64V332h44Z" />
                                     </svg>
                                 </button>
-                                <button onclick="themePopup()"
-                                    class="theme-btn h-10 p-2 inline-flex items-center justify-center rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
-                                    title="Theme Customization">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
+                                <button onclick="themePopup()" class="theme-btn h-10 p-2 inline-flex items-center justify-center rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white" title="Theme Customization">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
                                         <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
                                         <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
                                         <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
-                                        <path
-                                            d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.92 0 1.7-.71 1.7-1.63 0-.44-.17-.85-.45-1.16-.27-.3-.43-.71-.43-1.15 0-.92.75-1.66 1.67-1.66h2.24c2.8 0 5.07-2.27 5.07-5.07 0-5.25-4.38-9.33-9.7-9.33z" />
+                                        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.92 0 1.7-.71 1.7-1.63 0-.44-.17-.85-.45-1.16-.27-.3-.43-.71-.43-1.15 0-.92.75-1.66 1.67-1.66h2.24c2.8 0 5.07-2.27 5.07-5.07 0-5.25-4.38-9.33-9.7-9.33z" />
                                     </svg>
                                 </button>
                             </header>
                         </div>
                         <div class="flex items-center flex-col gap-2">
-                            <input type="text" id="ps4IpInput"
-                                class="hidden bg-blue-600 hover:bg-blue-700 p-1 rounded font-semibold transition-colors text-white border-transparent text-center"
-                                placeholder="PS4 IP Address">
-                            <select style="background: transparent;" id="ps4FwSelect"
-                                class="hidden p-1 text-center rounded font-semibold transition-colors text-white">
+                            <input type="text" id="ps4IpInput" class="hidden bg-blue-600 hover:bg-blue-700 p-1 rounded font-semibold transition-colors text-white border-transparent text-center" placeholder="PS4 IP Address">
+                            <select style="background: transparent;" id="ps4FwSelect" class="hidden p-1 text-center rounded font-semibold transition-colors text-white">
                                 <option selected hidden>PS4 FW</option>
-                                <option value="4.50">4.50</option>
-                                <option value="4.55">4.55</option>
-                                <option value="4.70">4.70</option>
-                                <option value="4.71">4.71</option>
-                                <option value="4.72">4.72</option>
-                                <option value="4.73">4.73</option>
-                                <option value="4.71">4.71</option>
-                                <option value="4.74">4.74</option>
-                                <option value="5.00">5.00</option>
-                                <option value="5.01">5.01</option>
-                                <option value="5.03">5.03</option>
-                                <option value="5.05">5.05</option>
-                                <option value="5.07">5.07</option>
-                                <option value="5.50">5.50</option>
-                                <option value="5.53">5.53</option>
-                                <option value="5.55">5.55</option>
-                                <option value="5.56">5.56</option>
-                                <option value="6.00">6.00</option>
-                                <option value="6.02">6.02</option>
-                                <option value="6.20">6.20</option>
-                                <option value="6.50">6.50</option>
-                                <option value="6.51">6.51</option>
-                                <option value="6.70">6.70</option>
-                                <option value="6.71">6.71</option>
-                                <option value="6.72">6.72</option>
-                                <option value="7.00">7.00</option>
-                                <option value="7.01">7.01</option>
-                                <option value="7.02">7.02</option>
-                                <option value="7.50">7.50</option>
-                                <option value="7.51">7.51</option>
-                                <option value="7.55">7.55</option>
-                                <option value="8.00">8.00</option>
-                                <option value="8.01">8.01</option>
-                                <option value="8.03">8.03</option>
-                                <option value="8.50">8.50</option>
-                                <option value="8.52">8.52</option>
-                                <option value="9.00">9.00</option>
-                                <option value="9.03">9.03</option>
-                                <option value="9.04">9.04</option>
-                                <option value="9.50">9.50</option>
-                                <option value="9.51">9.51</option>
-                                <option value="9.60">9.60</option>
-                                <option value="10.00">10.00</option>
-                                <option value="10.01">10.01</option>
-                                <option value="10.50">10.50</option>
-                                <option value="10.70">10.70</option>
-                                <option value="10.71">10.71</option>
-                                <option value="11.00">11.00</option>
-                                <option value="11.02">11.02</option>
-                                <option value="11.50">11.50</option>
-                                <option value="11.52">11.52</option>
-                                <option value="12.00">12.00</option>
-                                <option value="12.02">12.02</option>
-                                <option value="12.50">12.50</option>
-                                <option value="12.52">12.52</option>
-                                <option value="13.00">13.00</option>
-                                <option value="13.02">13.02</option>
-                                <option value="13.04">13.04</option>
-                                <option value="13.50">13.50</option>
                                 <option value="13.52">13.52</option>
-                                <option value="14.00">14.00</option>
-                                <option value="14.02">14.02</option>
                             </select>
                         </div>
                     </div>
                     <div class="border-b border-gray-200 border-gray-700 w-full sticky top-0 bg-gray-800 z-10 tabs">
-                        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center w-full" id="default-tab"
-                            data-tabs-toggle="#default-tab-content" role="tablist">
+                        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center w-full" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
                             <li class="flex-1" role="presentation">
-                                <button class="w-full inline-block p-4 border-b-2 rounded-t-lg" id="tools-tab"
-                                    data-tabs-target="#tools" type="button" role="tab" aria-controls="tools"
-                                    aria-selected="false">Tools</button>
+                                <button class="w-full inline-block p-4 border-b-2 rounded-t-lg" id="tools-tab" data-tabs-target="#tools" type="button" role="tab" aria-controls="tools" aria-selected="false">Tools</button>
                             </li>
                             <li class="flex-1" role="presentation">
-                                <button class="w-full inline-block p-4 border-b-2 rounded-t-lg" id="homebrew-tab"
-                                    data-tabs-target="#homebrew" type="button" role="tab" aria-controls="homebrew"
-                                    aria-selected="false">Homebrew</button>
+                                <button class="w-full inline-block p-4 border-b-2 rounded-t-lg" id="homebrew-tab" data-tabs-target="#homebrew" type="button" role="tab" aria-controls="homebrew" aria-selected="false">Homebrew</button>
                             </li>
                             <li class="flex-1" role="presentation">
-                                <button
-                                    class="w-full inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 hover:text-gray-300"
-                                    id="linux-tab" data-tabs-target="#linux" type="button" role="tab"
-                                    aria-controls="linux" aria-selected="false">Linux</button>
+                                <button class="w-full inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 hover:text-gray-300" id="linux-tab" data-tabs-target="#linux" type="button" role="tab" aria-controls="linux" aria-selected="false">Linux</button>
                             </li>
                             <li id="advancedPayloadsTab" class="hidden flex-1" role="presentation">
-                                <button
-                                    class="w-full inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 hover:text-gray-300"
-                                    id="advanced-tab" data-tabs-target="#advanced" type="button" role="tab"
-                                    aria-controls="advanced" aria-selected="false">Advanced</button>
+                                <button class="w-full inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 hover:text-gray-300" id="advanced-tab" data-tabs-target="#advanced" type="button" role="tab" aria-controls="advanced" aria-selected="false">Advanced</button>
                             </li>
                             <li class="hidden flex-1" id="customPayloadsTab" role="presentation">
-                                <button
-                                    class="w-full inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 hover:text-gray-300"
-                                    id="custom-tab" data-tabs-target="#custom" type="button" role="tab"
-                                    aria-controls="custom" aria-selected="false">Custom</button>
+                                <button class="w-full inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 hover:text-gray-300" id="custom-tab" data-tabs-target="#custom" type="button" role="tab" aria-controls="custom" aria-selected="false">Custom</button>
                             </li>
                         </ul>
                     </div>
-                    <div id="payloadsGrid" class="space-y-3 overflow-y-auto flex-grow max-h-[calc(100vh-250px)]"
-                        style="overflow-x: hidden !important;">
+                    <div id="payloadsGrid" class="space-y-3 overflow-y-auto flex-grow max-h-[calc(100vh-250px)]" style="overflow-x: hidden !important;">
                         <div id="default-tab-content" class="bg-gray-800">
-                            <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="tools" role="tabpanel"
-                                aria-labelledby="tools-tab">
-                            </div>
-                            <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="homebrew" role="tabpanel"
-                                aria-labelledby="homebrew-tab">
-                            </div>
-                            <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="linux" role="tabpanel"
-                                aria-labelledby="linux-tab">
-                            </div>
-                            <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="advanced" role="tabpanel"
-                                aria-labelledby="advanced-tab">
-                            </div>
-                            <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="custom" role="tabpanel"
-                                aria-labelledby="custom-tab">
+                            <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="tools" role="tabpanel" aria-labelledby="tools-tab"></div>
+                            <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="homebrew" role="tabpanel" aria-labelledby="homebrew-tab"></div>
+                            <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="linux" role="tabpanel" aria-labelledby="linux-tab"></div>
+                            <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="advanced" role="tabpanel" aria-labelledby="advanced-tab"></div>
+                            <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="custom" role="tabpanel" aria-labelledby="custom-tab">
                                 <p class="text-sm text-white/80 mb-2" id="customPayloadUpload">Upload a custom payload file</p>
                                 <div class="flex gap-2">
-                                    <input type="file" id="customPayloadInput" style="width: 150px;"
-                                        class="bg-gray-700 p-2 rounded flex-grow text-white border-transparent focus:ring-2 focus:ring-blue-500"
-                                        accept=".bin,.elf">
-                                    <button id="sendCustomPayloadBtn" onclick="Loadpayloads('custom')"
-                                        class="hover:bg-blue-700 p-1 rounded font-semibold transition-colors text-white">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px"
-                                            shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
-                                            image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
-                                            viewBox="0 0 512 512.006">
-                                            <path fill="#fff" fill-rule="nonzero"
-                                                d="M11.671 160.968L498.394.692c8.503-3.038 15.951 4.41 12.915 12.915L351.027 500.328c-5.264 15.865-27.364 15.388-32.617-.357l-71.675-234.703-234.703-71.675c-15.889-5.275-16.073-27.373-.361-32.625zm13.952 16.188l226.175 69.064L465.84 32.177 25.623 177.156z" />
+                                    <input type="file" id="customPayloadInput" style="width: 150px;" class="bg-gray-700 p-2 rounded flex-grow text-white border-transparent focus:ring-2 focus:ring-blue-500" accept=".bin,.elf">
+                                    <button id="sendCustomPayloadBtn" onclick="Loadpayloads('custom')" class="hover:bg-blue-700 p-1 rounded font-semibold transition-colors text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 512.006">
+                                            <path fill="#fff" fill-rule="nonzero" d="M11.671 160.968L498.394.692c8.503-3.038 15.951 4.41 12.915 12.915L351.027 500.328c-5.264 15.865-27.364 15.388-32.617-.357l-71.675-234.703-234.703-71.675c-15.889-5.275-16.073-27.373-.361-32.625zm13.952 16.188l226.175 69.064L465.84 32.177 25.623 177.156z" />
                                         </svg>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a hidden
-                        class="secondHostBtn w-full bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold disabled:opacity-50 transition-colors text-white text-center"
-                        href="http://webkitty.arabpixel.net/" style="text-decoration: none;">
-                        <button
-                            class="w-full bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold disabled:opacity-50 transition-colors text-white text-center">Load
-                            payloads using a payload loader - External link</button>
-                    </a>
                 </div>
             </div>
         </section>
     </main>
 
-
     <!-- Popups -->
-    <div class="fixed inset-0 bg-black/50 z-50 flex backdrop-blur-sm items-center justify-center p-4 hidden"
-        id="about-popup-overlay">
+    <div class="fixed inset-0 bg-black/50 z-50 flex backdrop-blur-sm items-center justify-center p-4 hidden" id="about-popup-overlay">
         <div id="about-popup" class="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-md">
-            <h2 class="text-2xl font-bold">About WebKitty</h2>
+            <h2 class="text-2xl font-bold">About NARFX Host</h2>
             <div class="space-y-2 text-white/80">
                 <p>Version: 2.0</p>
                 <p>A feature rich exploit host to jailbreak your PS4</p>
-                <p>Hosted on GitHub</p>
+                <p>Hosted on GitHub by NARFX</p>
             </div>
             <div id="PS4FWOK" class="mt-4">
                 <h3 class="text-l font-bold mb-4">Supported PS4 firmware</h3>
@@ -470,25 +315,20 @@
                 <p>m0zz</p>
             </div>
             <div class="flex flex-wrap justify-around text-sm text-white/70 mt-2">
-                <p>ArabPixel</p>
+                <p>NARFX</p>
                 <p>Dr.Yenyen</p>
                 <p>Teligin174</p>
                 <p>Payloads' devs</p>
             </div>
 
-            <button onclick="aboutPopup()"
-                class="mt-6 w-full bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold transition-colors"
-                id="close-about">Close</button>
+            <button onclick="aboutPopup()" class="mt-6 w-full bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold transition-colors" id="close-about">Close</button>
         </div>
     </div>
 
     <!-- Settings popup -->
-    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden"
-        id="settings-popup-overlay">
-        <div id="settings-popup"
-            class="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
-            <h2 class="text-2xl font-bold mb-4">WebKitty settings</h2>
-            <!-- Choose GoldHEN version -->
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden" id="settings-popup-overlay">
+        <div id="settings-popup" class="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-4">NARFX Settings</h2>
             <div id="chooseGoldHEN" class="mb-4">
                 <h3 class="text-lg font-semibold mb-2" id="ghVer">GoldHEN Versions</h3>
                 <div class="radio-group space-y-2">
@@ -500,29 +340,8 @@
                     <details>
                         <summary>Other versions</summary>
                         <label class="flex items-center text-white/80">
-                            <input type="radio" name="goldhen" value="GHv2.4b18.13"
-                                onchange="setGoldHENVer(this.value);">
+                            <input type="radio" name="goldhen" value="GHv2.4b18.13" onchange="setGoldHENVer(this.value);">
                             <p>GoldHEN v2.4b18.13</p>
-                        </label>
-                        <label class="flex items-center text-white/80">
-                            <input type="radio" name="goldhen" value="GHv2.4b18.12"
-                                onchange="setGoldHENVer(this.value);">
-                            <p>GoldHEN v2.4b18.12</p>
-                        </label>
-                        <label class="flex items-center text-white/80">
-                            <input type="radio" name="goldhen" value="GHv2.4b18.10"
-                                onchange="setGoldHENVer(this.value);">
-                            <p>GoldHEN v2.4b18.10</p>
-                        </label>
-                        <label class="flex items-center text-white/80">
-                            <input type="radio" name="goldhen" value="GHv2.4b18.9"
-                                onchange="setGoldHENVer(this.value);">
-                            <p>GoldHEN v2.4b18.9</p>
-                        </label>
-                        <label class="flex items-center text-white/80">
-                            <input type="radio" name="goldhen" value="GHv2.4b18.8"
-                                onchange="setGoldHENVer(this.value);">
-                            <p>GoldHEN v2.4b18.8</p>
                         </label>
                     </details>
                 </div>
@@ -533,46 +352,6 @@
                     <label class="flex items-center text-white/80" id="modularLapseExp">
                         <input type="radio" name="exploitChain" value="0" onchange="exploitChain(this.value);">
                         <p id="modularLapse">PSFree Lapse Modular</p>
-                    </label>
-                    <label class="flex items-center text-white/80" id="bundleLapseExp">
-                        <input type="radio" name="exploitChain" value="1" onchange="exploitChain(this.value);">
-                        <p id="bundleLapse">PSFree Lapse Bundle</p>
-                    </label>
-                    <label class="flex items-center text-white/80" id="badHoistExp">
-                        <input type="radio" name="exploitChain" value="2" onchange="exploitChain(this.value);">
-                        <p id="badHoist">BadHoist</p>
-                    </label>
-                    <label class="flex items-center text-white/80" id="cssFontFaceNetCtrlExp">
-                        <input type="radio" name="exploitChain" value="3" onchange="exploitChain(this.value);">
-                        <p id="cssFontFaceNetCtrl">CSSFontFace Netctrl</p>
-                    </label>
-                    <label class="flex items-center text-white/80" id="cssFontFaceLapseExp">
-                        <input type="radio" name="exploitChain" value="4" onchange="exploitChain(this.value);">
-                        <p id="cssFontFaceLapse">CSSFontFace Lapse</p>
-                    </label>
-                    <label class="flex items-center text-white/80" id="slopKitLapseExp">
-                        <input type="radio" name="exploitChain" value="5" onchange="exploitChain(this.value);">
-                        <p id="slopKitLapse">Slopkit Lapse</p>
-                    </label>
-                    <label class="flex items-center text-white/80" id="slopKitNetCtrlExp">
-                        <input type="radio" name="exploitChain" value="6" onchange="exploitChain(this.value);">
-                        <p id="slopKitNetCtrl">Slopkit Netctrl</p>
-                    </label>
-                    <label class="flex items-center text-white/80" id="relapseExp">
-                        <input type="radio" name="exploitChain" value="7" onchange="exploitChain(this.value);">
-                        <p id="relapse">Slopkit Relapse</p>
-                    </label>
-                    <label class="flex items-center text-white/80" id="bpfDoubleFreeExp">
-                        <input type="radio" name="exploitChain" value="8" onchange="exploitChain(this.value);">
-                        <p id="bpfDoubleFree">Bpf Double Free</p>
-                    </label>
-                    <label class="flex items-center text-white/80" id="slopkitAfterglowExp">
-                        <input type="radio" name="exploitChain" value="9" onchange="exploitChain(this.value);">
-                        <p id="slopkitAfterglow">Slopkit Afterglow</p>
-                    </label>
-                    <label class="flex items-center text-white/80" id="wobkotLapseExp">
-                        <input type="radio" name="exploitChain" value="10" onchange="exploitChain(this.value);">
-                        <p id="wobkotLapse">Wobkot lapse</p>
                     </label>
                 </div>
             </div>
@@ -588,150 +367,8 @@
                     <input type="checkbox" id="autoJb" onclick="setAutoJb(this.checked)">
                     <p id="autoJbText">Auto Jailbreak</p>
                 </label>
-                <label id="autoJbContainer" class="flex items-center text-white/80">
-                    <input type="checkbox" id="autoJbRetry" onclick="setAutoJbRetry(this.checked)">
-                    <p id="autoJbRetryText">Auto-Retry Jailbreak</p>
-                </label>
-                <label id="reloadAfterJb" class="flex items-center text-white/80">
-                    <input type="checkbox" id="reloadAfterJbInput" onclick="setReloadAfterJb(this.checked)">
-                    <p id="reloadAfterJbText">Reload After a successful Jailbreak</p>
-                </label>
-                <label id="bareboneJBOption" class="flex items-center text-white/80">
-                    <input type="checkbox" id="bareboneJBInput" onclick="setBareboneJB(this.checked)">
-                    <p id="bareboneJB">Barebone Jailbreak Experience</p>
-                </label>
             </div>
-            <button onclick="ipGuess()"
-                class="hidden bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold transition-colors"
-                id="scanPayLoader">
-                Scan for payload loader server
-            </button>
-            <button onclick="shutdownServer()"
-                class="hidden mt-2 bg-red-600 hover:bg-red-700 p-3 rounded font-semibold transition-colors"
-                id="shutdownServerBtn">
-                Shutdown Server
-            </button>
-            <button onclick="settingsPopup()"
-                class="mt-6 w-full bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold transition-colors"
-                id="close-settings">Close</button>
-        </div>
-    </div>
-
-    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden"
-        id="theme-popup-overlay">
-        <div id="theme-popup" class="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
-            <h2 class="text-2xl font-bold mb-4">Customization Settings</h2>
-            <!-- Language chooser -->
-            <div id="chooselang" class="mb-6">
-                <h3 class="text-lg font-semibold mb-2">Language</h3>
-                <div class="radio-group space-y-2 flex flex-wrap">
-                    <!-- Language options -->
-                    <label class="flex items-center text-white/80">
-                        <input type="radio" name="language" value="en" class="ml-2"
-                            onchange="saveLanguage(this.value);">
-                        <p>English</p>
-                    </label>
-                    <label class="flex items-center text-white/80">
-                        <input type="radio" name="language" value="fa" class="ml-2"
-                            onchange="saveLanguage(this.value);">
-                        <p>فارسی</p>
-                    </label>
-                    <label class="flex items-center text-white/80">
-                        <input type="radio" name="language" value="ar" class="ml-2"
-                            onchange="saveLanguage(this.value); ">
-                        <p>العربية</p>
-                    </label>
-                    <label class="flex items-center text-white/80">
-                        <input type="radio" name="language" value="ru" class="ml-2"
-                            onchange="saveLanguage(this.value); ">
-                        <p>Русский</p>
-                    </label>
-                    <label class="flex items-center text-white/80">
-                        <input type="radio" name="language" value="es" class="ml-2"
-                            onchange="saveLanguage(this.value);">
-                        <p>Espa&ntilde;ol</p>
-                    </label>
-                    <label class="flex items-center text-white/80">
-                        <input type="radio" name="language" value="tr" class="ml-2"
-                            onchange="saveLanguage(this.value);">
-                        <p>T&uuml;rk&ccedil;e</p>
-                    </label>
-                    <label class="flex items-center text-white/80">
-                        <input type="radio" name="language" value="de" class="ml-2"
-                            onchange="saveLanguage(this.value);">
-                        <p>Deutsch</p>
-                    </label>
-                    <label class="flex items-center text-white/80">
-                        <input type="radio" name="language" value="zh-cn" class="ml-2"
-                            onchange="saveLanguage(this.value);">
-                        <p>简体中文</p>
-                    </label>
-                </div>
-            </div>
-            <div id="chooseTheme" class="mb-4 flex">
-                <h3 class="text-lg font-semibold mb-2" id="layout">Layout</h3>
-                <div class="radio-group space-y-2 flex flex-wrap flex-row" id="layouts">
-                    <label class="flex items-center text-white/80">
-                        <input type="radio" name="theme" value="index" onchange="setLayout(this.value);">
-                        <p id="defaultTheme">Default</p>
-                    </label>
-                    <label class="flex items-center text-white/80">
-                        <input type="radio" name="theme" value="compact" onchange="setLayout(this.value);">
-                        <p id="compactTheme">Compact</p>
-                    </label>
-                </div>
-                <!-- Color  -->
-                <h3 class="text-lg font-semibold mb-2" id="themeWord">Theme</h3>
-                <div class="radio-group space-y-2 flex flex-wrap" id="colors">
-                    <label class="flex items-center text-white/80">
-                        <input type="radio" name="colorTheme" value="default" onchange="setTheme(this.value);">
-                        <p id="defaultColor">Default</p>
-                    </label>
-                    <label class="flex items-center text-white/80">
-                        <input type="radio" name="colorTheme" value="vibrant" onchange="setTheme(this.value);">
-                        <p id="vibrantColor">Vibrant</p>
-                    </label>
-                    <label class="flex items-center text-white/80">
-                        <input type="radio" name="colorTheme" value="catppuccino" onchange="setTheme(this.value);">
-                        <p id="catppuccinoColor">Catppuccino</p>
-                    </label>
-                </div>
-            </div>
-            <button onclick="themePopup()"
-                class="mt-6 w-full bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold transition-colors"
-                id="close-theme">Close</button>
-        </div>
-    </div>
-
-    <div class="fixed inset-0 bg-black/50 z-50 flex backdrop-blur-sm items-center justify-center p-4 hidden"
-        id="choose-fanThreshold-overlay">
-        <div id="choose-fanThreshold" class="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-md">
-            <h2 class="text-2xl font-bold mb-4">Fan Threshold</h2>
-            <div class="space-y-2 text-white/80">
-                <p>Sets the temperature threshold where the fan will kick into turbo.</p>
-            </div>
-            <div class="mt-6">
-                <h3 class="text-l font-bold mb-4">Select a temperature</h3>
-                <div class="flex justify-around gap-2 text-sm text-white/70 w-full">
-                    <button class="mt-6 hover:bg-blue-700 p-3 rounded font-semibold transition-colors" id="60"
-                        onclick="loadFanThreshold(this.id);">60°C</button>
-                    <button class="mt-6 hover:bg-blue-700 p-3 rounded font-semibold transition-colors" id="70"
-                        onclick="loadFanThreshold(this.id);">70°C</button>
-                    <button class="mt-6 hover:bg-blue-700 p-3 rounded font-semibold transition-colors" id="80"
-                        onclick="loadFanThreshold(this.id);">80°C</button>
-                    <button class="mt-6 hover:bg-blue-700 p-3 rounded font-semibold transition-colors" id="85"
-                        onclick="loadFanThreshold(this.id);">85°C</button>
-                </div>
-            </div>
-
-            <div id="defaultTempDiv" class="flex justify-center gap-2 flex-col">
-                <small class="text-center">&#8593;</small>
-                <small class="text-center" id="defaultTemp">Default</small>
-            </div>
-            <button onclick="chooseFanThreshold()"
-                class="mt-4 w-full bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold transition-colors"
-                id="close-fanChoose">
-                Close</button>
+            <button onclick="settingsPopup()" class="mt-6 w-full bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold transition-colors" id="close-settings">Close</button>
         </div>
     </div>
 
@@ -763,7 +400,6 @@
             return true;
         };
 
-        // Catch unhandled promise rejections
         window.addEventListener('unhandledrejection', function (event) {
             var reason = event.reason;
             var msg = reason instanceof Error
@@ -780,21 +416,6 @@
         window.exploitsetup672_result = 0;
 
         var jailbreakNow = sessionStorage.getItem("jailbreakNow") != null;
-        // Load 6.7x entrypoint if needed conditionally
-        // This MUST run before DOMContentLoaded for the exploit timing to work.
-        if (isPS4 && is67x && jailbreakNow) {
-            try {
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', './src/badhoist/672entrypoint.js', false);
-                xhr.send('');
-                if (xhr.status === 200) {
-                    eval.call(top.window, xhr.responseText);
-                }
-            } catch (e) {
-                // Non-breaking. the entrypoint check in badHoistJailbreak() will handle failure
-                console.error("Early entrypoint hook failed: " + e.message);
-            }
-        }
     </script>
     <script src="./includes/js/storage.js"></script>
     <script src="./includes/js/testMode.js"></script>
