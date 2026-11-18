@@ -86,7 +86,7 @@ async function main() {
   await load_script('src/wobkot/userland.js');
   await userland_main();
 
-  await load_script('src/kernel.js');
+  await load_script('src/wobkot/kernel.js');
   await kernel_main();
 }
 
