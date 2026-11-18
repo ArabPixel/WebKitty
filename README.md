@@ -194,7 +194,7 @@ AGPL-3.0-or-later (see [LICENSE](LICENSE)). Part of this repo belongs to the gro
 - **Raw Game:** For implementing a PS4 port for the Slopkit Lapse and Netctrl and also SlopKit Relapse.
 - **sleirsgoevy:** For 6.7x kernel exploit. 
 - **TheFlow:** For Netctrl kernel exploit.
-- **ufm42:** For CSSFontFace Netctrl and Lapse implementation.
+- **ufm42:** For CSSFontFace Netctrl and Lapse and Wobkot Lapse implementations.
 - **m0zz:** For slopkit afterglow source
 
 Check the appropriate files for any **extra** contributors. Unless otherwise stated, everything here can also be credited to us.

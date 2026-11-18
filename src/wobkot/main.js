@@ -85,11 +85,8 @@ async function main() {
 
   await load_script('src/wobkot/userland.js');
   await userland_main();
-  if (version.major > 12 || (version.major === 12 && version.minor > 2)) {
-    logger.error("No kernel exploit has been implemented yet!");
-    return;
-  }
-  await load_script('src/wobkot/kernel.js');
+
+  await load_script('src/kernel.js');
   await kernel_main();
 }
 
