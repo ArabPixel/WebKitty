@@ -33,6 +33,7 @@ var ui = {
   psLogoContainer: document.getElementById('ps-logo-container'),
   clickToStartText: document.getElementById('click-to-start-text'),
   ps4FwStatus: document.getElementById('PS4FW'),
+  exploitChainLabel: document.getElementById('exploitChainLabel'),
   stopAutoJbBtn: document.getElementById('stopAutoJb'),
   updateCacheBtn: document.getElementById("updateCache"),
 

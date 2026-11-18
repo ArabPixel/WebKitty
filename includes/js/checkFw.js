@@ -18,7 +18,7 @@ function CheckFW() {
 
         var fwNum = parseFloat(fwVersion);
         var supported = isFirmwareSupported(fwNum);
-        updateHenFlavorVisibility(fwVersion); // GoldHEN is now supported.
+        updateHenFlavorVisibility(fwVersion);
         if (supported) {
             ui.ps4FwStatus.style.color = 'green';
 
@@ -171,6 +171,11 @@ function updateExploitChainVisibility(fwVersion) {
         user.exploitChain = getDefaultChain(fwNum);
         if (typeof exploitChain === 'function') exploitChain(user.exploitChain);
         if (typeof loadExploitChain === 'function') loadExploitChain();
+    }
+
+    // display exploit chain
+    if (ui.exploitChainLabel){
+        ui.exploitChainLabel.textContent = getChainLabel(user.exploitChain);
     }
 
     toggleVisibility('modularLapseExp',       isChainSupported(EXPLOIT_CHAINS.PSFREE_MODULAR, fwNum));

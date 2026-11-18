@@ -1202,10 +1202,14 @@ html, body {
 }
 
 /* Clean up Firmware Message styling */
-#PS4FW {
+#PS4FW, #exploitChainLabel {
     margin: 0 !important;
     font-size: 1.125rem !important; /* text-lg */
     font-weight: 600 !important;
+}
+
+#exploitChainLabel{
+    display: none;
 }
 
 /* Make the top HEN choice box blend completely transparently into the header row */

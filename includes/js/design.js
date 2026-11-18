@@ -8,7 +8,7 @@ function setLayout(theme) {
 
         if (theme == 'compact') {
             ui.initialScreen.classList.add('compact');
-            ui.clickToStartText.innerText = projectName;
+            ui.clickToStartText.innerText = getChainLabel(user.exploitChain);
         } else {
             ui.initialScreen.classList.remove('compact');
             ui.clickToStartText.innerText = (window.lang && window.lang.clickToStart) || 'Click to Start';
@@ -41,7 +41,7 @@ function loadLayout() {
 
     if (radioElement && radioElement.value == 'compact') {
         ui.initialScreen.classList.add('compact');
-        ui.clickToStartText.textContent = projectName;
+        ui.clickToStartText.textContent = getChainLabel(user.exploitChain);
     } else {
         ui.initialScreen.classList.remove('compact');
         ui.clickToStartText.textContent = (window.lang && window.lang.clickToStart) || 'Click to Start';

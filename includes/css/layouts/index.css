@@ -829,6 +829,10 @@ button {
     text-align-last: center;
 }
 
+.compatibilityMessage{
+    text-align: center;
+}
+
 #default-tab-content div div {
     cursor: pointer;
 }

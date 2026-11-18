@@ -191,6 +191,11 @@ function loadExploitChain() {
 function exploitChain(value) {
     storage.set('exploitChain', value);
     user.exploitChain = parseFloat(value);
+    if (ui.exploitChainLabel){
+        if (storage.getString('theme') == 'compact'){
+            ui.clickToStartText.textContent = getChainLabel(user.exploitChain);
+        } else ui.exploitChainLabel.textContent = getChainLabel(value);
+    }
 }
 
 function updateBareboneJB() {

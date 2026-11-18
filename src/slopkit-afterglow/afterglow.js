@@ -949,6 +949,10 @@ async function loadEnabler(url, k, kbase, room) {
    and if this process is torn down with the handles still live, that is the
    hang. */
 async function loadPayload(url, preloaded) {
+  if (isPayloadElf(url)) {
+    await loadElfPayload();
+    return;
+  }
   const c = host();
   let blob = preloaded || null;
   if (blob === null) {
@@ -1013,6 +1017,18 @@ async function loadPayload(url, preloaded) {
   say("[p] " + blob.length + " bytes at " + text(entry) + ", thread rc=" + rc
       + (started ? " -- running" : " -- did NOT start"));
   return started;
+}
+
+async function loadElfPayload() {
+  const payload_path = sessionStorage.getItem("payload_path");
+  const elfLoaderAvailable = await probeElfLoader();
+
+  if (!elfLoaderAvailable) {
+    await loadPayload("./includes/payloads/Bins/elfldr.bin");
+  }
+  await new Promise(function(resolve) { setTimeout(resolve, 2000); });
+  Loadpayloadlocal(payload_path, getPayloadName(payload_path), "jailbreak");
+  return true;
 }
 
 /* ------------------------------------------------------- GoldHEN */

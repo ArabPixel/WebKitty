@@ -119,7 +119,7 @@ function applyLanguage(lang) {
     // Main Screen Elements
     var currentTheme = storage.getString('theme', 'index');
     if (currentTheme == 'compact') {
-        updateText(ui.clickToStartText, projectName);
+        updateText(ui.clickToStartText, getChainLabel(user.exploitChain));
     } else {
         updateText(ui.clickToStartText, 'clickToStart');
     }
