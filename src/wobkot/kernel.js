@@ -651,6 +651,8 @@ async function kernel_main() {
     notify('Jailbroken !!');
 
     await post_jailbreak();
+  }else {
+    await load_payload();
   }
   if (typeof jailbreakSuccess == "function"){
     jailbreakSuccess();
