@@ -72,6 +72,7 @@ window.lang = {
     "autoJbRetryText": "Auto-Jailbreak wiederholen",
     "autoJbRetry": "Erneuter Versuch in {seconds} Sekunden...",
     "stopAutoJbBtn": "Auto-Jailbreak stoppen",
+    "pauseAutoJbRetry": "Auto-Jailbreak-Wiederholungen pausieren",
     "autoJbOption": "Auto-Jailbreak",
     "autoJb": "Auto-Jailbreak aktiviert. Ausf\u00fchrung in {seconds} Sekunden...",
     "autoJbRetryConfirm": "Jetzt jailbreaken? Die Jailbreak-Funktion wird bei einem Fehlschlag automatisch wiederholt, bis sie erfolgreich ist.",

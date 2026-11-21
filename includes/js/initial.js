@@ -3,6 +3,7 @@ var lastScrollY = 0;
 var lastSection = "initial";           // For custom snap scroll on the PS4
 var projectName = "WebKitty";
 var hideUnsupportedPayloads = false;
+var defaultAutoJbTimer = 5;
 var commonMax = 14.02;                 // max supported paylaods
 
 var user = {

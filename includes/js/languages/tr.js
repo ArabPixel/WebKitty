@@ -68,6 +68,7 @@ window.lang = {
     "autoJb": "Otomatik Jailbreak etkin. {seconds} saniye içinde başlatılıyor...",
     "autoJbOption": "Otomatik Jailbreak",
     "stopAutoJbBtn": "Otomatik Jailbreak'i Durdur",
+    "pauseAutoJbRetry": "Otomatik jailbreak tekrarlarını duraklat",
     "autoJbRetryConfirm": "Jailbreak şimdi başlatılsın mı? Başarısız olursa jailbreak işlemi başarılı olana kadar otomatik olarak tekrar denenecektir.",
     "jailbreakCountDown": "{seconds} içinde tekrar denenecek...",
     "successRate": "Başarı Oranı: ",

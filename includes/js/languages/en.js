@@ -72,6 +72,7 @@ window.lang = {
     "autoJbRetryText": "Auto-Retry Jailbreak",
     "autoJbRetry": "Retrying in {seconds} seconds...",
     "stopAutoJbBtn": "Stop Auto-Jailbreak",
+    "pauseAutoJbRetry": "Pause Auto-Jailbreak Retries",
     "autoJbOption": "Auto Jailbreak",
     "autoJb": "Auto-Jailbreak enabled. Executing in {seconds} seconds...",
     "autoJbRetryConfirm": "Jailbreak now? The jailbreak function will automatically retry if it fails until it succeeds.",

@@ -904,3 +904,16 @@ button {
 #DebugConsole:hover {
     cursor: pointer;
 }
+
+#autoJbTimer {
+    display: flex;
+    width: 20%;
+    justify-content: space-evenly;
+    margin: 0 20px;
+    cursor: default;
+}
+
+#autoJbTimer button{
+    cursor: pointer;
+    padding: 5px 10px;
+}

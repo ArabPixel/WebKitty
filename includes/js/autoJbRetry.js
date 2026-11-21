@@ -23,6 +23,9 @@ function autoJailbreak() {
         return;
     }
 
+    // auto jailbreak timer UI update
+    document.getElementById('autoJbTimerText').innerText = storage.getNumber('autoJbTimer', defaultAutoJbTimer);
+
     // Auto jailbreak retry logic
     var autoJbRetryChecked = storage.getBoolean('autoJbRetry', true);
     var autoJbRetrySessionChecked = storage.session.getBoolean('autoJbRetry', false);
@@ -40,6 +43,7 @@ function autoJailbreak() {
     // If auto jb retry is checked and previous jailbreak attempt was unsuccessful, retry jailbreak with a timer
     if (autoJbRetryChecked && autoJbRetrySessionChecked) {
         autoJailbreakTimer();
+        return;
     }
 
     // If auto jb is checked and autoJb session value is false, execute jailbreak with a timer
@@ -50,7 +54,14 @@ function autoJailbreak() {
 
 // Storage retry value true but no sessionStorage value? use timer.
 function autoJailbreakTimer(permanentJb) {
-    var timer = 3; // Start a longer countdown immediately
+    var timer = getAutoJbTimer();
+    // skip timer if timer is set to 0
+    if (timer <= 0 && storage.session.getBoolean('autoJbRetry', true)){
+        toggleVisibility('autoJbTempStop');
+        jailbreak();
+        return;
+    }
+
     if (ui.stopAutoJbBtn) toggleVisibility(ui.stopAutoJbBtn.id);
     // check if language values are available, if not, use default values
     var autoJbRetryText = lang.autoJbRetry || "Retrying in {seconds} seconds...";
@@ -68,7 +79,7 @@ function autoJailbreakTimer(permanentJb) {
             ui.clickToStartText.textContent = message.replace('{seconds}', timer);
             ui.clickToStartText.style.fontSize = "15px";
         }
-        if (timer < 0) {
+        if (timer <= 0) {
             clearInterval(autoJbInterval);
             jailbreak();
         }
@@ -84,4 +95,23 @@ function getReloadAfterJb() {
     var input = document.getElementById('reloadAfterJbInput');
     if (input) input.checked = checked;
     return checked;
+}
+
+function getAutoJbTimer() {
+    return storage.getNumber('autoJbTimer', defaultAutoJbTimer);
+}
+
+function changeAutoJbTimer(operator) {
+    var autoJbTimer = storage.getNumber('autoJbTimer', defaultAutoJbTimer);
+    if (operator == '+') autoJbTimer++;
+
+    else if (operator == '-' && !(autoJbTimer < 0)) {
+        if (autoJbTimer <= 0) return;
+        autoJbTimer--;
+    }
+    else autoJbTimer = defaultAutoJbTimer;
+
+    storage.set('autoJbTimer', autoJbTimer);
+
+    document.getElementById('autoJbTimerText').textContent = autoJbTimer;
 }

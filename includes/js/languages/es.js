@@ -68,6 +68,7 @@ window.lang = {
     "autoJb": "Jailbreak automático activado. Se ejecutará en {seconds} segundos...",
     "autoJbOption": "Jailbreak Automático",
     "stopAutoJbBtn": "Detener Jailbreak Automático",
+    "pauseAutoJbRetry": "Pausar los reintentos automáticos de jailbreak",
     "autoJbRetryConfirm": "¿Quieres hacer jailbreak ahora? La función de jailbreak se reintentará automáticamente si falla hasta que tenga éxito.",
     "jailbreakCountDown": "Reintentando jailbreak en {seconds}...",
     "successRate": "Tasa de éxito: ",

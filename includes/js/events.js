@@ -126,7 +126,7 @@ ui.stopAutoJbBtn.addEventListener('click', function () {
     toggleVisibility(ui.stopAutoJbBtn.id);
     var currentTheme = storage.getString('theme', 'index');
     if (currentTheme === 'compact') {
-        ui.clickToStartText.textContent = projectName;
+        ui.clickToStartText.textContent = getChainLabel(user.exploitChain);
     } else {
         ui.clickToStartText.textContent = (window.lang && window.lang.clickToStart) || 'Click to Start';
     }
@@ -231,3 +231,12 @@ function shutdownServer() {
             window.location.reload();
         });
 }
+
+document.getElementById('autoJbTempStop').addEventListener('click', function (){
+    storage.session.set('autoJbRetry', false);
+    document.getElementById('autoJbTempStop').classList.toggle('bg-yellow-600');
+    document.getElementById('autoJbTempStop').style.backgroundColor = '#22C55E';
+    setTimeout(function (){
+        toggleVisibility('autoJbTempStop');
+    },1000);
+})

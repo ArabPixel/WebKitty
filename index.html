@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <title>WebKitty</title>
-    <meta name="description" content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 14.02." />
+    <meta name="description"
+        content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 14.02." />
     <meta name="author" content="ArabPixel">
     <meta name="keywords"
         content="PS4, PlayStation 4, webkit exploit, jailbreak, psfree lapse, cssfontface, WebKitty, PSFree Enhanced, cssfontface, lapse, netctrl, slopkit, relapse">
@@ -47,13 +48,13 @@
         // redirect to http request
         var goToHttps = localStorage.getItem("dontHTTPS") != "1";
         var isThisPS4 = navigator.userAgent.indexOf("PlayStation 4") !== -1;
-        var isLocalServer =  /^(127\.|192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.)/.test(window.location.hostname);
+        var isLocalServer = /^(127\.|192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.)/.test(window.location.hostname);
         var isCurrentHTTPS = window.location.protocol === 'https:';
-        if (isThisPS4 && goToHttps && !isLocalServer && isCurrentHTTPS){
-            if (confirm("You are currently using HTTPS, which prevents loading payloads through a bin/elf loader servers, switch to http instead? (recommended)")){
+        if (isThisPS4 && goToHttps && !isLocalServer && isCurrentHTTPS) {
+            if (confirm("You are currently using HTTPS, which prevents loading payloads through a local bin/elf loader servers, switch to http instead? (recommended)")) {
                 window.abortLoading = true;
                 window.location.href = "http://webkitty.arabpixel.net";
-            } else{
+            } else {
                 localStorage.setItem("dontHTTPS", "1");
             }
         }
@@ -220,6 +221,10 @@
                                 <path
                                     d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" />
                             </svg>
+                        </button>
+                        <button id="autoJbTempStop"
+                            class="hidden flex items-center justify-center bg-yellow-600 hover:bg-yellow-700 p-2 rounded transition-colors">
+                            Pause Auto-Jailbreak Retries
                         </button>
                     </div>
                 </div>
@@ -390,7 +395,8 @@
                             </div>
                             <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="custom" role="tabpanel"
                                 aria-labelledby="custom-tab">
-                                <p class="text-sm text-white/80 mb-2" id="customPayloadUpload">Upload a custom payload file</p>
+                                <p class="text-sm text-white/80 mb-2" id="customPayloadUpload">Upload a custom payload
+                                    file</p>
                                 <div class="flex gap-2">
                                     <input type="file" id="customPayloadInput" style="width: 150px;"
                                         class="bg-gray-700 p-2 rounded flex-grow text-white border-transparent focus:ring-2 focus:ring-blue-500"
@@ -586,10 +592,20 @@
                         <p id="showAdvancedPayloads">Show Advanced Payloads</p>
                     </label>
                 </div>
-                <label id="autoJbOption" class="flex items-center text-white/80">
-                    <input type="checkbox" id="autoJb" onclick="setAutoJb(this.checked)">
-                    <p id="autoJbText">Auto Jailbreak</p>
-                </label>
+                <div class="flex">
+                    <label id="autoJbOption" class="flex items-center text-white/80">
+                        <input type="checkbox" id="autoJb" onclick="setAutoJb(this.checked)">
+                        <p id="autoJbText">Auto Jailbreak</p>
+                    </label>
+                    
+                    <div id="autoJbTimer">
+                        <button class="bg-blue-600 hover:bg-blue-700 p-2 rounded font-semibold transition-colors"
+                            onclick="changeAutoJbTimer('+')">+</button>
+                        <p id="autoJbTimerText">-</p>
+                        <button class="bg-blue-600 hover:bg-blue-700 p-2 rounded font-semibold transition-colors"
+                            onclick="changeAutoJbTimer('-')">-</button>
+                    </div>
+                </div>
                 <label id="autoJbContainer" class="flex items-center text-white/80">
                     <input type="checkbox" id="autoJbRetry" onclick="setAutoJbRetry(this.checked)">
                     <p id="autoJbRetryText">Auto-Retry Jailbreak</p>

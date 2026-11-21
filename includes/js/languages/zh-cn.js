@@ -78,6 +78,7 @@ window.lang = {
     "autoJb": "自动越狱已启用，将在 {seconds} 秒后执行...",
     "autoJbOption": "自动越狱",
     "stopAutoJbBtn": "停止自动越狱",
+    "pauseAutoJbRetry": "暂停自动越狱重试",
     "autoJbRetryConfirm": "现在开始越狱吗？如果失败，将自动重试直到成功。",
     "jailbreakCountDown": "{seconds} 秒后重试越狱...",
     "successRate": "成功率：",

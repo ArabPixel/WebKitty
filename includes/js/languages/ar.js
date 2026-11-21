@@ -74,6 +74,7 @@ window.lang = {
   "autoJb": "تم تفعيل التعديل التلقائي. سيتم التنفيذ خلال {seconds} ثانية...",
   "autoJbOption": "التعديل التلقائي",
   "stopAutoJbBtn": "إيقاف التعديل التلقائي",
+  "pauseAutoJbRetry": "إيقاف محاولات التعديل التلقائية مؤقتًا",
   "autoJbRetryConfirm": "هل تريد تعديل الجهاز الآن؟ سيتم اعادة المحاولة تلقائيا إذا فشلت حتى تنجح.",
   "jailbreakCountDown": "إعادة محاولة التعديل في {seconds}...",
   "successRate": "نسبة النجاح: ",
