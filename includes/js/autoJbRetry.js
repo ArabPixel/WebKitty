@@ -24,7 +24,7 @@ function autoJailbreak() {
     }
 
     // auto jailbreak timer UI update
-    document.getElementById('autoJbTimerText').innerText = storage.getNumber('autoJbTimer', defaultAutoJbTimer);
+    document.getElementById('autoJbTimerText').innerText = getAutoJbTimer();
 
     // Auto jailbreak retry logic
     var autoJbRetryChecked = storage.getBoolean('autoJbRetry', true);
@@ -102,7 +102,7 @@ function getAutoJbTimer() {
 }
 
 function changeAutoJbTimer(operator) {
-    var autoJbTimer = storage.getNumber('autoJbTimer', defaultAutoJbTimer);
+    var autoJbTimer = getAutoJbTimer();
     if (operator == '+') autoJbTimer++;
 
     else if (operator == '-' && !(autoJbTimer < 0)) {

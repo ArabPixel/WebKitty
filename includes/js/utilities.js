@@ -65,7 +65,7 @@ function log(message, color, consoleEl) {
 }
 
 function getReloadAfterJbValue() {
-    return storage.getBoolean('reloadAfterJb', false);
+    return storage.getBoolean('reloadAfterJb', reloadAfterJb);
 }
 
 /**
