@@ -75,9 +75,7 @@ var FIRMWARE_RANGES = [
         label:       'Slopkit Lapse',
         min:         10.00,
         max:         12.02,
-        isDefault:   true,
-        prefMin:     10.00,
-        prefMax:     12.02
+        isDefault:   false
     },
     {
         id:          EXPLOIT_CHAINS.SLOPKIT_NETCTRL,
@@ -109,7 +107,9 @@ var FIRMWARE_RANGES = [
         label:       'Wobkot Lapse',
         min:         9.00,
         max:         12.02,
-        isDefault:   false,
+        isDefault:   true,
+        prefMin:     10.00,
+        prefMax:     12.02
     }
 ];
 
