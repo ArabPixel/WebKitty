@@ -90,6 +90,10 @@ function CheckFW() {
             toggleVisibility(ui.ps4FwSelect.id, 1);
             toggleVisibility(ui.scanPayLoader.id, 1);
             toggleVisibility(ui.shutdownServerBtn.id, 1);
+            // those elements need to hide directly
+            document.getElementById('autoJbTimer').style.display = 'none';
+            document.getElementById('advancedPayloads').classList.toggle('mb-6');
+
             var customTab = document.getElementById('customPayloadsTab');
             if (customTab) toggleVisibility(customTab.id, 1);
             ui.ps4IpInput.value = user.ip;

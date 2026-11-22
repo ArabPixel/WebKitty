@@ -600,10 +600,10 @@
                     
                     <div id="autoJbTimer">
                         <button class="bg-blue-600 hover:bg-blue-700 p-2 rounded font-semibold transition-colors"
-                            onclick="changeAutoJbTimer('+')">+</button>
-                        <p id="autoJbTimerText">-</p>
+                            onclick="changeAutoJbTimer('+')" aria-label="Increase delay">+</button>
+                        <p id="autoJbTimerTextWrapper"><span id="autoJbTimerText">-</span><span>s</span></p>
                         <button class="bg-blue-600 hover:bg-blue-700 p-2 rounded font-semibold transition-colors"
-                            onclick="changeAutoJbTimer('-')">-</button>
+                            onclick="changeAutoJbTimer('-')" aria-label="Decrease delay">-</button>
                     </div>
                 </div>
                 <label id="autoJbContainer" class="flex items-center text-white/80">

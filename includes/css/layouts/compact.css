@@ -1265,15 +1265,34 @@ html, body {
 
 #autoJbTimer {
     display: flex;
+    align-items: stretch;
     width: 20%;
-    justify-content: space-evenly;
-    margin: 0 20px;
+    margin: 0 20px 0 auto;
+    padding: 0;
     cursor: default;
+    border: 1px solid #2563eb;
+    border-radius: 12px;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-#autoJbTimer button{
+html[dir="rtl"] #autoJbTimer {
+    margin: 0 auto 0 20px;
+}
+
+#autoJbTimer button {
+    flex: 1;
+    align-self: stretch;
+    min-width: 0;
     cursor: pointer;
     padding: 5px 10px;
+    border-radius: 0;
+}
+
+#autoJbTimerTextWrapper {
+    align-self: center;
+    margin: 0 8px;
+    white-space: nowrap;
 }
 
 #exploitRun{
