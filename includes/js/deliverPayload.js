@@ -69,7 +69,7 @@ function sendElfToElfldr(url, payloadName, onDone, args) {
         var ok = (status === 200 || status === 202);
         if (ok) {
             var msg = (window.lang.elfLoaderResponse ||
-                "Payload sent successfully through the Elf Loader!\nStatus: {status} {statusText}\nResponse: {body}")
+                "\nPayload sent successfully through the Elf Loader!\nStatus: {status} {statusText}\nResponse: {body}")
                 .replace("{status}", status)
                 .replace("{statusText}", "OK")
                 .replace("{body}", responseText || "");

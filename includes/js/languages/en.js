@@ -60,7 +60,7 @@ window.lang = {
     "elfLoaderSent": "Payload sent successfully through the Elf Loader!",
     "elfLoaderSending": "Sending payload to the Elf Loader...",
     "elfLoaderError": "The Elf Loader returned an error: {status} {body}",
-    "elfLoaderResponse": "Payload sent successfully through the Elf Loader!\nStatus: {status} {statusText}\nResponse: {body}",
+    "elfLoaderResponse": "\nPayload sent successfully through the Elf Loader!\nStatus: {status} {statusText}\nResponse: {body}",
     "elfLoaderNetworkError": "Error: Network request failed",
     "elfLoaderRequestAborted": "Error: Network request aborted",
     "firmwareNotificationsUnavailable": "Payloads work on this firmware, but notifications may not appear.",

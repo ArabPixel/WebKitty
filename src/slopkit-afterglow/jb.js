@@ -92,7 +92,9 @@ const SENT_HOME = (function () {
     try {
       updateJbStats(0, 0, 1);
       sessionStorage.setItem('jailbreakNow', true);
-      location.replace("index.html");
+      var isDevMode = getQueryParam('test') === '1' ? true : false;
+      if (isDevMode) location.replace('./?test=1');
+      else location.replace("./");
     } catch (e) {}
   }, 500);
   return true;
