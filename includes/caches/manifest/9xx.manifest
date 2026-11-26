@@ -30,6 +30,7 @@ CACHE:
 ../../../includes/js/languages/fa.js
 ../../../includes/js/languages/ru.js
 ../../../includes/js/languages/es.js
+../../../includes/js/languages/pt-br.js
 ../../../includes/assets/icons/webkitty.svg
 ../../../includes/assets/icons/favicon.ico
 ../../../includes/js/deliverPayload.js

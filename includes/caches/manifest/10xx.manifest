@@ -30,6 +30,7 @@ CACHE:
 ../../../includes/js/languages/fa.js
 ../../../includes/js/languages/ru.js
 ../../../includes/js/languages/es.js
+../../../includes/js/languages/pt-br.js
 ../../../includes/js/deliverPayload.js
 ../../../includes/payloads/Bins/WebRTE.bin
 ../../../includes/payloads/Bins/np-fake-signin-ps4.elf
